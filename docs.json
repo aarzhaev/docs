@@ -3,9 +3,9 @@
   "theme": "mint",
   "name": "Mint Starter Kit",
   "colors": {
-    "primary": "#C44008",
+    "primary": "#fb4b01",
     "light": "#D44509",
-    "dark": "#803414"
+    "dark": "#D44509"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -51,19 +51,14 @@
         "tab": "API reference",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Introduction",
             "pages": [
               "api-reference/introduction"
             ]
           },
           {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
+            "group": "API Endpoints",
+            "openapi": "api-reference/openapi-filtered.json"
           }
         ]
       }

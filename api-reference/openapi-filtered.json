@@ -1,0 +1,7019 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Aseed Insight API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health Check",
+        "operationId": "health_check_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/check_space/": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Check Space",
+        "operationId": "check_space_insight_check_space__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckSpaceRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Check Space Insight Check Space  Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/insight/upload/": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Upload File",
+        "operationId": "upload_file_insight_upload__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadFileRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Upload File Insight Upload  Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/insight/upload_text/": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Upload Text File",
+        "operationId": "upload_text_file_insight_upload_text__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadTextFileRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object",
+                  "title": "Response Upload Text File Insight Upload Text  Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/insight/update/": {
+      "put": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Update Records",
+        "operationId": "update_records_insight_update__put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRecordsRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/insight/": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Records",
+        "operationId": "get_records_insight__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/insight/paginated": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Records Paginated",
+        "description": "Get paginated records list.\n\nQuery parameters:\n- page: page number (default: 1)\n- limit: records per page (default: 50, max: 200)\n- search: case-insensitive search across name, file name, email\n- status: repeated query param of record statuses\n- type: repeated query param of logical file types (audio/video/text)\n- archived: filter by archived flag",
+        "operationId": "get_records_paginated_insight_paginated_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Search"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Type"
+            }
+          },
+          {
+            "name": "archived",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Archived"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedRecordResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/context-tokens-batch/": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Context Tokens Batch",
+        "description": "Get aggregated context token sum for a list of records.\n\nQuery parameters:\n- ids: comma-separated list of record UUIDs\n- context_type: one of [\"transcripts\", \"qa\"]",
+        "operationId": "get_context_tokens_batch_insight_context_tokens_batch__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Ids"
+            }
+          },
+          {
+            "name": "context_type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^(transcripts|qa|general|persona|jtbd|custom)$",
+              "title": "Context Type"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContextTokensResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Detailed Record",
+        "operationId": "get_detailed_record_insight__rec_id___get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DetailedReportResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/meta": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Record Meta",
+        "description": "Get lightweight metadata for a record.\n\nQuery parameters:\n- include: comma-separated list of additional fields to include\n  (e.g., \"file_info,processing_stats\")",
+        "operationId": "get_record_meta_insight__rec_id__meta_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Include"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordMetaResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/tokens": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Record Tokens",
+        "description": "Get expected tokens for a record without loading heavy data.\n\nThis endpoint is optimized for batch token calculation scenarios.\nReturns only pricing information, not full record data.\n\nPerformance: ~1-2 seconds (vs 25+ seconds for full detailed record)",
+        "operationId": "get_record_tokens_insight__rec_id__tokens_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokensResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/setup/": {
+      "patch": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Update Setup",
+        "description": "Update setup configuration for a record without generating reports.\n\nUpdates only the fields provided in the request. Updates the latest \nsetup version. Does not trigger report generation or change record status.\n\nParameters:\n- rec_id: Record UUID\n- request: UpdateSetupRequest with fields to update (all optional)\n\nReturns:\n- 204 No Content on success",
+        "operationId": "update_setup_insight__rec_id__setup__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateSetupRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/meta-batch": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Records Meta Batch",
+        "description": "Get lightweight metadata for multiple records in batch.\n\nQuery parameters:\n- ids: comma-separated list of record UUIDs\n  (e.g., \"uuid1,uuid2,uuid3\")\n- include: comma-separated list of additional fields to include\n  (e.g., \"file_info,processing_stats\")",
+        "operationId": "get_records_meta_batch_insight_meta_batch_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Ids"
+            }
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Include"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordsMetaBatchResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/generate/": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Generate Report",
+        "operationId": "generate_report_insight__rec_id__generate__post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GenerateRecordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/regenerate/": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Regenerate Report",
+        "operationId": "regenerate_report_insight__rec_id__regenerate__post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReGenerateRecordRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/reset-status/": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Reset Report Status",
+        "operationId": "reset_report_status_insight__rec_id__reset_status__post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/cancel-generation/": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Cancel Generation",
+        "operationId": "cancel_generation_insight__rec_id__cancel_generation__post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/pipeline-status/": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Pipeline Status",
+        "operationId": "get_pipeline_status_insight__rec_id__pipeline_status__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/transcript_utterance": {
+      "patch": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Update Utterance",
+        "operationId": "update_utterance_insight__rec_id__transcript_utterance_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the transcript to update",
+              "title": "Version"
+            },
+            "description": "The version of the transcript to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UtteranceUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/speaker_name": {
+      "patch": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Update Speaker Name",
+        "operationId": "update_speaker_name_insight__rec_id__speaker_name_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the transcript",
+              "title": "Version"
+            },
+            "description": "The version of the transcript"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpeakerRenameRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/transcript_utterance_speaker": {
+      "patch": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Assign Utterance Speaker",
+        "operationId": "assign_utterance_speaker_insight__rec_id__transcript_utterance_speaker_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the transcript",
+              "title": "Version"
+            },
+            "description": "The version of the transcript"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UtteranceAssignSpeakerRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/speaker_respondent": {
+      "patch": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Toggle Speaker Respondent",
+        "operationId": "toggle_speaker_respondent_insight__rec_id__speaker_respondent_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the transcript",
+              "title": "Version"
+            },
+            "description": "The version of the transcript"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpeakerToggleRespondentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/chat/": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Chat Message",
+        "operationId": "chat_message_insight__rec_id__chat__post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Chat History",
+        "operationId": "get_chat_history_insight__rec_id__chat__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "thread_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "title": "Thread Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatHistoryResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/chat/threads/": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Chat Threads",
+        "operationId": "get_chat_threads_insight__rec_id__chat_threads__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatThreadsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/chat/new-thread/": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Create New Thread",
+        "operationId": "create_new_thread_insight__rec_id__chat_new_thread__post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/qa-report": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Qa Report",
+        "operationId": "get_qa_report_insight__rec_id__qa_report_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the QA report to retrieve",
+              "title": "Version"
+            },
+            "description": "The version of the QA report to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Update Qa Report",
+        "operationId": "update_qa_report_insight__rec_id__qa_report_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the QA report to update",
+              "title": "Version"
+            },
+            "description": "The version of the QA report to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true,
+                "title": "Payload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/persona-report": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Persona Report",
+        "operationId": "get_persona_report_insight__rec_id__persona_report_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the Persona report to retrieve",
+              "title": "Version"
+            },
+            "description": "The version of the Persona report to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Update Persona Report",
+        "operationId": "update_persona_report_insight__rec_id__persona_report_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the Persona report to update",
+              "title": "Version"
+            },
+            "description": "The version of the Persona report to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true,
+                "title": "Payload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/custom-report": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Custom Report",
+        "operationId": "get_custom_report_insight__rec_id__custom_report_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the Custom report to retrieve",
+              "title": "Version"
+            },
+            "description": "The version of the Custom report to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Update Custom Report",
+        "operationId": "update_custom_report_insight__rec_id__custom_report_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the Custom report to update",
+              "title": "Version"
+            },
+            "description": "The version of the Custom report to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true,
+                "title": "Payload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/{rec_id}/jtbd-markdown-report": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Jtbd Markdown Report",
+        "operationId": "get_jtbd_markdown_report_insight__rec_id__jtbd_markdown_report_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the JTBD Markdown report to retrieve",
+              "title": "Version"
+            },
+            "description": "The version of the JTBD Markdown report to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Update Jtbd Markdown Report",
+        "operationId": "update_jtbd_markdown_report_insight__rec_id__jtbd_markdown_report_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the JTBD Markdown report to update",
+              "title": "Version"
+            },
+            "description": "The version of the JTBD Markdown report to update"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "additionalProperties": true,
+                "title": "Payload"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/intro": {
+      "get": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Get Intro",
+        "operationId": "get_intro_insight_intro_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/export/docx": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Export To Docx",
+        "description": "Convert Markdown file to DOCX format using Pandoc.\n\nThis endpoint accepts a Markdown file and converts it to Microsoft Word (.docx) format\nwith support for custom admonition blocks (ad-info, ad-warning, ad-tip).\n\nParameters:\n- **file**: Markdown file (multipart/form-data)\n- **record_id**: Optional record UUID for logging and tracking\n- **locale**: Document language (e.g., \"ru-RU\", \"en-US\")\n- **title**: Output filename (without extension)\n- **admonition_support**: Enable Lua filters for admonition blocks\n\nReturns:\n- DOCX file with proper MIME type and Content-Disposition header\n\nErrors:\n- 400: Invalid file or parameters\n- 413: File too large (>8 MB)\n- 500: Conversion failed\n- 504: Conversion timeout (>60s)",
+        "operationId": "export_to_docx_insight_export_docx_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_export_to_docx_insight_export_docx_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/insight/export/report-docx/{rec_id}": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Export Report To Docx",
+        "description": "Export a specific report from a record to DOCX format.\n\nThis endpoint fetches a report's Markdown content from the database\nand converts it to DOCX format.\n\nParameters:\n- **rec_id**: Record UUID\n- **report_type**: Type of report (qa, persona, custom, jtbd)\n- **version**: Optional report version (defaults to latest)\n- **locale**: Document language\n- **admonition_support**: Enable admonition blocks\n\nReturns:\n- DOCX file\n\nErrors:\n- 404: Record or report not found\n- 400: Invalid report type\n- 500: Conversion failed",
+        "operationId": "export_report_to_docx_insight_export_report_docx__rec_id__post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_export_report_to_docx_insight_export_report_docx__rec_id__post"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/public/{rec_id}/": {
+      "get": {
+        "tags": [
+          "insight_public"
+        ],
+        "summary": "Get Public Report",
+        "operationId": "get_public_report_insight_public__rec_id___get",
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "title": "Version"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/public/{rec_id}/qa-report": {
+      "get": {
+        "tags": [
+          "insight",
+          "insight_public"
+        ],
+        "summary": "Get Shared Qa Report",
+        "description": "Get public/shared QA report by record ID.",
+        "operationId": "get_shared_qa_report_insight_public__rec_id__qa_report_get",
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the QA report to retrieve",
+              "title": "Version"
+            },
+            "description": "The version of the QA report to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/public/{rec_id}/persona-report": {
+      "get": {
+        "tags": [
+          "insight",
+          "insight_public"
+        ],
+        "summary": "Get Shared Persona Report",
+        "description": "Get public/shared Persona report by record ID.",
+        "operationId": "get_shared_persona_report_insight_public__rec_id__persona_report_get",
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the Persona report to retrieve",
+              "title": "Version"
+            },
+            "description": "The version of the Persona report to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/public/{rec_id}/custom-report": {
+      "get": {
+        "tags": [
+          "insight",
+          "insight_public"
+        ],
+        "summary": "Get Shared Custom Report",
+        "description": "Get public/shared Custom report by record ID.",
+        "operationId": "get_shared_custom_report_insight_public__rec_id__custom_report_get",
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the Custom report to retrieve",
+              "title": "Version"
+            },
+            "description": "The version of the Custom report to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/public/{rec_id}/jtbd-markdown-report": {
+      "get": {
+        "tags": [
+          "insight",
+          "insight_public"
+        ],
+        "summary": "Get Shared Jtbd Markdown Report",
+        "description": "Get public/shared JTBD Markdown report by record ID.",
+        "operationId": "get_shared_jtbd_markdown_report_insight_public__rec_id__jtbd_markdown_report_get",
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the JTBD Markdown report to retrieve",
+              "title": "Version"
+            },
+            "description": "The version of the JTBD Markdown report to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/insight/public/{rec_id}/switch": {
+      "patch": {
+        "tags": [
+          "insight_public"
+        ],
+        "summary": "Check Space",
+        "operationId": "check_space_insight_public__rec_id__switch_patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PublicReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/": {
+      "get": {
+        "tags": [
+          "projects"
+        ],
+        "summary": "Get Projects",
+        "description": "Get all projects for the current user.\n\nReturns:\n- List of ProjectResponse",
+        "operationId": "get_projects_projects__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectResponse"
+                  },
+                  "type": "array",
+                  "title": "Response Get Projects Projects  Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/projects/{project_id}/records": {
+      "get": {
+        "tags": [
+          "projects"
+        ],
+        "summary": "Get Project Records",
+        "description": "Get all records for a specific project.\n\nParameters:\n- project_id: Project UUID\n\nReturns:\n- List of records with their details",
+        "operationId": "get_project_records_projects__project_id__records_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{project_id}": {
+      "get": {
+        "tags": [
+          "projects"
+        ],
+        "summary": "Get Project Details",
+        "description": "Get project details by ID.\n\nParameters:\n- project_id: Project UUID\n\nReturns:\n- ProjectResponse with project details",
+        "operationId": "get_project_details_projects__project_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "projects"
+        ],
+        "summary": "Update Project",
+        "description": "Update an existing project.\n\nParameters:\n- project_id: Project UUID\n- name: New project name (optional)\n- description: New description (optional)\n- status: New status (optional)\n- research_goals: New research goals (optional)\n- interview_guide: New interview guide (optional)\n\nReturns:\n- ProjectResponse with updated project details",
+        "operationId": "update_project_projects__project_id__put",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "projects"
+        ],
+        "summary": "Delete Project",
+        "description": "Delete a project (soft delete).\n\nParameters:\n- project_id: Project UUID\n\nReturns:\n- Success message\n\nNote: This will manually unlink all records from the project\nby setting their project_id to NULL, since ondelete='SET NULL'\nonly works with physical deletion, not soft deletion.",
+        "operationId": "delete_project_projects__project_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/create": {
+      "post": {
+        "tags": [
+          "projects"
+        ],
+        "summary": "Create Project",
+        "description": "Create a new project.\n\nParameters:\n- name: Project name (required)\n- description: Project description (optional)\n- research_goals: Research goals for the project (optional)\n- interview_guide: Interview guide for the project (optional)\n\nReturns:\n- ProjectResponse with project details\n\nNote: Files should be uploaded separately using the existing upload API\nand linked to the project via project_id parameter.",
+        "operationId": "create_project_projects_create_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/projects/{project_id}/reports": {
+      "get": {
+        "tags": [
+          "project_reports"
+        ],
+        "summary": "List Project Reports",
+        "operationId": "list_project_reports_projects__project_id__reports_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          },
+          {
+            "name": "include_archived",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Archived"
+            }
+          },
+          {
+            "name": "include_deleted",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "Include Deleted"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProjectReportResponse"
+                  },
+                  "title": "Response List Project Reports Projects  Project Id  Reports Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "project_reports"
+        ],
+        "summary": "Create Project Report",
+        "operationId": "create_project_report_projects__project_id__reports_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProjectReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectReportResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/{project_id}/reports/{report_id}": {
+      "get": {
+        "tags": [
+          "project_reports"
+        ],
+        "summary": "Get Project Report",
+        "operationId": "get_project_report_projects__project_id__reports__report_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          },
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectReportResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "project_reports"
+        ],
+        "summary": "Update Project Report",
+        "operationId": "update_project_report_projects__project_id__reports__report_id__put",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          },
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProjectReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectReportResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "project_reports"
+        ],
+        "summary": "Delete Project Report",
+        "operationId": "delete_project_report_projects__project_id__reports__report_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          },
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/projects/public/{project_id}/reports/{report_id}": {
+      "get": {
+        "tags": [
+          "project_reports",
+          "project_reports_public"
+        ],
+        "summary": "Get Public Project Report",
+        "description": "Fetch a public project report without authentication.",
+        "operationId": "get_public_project_report_projects_public__project_id__reports__report_id__get",
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Project Id"
+            }
+          },
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectReportResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/prompts/": {
+      "get": {
+        "tags": [
+          "prompts"
+        ],
+        "summary": "Get Prompts",
+        "description": "Get all prompts for the current user.",
+        "operationId": "get_prompts_prompts__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PromptsListResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "prompts"
+        ],
+        "summary": "Create Prompt",
+        "description": "Create a new prompt.",
+        "operationId": "create_prompt_prompts__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePromptRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PromptResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/prompts/{prompt_id}/": {
+      "put": {
+        "tags": [
+          "prompts"
+        ],
+        "summary": "Update Prompt",
+        "description": "Update an existing prompt.",
+        "operationId": "update_prompt_prompts__prompt_id___put",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "prompt_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Prompt Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePromptRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PromptResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "prompts"
+        ],
+        "summary": "Delete Prompt",
+        "description": "Delete a prompt (soft delete).",
+        "operationId": "delete_prompt_prompts__prompt_id___delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "prompt_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Prompt Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/presets/": {
+      "get": {
+        "tags": [
+          "presets"
+        ],
+        "summary": "Get Presets",
+        "description": "Get all presets for the current user (user presets + system presets).",
+        "operationId": "get_presets_presets__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PresetsListResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "presets"
+        ],
+        "summary": "Create Preset",
+        "description": "Create a new preset.",
+        "operationId": "create_preset_presets__post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePresetRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PresetResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/presets/system/": {
+      "get": {
+        "tags": [
+          "presets"
+        ],
+        "summary": "Get System Presets",
+        "description": "Get only system presets.",
+        "operationId": "get_system_presets_presets_system__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PresetsListResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/presets/{preset_id}/clone/": {
+      "post": {
+        "tags": [
+          "presets"
+        ],
+        "summary": "Clone System Preset",
+        "description": "Clone a system preset to create a user preset.",
+        "operationId": "clone_system_preset_presets__preset_id__clone__post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "preset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Preset Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PresetResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/presets/{preset_id}/": {
+      "put": {
+        "tags": [
+          "presets"
+        ],
+        "summary": "Update Preset",
+        "description": "Update an existing preset.",
+        "operationId": "update_preset_presets__preset_id___put",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "preset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Preset Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePresetRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PresetResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "presets"
+        ],
+        "summary": "Delete Preset",
+        "description": "Delete a preset (soft delete).",
+        "operationId": "delete_preset_presets__preset_id___delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "preset_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Preset Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AdminRecordItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "size_mb": {
+            "type": "number",
+            "title": "Size Mb"
+          },
+          "creation_date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Creation Date"
+          },
+          "modified_date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Modified Date"
+          },
+          "status": {
+            "$ref": "#/components/schemas/RecordStatus"
+          },
+          "is_archived": {
+            "type": "boolean",
+            "title": "Is Archived"
+          },
+          "is_public": {
+            "type": "boolean",
+            "title": "Is Public"
+          },
+          "participants_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Participants Count"
+          },
+          "respondents_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Respondents Count"
+          },
+          "respondent_names": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Respondent Names"
+          },
+          "has_reports": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Has Reports"
+          },
+          "duration_sec": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration Sec"
+          },
+          "file_extension": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Extension"
+          },
+          "file_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Name"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "default": "text"
+          },
+          "project": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project"
+          },
+          "email": {
+            "type": "string",
+            "title": "Email"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "size_mb",
+          "creation_date",
+          "modified_date",
+          "status",
+          "is_archived",
+          "is_public",
+          "participants_count",
+          "respondents_count",
+          "respondent_names",
+          "email"
+        ],
+        "title": "AdminRecordItem"
+      },
+      "AssignLink": {
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Record Id"
+          },
+          "project_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Project Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "record_id",
+          "project_id"
+        ],
+        "title": "AssignLink"
+      },
+      "Body_export_report_to_docx_insight_export_report_docx__rec_id__post": {
+        "properties": {
+          "report_type": {
+            "type": "string",
+            "title": "Report Type",
+            "description": "Report type: qa, persona, custom, jtbd"
+          },
+          "version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Version",
+            "description": "Report version (optional)"
+          },
+          "locale": {
+            "type": "string",
+            "title": "Locale",
+            "description": "Document language locale",
+            "default": "ru-RU"
+          },
+          "admonition_support": {
+            "type": "boolean",
+            "title": "Admonition Support",
+            "description": "Enable admonition block processing",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "report_type"
+        ],
+        "title": "Body_export_report_to_docx_insight_export_report_docx__rec_id__post"
+      },
+      "Body_export_to_docx_insight_export_docx_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File",
+            "description": "Markdown file to convert"
+          },
+          "record_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Record Id",
+            "description": "Record UUID for logging"
+          },
+          "locale": {
+            "type": "string",
+            "title": "Locale",
+            "description": "Document language locale",
+            "default": "ru-RU"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "description": "Document title",
+            "default": "Export"
+          },
+          "admonition_support": {
+            "type": "boolean",
+            "title": "Admonition Support",
+            "description": "Enable admonition block processing",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_export_to_docx_insight_export_docx_post"
+      },
+      "ChangeName": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "ChangeName"
+      },
+      "ChangeStatus": {
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Record Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "record_id",
+          "status"
+        ],
+        "title": "ChangeStatus"
+      },
+      "ChatHistoryResponse": {
+        "properties": {
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/ChatMessageResponse"
+            },
+            "type": "array",
+            "title": "Messages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "messages"
+        ],
+        "title": "ChatHistoryResponse"
+      },
+      "ChatMessageResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "message_type": {
+            "$ref": "#/components/schemas/MessageType"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "thread_id": {
+            "type": "integer",
+            "title": "Thread Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "message_type",
+          "content",
+          "created_at",
+          "thread_id"
+        ],
+        "title": "ChatMessageResponse"
+      },
+      "ChatRequest": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Message"
+          },
+          "search_settings": {
+            "$ref": "#/components/schemas/SearchSettings"
+          },
+          "thread_id": {
+            "type": "integer",
+            "title": "Thread Id",
+            "default": 1
+          }
+        },
+        "type": "object",
+        "required": [
+          "search_settings"
+        ],
+        "title": "ChatRequest"
+      },
+      "ChatThreadResponse": {
+        "properties": {
+          "thread_id": {
+            "type": "integer",
+            "title": "Thread Id"
+          },
+          "thread_name": {
+            "type": "string",
+            "title": "Thread Name"
+          },
+          "message_count": {
+            "type": "integer",
+            "title": "Message Count"
+          },
+          "last_message_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Message At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "thread_id",
+          "thread_name",
+          "message_count",
+          "last_message_at"
+        ],
+        "title": "ChatThreadResponse"
+      },
+      "ChatThreadsResponse": {
+        "properties": {
+          "threads": {
+            "items": {
+              "$ref": "#/components/schemas/ChatThreadResponse"
+            },
+            "type": "array",
+            "title": "Threads"
+          }
+        },
+        "type": "object",
+        "required": [
+          "threads"
+        ],
+        "title": "ChatThreadsResponse"
+      },
+      "CheckSpaceRequest": {
+        "properties": {
+          "file_size_in_mb": {
+            "type": "number",
+            "title": "File Size In Mb"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file_size_in_mb"
+        ],
+        "title": "CheckSpaceRequest"
+      },
+      "ContextTokensResponse": {
+        "properties": {
+          "total_tokens": {
+            "type": "integer",
+            "title": "Total Tokens"
+          },
+          "rate_per_100k": {
+            "type": "integer",
+            "title": "Rate Per 100K"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total_tokens",
+          "rate_per_100k"
+        ],
+        "title": "ContextTokensResponse",
+        "description": "Aggregated token count for a set of records."
+      },
+      "Costs": {
+        "properties": {
+          "price_with_transcript": {
+            "type": "number",
+            "title": "Price With Transcript"
+          },
+          "price_with_report": {
+            "type": "number",
+            "title": "Price With Report"
+          }
+        },
+        "type": "object",
+        "required": [
+          "price_with_transcript",
+          "price_with_report"
+        ],
+        "title": "Costs"
+      },
+      "CreatePresetRequest": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Title",
+            "description": "Preset title"
+          },
+          "icon": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Icon",
+            "description": "Icon identifier"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category",
+            "description": "Category name"
+          },
+          "prompt_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Prompt Ids",
+            "description": "Array of prompt UUIDs"
+          },
+          "preset_type": {
+            "type": "string",
+            "title": "Preset Type",
+            "description": "Preset type: 'user' or 'system'",
+            "default": "user"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "prompt_ids"
+        ],
+        "title": "CreatePresetRequest",
+        "description": "Request model for creating a new preset."
+      },
+      "CreateProjectReportRequest": {
+        "properties": {
+          "prompts_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Prompts Ids"
+          },
+          "records_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Records Ids"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "context": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context"
+          },
+          "context_expand": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context Expand"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content"
+          },
+          "is_public": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Public",
+            "default": false
+          },
+          "is_archived": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Archived",
+            "default": false
+          },
+          "preset_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preset Id"
+          },
+          "report_language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Report Language"
+          },
+          "reasoning_mode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reasoning Mode"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompts_ids",
+          "records_ids",
+          "title"
+        ],
+        "title": "CreateProjectReportRequest"
+      },
+      "CreateProjectRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "research_goals": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Research Goals"
+          },
+          "interview_guide": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interview Guide"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "CreateProjectRequest"
+      },
+      "CreatePromptRequest": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Title",
+            "description": "Prompt title"
+          },
+          "category_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category Name",
+            "description": "Category name"
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 50000,
+            "minLength": 1,
+            "title": "Content",
+            "description": "Prompt content"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags",
+            "description": "List of tags for display"
+          },
+          "prompt_type": {
+            "type": "string",
+            "title": "Prompt Type",
+            "description": "Prompt type: 'user' or 'system'",
+            "default": "user"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "content"
+        ],
+        "title": "CreatePromptRequest",
+        "description": "Request model for creating a new prompt."
+      },
+      "DefinedContext": {
+        "properties": {
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "report_language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Report Language"
+          },
+          "participant_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Participant Count"
+          },
+          "respondent_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Respondent Count"
+          },
+          "respondent_known_names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Respondent Known Names"
+          },
+          "is_with_transcript": {
+            "type": "boolean",
+            "title": "Is With Transcript",
+            "default": false
+          },
+          "is_with_insight_report": {
+            "type": "boolean",
+            "title": "Is With Insight Report",
+            "default": false
+          },
+          "goals": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Goals"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "guide": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide"
+          },
+          "custom_prompt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Custom Prompt"
+          }
+        },
+        "type": "object",
+        "required": [
+          "language",
+          "report_language",
+          "participant_count",
+          "respondent_count",
+          "respondent_known_names",
+          "goals",
+          "notes",
+          "guide",
+          "custom_prompt"
+        ],
+        "title": "DefinedContext"
+      },
+      "DetailedReportResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "size_mb": {
+            "type": "number",
+            "title": "Size Mb"
+          },
+          "is_public": {
+            "type": "boolean",
+            "title": "Is Public"
+          },
+          "last_version": {
+            "type": "integer",
+            "title": "Last Version"
+          },
+          "file_extension": {
+            "type": "string",
+            "title": "File Extension"
+          },
+          "expected_tokens": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Costs"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "setup": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DefinedContext"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "transcripts": {
+            "items": {
+              "$ref": "#/components/schemas/Transcript"
+            },
+            "type": "array",
+            "title": "Transcripts"
+          },
+          "profile": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Profile"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "insights": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Insights"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "jtbd": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/JTBD"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "recommendations": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Recommendations"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "qa_report": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Qa Report"
+          },
+          "persona_report": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Persona Report"
+          },
+          "custom_report": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Custom Report"
+          },
+          "jtbd_markdown_report": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Jtbd Markdown Report"
+          },
+          "available_versions": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Available Versions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "name",
+          "size_mb",
+          "is_public",
+          "last_version",
+          "file_extension",
+          "setup",
+          "transcripts",
+          "profile",
+          "insights",
+          "jtbd",
+          "recommendations"
+        ],
+        "title": "DetailedReportResponse"
+      },
+      "ExampledDescription": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          },
+          "dialog_examples": {
+            "items": {
+              "$ref": "#/components/schemas/TranscriptExample"
+            },
+            "type": "array",
+            "title": "Dialog Examples",
+            "default": []
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "text"
+        ],
+        "title": "ExampledDescription"
+      },
+      "GeneralProfileInfo": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "age": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Age"
+          },
+          "professional_experience": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Professional Experience"
+          },
+          "current_role": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current Role"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          }
+        },
+        "type": "object",
+        "required": [
+          "professional_experience",
+          "current_role",
+          "description"
+        ],
+        "title": "GeneralProfileInfo"
+      },
+      "GenerateRecordRequest": {
+        "properties": {
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "report_language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Report Language"
+          },
+          "participant_count": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 15.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Participant Count",
+            "description": "Number of participants from 1 to 15"
+          },
+          "respondent_known_names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Respondent Known Names",
+            "default": []
+          },
+          "is_with_transcript": {
+            "type": "boolean",
+            "title": "Is With Transcript",
+            "default": false
+          },
+          "is_with_insight_report": {
+            "type": "boolean",
+            "title": "Is With Insight Report",
+            "default": false
+          },
+          "goals": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 10000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Goals"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "guide": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide"
+          },
+          "custom_prompt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 15000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Custom Prompt",
+            "description": "Custom prompt for Custom report generation"
+          },
+          "report_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Report Types",
+            "description": "Types of reports to generate: Q&A, General, JTBD (legacy), JTBD, Persona, Custom",
+            "default": [
+              "Q&A",
+              "General"
+            ]
+          }
+        },
+        "type": "object",
+        "title": "GenerateRecordRequest"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Insights": {
+        "properties": {
+          "key_insights": {
+            "items": {
+              "$ref": "#/components/schemas/ExampledDescription"
+            },
+            "type": "array",
+            "title": "Key Insights"
+          },
+          "barriers": {
+            "items": {
+              "$ref": "#/components/schemas/ExampledDescription"
+            },
+            "type": "array",
+            "title": "Barriers"
+          },
+          "engagements": {
+            "items": {
+              "$ref": "#/components/schemas/ExampledDescription"
+            },
+            "type": "array",
+            "title": "Engagements"
+          },
+          "expectations": {
+            "items": {
+              "$ref": "#/components/schemas/ExampledDescription"
+            },
+            "type": "array",
+            "title": "Expectations"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key_insights",
+          "barriers",
+          "engagements",
+          "expectations"
+        ],
+        "title": "Insights"
+      },
+      "JTBD": {
+        "properties": {
+          "identified_jobs": {
+            "items": {
+              "$ref": "#/components/schemas/Job"
+            },
+            "type": "array",
+            "title": "Identified Jobs"
+          },
+          "solutions": {
+            "items": {
+              "$ref": "#/components/schemas/SolutionsDescription"
+            },
+            "type": "array",
+            "title": "Solutions"
+          },
+          "outcomes": {
+            "items": {
+              "$ref": "#/components/schemas/SolutionsDescription"
+            },
+            "type": "array",
+            "title": "Outcomes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "identified_jobs",
+          "solutions",
+          "outcomes"
+        ],
+        "title": "JTBD"
+      },
+      "Job": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "examples": {
+            "items": {
+              "$ref": "#/components/schemas/TranscriptExample"
+            },
+            "type": "array",
+            "title": "Examples"
+          },
+          "job_story_when": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Story When"
+          },
+          "job_story_want": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Story Want"
+          },
+          "job_story_so_that": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Story So That"
+          },
+          "dominant_solution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dominant Solution"
+          },
+          "problems_with_current_solution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Problems With Current Solution"
+          },
+          "emotions": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Emotions"
+          },
+          "sub_jobs": {
+            "items": {
+              "$ref": "#/components/schemas/Job"
+            },
+            "type": "array",
+            "title": "Sub Jobs",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "examples",
+          "job_story_when",
+          "job_story_want",
+          "job_story_so_that",
+          "dominant_solution",
+          "problems_with_current_solution",
+          "emotions"
+        ],
+        "title": "Job"
+      },
+      "MessageType": {
+        "type": "string",
+        "enum": [
+          "user",
+          "assistant"
+        ],
+        "title": "MessageType"
+      },
+      "OrphanedFileInfo": {
+        "properties": {
+          "filename": {
+            "type": "string",
+            "title": "Filename"
+          },
+          "owner": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner"
+          }
+        },
+        "type": "object",
+        "required": [
+          "filename",
+          "owner"
+        ],
+        "title": "OrphanedFileInfo"
+      },
+      "PaginatedAdminRecordResponse": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/components/schemas/AdminRecordItem"
+            },
+            "type": "array",
+            "title": "Records"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit"
+          },
+          "has_more": {
+            "type": "boolean",
+            "title": "Has More"
+          },
+          "filters_applied": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filters Applied"
+          }
+        },
+        "type": "object",
+        "required": [
+          "records",
+          "total",
+          "page",
+          "limit",
+          "has_more"
+        ],
+        "title": "PaginatedAdminRecordResponse",
+        "description": "Paginated response for admin records list with filters metadata."
+      },
+      "PaginatedRecordResponse": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/components/schemas/RecordItem"
+            },
+            "type": "array",
+            "title": "Records"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "page": {
+            "type": "integer",
+            "title": "Page"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit"
+          },
+          "has_more": {
+            "type": "boolean",
+            "title": "Has More"
+          },
+          "remaining_size_mb": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remaining Size Mb"
+          }
+        },
+        "type": "object",
+        "required": [
+          "records",
+          "total",
+          "page",
+          "limit",
+          "has_more"
+        ],
+        "title": "PaginatedRecordResponse",
+        "description": "Paginated response for records list."
+      },
+      "PresetResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "email": {
+            "type": "string",
+            "title": "Email"
+          },
+          "preset_type": {
+            "type": "string",
+            "title": "Preset Type"
+          },
+          "icon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Icon"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "prompt_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Prompt Ids"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "email",
+          "preset_type",
+          "title",
+          "prompt_ids",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "PresetResponse",
+        "description": "Response model for a single preset."
+      },
+      "PresetsListResponse": {
+        "properties": {
+          "presets": {
+            "items": {
+              "$ref": "#/components/schemas/PresetResponse"
+            },
+            "type": "array",
+            "title": "Presets"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "presets",
+          "total"
+        ],
+        "title": "PresetsListResponse",
+        "description": "Response model for a list of presets."
+      },
+      "Profile": {
+        "properties": {
+          "general_info": {
+            "$ref": "#/components/schemas/GeneralProfileInfo"
+          },
+          "goals": {
+            "items": {
+              "$ref": "#/components/schemas/ExampledDescription"
+            },
+            "type": "array",
+            "title": "Goals"
+          },
+          "motivations": {
+            "items": {
+              "$ref": "#/components/schemas/ExampledDescription"
+            },
+            "type": "array",
+            "title": "Motivations"
+          },
+          "pain_points": {
+            "items": {
+              "$ref": "#/components/schemas/ExampledDescription"
+            },
+            "type": "array",
+            "title": "Pain Points"
+          },
+          "emotions": {
+            "items": {
+              "$ref": "#/components/schemas/ExampledDescription"
+            },
+            "type": "array",
+            "title": "Emotions"
+          },
+          "tools": {
+            "items": {
+              "$ref": "#/components/schemas/ExampledDescription"
+            },
+            "type": "array",
+            "title": "Tools"
+          }
+        },
+        "type": "object",
+        "required": [
+          "general_info",
+          "goals",
+          "motivations",
+          "pain_points",
+          "emotions",
+          "tools"
+        ],
+        "title": "Profile"
+      },
+      "ProjectReportResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "prompts_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Prompts Ids"
+          },
+          "records_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Records Ids"
+          },
+          "project_id": {
+            "type": "string",
+            "title": "Project Id"
+          },
+          "project_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project Name"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "context": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context"
+          },
+          "context_expand": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context Expand"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content"
+          },
+          "is_public": {
+            "type": "boolean",
+            "title": "Is Public"
+          },
+          "is_archived": {
+            "type": "boolean",
+            "title": "Is Archived"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "title": "Is Deleted"
+          },
+          "preset_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preset Id"
+          },
+          "report_language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Report Language"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "prompts_ids",
+          "records_ids",
+          "project_id",
+          "category",
+          "title",
+          "context",
+          "context_expand",
+          "status",
+          "content",
+          "is_public",
+          "is_archived",
+          "is_deleted",
+          "preset_id",
+          "report_language",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "ProjectReportResponse"
+      },
+      "ProjectResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "records_count": {
+            "type": "integer",
+            "title": "Records Count"
+          },
+          "total_reports_count": {
+            "type": "integer",
+            "title": "Total Reports Count"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "research_goals": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Research Goals"
+          },
+          "interview_guide": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interview Guide"
+          },
+          "owner_email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Email"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "description",
+          "status",
+          "records_count",
+          "total_reports_count",
+          "created_at"
+        ],
+        "title": "ProjectResponse"
+      },
+      "PromptResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "email": {
+            "type": "string",
+            "title": "Email"
+          },
+          "prompt_type": {
+            "type": "string",
+            "title": "Prompt Type"
+          },
+          "category_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category Name"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "icon": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Icon"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "email",
+          "prompt_type",
+          "title",
+          "content",
+          "created_at",
+          "updated_at"
+        ],
+        "title": "PromptResponse",
+        "description": "Response model for a single prompt."
+      },
+      "PromptsListResponse": {
+        "properties": {
+          "prompts": {
+            "items": {
+              "$ref": "#/components/schemas/PromptResponse"
+            },
+            "type": "array",
+            "title": "Prompts"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prompts",
+          "total"
+        ],
+        "title": "PromptsListResponse",
+        "description": "Response model for a list of prompts."
+      },
+      "PublicReportRequest": {
+        "properties": {
+          "is_public": {
+            "type": "boolean",
+            "title": "Is Public"
+          }
+        },
+        "type": "object",
+        "required": [
+          "is_public"
+        ],
+        "title": "PublicReportRequest"
+      },
+      "ReGenerateRecordRequest": {
+        "properties": {
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "report_language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Report Language"
+          },
+          "participant_count": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 15.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Participant Count",
+            "description": "Number of participants from 1 to 15"
+          },
+          "respondent_known_names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Respondent Known Names",
+            "default": []
+          },
+          "is_with_transcript": {
+            "type": "boolean",
+            "title": "Is With Transcript",
+            "default": true
+          },
+          "is_with_insight_report": {
+            "type": "boolean",
+            "title": "Is With Insight Report",
+            "default": false
+          },
+          "goals": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 10000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Goals"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "guide": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide"
+          },
+          "custom_prompt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 15000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Custom Prompt",
+            "description": "Custom prompt for Custom report generation"
+          },
+          "report_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Report Types",
+            "description": "Types of reports to generate: Q&A, General, JTBD (legacy), JTBD, Persona, Custom",
+            "default": [
+              "Q&A",
+              "General"
+            ]
+          }
+        },
+        "type": "object",
+        "title": "ReGenerateRecordRequest"
+      },
+      "Recommendations": {
+        "properties": {
+          "actionable_steps": {
+            "items": {
+              "$ref": "#/components/schemas/SolutionsDescription"
+            },
+            "type": "array",
+            "title": "Actionable Steps"
+          },
+          "product_improvements": {
+            "items": {
+              "$ref": "#/components/schemas/SolutionsDescription"
+            },
+            "type": "array",
+            "title": "Product Improvements"
+          },
+          "service_enhancements": {
+            "items": {
+              "$ref": "#/components/schemas/SolutionsDescription"
+            },
+            "type": "array",
+            "title": "Service Enhancements"
+          }
+        },
+        "type": "object",
+        "required": [
+          "actionable_steps",
+          "product_improvements",
+          "service_enhancements"
+        ],
+        "title": "Recommendations"
+      },
+      "RecordItem": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "size_mb": {
+            "type": "number",
+            "title": "Size Mb"
+          },
+          "creation_date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Creation Date"
+          },
+          "modified_date": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Modified Date"
+          },
+          "status": {
+            "$ref": "#/components/schemas/RecordStatus"
+          },
+          "is_archived": {
+            "type": "boolean",
+            "title": "Is Archived"
+          },
+          "is_public": {
+            "type": "boolean",
+            "title": "Is Public"
+          },
+          "participants_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Participants Count"
+          },
+          "respondents_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Respondents Count"
+          },
+          "respondent_names": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Respondent Names"
+          },
+          "has_reports": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Has Reports"
+          },
+          "duration_sec": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Duration Sec"
+          },
+          "file_extension": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Extension"
+          },
+          "file_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Name"
+          },
+          "type": {
+            "type": "string",
+            "title": "Type",
+            "default": "text"
+          },
+          "project": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "size_mb",
+          "creation_date",
+          "modified_date",
+          "status",
+          "is_archived",
+          "is_public",
+          "participants_count",
+          "respondents_count",
+          "respondent_names"
+        ],
+        "title": "RecordItem"
+      },
+      "RecordMetaResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "available_versions": {
+            "additionalProperties": {
+              "items": {
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "type": "object",
+            "title": "Available Versions"
+          },
+          "size_mb": {
+            "type": "number",
+            "title": "Size Mb"
+          },
+          "file_extension": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Extension"
+          },
+          "is_public": {
+            "type": "boolean",
+            "title": "Is Public"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "participants_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Participants Count"
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project Id"
+          },
+          "file_info": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "File Info"
+          },
+          "processing_stats": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Processing Stats"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "status",
+          "available_versions",
+          "size_mb",
+          "file_extension",
+          "is_public",
+          "created_at",
+          "updated_at",
+          "participants_count"
+        ],
+        "title": "RecordMetaResponse"
+      },
+      "RecordResponse": {
+        "properties": {
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "remaining_size_mb": {
+            "type": "number",
+            "title": "Remaining Size Mb"
+          },
+          "records": {
+            "items": {
+              "$ref": "#/components/schemas/RecordItem"
+            },
+            "type": "array",
+            "title": "Records"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total",
+          "remaining_size_mb",
+          "records"
+        ],
+        "title": "RecordResponse"
+      },
+      "RecordStatus": {
+        "type": "string",
+        "enum": [
+          "Uploaded",
+          "InQueue",
+          "InProgress",
+          "Finished",
+          "Error"
+        ],
+        "title": "RecordStatus"
+      },
+      "RecordsMetaBatchResponse": {
+        "properties": {
+          "records": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/RecordMetaResponse"
+            },
+            "type": "object",
+            "title": "Records"
+          }
+        },
+        "type": "object",
+        "required": [
+          "records"
+        ],
+        "title": "RecordsMetaBatchResponse",
+        "description": "Batch response for multiple record metadata."
+      },
+      "SearchScope": {
+        "type": "string",
+        "enum": [
+          "all",
+          "transcript",
+          "report"
+        ],
+        "title": "SearchScope"
+      },
+      "SearchSettings": {
+        "properties": {
+          "search_scope": {
+            "$ref": "#/components/schemas/SearchScope"
+          },
+          "use_web": {
+            "type": "boolean",
+            "title": "Use Web"
+          }
+        },
+        "type": "object",
+        "required": [
+          "search_scope",
+          "use_web"
+        ],
+        "title": "SearchSettings"
+      },
+      "Solution": {
+        "properties": {
+          "prefix_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prefix Text"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "prefix_text",
+          "text"
+        ],
+        "title": "Solution"
+      },
+      "SolutionsDescription": {
+        "properties": {
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "solutions": {
+            "items": {
+              "$ref": "#/components/schemas/Solution"
+            },
+            "type": "array",
+            "title": "Solutions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "title",
+          "solutions"
+        ],
+        "title": "SolutionsDescription"
+      },
+      "SpeakerRenameRequest": {
+        "properties": {
+          "speaker": {
+            "type": "string",
+            "title": "Speaker",
+            "description": "Unique speaker identifier (e.g., 'Speaker_A')"
+          },
+          "speaker_name": {
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1,
+            "title": "Speaker Name",
+            "description": "New display name for the speaker"
+          }
+        },
+        "type": "object",
+        "required": [
+          "speaker",
+          "speaker_name"
+        ],
+        "title": "SpeakerRenameRequest"
+      },
+      "SpeakerToggleRespondentRequest": {
+        "properties": {
+          "speaker": {
+            "type": "string",
+            "title": "Speaker",
+            "description": "Unique speaker identifier (e.g., 'Speaker_A')"
+          },
+          "is_respondent": {
+            "type": "boolean",
+            "title": "Is Respondent",
+            "description": "New is_respondent value (True for respondent, False for host)"
+          }
+        },
+        "type": "object",
+        "required": [
+          "speaker",
+          "is_respondent"
+        ],
+        "title": "SpeakerToggleRespondentRequest"
+      },
+      "TokensResponse": {
+        "properties": {
+          "expected_tokens": {
+            "$ref": "#/components/schemas/Costs"
+          }
+        },
+        "type": "object",
+        "required": [
+          "expected_tokens"
+        ],
+        "title": "TokensResponse",
+        "description": "Response model for lightweight tokens endpoint."
+      },
+      "Transcript": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "is_respondent": {
+            "type": "boolean",
+            "title": "Is Respondent"
+          },
+          "known_name": {
+            "type": "string",
+            "title": "Known Name"
+          },
+          "speaker": {
+            "type": "string",
+            "title": "Speaker"
+          },
+          "start_in_ms": {
+            "type": "integer",
+            "title": "Start In Ms"
+          },
+          "end_in_ms": {
+            "type": "integer",
+            "title": "End In Ms"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "is_respondent",
+          "known_name",
+          "speaker",
+          "start_in_ms",
+          "end_in_ms",
+          "text"
+        ],
+        "title": "Transcript"
+      },
+      "TranscriptExample": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "text"
+        ],
+        "title": "TranscriptExample"
+      },
+      "UpdatePresetRequest": {
+        "properties": {
+          "title": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title",
+            "description": "Preset title"
+          },
+          "icon": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Icon",
+            "description": "Icon identifier"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category",
+            "description": "Category name"
+          },
+          "prompt_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array",
+                "minItems": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompt Ids",
+            "description": "Array of prompt UUIDs"
+          }
+        },
+        "type": "object",
+        "title": "UpdatePresetRequest",
+        "description": "Request model for updating an existing preset."
+      },
+      "UpdateProjectReportRequest": {
+        "properties": {
+          "prompts_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Prompts Ids"
+          },
+          "records_ids": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Records Ids"
+          },
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          },
+          "context": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context"
+          },
+          "context_expand": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Context Expand"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content"
+          },
+          "is_public": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Public"
+          },
+          "is_archived": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Archived"
+          },
+          "is_deleted": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Is Deleted"
+          },
+          "preset_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Preset Id"
+          },
+          "report_language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Report Language"
+          },
+          "reasoning_mode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reasoning Mode"
+          }
+        },
+        "type": "object",
+        "title": "UpdateProjectReportRequest"
+      },
+      "UpdateProjectRequest": {
+        "properties": {
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Status"
+          },
+          "research_goals": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Research Goals"
+          },
+          "interview_guide": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interview Guide"
+          }
+        },
+        "type": "object",
+        "title": "UpdateProjectRequest"
+      },
+      "UpdatePromptRequest": {
+        "properties": {
+          "title": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 200,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title",
+            "description": "Prompt title"
+          },
+          "category_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category Name",
+            "description": "Category name"
+          },
+          "content": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 50000,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content",
+            "description": "Prompt content"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags",
+            "description": "List of tags for display"
+          }
+        },
+        "type": "object",
+        "title": "UpdatePromptRequest",
+        "description": "Request model for updating an existing prompt."
+      },
+      "UpdateRecordsRequest": {
+        "properties": {
+          "change_names": {
+            "items": {
+              "$ref": "#/components/schemas/ChangeName"
+            },
+            "type": "array",
+            "title": "Change Names"
+          },
+          "for_archive": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "For Archive"
+          },
+          "for_delete": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "For Delete"
+          },
+          "delete_link": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Delete Link"
+          },
+          "assign_link": {
+            "items": {
+              "$ref": "#/components/schemas/AssignLink"
+            },
+            "type": "array",
+            "title": "Assign Link"
+          },
+          "change_status": {
+            "items": {
+              "$ref": "#/components/schemas/ChangeStatus"
+            },
+            "type": "array",
+            "title": "Change Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "change_names",
+          "for_archive",
+          "for_delete",
+          "delete_link"
+        ],
+        "title": "UpdateRecordsRequest"
+      },
+      "UpdateSetupRequest": {
+        "properties": {
+          "goals": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 10000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Goals",
+            "description": "Research goals"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes",
+            "description": "Additional notes"
+          },
+          "guide": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 20000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide",
+            "description": "Interview guide"
+          },
+          "custom_prompt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 15000
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Custom Prompt",
+            "description": "Custom prompt for Custom report generation"
+          },
+          "participant_count": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 15.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Participant Count",
+            "description": "Number of participants from 1 to 15"
+          },
+          "respondent_known_names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Respondent Known Names",
+            "description": "List of respondent names"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language",
+            "description": "Language for transcription"
+          },
+          "report_language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Report Language",
+            "description": "Language for reports"
+          }
+        },
+        "type": "object",
+        "title": "UpdateSetupRequest",
+        "description": "Request model for updating setup configuration without generating reports."
+      },
+      "UploadFileRequest": {
+        "properties": {
+          "record_name": {
+            "type": "string",
+            "title": "Record Name"
+          },
+          "file_path": {
+            "type": "string",
+            "title": "File Path"
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "record_name",
+          "file_path"
+        ],
+        "title": "UploadFileRequest"
+      },
+      "UploadTextFileRequest": {
+        "properties": {
+          "content": {
+            "type": "string",
+            "title": "Content"
+          },
+          "record_name": {
+            "type": "string",
+            "title": "Record Name"
+          },
+          "file_extension": {
+            "type": "string",
+            "pattern": "^(txt|md|srt|vtt)$",
+            "title": "File Extension"
+          },
+          "transcript_format": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Transcript Format"
+          },
+          "project_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "content",
+          "record_name",
+          "file_extension"
+        ],
+        "title": "UploadTextFileRequest"
+      },
+      "UtteranceAssignSpeakerRequest": {
+        "properties": {
+          "utterance_id": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Utterance Id",
+            "description": "ID of the utterance to reassign"
+          },
+          "new_speaker": {
+            "type": "string",
+            "title": "New Speaker",
+            "description": "Unique speaker identifier to assign (e.g., 'Speaker_B')"
+          }
+        },
+        "type": "object",
+        "required": [
+          "utterance_id",
+          "new_speaker"
+        ],
+        "title": "UtteranceAssignSpeakerRequest"
+      },
+      "UtteranceUpdateRequest": {
+        "properties": {
+          "utterance_id": {
+            "type": "integer",
+            "title": "Utterance Id"
+          },
+          "text": {
+            "type": "string",
+            "title": "Text"
+          }
+        },
+        "type": "object",
+        "required": [
+          "utterance_id",
+          "text"
+        ],
+        "title": "UtteranceUpdateRequest"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

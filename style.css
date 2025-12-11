@@ -10,6 +10,16 @@
 :root {
   --background-light: #ffffff;
   --background-dark: #070707;
+  /* Content container and search bar background colors for light theme */
+  --content-container-bg: #ffffff;
+  --search-bar-bg: #ffffff;
+  /* Text colors for light theme */
+  --text-neutral-900: #171717;
+  --text-neutral-700: #404040;
+  --text-neutral-600: #525252;
+  --text-neutral-500: #737373;
+  --text-neutral-400: #a2a2a2;
+  --text-neutral-300: #d4d4d4;
 }
 
 /* Light theme background - #ffffff */
@@ -29,6 +39,16 @@ body {
 html.dark {
   --background: var(--background-dark);
   background-color: var(--background-dark) !important;
+  /* Content container and search bar background colors for dark theme */
+  --content-container-bg: rgba(255, 255, 255, 0.02);
+  --search-bar-bg: rgba(255, 255, 255, 0.02);
+  /* Text colors for dark theme */
+  --text-neutral-900: rgb(163, 163, 163);
+  --text-neutral-700: rgb(163, 163, 163);
+  --text-neutral-600: rgb(159, 159, 159);
+  --text-neutral-500: rgb(163, 163, 163);
+  --text-neutral-400: rgb(163, 163, 163);
+  --text-neutral-300: rgb(163, 163, 163);
 }
 
 html.dark body {
@@ -69,4 +89,200 @@ summary.relative:hover {
 
 html.dark summary.relative:hover {
   background-color: rgba(156, 163, 175, 0.1) !important;
+}
+
+/* Content container background */
+#content-container {
+  background-color: var(--content-container-bg) !important;
+}
+
+/* Search bar entry background */
+#search-bar-entry {
+  background-color: var(--search-bar-bg) !important;
+}
+
+/* Replace all text-gray-* classes with text-neutral-* using CSS variables */
+/* Using body selector for higher specificity to override Tailwind utilities */
+body .text-gray-900,
+body .text-neutral-900 {
+  color: var(--text-neutral-900) !important;
+}
+
+body .text-gray-700,
+body .text-neutral-700 {
+  color: var(--text-neutral-700) !important;
+}
+
+body .text-gray-600,
+body .text-neutral-600 {
+  color: var(--text-neutral-600) !important;
+}
+
+body .text-gray-500,
+body .text-neutral-500 {
+  color: var(--text-neutral-500) !important;
+}
+
+body .text-gray-400,
+body .text-neutral-400 {
+  color: var(--text-neutral-400) !important;
+}
+
+body .text-gray-300,
+body .text-neutral-300 {
+  color: var(--text-neutral-300) !important;
+}
+
+/* Hover states */
+body .hover\:text-gray-900:hover,
+body [class*="hover:text-gray-900"]:hover {
+  color: var(--text-neutral-900) !important;
+}
+
+body .hover\:text-gray-300:hover,
+body [class*="hover:text-gray-300"]:hover {
+  color: var(--text-neutral-300) !important;
+}
+
+/* Dark theme specific overrides with higher specificity */
+html.dark body .text-gray-900,
+html.dark body .text-neutral-900 {
+  color: var(--text-neutral-900) !important;
+}
+
+html.dark body .text-gray-700,
+html.dark body .text-neutral-700 {
+  color: var(--text-neutral-700) !important;
+}
+
+html.dark body .text-gray-600,
+html.dark body .text-neutral-600 {
+  color: var(--text-neutral-600) !important;
+}
+
+html.dark body .text-gray-500,
+html.dark body .text-neutral-500,
+html.dark body .dark\:text-gray-500,
+html.dark body [class*="dark:text-gray-500"] {
+  color: var(--text-neutral-500) !important;
+}
+
+html.dark body .text-gray-400,
+html.dark body .text-neutral-400,
+html.dark body .dark\:text-gray-400,
+html.dark body [class*="dark:text-gray-400"] {
+  color: var(--text-neutral-400) !important;
+}
+
+html.dark body .text-gray-300,
+html.dark body .text-neutral-300,
+html.dark body .dark\:hover\:text-gray-300:hover,
+html.dark body [class*="dark:hover:text-gray-300"]:hover {
+  color: var(--text-neutral-300) !important;
+}
+
+html.dark body .hover\:text-gray-900:hover,
+html.dark body [class*="hover:text-gray-900"]:hover {
+  color: var(--text-neutral-900) !important;
+}
+
+/* Icon colors - bg-gray-* classes used for mask-image icons */
+/* Icons use background-color as their fill color via mask-image */
+body .bg-gray-900,
+body .bg-neutral-900 {
+  background-color: var(--text-neutral-900) !important;
+}
+
+body .bg-gray-700,
+body .bg-neutral-700 {
+  background-color: var(--text-neutral-700) !important;
+}
+
+body .bg-gray-600,
+body .bg-neutral-600 {
+  background-color: var(--text-neutral-600) !important;
+}
+
+body .bg-gray-500,
+body .bg-neutral-500 {
+  background-color: var(--text-neutral-500) !important;
+}
+
+body .bg-gray-400,
+body .bg-neutral-400 {
+  background-color: var(--text-neutral-400) !important;
+}
+
+body .bg-gray-300,
+body .bg-neutral-300 {
+  background-color: var(--text-neutral-300) !important;
+}
+
+/* Dark theme icon colors */
+html.dark body .bg-gray-900,
+html.dark body .bg-neutral-900 {
+  background-color: var(--text-neutral-900) !important;
+}
+
+html.dark body .bg-gray-700,
+html.dark body .bg-neutral-700 {
+  background-color: var(--text-neutral-700) !important;
+}
+
+html.dark body .bg-gray-600,
+html.dark body .bg-neutral-600 {
+  background-color: var(--text-neutral-600) !important;
+}
+
+html.dark body .bg-gray-500,
+html.dark body .bg-neutral-500,
+html.dark body .dark\:bg-gray-500,
+html.dark body [class*="dark:bg-gray-500"] {
+  background-color: var(--text-neutral-500) !important;
+}
+
+html.dark body .bg-gray-400,
+html.dark body .bg-neutral-400,
+html.dark body .dark\:bg-gray-400,
+html.dark body [class*="dark:bg-gray-400"] {
+  background-color: var(--text-neutral-400) !important;
+}
+
+html.dark body .bg-gray-300,
+html.dark body .bg-neutral-300 {
+  background-color: var(--text-neutral-300) !important;
+}
+
+/* Pagination border color override - neutral gray, no orange tint */
+/* Light theme pagination borders */
+body a.pagination-prev,
+body a.pagination-next {
+  border-color: rgba(38, 38, 38, 0.2) !important;
+}
+
+body a.pagination-prev:hover,
+body a.pagination-next:hover {
+  border-color: rgba(38, 38, 38, 0.3) !important;
+}
+
+/* Dark theme pagination borders */
+html.dark body a.pagination-prev,
+html.dark body a.pagination-next {
+  border-color: rgba(38, 38, 38, 1) !important;
+}
+
+html.dark body a.pagination-prev:hover,
+html.dark body a.pagination-next:hover {
+  border-color: rgba(38, 38, 38, 0.8) !important;
+}
+
+/* Nav bottom section divider background color override */
+html.dark body .almond-nav-bottom-section-divider {
+  background-color: rgba(28, 28, 28, 0.7) !important;
+}
+
+/* Content container text and border color override */
+html.dark body #content-container {
+  color: rgba(153, 153, 153, 1) !important;
+  border-color: rgba(255, 255, 255, 0.03) !important;
 }

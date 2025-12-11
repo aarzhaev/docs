@@ -1,0 +1,72 @@
+/**
+ * Custom styles for Aseed Insight documentation
+ * Customizes background colors for light and dark themes
+ * 
+ * Mintlify automatically includes CSS files from the root directory
+ * This file will be automatically loaded on all documentation pages
+ */
+
+/* Define CSS variables for background colors */
+:root {
+  --background-light: #ffffff;
+  --background-dark: #070707;
+}
+
+/* Light theme background - #ffffff */
+:root {
+  background-color: var(--background-light) !important;
+}
+
+html {
+  background-color: var(--background-light) !important;
+}
+
+body {
+  background-color: var(--background-light) !important;
+}
+
+/* Dark theme background - #000000 */
+html.dark {
+  --background: var(--background-dark);
+  background-color: var(--background-dark) !important;
+}
+
+html.dark body {
+  background-color: var(--background-dark) !important;
+}
+
+/* Apply background to main content areas */
+main,
+[data-mint-main],
+.mint-container,
+#__next,
+[data-mint-docs],
+.mint-page,
+.mint-content {
+  background-color: inherit;
+}
+
+/* Ensure all wrapper elements inherit background */
+html.dark main,
+html.dark [data-mint-main],
+html.dark .mint-container,
+html.dark #__next,
+html.dark [data-mint-docs],
+html.dark .mint-page,
+html.dark .mint-content {
+  background-color: inherit;
+}
+
+/* Accordion summary text color */
+summary.relative {
+  color: rgba(122, 122, 122, 1) !important;
+}
+
+/* Accordion hover background color - gray */
+summary.relative:hover {
+  background-color: rgba(156, 163, 175, 0.1) !important;
+}
+
+html.dark summary.relative:hover {
+  background-color: rgba(156, 163, 175, 0.1) !important;
+}

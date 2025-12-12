@@ -40,7 +40,7 @@ html.dark {
   --background: var(--background-dark);
   background-color: var(--background-dark) !important;
   /* Content container and search bar background colors for dark theme */
-  --content-container-bg: rgba(255, 255, 255, 0.02);
+  --content-container-bg: rgb(13, 13, 13);
   --search-bar-bg: rgba(255, 255, 255, 0.02);
   /* Text colors for dark theme */
   --text-neutral-900: rgb(163, 163, 163);
@@ -144,6 +144,289 @@ body [class*="hover:text-gray-300"]:hover {
   color: var(--text-neutral-300) !important;
 }
 
+/* Sidebar navigation items hover - light theme: text should become darker */
+body #sidebar-content a.text-gray-700:hover:not([aria-current]):not(.active),
+body #sidebar-content a[class*="text-gray-700"]:hover:not([aria-current]):not(.active),
+body #navigation-items a.text-gray-700:hover:not([aria-current]):not(.active),
+body #navigation-items a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) {
+  color: var(--text-neutral-900) !important;
+}
+
+/* Sidebar icons should match text color */
+/* Light theme - icons inherit text color */
+body #sidebar-content a svg,
+body #sidebar-content a [class*="icon"],
+body #navigation-items a svg,
+body #navigation-items a [class*="icon"] {
+  color: inherit !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* Icons in sidebar links with text-gray-700 should use same color */
+body #sidebar-content a.text-gray-700 svg,
+body #sidebar-content a[class*="text-gray-700"] svg,
+body #navigation-items a.text-gray-700 svg,
+body #navigation-items a[class*="text-gray-700"] svg {
+  color: var(--text-neutral-700) !important;
+  fill: var(--text-neutral-700) !important;
+  stroke: var(--text-neutral-700) !important;
+}
+
+/* Icons on hover should match hover text color */
+body #sidebar-content a.text-gray-700:hover:not([aria-current]):not(.active) svg,
+body #sidebar-content a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) svg,
+body #navigation-items a.text-gray-700:hover:not([aria-current]):not(.active) svg,
+body #navigation-items a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) svg {
+  color: var(--text-neutral-900) !important;
+  fill: var(--text-neutral-900) !important;
+  stroke: var(--text-neutral-900) !important;
+}
+
+/* Dark theme - icons match text color */
+html.dark body #sidebar-content a svg,
+html.dark body #sidebar-content a [class*="icon"],
+html.dark body #navigation-items a svg,
+html.dark body #navigation-items a [class*="icon"] {
+  color: inherit !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* Dark theme sidebar navigation items hover - text and icons should become almost white */
+html.dark body #sidebar-content a.text-gray-400:hover:not([aria-current]):not(.active),
+html.dark body #sidebar-content a[class*="text-gray-400"]:hover:not([aria-current]):not(.active),
+html.dark body #navigation-items a.text-gray-400:hover:not([aria-current]):not(.active),
+html.dark body #navigation-items a[class*="text-gray-400"]:hover:not([aria-current]):not(.active),
+html.dark body #sidebar-content a.dark\:text-gray-400:hover:not([aria-current]):not(.active),
+html.dark body #sidebar-content a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active),
+html.dark body #navigation-items a.dark\:text-gray-400:hover:not([aria-current]):not(.active),
+html.dark body #navigation-items a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Dark theme - icons on hover should become almost white */
+html.dark body #sidebar-content a.text-gray-400:hover:not([aria-current]):not(.active) svg,
+html.dark body #sidebar-content a[class*="text-gray-400"]:hover:not([aria-current]):not(.active) svg,
+html.dark body #navigation-items a.text-gray-400:hover:not([aria-current]):not(.active) svg,
+html.dark body #navigation-items a[class*="text-gray-400"]:hover:not([aria-current]):not(.active) svg,
+html.dark body #sidebar-content a.dark\:text-gray-400:hover:not([aria-current]):not(.active) svg,
+html.dark body #sidebar-content a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) svg,
+html.dark body #navigation-items a.dark\:text-gray-400:hover:not([aria-current]):not(.active) svg,
+html.dark body #navigation-items a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) svg {
+  color: rgba(255, 255, 255, 0.95) !important;
+  fill: rgba(255, 255, 255, 0.95) !important;
+  stroke: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Icons using mask-image with background-color should match text color */
+/* Light theme */
+body #sidebar-content a [style*="mask-image"],
+body #sidebar-content a [class*="bg-gray"],
+body #navigation-items a [style*="mask-image"],
+body #navigation-items a [class*="bg-gray"] {
+  background-color: currentColor !important;
+}
+
+body #sidebar-content a.text-gray-700 [class*="bg-gray"],
+body #sidebar-content a[class*="text-gray-700"] [class*="bg-gray"],
+body #navigation-items a.text-gray-700 [class*="bg-gray"],
+body #navigation-items a[class*="text-gray-700"] [class*="bg-gray"] {
+  background-color: var(--text-neutral-700) !important;
+}
+
+body #sidebar-content a.text-gray-700:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+body #sidebar-content a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+body #navigation-items a.text-gray-700:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+body #navigation-items a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) [class*="bg-gray"] {
+  background-color: var(--text-neutral-900) !important;
+}
+
+/* Dark theme */
+html.dark body #sidebar-content a [style*="mask-image"],
+html.dark body #sidebar-content a [class*="bg-gray"],
+html.dark body #navigation-items a [style*="mask-image"],
+html.dark body #navigation-items a [class*="bg-gray"] {
+  background-color: currentColor !important;
+}
+
+/* Dark theme - icons with mask-image on hover should become almost white */
+html.dark body #sidebar-content a.text-gray-400:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+html.dark body #sidebar-content a[class*="text-gray-400"]:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+html.dark body #navigation-items a.text-gray-400:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+html.dark body #navigation-items a[class*="text-gray-400"]:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+html.dark body #sidebar-content a.dark\:text-gray-400:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+html.dark body #sidebar-content a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+html.dark body #navigation-items a.dark\:text-gray-400:hover:not([aria-current]):not(.active) [class*="bg-gray"],
+html.dark body #navigation-items a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) [class*="bg-gray"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Active items in sidebar should not change on hover - maximum specificity */
+body #sidebar-content a[aria-current]:hover,
+body #sidebar-content a[aria-current="page"]:hover,
+body #sidebar-content a[aria-current="true"]:hover,
+body #sidebar-content a.active:hover,
+body #sidebar-content a[class*="active"]:hover,
+body #navigation-items a[aria-current]:hover,
+body #navigation-items a[aria-current="page"]:hover,
+body #navigation-items a[aria-current="true"]:hover,
+body #navigation-items a.active:hover,
+body #navigation-items a[class*="active"]:hover,
+html.dark body #sidebar-content a[aria-current]:hover,
+html.dark body #sidebar-content a[aria-current="page"]:hover,
+html.dark body #sidebar-content a[aria-current="true"]:hover,
+html.dark body #sidebar-content a.active:hover,
+html.dark body #sidebar-content a[class*="active"]:hover,
+html.dark body #navigation-items a[aria-current]:hover,
+html.dark body #navigation-items a[aria-current="page"]:hover,
+html.dark body #navigation-items a[aria-current="true"]:hover,
+html.dark body #navigation-items a.active:hover,
+html.dark body #navigation-items a[class*="active"]:hover {
+  color: inherit !important;
+}
+
+body #sidebar-content a[aria-current]:hover svg,
+body #sidebar-content a[aria-current="page"]:hover svg,
+body #sidebar-content a[aria-current="true"]:hover svg,
+body #sidebar-content a.active:hover svg,
+body #sidebar-content a[class*="active"]:hover svg,
+body #navigation-items a[aria-current]:hover svg,
+body #navigation-items a[aria-current="page"]:hover svg,
+body #navigation-items a[aria-current="true"]:hover svg,
+body #navigation-items a.active:hover svg,
+body #navigation-items a[class*="active"]:hover svg,
+html.dark body #sidebar-content a[aria-current]:hover svg,
+html.dark body #sidebar-content a[aria-current="page"]:hover svg,
+html.dark body #sidebar-content a[aria-current="true"]:hover svg,
+html.dark body #sidebar-content a.active:hover svg,
+html.dark body #sidebar-content a[class*="active"]:hover svg,
+html.dark body #navigation-items a[aria-current]:hover svg,
+html.dark body #navigation-items a[aria-current="page"]:hover svg,
+html.dark body #navigation-items a[aria-current="true"]:hover svg,
+html.dark body #navigation-items a.active:hover svg,
+html.dark body #navigation-items a[class*="active"]:hover svg {
+  color: inherit !important;
+  fill: inherit !important;
+  stroke: inherit !important;
+}
+
+body #sidebar-content a[aria-current]:hover [class*="bg-gray"],
+body #sidebar-content a[aria-current="page"]:hover [class*="bg-gray"],
+body #sidebar-content a[aria-current="true"]:hover [class*="bg-gray"],
+body #sidebar-content a.active:hover [class*="bg-gray"],
+body #sidebar-content a[class*="active"]:hover [class*="bg-gray"],
+body #navigation-items a[aria-current]:hover [class*="bg-gray"],
+body #navigation-items a[aria-current="page"]:hover [class*="bg-gray"],
+body #navigation-items a[aria-current="true"]:hover [class*="bg-gray"],
+body #navigation-items a.active:hover [class*="bg-gray"],
+body #navigation-items a[class*="active"]:hover [class*="bg-gray"],
+html.dark body #sidebar-content a[aria-current]:hover [class*="bg-gray"],
+html.dark body #sidebar-content a[aria-current="page"]:hover [class*="bg-gray"],
+html.dark body #sidebar-content a[aria-current="true"]:hover [class*="bg-gray"],
+html.dark body #sidebar-content a.active:hover [class*="bg-gray"],
+html.dark body #sidebar-content a[class*="active"]:hover [class*="bg-gray"],
+html.dark body #navigation-items a[aria-current]:hover [class*="bg-gray"],
+html.dark body #navigation-items a[aria-current="page"]:hover [class*="bg-gray"],
+html.dark body #navigation-items a[aria-current="true"]:hover [class*="bg-gray"],
+html.dark body #navigation-items a.active:hover [class*="bg-gray"],
+html.dark body #navigation-items a[class*="active"]:hover [class*="bg-gray"] {
+  background-color: inherit !important;
+}
+
+/* Table of contents - light theme hover: text should become darker */
+/* Exclude active items (those with text-primary or border-primary) */
+body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]),
+body #table-of-contents [class*="text-gray"]:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) {
+  color: var(--text-neutral-900) !important;
+}
+
+body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) svg,
+body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="icon"] {
+  color: var(--text-neutral-900) !important;
+  fill: var(--text-neutral-900) !important;
+  stroke: var(--text-neutral-900) !important;
+}
+
+body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="bg-gray"],
+body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [style*="mask-image"] {
+  background-color: var(--text-neutral-900) !important;
+}
+
+/* Table of contents - dark theme hover: items should become almost white */
+/* Exclude active items (those with text-primary or border-primary) */
+html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]),
+html.dark body #table-of-contents [class*="text-gray"]:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) svg,
+html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="icon"] {
+  color: rgba(255, 255, 255, 0.95) !important;
+  fill: rgba(255, 255, 255, 0.95) !important;
+  stroke: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="bg-gray"],
+html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [style*="mask-image"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Active items in table of contents should not change on hover - maximum specificity */
+/* Include items with text-primary or border-primary as active indicators */
+body #table-of-contents a[aria-current]:hover,
+body #table-of-contents a[aria-current="page"]:hover,
+body #table-of-contents a[aria-current="true"]:hover,
+body #table-of-contents a.active:hover,
+body #table-of-contents a[class*="active"]:hover,
+body #table-of-contents a[class*="text-primary"]:hover,
+body #table-of-contents a[class*="border-primary"]:hover,
+html.dark body #table-of-contents a[aria-current]:hover,
+html.dark body #table-of-contents a[aria-current="page"]:hover,
+html.dark body #table-of-contents a[aria-current="true"]:hover,
+html.dark body #table-of-contents a.active:hover,
+html.dark body #table-of-contents a[class*="active"]:hover,
+html.dark body #table-of-contents a[class*="text-primary"]:hover,
+html.dark body #table-of-contents a[class*="border-primary"]:hover {
+  color: inherit !important;
+}
+
+body #table-of-contents a[aria-current]:hover svg,
+body #table-of-contents a[aria-current="page"]:hover svg,
+body #table-of-contents a[aria-current="true"]:hover svg,
+body #table-of-contents a.active:hover svg,
+body #table-of-contents a[class*="active"]:hover svg,
+body #table-of-contents a[class*="text-primary"]:hover svg,
+body #table-of-contents a[class*="border-primary"]:hover svg,
+html.dark body #table-of-contents a[aria-current]:hover svg,
+html.dark body #table-of-contents a[aria-current="page"]:hover svg,
+html.dark body #table-of-contents a[aria-current="true"]:hover svg,
+html.dark body #table-of-contents a.active:hover svg,
+html.dark body #table-of-contents a[class*="active"]:hover svg,
+html.dark body #table-of-contents a[class*="text-primary"]:hover svg,
+html.dark body #table-of-contents a[class*="border-primary"]:hover svg {
+  color: inherit !important;
+  fill: inherit !important;
+  stroke: inherit !important;
+}
+
+body #table-of-contents a[aria-current]:hover [class*="bg-gray"],
+body #table-of-contents a[aria-current="page"]:hover [class*="bg-gray"],
+body #table-of-contents a[aria-current="true"]:hover [class*="bg-gray"],
+body #table-of-contents a.active:hover [class*="bg-gray"],
+body #table-of-contents a[class*="active"]:hover [class*="bg-gray"],
+body #table-of-contents a[class*="text-primary"]:hover [class*="bg-gray"],
+body #table-of-contents a[class*="border-primary"]:hover [class*="bg-gray"],
+html.dark body #table-of-contents a[aria-current]:hover [class*="bg-gray"],
+html.dark body #table-of-contents a[aria-current="page"]:hover [class*="bg-gray"],
+html.dark body #table-of-contents a[aria-current="true"]:hover [class*="bg-gray"],
+html.dark body #table-of-contents a.active:hover [class*="bg-gray"],
+html.dark body #table-of-contents a[class*="active"]:hover [class*="bg-gray"],
+html.dark body #table-of-contents a[class*="text-primary"]:hover [class*="bg-gray"],
+html.dark body #table-of-contents a[class*="border-primary"]:hover [class*="bg-gray"] {
+  background-color: inherit !important;
+}
+
 /* Dark theme specific overrides with higher specificity */
 html.dark body .text-gray-900,
 html.dark body .text-neutral-900 {
@@ -184,6 +467,97 @@ html.dark body [class*="dark:hover:text-gray-300"]:hover {
 html.dark body .hover\:text-gray-900:hover,
 html.dark body [class*="hover:text-gray-900"]:hover {
   color: var(--text-neutral-900) !important;
+}
+
+/* Navigation tabs (nav-tabs) - same rules as sidebar and table of contents */
+/* Light theme hover: text should become darker */
+body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]),
+body .nav-tabs [class*="text-gray"]:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) {
+  color: var(--text-neutral-900) !important;
+}
+
+body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) svg,
+body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="icon"] {
+  color: var(--text-neutral-900) !important;
+  fill: var(--text-neutral-900) !important;
+  stroke: var(--text-neutral-900) !important;
+}
+
+body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="bg-gray"],
+body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [style*="mask-image"] {
+  background-color: var(--text-neutral-900) !important;
+}
+
+/* Dark theme hover: items should become almost white */
+html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]),
+html.dark body .nav-tabs [class*="text-gray"]:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) svg,
+html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="icon"] {
+  color: rgba(255, 255, 255, 0.95) !important;
+  fill: rgba(255, 255, 255, 0.95) !important;
+  stroke: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="bg-gray"],
+html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [style*="mask-image"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Active items in nav-tabs should not change on hover */
+body .nav-tabs a[aria-current]:hover,
+body .nav-tabs a[aria-current="page"]:hover,
+body .nav-tabs a[aria-current="true"]:hover,
+body .nav-tabs a.active:hover,
+body .nav-tabs a[class*="active"]:hover,
+body .nav-tabs a[class*="text-primary"]:hover,
+body .nav-tabs a[class*="border-primary"]:hover,
+html.dark body .nav-tabs a[aria-current]:hover,
+html.dark body .nav-tabs a[aria-current="page"]:hover,
+html.dark body .nav-tabs a[aria-current="true"]:hover,
+html.dark body .nav-tabs a.active:hover,
+html.dark body .nav-tabs a[class*="active"]:hover,
+html.dark body .nav-tabs a[class*="text-primary"]:hover,
+html.dark body .nav-tabs a[class*="border-primary"]:hover {
+  color: inherit !important;
+}
+
+body .nav-tabs a[aria-current]:hover svg,
+body .nav-tabs a[aria-current="page"]:hover svg,
+body .nav-tabs a[aria-current="true"]:hover svg,
+body .nav-tabs a.active:hover svg,
+body .nav-tabs a[class*="active"]:hover svg,
+body .nav-tabs a[class*="text-primary"]:hover svg,
+body .nav-tabs a[class*="border-primary"]:hover svg,
+html.dark body .nav-tabs a[aria-current]:hover svg,
+html.dark body .nav-tabs a[aria-current="page"]:hover svg,
+html.dark body .nav-tabs a[aria-current="true"]:hover svg,
+html.dark body .nav-tabs a.active:hover svg,
+html.dark body .nav-tabs a[class*="active"]:hover svg,
+html.dark body .nav-tabs a[class*="text-primary"]:hover svg,
+html.dark body .nav-tabs a[class*="border-primary"]:hover svg {
+  color: inherit !important;
+  fill: inherit !important;
+  stroke: inherit !important;
+}
+
+body .nav-tabs a[aria-current]:hover [class*="bg-gray"],
+body .nav-tabs a[aria-current="page"]:hover [class*="bg-gray"],
+body .nav-tabs a[aria-current="true"]:hover [class*="bg-gray"],
+body .nav-tabs a.active:hover [class*="bg-gray"],
+body .nav-tabs a[class*="active"]:hover [class*="bg-gray"],
+body .nav-tabs a[class*="text-primary"]:hover [class*="bg-gray"],
+body .nav-tabs a[class*="border-primary"]:hover [class*="bg-gray"],
+html.dark body .nav-tabs a[aria-current]:hover [class*="bg-gray"],
+html.dark body .nav-tabs a[aria-current="page"]:hover [class*="bg-gray"],
+html.dark body .nav-tabs a[aria-current="true"]:hover [class*="bg-gray"],
+html.dark body .nav-tabs a.active:hover [class*="bg-gray"],
+html.dark body .nav-tabs a[class*="active"]:hover [class*="bg-gray"],
+html.dark body .nav-tabs a[class*="text-primary"]:hover [class*="bg-gray"],
+html.dark body .nav-tabs a[class*="border-primary"]:hover [class*="bg-gray"] {
+  background-color: inherit !important;
 }
 
 /* Icon colors - bg-gray-* classes used for mask-image icons */
@@ -285,4 +659,35 @@ html.dark body .almond-nav-bottom-section-divider {
 html.dark body #content-container {
   color: rgba(153, 153, 153, 1) !important;
   border-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Dropdown menu border and background - not transparent */
+/* Radix UI dropdown menu content */
+body [data-radix-menu-content],
+body [role="menu"][data-radix-menu-content] {
+  /* border-color: rgba(255, 255, 255, 0.05) !important; */
+  background-color: var(--background-light) !important;
+}
+
+html.dark body [data-radix-menu-content],
+html.dark body [role="menu"][data-radix-menu-content] {
+  /* border-color: rgba(255, 255, 255, 0.05) !important; */
+  background-color: var(--content-container-bg) !important;
+}
+
+/* Dropdown menu item hover effects */
+/* Light theme menu item hover */
+body [data-radix-menu-content] [role="menuitem"]:hover,
+body [data-radix-menu-content] a:hover,
+body [role="menu"][data-radix-menu-content] [role="menuitem"]:hover,
+body [role="menu"][data-radix-menu-content] a:hover {
+  background-color: var(--background-light) !important;
+}
+
+/* Dark theme menu item hover */
+html.dark body [data-radix-menu-content] [role="menuitem"]:hover,
+html.dark body [data-radix-menu-content] a:hover,
+html.dark body [role="menu"][data-radix-menu-content] [role="menuitem"]:hover,
+html.dark body [role="menu"][data-radix-menu-content] a:hover {
+  background-color: rgba(255, 255, 255, 0.05) !important;
 }

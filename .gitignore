@@ -51,4 +51,6 @@ build-storybook/
 node_modules/.cache/storybook/
 
 AGENTS.md
+project-notes/**
 
+.codex/

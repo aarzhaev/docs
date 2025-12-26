@@ -40,7 +40,7 @@ html.dark {
   --background: var(--background-dark);
   background-color: var(--background-dark) !important;
   /* Content container and search bar background colors for dark theme */
-  --content-container-bg: rgb(13, 13, 13);
+  --content-container-bg: rgb(15, 15, 15);
   --search-bar-bg: rgba(255, 255, 255, 0.02);
   /* Text colors for dark theme */
   --text-neutral-900: rgb(163, 163, 163);
@@ -96,6 +96,33 @@ html.dark summary.relative:hover {
   background-color: var(--content-container-bg) !important;
 }
 
+/* Fix container height calculation - add 8px to height */
+body .almond-layout > div.flex.rounded-2xl[class*="h-[calc(100vh-8rem)]"],
+body .almond-layout > div.flex.rounded-2xl[class*="h-[calc(100vh-4.5rem)]"] {
+  height: calc(100vh - 8rem + 8px) !important;
+}
+
+@media (min-width: 1024px) {
+  body .almond-layout > div.flex.rounded-2xl[class*="h-[calc(100vh-4.5rem)]"] {
+    height: calc(100vh - 4.5rem + 8px) !important;
+  }
+}
+
+/* Content container margin-left override */
+/* Override lg:ml-[16.5rem] (264px) to 256px (16rem) */
+@media (min-width: 1024px) {
+  body #content-container[class*="lg:ml-"] {
+    margin-left: 256px !important;
+  }
+}
+
+/* Sidebar content padding-left override */
+/* Override padding-left from 8px to 0px */
+body #sidebar-content[class*="pl-2"],
+body #sidebar-content {
+  padding-left: 0px !important;
+}
+
 /* Search bar entry background */
 #search-bar-entry {
   background-color: var(--search-bar-bg) !important;
@@ -142,6 +169,33 @@ body [class*="hover:text-gray-900"]:hover {
 body .hover\:text-gray-300:hover,
 body [class*="hover:text-gray-300"]:hover {
   color: var(--text-neutral-300) !important;
+}
+
+/* Inline content links: show orange underline only on hover */
+body #content-container .prose a,
+body #content-container article a,
+body #content-container .mint-content a,
+body .mint-content .prose a {
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+body #content-container .prose a:hover,
+body #content-container article a:hover,
+body #content-container .mint-content a:hover,
+body .mint-content .prose a:hover {
+  text-decoration: underline !important;
+  text-decoration-color: #fb4b01 !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+html.dark body #content-container .prose a:hover,
+html.dark body #content-container article a:hover,
+html.dark body #content-container .mint-content a:hover,
+html.dark body .mint-content .prose a:hover {
+  text-decoration-color: #D44509 !important;
 }
 
 /* Sidebar navigation items hover - light theme: text should become darker */
@@ -690,4 +744,173 @@ html.dark body [data-radix-menu-content] a:hover,
 html.dark body [role="menu"][data-radix-menu-content] [role="menuitem"]:hover,
 html.dark body [role="menu"][data-radix-menu-content] a:hover {
   background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Navbar flex container padding override */
+/* Override lg:px-7 (28px) to 16px padding-left and 8px padding-right for navbar flex container */
+@media (min-width: 1024px) {
+  body #navbar div.flex.items-center.h-14.min-w-0.mx-4.lg\:mx-0,
+  body #navbar div.flex.items-center[class*="lg:px-7"],
+  body #navbar .flex.items-center.h-14[class*="lg:px-7"] {
+    padding-left: 16px !important;
+    padding-right: 8px !important;
+  }
+}
+
+/* Mobile navigation sidebar styles */
+/* Override padding-left from 28px to 16px */
+body #mobile-nav div.flex.flex-col.flex-1.px-4,
+body #mobile-nav div[class*="px-4"][class*="flex-col"] {
+  padding-left: 16px !important;
+}
+
+/* Make mobile nav sidebar background opaque (not transparent) */
+body #mobile-nav {
+  background-color: var(--background-light) !important;
+}
+
+html.dark body #mobile-nav {
+  background-color: var(--background-dark) !important;
+}
+
+/* Ensure mobile nav dialog/overlay is also opaque */
+body [id^="headlessui-dialog"] #mobile-nav,
+body div[id*="headlessui-dialog"] #mobile-nav {
+  background-color: var(--background-light) !important;
+}
+
+html.dark body [id^="headlessui-dialog"] #mobile-nav,
+html.dark body div[id*="headlessui-dialog"] #mobile-nav {
+  background-color: var(--background-dark) !important;
+}
+
+/* Navbar primary button styling */
+/* Default state: same as active sidebar item - semi-transparent primary background, primary text color */
+/* Light theme: primary = #fb4b01 */
+body #navbar a.bg-primary-dark,
+body #navbar a[class*="bg-primary-dark"],
+body #navbar .group.bg-primary-dark,
+body a.bg-primary-dark,
+body a[class*="bg-primary-dark"],
+body .group.bg-primary-dark {
+  background-color: rgba(251, 75, 1, 0.1) !important;
+  color: #fb4b01 !important;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out, transform 75ms ease-in-out !important;
+}
+
+/* Apply color to all child elements (text, spans, etc.) */
+body #navbar a.bg-primary-dark *,
+body #navbar a[class*="bg-primary-dark"] *,
+body #navbar .group.bg-primary-dark *,
+body a.bg-primary-dark *,
+body a[class*="bg-primary-dark"] *,
+body .group.bg-primary-dark * {
+  color: #fb4b01 !important;
+  transition: color 200ms ease-in-out !important;
+}
+
+/* Dark theme: primary-light = #D44509 */
+html.dark body #navbar a.bg-primary-dark,
+html.dark body #navbar a[class*="bg-primary-dark"],
+html.dark body #navbar .group.bg-primary-dark,
+html.dark body a.bg-primary-dark,
+html.dark body a[class*="bg-primary-dark"],
+html.dark body .group.bg-primary-dark {
+  background-color: rgba(212, 69, 9, 0.1) !important;
+  color: #D44509 !important;
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out, transform 75ms ease-in-out !important;
+}
+
+/* Apply color to all child elements in dark theme */
+html.dark body #navbar a.bg-primary-dark *,
+html.dark body #navbar a[class*="bg-primary-dark"] *,
+html.dark body #navbar .group.bg-primary-dark *,
+html.dark body a.bg-primary-dark *,
+html.dark body a[class*="bg-primary-dark"] *,
+html.dark body .group.bg-primary-dark * {
+  color: #D44509 !important;
+  transition: color 200ms ease-in-out !important;
+}
+
+/* Hover state: solid orange background (#D44509), white text */
+body #navbar a.bg-primary-dark:hover,
+body #navbar a[class*="bg-primary-dark"]:hover,
+body #navbar .group.bg-primary-dark:hover,
+body a.bg-primary-dark:hover,
+body a[class*="bg-primary-dark"]:hover,
+body .group.bg-primary-dark:hover {
+  background-color: #D44509 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Apply white color to all child elements on hover */
+body #navbar a.bg-primary-dark:hover *,
+body #navbar a[class*="bg-primary-dark"]:hover *,
+body #navbar .group.bg-primary-dark:hover *,
+body a.bg-primary-dark:hover *,
+body a[class*="bg-primary-dark"]:hover *,
+body .group.bg-primary-dark:hover * {
+  color: #ffffff !important;
+}
+
+html.dark body #navbar a.bg-primary-dark:hover,
+html.dark body #navbar a[class*="bg-primary-dark"]:hover,
+html.dark body #navbar .group.bg-primary-dark:hover,
+html.dark body a.bg-primary-dark:hover,
+html.dark body a[class*="bg-primary-dark"]:hover,
+html.dark body .group.bg-primary-dark:hover {
+  background-color: #D44509 !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Apply white color to all child elements on hover in dark theme */
+html.dark body #navbar a.bg-primary-dark:hover *,
+html.dark body #navbar a[class*="bg-primary-dark"]:hover *,
+html.dark body #navbar .group.bg-primary-dark:hover *,
+html.dark body a.bg-primary-dark:hover *,
+html.dark body a[class*="bg-primary-dark"]:hover *,
+html.dark body .group.bg-primary-dark:hover * {
+  color: #ffffff !important;
+}
+
+/* Active state: scale down effect on click (like in button.tsx) */
+body #navbar a.bg-primary-dark:active,
+body #navbar a[class*="bg-primary-dark"]:active,
+body #navbar .group.bg-primary-dark:active,
+body a.bg-primary-dark:active,
+body a[class*="bg-primary-dark"]:active,
+body .group.bg-primary-dark:active,
+html.dark body #navbar a.bg-primary-dark:active,
+html.dark body #navbar a[class*="bg-primary-dark"]:active,
+html.dark body #navbar .group.bg-primary-dark:active,
+html.dark body a.bg-primary-dark:active,
+html.dark body a[class*="bg-primary-dark"]:active,
+html.dark body .group.bg-primary-dark:active {
+  transform: scale(0.98) !important;
+}
+
+/* Frame component styles */
+/* Mintlify Frame component wraps images with captions */
+/* You can customize Frame appearance here */
+
+/* Frame container */
+body [data-mint-component="Frame"],
+body .mint-frame {
+  /* Add custom styles for Frame container if needed */
+}
+
+/* Frame caption styling */
+body [data-mint-component="Frame"] figcaption,
+body .mint-frame figcaption {
+  /* Customize caption text color, size, etc. */
+}
+
+/* Frame image styling */
+body [data-mint-component="Frame"] img,
+body .mint-frame img {
+  /* Ensure images inside Frame respect dark mode classes */
+  max-width: 100%;
+  height: auto;
 }

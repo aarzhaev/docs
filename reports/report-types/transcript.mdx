@@ -1,0 +1,69 @@
+---
+title: "Transcript Report"
+description: "Raw text conversion from audio/video files - the foundation for all other reports."
+---
+
+## What it is
+A **Transcript** is the raw text output from converting audio or video files to text. It's the foundation for all other reports - every analysis report requires a transcript first.
+
+## Structure
+
+| Element | Description |
+|---------|-------------|
+| **Plain text format** | Raw conversation text with speaker identification |
+| **Utterance numbers** | Each line or segment is numbered for reference |
+| **Speaker labels** | Identifies interviewer and respondent |
+| **Timestamps** | Optional timing information for each segment |
+
+<Frame>
+  <img
+    src="/images/report-transcript-example-light.png"
+    alt="Example transcript report showing numbered utterances with speaker labels"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/report-transcript-example-dark.png"
+    alt="Example transcript report showing numbered utterances with speaker labels"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/report-transcript-example-light.png
+  Description: Example of a transcript report showing numbered utterances (e.g., [1], [2], [3]), speaker labels (Interviewer, Respondent), and the raw conversation text. Should show a clear example of how transcripts are formatted with utterance numbers for citation.
+  Context: Illustrating the structure and format of a Transcript report.
+  Dark variant: images/report-transcript-example-dark.png
+*/}
+
+## When to use
+
+<CardGroup cols={2}>
+  <Card title="Required first step" icon="play">
+    Generate a transcript before creating any other report type
+  </Card>
+  <Card title="Quick review" icon="eye">
+    Read the raw conversation to understand what was discussed
+  </Card>
+  <Card title="Reference" icon="book">
+    Use as a source of truth when reviewing other reports
+  </Card>
+  <Card title="Editing" icon="edit">
+    Make corrections to transcription errors before generating analysis reports
+  </Card>
+</CardGroup>
+
+## How it's generated
+Transcripts are created using automated speech-to-text technology (AssemblyAI). The system:
+- Processes audio/video files
+- Identifies speakers
+- Converts speech to text
+- Numbers each utterance for citation in other reports
+
+<Tip>
+Always review and edit your transcript before generating analysis reports. Accurate transcripts lead to better insights.
+</Tip>
+
+## Related topics
+- [Generate single reports](/reports/single)
+- [Edit transcripts](/interviews/edit)
+- [Q&A Report](/reports/report-types/qa)

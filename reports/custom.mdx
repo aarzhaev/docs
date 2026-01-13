@@ -4,26 +4,163 @@ description: "Design your own report structure and prompts."
 ---
 
 ## Overview
-Custom reports let you define the exact sections and questions you want Aseed to answer.
 
-## Step-by-step guide
+Custom reports let you define the exact sections and questions you want Aseed to answer when creating project reports. Build your own structure to synthesize insights from multiple interviews according to your specific research needs.
+
+<CardGroup cols={2}>
+  <Card title="Full control" icon="settings">
+    Define exactly which sections and prompts to include in your synthesis.
+  </Card>
+  <Card title="Custom prompts" icon="edit">
+    Write your own prompts or choose from system-provided section templates.
+  </Card>
+  <Card title="Flexible structure" icon="layout">
+    Organize sections in any order that makes sense for your research.
+  </Card>
+  <Card title="Specific research questions" icon="target">
+    Tailor the synthesis to answer your unique research questions and frameworks.
+  </Card>
+</CardGroup>
+
+## How to build custom reports
+
 <Steps>
+  <Step title="Open Project Reports">
+    In your project, navigate to the **Project Reports** section and click **Create Report**.
+  </Step>
   <Step title="Open the Custom tab">
-    In the report setup, switch to **Custom**.
+    In the report setup interface, click on the **Custom** tab to access the custom structure builder.
+
+    <Frame>
+      <img
+        src="/images/reports-custom-tab-light.png"
+        alt="Custom tab showing the custom structure builder interface"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-custom-tab-dark.png"
+        alt="Custom tab showing the custom structure builder interface"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-custom-tab-light.png
+      Description: Custom tab interface showing the custom structure builder. Should show an empty structure or existing sections, with options to add new sections, system sections, or custom prompts. May show drag-and-drop interface for reordering.
+      Context: Step 2 showing where users can build custom report structures.
+      Dark variant: images/reports-custom-tab-dark.png
+    */}
   </Step>
-  <Step title="Add sections and prompts">
-    Choose system sections or write your own prompts.
+  <Step title="Add sections">
+    Click **Add Section** to create a new section. You can choose from system-provided section templates (like "Key Insights", "Pain Points", "Recommendations") or create a completely custom section with your own prompt.
+
+    <Tip>
+      System sections provide proven prompts that work well for common analysis needs. Use them as starting points and customize as needed.
+    </Tip>
   </Step>
-  <Step title="Order and save">
-    Drag to reorder sections, then save the structure.
+  <Step title="Write custom prompts">
+    For each section, write a clear, specific prompt that defines what you want Aseed to analyze or answer. Good prompts are:
+    - Specific to your research questions
+    - Clear about the expected output
+    - Tied to your research goals
+
+    <Frame>
+      <img
+        src="/images/reports-custom-prompt-light.png"
+        alt="Custom section editor showing prompt input field"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-custom-prompt-dark.png"
+        alt="Custom section editor showing prompt input field"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-custom-prompt-light.png
+      Description: Custom section editor interface showing a prompt input field where users can write their custom prompts. May show examples or suggestions. Should demonstrate how to create a custom section with a specific prompt.
+      Context: Step 4 showing how users write custom prompts for their sections.
+      Dark variant: images/reports-custom-prompt-dark.png
+    */}
+  </Step>
+  <Step title="Reorder sections">
+    Drag sections up or down to reorder them. The order determines how sections appear in the final report. Organize sections logically, starting with overview sections and moving to detailed analysis.
+
+    <Tip>
+      Consider the flow of your report: start with summaries and key insights, then move to detailed analysis, and end with recommendations or action items.
+    </Tip>
+  </Step>
+  <Step title="Review and save">
+    Review your complete structure to ensure all sections are in the right order and prompts are clear. Click **Save** to save the custom structure.
+
+    <Frame>
+      <img
+        src="/images/reports-custom-structure-light.png"
+        alt="Complete custom structure showing multiple sections in order"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-custom-structure-dark.png"
+        alt="Complete custom structure showing multiple sections in order"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-custom-structure-light.png
+      Description: Complete custom structure showing multiple sections (e.g., "Executive Summary", "Key Insights", "Pain Points", "Recommendations") arranged in order. Should show the full structure ready to be saved and used for generation.
+      Context: Step 6 showing a complete custom structure ready to be saved.
+      Dark variant: images/reports-custom-structure-dark.png
+    */}
+  </Step>
+  <Step title="Select records and generate">
+    Choose which interview records to include in the synthesis, then click **Generate** to create the project report using your custom structure.
   </Step>
 </Steps>
 
-## Best practices
+## System sections
+
+You can use these system-provided section templates as starting points:
+
+- **Summary / TL;DR** - Executive summary of findings
+- **Key Insights** - Major discoveries and insights
+- **Pain Points** - User frustrations and problems
+- **Unmet Needs** - Desires and unmet requirements
+- **Recommendations** - Actionable next steps
+- **Jobs-to-be-Done** - JTBD framework analysis
+- **Behavioral Patterns** - User behaviors and workarounds
+
 <Tip>
-Keep custom prompts specific and tied to your research goals.
+System sections come with proven prompts that work well for common analysis needs. You can use them as-is or customize the prompts to better fit your research.
 </Tip>
 
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Keep prompts specific and goal-oriented">
+    Keep custom prompts specific and tied to your research goals. Vague prompts lead to generic results, while specific prompts produce actionable insights.
+  </Accordion>
+  
+  <Accordion title="Start with system sections">
+    Begin with system sections to understand the structure, then customize prompts or add fully custom sections as needed. This saves time and ensures you're following proven patterns.
+  </Accordion>
+  
+  <Accordion title="Organize sections logically">
+    Structure your report flow logically: overview first, then detailed analysis, then recommendations. This makes the report easier to read and more actionable.
+  </Accordion>
+  
+  <Accordion title="Test and iterate">
+    After generating a report with a custom structure, review the results and refine your prompts or section order. Custom structures improve with iteration.
+  </Accordion>
+  
+  <Accordion title="Save successful structures">
+    If you create a custom structure that works well, save it for reuse in future projects. Consistent structures enable easier comparison across research projects.
+  </Accordion>
+</AccordionGroup>
+
 ## Related topics
-- [Use report presets](/reports/presets)
 - [Create a project report](/reports/project)
+- [Use report presets](/reports/presets)
+- [Generate single reports](/reports/single) - For individual interview analysis
+- [Report types](/reports/report-types) - Understand single report types and Custom report structure

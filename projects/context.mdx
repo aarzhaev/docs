@@ -1,29 +1,194 @@
 ---
 title: "Add research context"
-description: "Provide goals and an interview guide so Aseed can analyze interviews accurately."
+description: "Provide research goals and interview guide to help Aseed analyze interviews accurately."
 ---
 
 ## Overview
-Research context tells Aseed what you are trying to learn and how the interviews are structured.
+Research context helps Aseed understand your research objectives and interview structure. This information is automatically included when generating reports, making the analysis more accurate and aligned with your goals.
 
-## Step-by-step guide
+## How to add research context
 <Steps>
   <Step title="Open Research Context">
-    Inside your project, go to the **Research Context** section.
+    Inside your project, scroll to the **Research Context** section below the project header.
+
+    <Frame>
+      <img
+        src="/images/projects-research-context-section-light.png"
+        alt="Project page showing Research Context section with Research Goals and Interview Guide cards"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-research-context-section-dark.png"
+        alt="Project page showing Research Context section with Research Goals and Interview Guide cards"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-research-context-section-light.png
+      Description: Project detail page showing the Research Context section below the project header. Should display two cards: "Research Goals" and "Interview Guide". Cards may show "Add" or "View/Edit" buttons depending on whether context has been added. The section should be clearly visible and organized.
+      Context: Step 1 showing where users can find the Research Context section in their project.
+      Dark variant: images/projects-research-context-section-dark.png
+    */}
   </Step>
   <Step title="Add research goals">
-    Describe the questions you want to answer or hypotheses you want to test.
+    Click on the **Research Goals** card. In the modal, describe:
+
+    <Frame>
+      <img
+        src="/images/projects-research-goals-modal-light.png"
+        alt="Research Goals modal showing text area for entering research goals"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-research-goals-modal-dark.png"
+        alt="Research Goals modal showing text area for entering research goals"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-research-goals-modal-light.png
+      Description: Modal/dialog for adding or editing Research Goals. Should show a textarea or rich text editor where users can enter their research goals. May show example text or placeholder. Save and Cancel buttons should be visible.
+      Context: Step 2 showing the Research Goals modal where users can enter their research objectives.
+      Dark variant: images/projects-research-goals-modal-dark.png
+    */}
+    - What you're trying to learn
+    - Questions you want to answer
+    - Hypotheses you want to test
+    - Product or service context
+    Click **Save** to store your goals.
   </Step>
-  <Step title="Add the interview guide">
-    Paste your interview script or topic list so Aseed understands the flow.
+  <Step title="Add interview guide">
+    Click on the **Interview Guide** card. You can:
+    - Paste your interview script or topic list
+    - Use a guide created with the [Interview Guide Builder](/interviews/guide-builder)
+    - Write the guide manually
+    Click **Save** to store your guide.
+
+    <Frame>
+      <img
+        src="/images/projects-interview-guide-modal-light.png"
+        alt="Interview Guide modal showing text area for entering interview guide"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-interview-guide-modal-dark.png"
+        alt="Interview Guide modal showing text area for entering interview guide"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-interview-guide-modal-light.png
+      Description: Modal/dialog for adding or editing Interview Guide. Should show a textarea or rich text editor where users can paste or write their interview guide. May show example structure or placeholder text. Save and Cancel buttons should be visible.
+      Context: Step 3 showing the Interview Guide modal where users can enter their interview structure.
+      Dark variant: images/projects-interview-guide-modal-dark.png
+    */}
+  </Step>
+  <Step title="View context">
+    After saving, the context appears in the cards. Click **View** (or click the card) to see the full content. Click **Edit** to make changes.
   </Step>
 </Steps>
 
+<CardGroup cols={2}>
+  <Card title="Research Goals" icon="target">
+    Describe what you want to learn from the interviews. Include:
+    - Research objectives
+    - Questions you want answered
+    - Hypotheses to test
+    - Product or service context
+    - Any specific focus areas
+  </Card>
+  
+  <Card title="Interview Guide" icon="map">
+    Provide the structure of your interviews. Include:
+    - Opening questions
+    - Main discussion topics
+    - Follow-up questions
+    - Closing questions
+  </Card>
+</CardGroup>
+
+<AccordionGroup>
+  <Accordion title="Research Goals example">
+    ```
+    Product Description:
+    A mobile banking app with instant transfer feature.
+
+    Research Goal:
+    Understand customer satisfaction with the new feature, focusing on challenges and emotions.
+
+    Additional:
+    Interested in frustrations and positive feelings while using the feature.
+    ```
+  </Accordion>
+  
+  <Accordion title="Interview Guide example">
+    ```
+    Opening:
+    - Thank you for participating
+    - Explain purpose and duration
+    - Confirm recording permission
+
+    Main Questions:
+    1. Tell me about your experience with [feature]
+    2. What challenges do you face?
+    3. How do you currently solve this?
+    4. What would make this easier?
+
+    Closing:
+    - Any additional thoughts?
+    - Thank you for your time
+    ```
+  </Accordion>
+</AccordionGroup>
+
+## Documents (Coming soon)
+The Documents card is currently in development. This feature will allow you to upload supporting documents that provide additional context for analysis.
+
+## How context is used
+
+<CardGroup cols={2}>
+  <Card title="Report generation" icon="file-text">
+    Research goals and interview guide are automatically included when generating reports.
+  </Card>
+  <Card title="Batch generation" icon="layers">
+    Context is applied to all records in batch operations.
+  </Card>
+  <Card title="Project reports" icon="check-circle">
+    Context helps synthesize insights across multiple interviews.
+  </Card>
+  <Card title="Better analysis" icon="sparkles">
+    Aseed uses context to provide more relevant and focused insights.
+  </Card>
+</CardGroup>
+
 ## Best practices
-<Tip>
-Write goals as outcomes, for example "Understand why users abandon onboarding."
-</Tip>
+
+<AccordionGroup>
+  <Accordion title="Write goals as outcomes">
+    Write goals as outcomes, for example "Understand why users abandon onboarding" rather than "Learn about onboarding."
+  </Accordion>
+  
+  <Accordion title="Keep guides structured but flexible">
+    Keep interview guides structured but flexible. Include main topics and example questions, but allow for natural conversation flow.
+  </Accordion>
+  
+  <Accordion title="Update context as research evolves">
+    Update context as your research evolves. If your goals change, update the Research Goals to reflect the new focus.
+  </Accordion>
+  
+  <Accordion title="Use Interview Guide Builder">
+    Use the [Interview Guide Builder](/interviews/guide-builder) to create comprehensive, structured guides tailored to your research needs.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
 - [Create a project](/projects/create)
-- [Upload interviews](/interviews/upload)
+- [Create interview guide](/interviews/guide-builder)
+- [Upload records](/projects/upload-records)
+- [Batch generation](/projects/batch-generation)
+- [Generate single reports](/reports/single)
+- [Create project reports](/reports/project)
+

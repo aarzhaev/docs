@@ -1,0 +1,151 @@
+---
+title: "Batch generation"
+description: "Generate multiple reports for multiple records at once to save time."
+---
+
+## Overview
+Batch generation lets you create reports for multiple records simultaneously. You can generate transcripts and various report types (Q&A, General, JTBD, Persona, Custom) for all selected records in one operation, saving significant time compared to generating reports individually.
+
+## How to generate reports in batch
+<Steps>
+  <Step title="Open your project">
+    Navigate to the project containing the records you want to process.
+  </Step>
+  <Step title="Start batch generation">
+    Scroll to the bottom of the Project Records section. Click the **Generate Reports** button (or the progress indicator if generation is already in progress).
+
+    <Frame>
+      <img
+        src="/images/projects-batch-generate-button-light.png"
+        alt="Project Records section showing Generate Reports button at the bottom"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-batch-generate-button-dark.png"
+        alt="Project Records section showing Generate Reports button at the bottom"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-batch-generate-button-light.png
+      Description: Project Records section scrolled to the bottom, showing the "Generate Reports" button. The button should be clearly visible and accessible. May show the records list above it.
+      Context: Step 2 showing where users can find the Generate Reports button to start batch generation.
+      Dark variant: images/projects-batch-generate-button-dark.png
+    */}
+  </Step>
+  <Step title="Select report types">
+    In the batch generation modal, choose which report types to generate. See [Report types](/reports/report-types) for detailed information about each type:
+
+    <Frame>
+      <img
+        src="/images/projects-batch-modal-light.png"
+        alt="Batch generation modal showing report type selection and configuration options"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-batch-modal-dark.png"
+        alt="Batch generation modal showing report type selection and configuration options"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-batch-modal-light.png
+      Description: Batch generation modal/dialog open, showing the configuration interface. Should display checkboxes or toggles for report types (Transcript, Q&A, General, JTBD, Persona, Custom), language selection options, custom prompt field (if Custom is selected), regenerate toggle, and token estimate. The Generate button should be visible at the bottom.
+      Context: Step 3 showing the batch generation configuration modal where users select report types and configure options.
+      Dark variant: images/projects-batch-modal-dark.png
+    */}
+    - **Transcript**: Always selected (required for other reports)
+    - **Q&A**: Question and answer format
+    - **General**: General insights report
+    - **JTBD**: Jobs-to-be-Done analysis
+    - **Persona**: Persona development report
+    - **Custom**: Custom report with your own prompt
+  </Step>
+  <Step title="Configure languages">
+    Set language options:
+    - **Transcript Language**: Auto-detect or select a specific language
+    - **Report Language**: Same as transcript, or choose a different language
+  </Step>
+  <Step title="Add custom prompt (optional)">
+    If you selected Custom reports, enter your custom prompt that defines what the report should analyze.
+  </Step>
+  <Step title="Choose regeneration option">
+    Toggle **Regenerate existing reports** if you want to overwrite reports that already exist for these records.
+  </Step>
+  <Step title="Review token estimate">
+    Check the estimated token cost before generating. If you don't have enough tokens, you'll be prompted to purchase more.
+  </Step>
+  <Step title="Start generation">
+    Click **Generate** to start batch processing. The modal closes, and you'll see progress indicators on each record.
+  </Step>
+</Steps>
+
+<AccordionGroup>
+  <Accordion title="Monitoring progress">
+    - Each record shows a status badge: "Uploaded", "In Progress", or "Finished"
+    - Records with "In Progress" status show a shimmer animation
+    - You can cancel generation for records that are currently processing
+    - Hover over the Generate Reports button to see a cancel option when generation is active
+  </Accordion>
+  
+  <Accordion title="Canceling generation">
+    - Hover over the **Generate Reports** button at the bottom of the page
+    - If generation is in progress, a cancel option appears
+    - Click to cancel generation for all in-progress records
+    - Cancellation may take a moment to process
+  </Accordion>
+</AccordionGroup>
+
+<CardGroup cols={3}>
+  <Card title="Report types" icon="file-text">
+    **Transcript**: Converts audio/video to text (always first)  
+    **Q&A**: Extracts questions and answers  
+    **General**: General insights and observations  
+    **JTBD**: Jobs-to-be-Done analysis  
+    **Persona**: Persona characteristics  
+    **Custom**: Tailored report with your prompt
+  </Card>
+  <Card title="Language options" icon="globe">
+    **Auto-detect**: Automatically detects language  
+    **Specific language**: Choose from supported languages  
+    **Report language**: Can differ from transcript language
+  </Card>
+  <Card title="Token management" icon="coins">
+    Cost calculated before generation  
+    Tokens consumed when generation starts  
+    Purchase more if needed
+  </Card>
+</CardGroup>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Start with Transcript and Q&A">
+    Start with Transcript and Q&A reports for most records, then add other types as needed. This balances cost with value.
+  </Accordion>
+  
+  <Accordion title="Use batch generation for efficiency">
+    Use batch generation when you have multiple records ready to process. It's more efficient than generating reports one by one.
+  </Accordion>
+  
+  <Accordion title="Review research context first">
+    Review your project's Research Goals and Interview Guide before batch generation—they're automatically included in the context for better results.
+  </Accordion>
+  
+  <Accordion title="Monitor token balance">
+    Monitor token balance before large batch operations. Consider processing in smaller batches if token costs are high.
+  </Accordion>
+  
+  <Accordion title="Use regenerate carefully">
+    Use "Regenerate existing reports" carefully—it will overwrite existing reports and consume tokens again.
+  </Accordion>
+</AccordionGroup>
+
+## Related topics
+- [Report types](/reports/report-types) - Understand what each report type contains
+- [Upload records](/projects/upload-records)
+- [Manage records](/projects/manage-records)
+- [Generate single reports](/reports/single)
+- [Add research context](/projects/context)

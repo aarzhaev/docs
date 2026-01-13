@@ -1,0 +1,114 @@
+---
+title: "Manage records"
+description: "Rename, archive, delete, or remove records from your project."
+---
+
+## Overview
+Manage individual records in your project. You can rename records for better organization, archive records you don't need right now, remove records from the project, or permanently delete them.
+
+## How to manage records
+<Steps>
+  <Step title="Open your project">
+    Navigate to the project containing the records you want to manage.
+  </Step>
+  <Step title="Access record actions">
+    In the **Project Records** section, click the three-dot menu (⋯) next to any record to see available actions.
+
+    <Frame>
+      <img
+        src="/images/projects-records-actions-menu-light.png"
+        alt="Project Records section showing three-dot menu next to a record"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-records-actions-menu-dark.png"
+        alt="Project Records section showing three-dot menu next to a record"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-records-actions-menu-light.png
+      Description: Project Records section showing a record in the list with the three-dot menu (⋯) visible next to it. The menu should be either visible as a button or shown as open with dropdown options like Rename, Archive, Remove from Project, Delete Record.
+      Context: Step 2 showing how users can access record actions through the three-dot menu.
+      Dark variant: images/projects-records-actions-menu-dark.png
+    */}
+  </Step>
+  <Step title="Choose an action">
+    Select from the dropdown menu:
+    - **Rename**: Change the record name
+    - **Remove from Project**: Unlink the record from this project (record remains in your workspace)
+    - **Archive**: Move the record to the Archived tab
+    - **Unarchive**: Restore an archived record (available in Archived tab)
+    - **Delete Record**: Permanently delete the record
+  </Step>
+</Steps>
+
+## Record actions
+
+<AccordionGroup>
+  <Accordion title="Rename record">
+    - Click **Rename** from the record menu
+    - Enter the new name in the modal
+    - Click **Save** to confirm
+    - Useful for organizing records with clearer names
+  </Accordion>
+  
+  <Accordion title="Archive / Unarchive record">
+    **To archive:**
+    - Click **Archive** to move a record to the Archived tab
+    - Archived records are hidden from the main Uploaded tab
+    - Use archiving to declutter your active records list
+    
+    **To unarchive:**
+    - Switch to the **Archived** tab
+    - Click the three-dot menu on an archived record
+    - Select **Unarchive** to move it back to Uploaded
+  </Accordion>
+  
+  <Accordion title="Remove from project">
+    - Click **Remove from Project** to unlink the record from this project
+    - The record remains in your workspace and can be added to other projects
+    - Useful when a record was added to the wrong project
+  </Accordion>
+  
+  <Accordion title="Delete record">
+    <Warning>
+      Deleting a record permanently removes it from your workspace. This action cannot be undone. All transcripts and reports associated with the record will also be deleted.
+    </Warning>
+    
+    - Click **Delete Record** from the menu
+    - Confirm the deletion in the dialog
+    - The record and all its data will be permanently removed
+  </Accordion>
+</AccordionGroup>
+
+## Viewing archived records
+- Switch to the **Archived** tab in Project Records
+- View all archived records for the project
+- Use the same actions (unarchive, delete, etc.) on archived records
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Rename records immediately">
+    Rename records immediately after upload with descriptive names that include respondent information or interview date.
+  </Accordion>
+  
+  <Accordion title="Archive completed records">
+    Archive records you've completed analyzing but want to keep for reference. This keeps your active list focused on current work.
+  </Accordion>
+  
+  <Accordion title="Remove from wrong project">
+    Use "Remove from Project" if you accidentally added a record to the wrong project. The record stays available for other projects.
+  </Accordion>
+  
+  <Accordion title="Archive instead of delete">
+    Only delete records when you're certain you don't need them. Consider archiving instead if you might need them later.
+  </Accordion>
+</AccordionGroup>
+
+## Related topics
+- [Upload records](/projects/upload-records)
+- [Batch generation](/projects/batch-generation)
+- [Generate single reports](/reports/single)

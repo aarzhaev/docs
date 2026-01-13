@@ -1,29 +1,123 @@
 ---
-title: "Review and edit transcripts"
-description: "Check transcript accuracy and fix errors before reporting."
+title: "Edit transcripts"
+description: "Review and edit transcript text, speaker names, and timestamps to ensure accuracy before generating reports."
 ---
 
 ## Overview
-Clean transcripts lead to better insights and fewer report revisions.
 
-## Step-by-step guide
+Clean transcripts lead to better insights and fewer report revisions. Edit transcripts to fix errors, correct speaker names, and improve overall accuracy before generating reports.
+
+## Editing features
+
+The transcript editor allows you to:
+
+- **Edit text** - Modify utterance text directly
+- **Change speaker names** - Update speaker identification
+- **Adjust timestamps** - Correct timing information (if needed)
+- **Add or remove utterances** - Manage transcript structure
+- **Real-time preview** - See changes immediately
+
+## How to edit transcripts
+
 <Steps>
-  <Step title="Open a transcript">
-    Select an interview from Project Records to view its transcript.
+  <Step title="Open a record">
+    Navigate to the **Records** page and select a record, or open a record from a project.
+  </Step>
+  <Step title="View transcript">
+    Open the **Transcript** tab to see the full transcript with all utterances.
+
+    <Frame>
+      <img
+        src="/images/records-transcript-tab-light.png"
+        alt="Record detail page showing Transcript tab with full transcript displayed"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/records-transcript-tab-dark.png"
+        alt="Record detail page showing Transcript tab with full transcript displayed"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/records-transcript-tab-light.png
+      Description: Record detail page showing the Transcript tab open. Should display the full transcript with utterances numbered, showing speaker names, timestamps, and text. The transcript should be clearly readable and editable. May show edit controls or inline editing interface.
+      Context: Step 2 showing the transcript view where users can review and edit the transcript.
+      Dark variant: images/records-transcript-tab-dark.png
+    */}
   </Step>
   <Step title="Review accuracy">
-    Scan for misspellings, speaker mistakes, and missing context.
+    Scan for:
+    - Misspellings and typos
+    - Incorrect speaker identification
+    - Missing context or unclear phrases
+    - Timing issues
   </Step>
-  <Step title="Make edits">
-    Correct errors and save the updated transcript.
+  <Step title="Edit utterances">
+    Click on any utterance to edit:
+    - Modify the text directly
+    - Change the speaker name
+    - Update timestamps if needed
+
+    <Frame>
+      <img
+        src="/images/records-transcript-editing-light.png"
+        alt="Transcript editor showing an utterance being edited with text, speaker, and timestamp fields"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/records-transcript-editing-dark.png"
+        alt="Transcript editor showing an utterance being edited with text, speaker, and timestamp fields"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/records-transcript-editing-light.png
+      Description: Transcript editor showing an utterance in edit mode. Should display editable fields for: utterance text (textarea or input), speaker name (dropdown or input), and timestamp (input field). The editing interface should be clearly visible with save/cancel options or auto-save indication.
+      Context: Step 4 showing how users can edit individual utterances in the transcript.
+      Dark variant: images/records-transcript-editing-dark.png
+    */}
+  </Step>
+  <Step title="Save changes">
+    Changes are saved automatically as you edit. The updated transcript is used for all future reports.
   </Step>
 </Steps>
 
-## Best practices
-<Tip>
-Fix speaker names early so reports read clearly.
-</Tip>
+## Editing tips
+
+### Speaker names
+
+- Fix speaker names early in the process
+- Use consistent naming throughout the transcript
+- Mark interviewer vs. respondent clearly
+- Correct names improve report quality significantly
+
+### Text corrections
+
+- Fix obvious transcription errors
+- Add missing words or context
+- Correct grammar if it affects meaning
+- Preserve the original meaning while improving clarity
+
+### Best practices
+
+<AccordionGroup>
+  <Accordion title="Fix speaker names first">
+    Fix speaker names before generating reports. Incorrect speaker identification can significantly impact report accuracy.
+  </Accordion>
+  
+  <Accordion title="Review transcripts promptly">
+    Review transcripts soon after generation while the interview is fresh in your memory.
+  </Accordion>
+  
+  <Accordion title="Focus on meaningful errors">
+    Focus on fixing errors that affect meaning. Minor typos that don't change interpretation can be left as-is.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
-- [Transcribe interviews](/interviews/transcribe)
-- [Generate single reports](/reports/single)
+
+- [Transcribe records](/interviews/transcribe) - Configure transcription settings
+- [Records page](/interviews/records) - View and manage all records
+- [Generate single reports](/reports/single) - Create reports from edited transcripts

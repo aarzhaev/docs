@@ -4,34 +4,204 @@ description: "Create per-interview reports like Transcript, Q&A, General, JTBD, 
 ---
 
 ## Overview
-Single reports capture insights for one interview at a time. They are the building blocks for project-level synthesis.
 
-## Step-by-step guide
+Single reports analyze one interview record in isolation. Each report focuses on a single transcript and extracts insights specific to that interview. These reports are the building blocks for project-level synthesis—use them to understand individual interviews before creating aggregated project reports.
+
+<CardGroup cols={2}>
+  <Card title="Per-interview analysis" icon="file-text">
+    Each report analyzes one interview transcript in detail, extracting insights specific to that respondent.
+  </Card>
+  <Card title="Foundation for synthesis" icon="grid">
+    Single reports provide the building blocks for project-level reports that synthesize insights across multiple interviews.
+  </Card>
+  <Card title="Multiple report types" icon="list">
+    Generate Transcript, Q&A, General, JTBD, Persona, or Custom reports for each interview.
+  </Card>
+  <Card title="Independent insights" icon="eye">
+    Understand each interview in isolation before aggregating findings across your research project.
+  </Card>
+</CardGroup>
+
+## How to generate single reports
+
 <Steps>
+  <Step title="Open your project">
+    Navigate to the project containing the records you want to analyze.
+  </Step>
   <Step title="Open Generate Reports">
-    In Project Records, click **Generate Reports**.
+    In the **Project Records** section, scroll to the bottom and click **Generate Reports** button.
+
+    <Frame>
+      <img
+        src="/images/reports-single-generate-button-light.png"
+        alt="Project Records section showing Generate Reports button at the bottom"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-single-generate-button-dark.png"
+        alt="Project Records section showing Generate Reports button at the bottom"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-single-generate-button-light.png
+      Description: Project Records section scrolled to the bottom, showing the "Generate Reports" button. The button should be clearly visible and accessible. May show the records list above it with records that are ready for report generation.
+      Context: Step 2 showing where users can find the Generate Reports button to start generating single reports.
+      Dark variant: images/reports-single-generate-button-dark.png
+    */}
+  </Step>
+  <Step title="Select records">
+    In the generation modal, select which records you want to generate reports for. You can select one or multiple records.
+
+    <Frame>
+      <img
+        src="/images/reports-single-selection-modal-light.png"
+        alt="Generate Reports modal showing record selection and report type options"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-single-selection-modal-dark.png"
+        alt="Generate Reports modal showing record selection and report type options"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-single-selection-modal-light.png
+      Description: Generate Reports modal/dialog showing the interface for generating single reports. Should display: record selection (checkboxes or list), report type selection (Transcript, Q&A, General, JTBD, Persona, Custom), language options, and Generate button. May show token estimate.
+      Context: Step 3 showing the generation modal where users select records and report types.
+      Dark variant: images/reports-single-selection-modal-dark.png
+    */}
   </Step>
   <Step title="Choose report types">
-    Select the report types you need for each interview.
+    Select the report types you need for each interview. You can select multiple types:
+    - **Transcript** (always required for other reports)
+    - **Q&A** - Question and answer format
+    - **General** - Comprehensive insights
+    - **JTBD** - Jobs-to-be-Done analysis
+    - **Persona** - Persona development
+    - **Custom** - Custom analysis with your prompt
+
+    <Tip>
+      Start with Transcript and Q&A for most interviews. These provide a solid foundation and are cost-effective.
+    </Tip>
+  </Step>
+  <Step title="Configure options">
+    Set language options and any custom prompts if you selected Custom reports. Review the token estimate before generating.
   </Step>
   <Step title="Start generation">
-    Confirm and generate the selected reports.
+    Click **Generate** to start report generation. The modal closes, and you'll see progress indicators on each record.
+
+    <Frame>
+      <img
+        src="/images/reports-single-generation-progress-light.png"
+        alt="Project Records showing report generation progress indicators"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-single-generation-progress-dark.png"
+        alt="Project Records showing report generation progress indicators"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-single-generation-progress-light.png
+      Description: Project Records section showing records with report generation in progress. Should display status indicators or progress badges showing "Generating", "In Progress", or similar status for records being processed. May show shimmer animations or progress bars.
+      Context: Step 5 showing how users can monitor report generation progress.
+      Dark variant: images/reports-single-generation-progress-dark.png
+    */}
+  </Step>
+  <Step title="Wait for completion">
+    Reports are generated asynchronously. Wait for the status to change to "Finished". You can view reports from the record detail page or the project reports section.
   </Step>
 </Steps>
 
 ## Report types
-- Transcript
-- Q&A
-- General
-- JTBD
-- Persona
-- Custom
+
+Aseed generates six types of reports, each designed for specific analysis needs:
+
+<CardGroup cols={3}>
+  <Card title="Transcript" icon="file-text" href="/reports/report-types#transcript">
+    Raw text conversion from audio/video files. Required foundation for all other reports.
+  </Card>
+  <Card title="Q&A" icon="question" href="/reports/report-types#qa">
+    Structured question-answer pairs organized by topic with citations.
+  </Card>
+  <Card title="General" icon="bar-chart" href="/reports/report-types#general">
+    Comprehensive profile, insights, and recommendations analysis.
+  </Card>
+  <Card title="JTBD" icon="circle-dot" href="/reports/report-types#jtbd">
+    Jobs-to-be-Done framework with job stories, ODI scores, and recommendations.
+  </Card>
+  <Card title="Persona" icon="user" href="/reports/report-types#persona">
+    Deep persona profile with motivations, pain points, and behavioral patterns.
+  </Card>
+  <Card title="Custom" icon="sparkles" href="/reports/report-types#custom">
+    Tailored analysis based on your specific research questions and prompt.
+  </Card>
+</CardGroup>
+
+For detailed information about each report type, including methodology, structure, and what you'll receive, see [Report types](/reports/report-types).
+
+## Report generation process
+
+<CardGroup cols={2}>
+  <Card title="Two-stage generation" icon="repeat">
+    Most reports (except Transcript) go through draft generation and refinement stages for accuracy.
+  </Card>
+  <Card title="Context inclusion" icon="file-text">
+    Research Goals and Interview Guide from your project are automatically included in report context.
+  </Card>
+  <Card title="Token consumption" icon="coins">
+    Tokens are consumed when generation starts. Check the estimate before generating.
+  </Card>
+  <Card title="Asynchronous processing" icon="clock">
+    Reports generate in the background so you can continue working.
+  </Card>
+</CardGroup>
+
+## When to use single reports
+
+- **Analyze individual interviews in detail** - Get deep insights from each respondent
+- **Extract specific insights** - Focus on one interview's unique findings
+- **Review interview quality** - Assess content and accuracy before aggregation
+- **Generate reports for standalone interviews** - Create reports for interviews that don't need synthesis
+- **Build foundation for project reports** - Create single reports first, then synthesize into project reports
 
 ## Best practices
-<Tip>
-If you are unsure, start with Transcript and Q&A, then expand.
-</Tip>
+
+<AccordionGroup>
+  <Accordion title="Start with Transcript and Q&A">
+    Start with Transcript and Q&A reports for most interviews. These provide a solid foundation and are cost-effective. You can always add other report types later if needed.
+  </Accordion>
+  
+  <Accordion title="Review transcripts before generating">
+    Review and edit transcripts before generating reports. Accurate transcripts lead to better insights. Fix speaker names and correct any transcription errors to improve report quality.
+  </Accordion>
+  
+  <Accordion title="Use General reports for comprehensive analysis">
+    Use General reports when you need comprehensive analysis of a single interview with insights and recommendations. This report type provides a complete respondent profile.
+  </Accordion>
+  
+  <Accordion title="Generate JTBD or Persona for specific frameworks">
+    Generate JTBD or Persona reports when you have clear research goals aligned with those frameworks. These specialized reports provide deep insights using established methodologies.
+  </Accordion>
+  
+  <Accordion title="Use Custom reports for targeted questions">
+    Use Custom reports to answer specific research questions or apply frameworks not covered by standard report types. Provide a clear, detailed prompt for best results.
+  </Accordion>
+  
+  <Accordion title="Check research context before generation">
+    Check your project's Research Goals and Interview Guide before generation—they're automatically included in the context for better results. Update them if your research focus has changed.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
-- [Review and edit transcripts](/interviews/edit)
-- [Create a project report](/reports/project)
+
+- [Report types](/reports/report-types) - Detailed guide to each report type, methodology, and structure
+- [Review and edit transcripts](/interviews/edit) - Ensure transcript accuracy before generating reports
+- [Edit reports](/reports/edit) - Refine and regenerate reports after review
+- [Create a project report](/reports/project) - Synthesize insights from multiple single reports
+- [Batch generation](/projects/batch-generation) - Generate reports for multiple records at once

@@ -1,0 +1,175 @@
+---
+title: "Purchase tokens"
+description: "Buy token packages to generate transcripts and reports."
+---
+
+## Overview
+
+Purchase tokens in packages to generate transcripts and reports. Token packages range from 100 to 10,000 tokens, with volume discounts available for larger packages.
+
+<CardGroup cols={2}>
+  <Card title="Multiple packages" icon="box">
+    Choose from packages of 100, 500, 1,000, 2,000, 5,000, or 10,000 tokens.
+  </Card>
+  <Card title="Volume discounts" icon="percent">
+    Larger packages include discounts, making bulk purchases more cost-effective.
+  </Card>
+  <Card title="Multiple currencies" icon="dollar-sign">
+    Pay in USD, RUB, or KZT depending on your location and payment method.
+  </Card>
+  <Card title="No expiration" icon="infinity">
+    Tokens never expire. Use them anytime, at your own pace.
+  </Card>
+</CardGroup>
+
+## How to purchase tokens
+
+<Steps>
+  <Step title="Open purchase modal">
+    Click the token balance in the navigation bar, or click **Buy Tokens** when you don't have enough tokens for an operation.
+
+    <Frame>
+      <img
+        src="/images/account-purchase-modal-light.png"
+        alt="Token purchase modal showing package options"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/account-purchase-modal-dark.png"
+        alt="Token purchase modal showing package options"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/account-purchase-modal-light.png
+      Description: Token purchase modal showing "Buy More Tokens" title, description about choosing tokens, and package selection buttons (100, 500, 1000, 2000, 5000, 10000). Should show one package selected (e.g., 1000) with discount badge if applicable.
+      Context: Step 1 showing the token purchase modal interface.
+      Dark variant: images/account-purchase-modal-dark.png
+    */}
+  </Step>
+  <Step title="Select token package">
+    Choose the package size that fits your needs. Larger packages offer better value with volume discounts.
+
+    <Tip>
+      The modal shows how many reports you can generate with each package (approximately 1 report per 100 tokens).
+    </Tip>
+
+    <Frame>
+      <img
+        src="/images/account-purchase-selected-light.png"
+        alt="Selected token package with pricing and discount information"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/account-purchase-selected-dark.png"
+        alt="Selected token package with pricing and discount information"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/account-purchase-selected-light.png
+      Description: Token purchase modal with a package selected (e.g., 5000 tokens). Should show the selected package highlighted, token price per token with discount badge, total price with original price crossed out, currency selector (USD/RUB/KZT), and "Proceed to Payment" button.
+      Context: Step 2 showing package selection with pricing details.
+      Dark variant: images/account-purchase-selected-dark.png
+    */}
+  </Step>
+  <Step title="Choose currency (if available)">
+    Select your preferred currency from the dropdown. Available currencies depend on your location:
+    - **USD**: Available worldwide via Stripe
+    - **RUB**: Available for Russian users via YooKassa
+    - **KZT**: Available for Kazakh users via Tiptop
+
+    <Note>
+      The system automatically detects your location and suggests the appropriate currency, but you can change it if needed.
+    </Note>
+  </Step>
+  <Step title="Proceed to payment">
+    Click **Proceed to Payment** to complete your purchase. You'll be redirected to the payment provider (Stripe, YooKassa, or Tiptop) to complete the transaction.
+
+    <Frame>
+      <img
+        src="/images/account-purchase-payment-light.png"
+        alt="Payment provider interface for completing token purchase"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/account-purchase-payment-dark.png"
+        alt="Payment provider interface for completing token purchase"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/account-purchase-payment-light.png
+      Description: Payment provider interface (Stripe/YooKassa/Tiptop) showing payment form with card details or payment method selection. Should show the amount, currency, and token count being purchased.
+      Context: Step 4 showing the payment provider interface.
+      Dark variant: images/account-purchase-payment-dark.png
+    */}
+  </Step>
+  <Step title="Complete purchase">
+    After successful payment, your token balance updates automatically. You can start using your tokens immediately.
+
+    <Tip>
+      Your balance refreshes automatically after purchase. If it doesn't update, refresh the page or click the balance in the navigation bar.
+    </Tip>
+  </Step>
+</Steps>
+
+## Token packages
+
+Available token packages and their approximate value:
+
+| Package Size | Approximate Reports | Notes |
+|--------------|---------------------|-------|
+| **100 tokens** | ~1 report | Good for trying out Aseed |
+| **500 tokens** | ~5 reports | Small discount available |
+| **1,000 tokens** | ~10 reports | Popular choice for regular users |
+| **2,000 tokens** | ~20 reports | Better value with discount |
+| **5,000 tokens** | ~50 reports | Significant discount |
+| **10,000 tokens** | ~100 reports | Best value with maximum discount |
+
+<Tip>
+The number of reports is approximate. Actual usage depends on interview length and the number of report types you generate.
+</Tip>
+
+## Payment methods
+
+Aseed supports multiple payment providers based on your location and currency:
+
+| Currency | Payment Provider | Available Regions |
+|----------|-----------------|-------------------|
+| **USD** | Stripe | Worldwide |
+| **RUB** | YooKassa | Russia |
+| **KZT** | Tiptop | Kazakhstan |
+
+<Note>
+Payment processing is handled securely by third-party providers. Aseed never stores your payment information.
+</Note>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Buy in bulk for better value">
+    Larger token packages offer better value with volume discounts. If you plan to use Aseed regularly, consider purchasing larger packages to save on costs.
+  </Accordion>
+  
+  <Accordion title="Monitor your balance">
+    Keep an eye on your token balance in the navigation bar. Purchase tokens before you run out to avoid interruptions in your workflow.
+  </Accordion>
+  
+  <Accordion title="Combine with referrals">
+    Earn free tokens through referrals to supplement your purchased tokens. Share your referral link to get 200 tokens for each friend who signs up.
+  </Accordion>
+  
+  <Accordion title="Check estimated costs">
+    Before generating transcripts or reports, check the estimated token cost. This helps you plan your purchases and avoid unexpected token shortages.
+  </Accordion>
+</AccordionGroup>
+
+## Related topics
+
+- [Account overview](/account/overview)
+- [Referral program](/account/referral)
+- [Token usage details](/account/usage)

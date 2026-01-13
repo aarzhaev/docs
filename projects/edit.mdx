@@ -1,0 +1,125 @@
+---
+title: "Edit project"
+description: "Update project name, description, and status to keep your research organized."
+---
+
+## Overview
+Edit project details to reflect changes in your research focus or to organize projects by status. You can update the project name, description, and status (New, Opened, Closed) directly from the project page.
+
+## How to edit a project
+<Steps>
+  <Step title="Open the project">
+    Navigate to the project you want to edit from the Projects page.
+  </Step>
+  <Step title="Edit project name">
+    Click on the project title at the top of the page. The title becomes editable. Type the new name and press Enter or click outside to save. Press Escape to cancel.
+
+    <Frame>
+      <img
+        src="/images/projects-edit-name-light.png"
+        alt="Project page showing editable project name field in edit mode"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-edit-name-dark.png"
+        alt="Project page showing editable project name field in edit mode"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-edit-name-light.png
+      Description: Project detail page showing the project name at the top in editable mode. The name field should appear as an input field or highlighted text, indicating it's being edited. May show cursor or focus state.
+      Context: Step 2 showing how users can edit the project name by clicking on it.
+      Dark variant: images/projects-edit-name-dark.png
+    */}
+  </Step>
+  <Step title="Edit description">
+    Click on the description text (or "No Description" if empty). Type your description and press Enter or click outside to save. Press Escape to cancel.
+
+    <Frame>
+      <img
+        src="/images/projects-edit-description-light.png"
+        alt="Project page showing editable description field in edit mode"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-edit-description-dark.png"
+        alt="Project page showing editable description field in edit mode"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-edit-description-light.png
+      Description: Project detail page showing the description area in editable mode. Should show a textarea or input field where users can type the description. May show placeholder text like "No Description" if empty, or existing description text if already filled.
+      Context: Step 3 showing how users can edit the project description.
+      Dark variant: images/projects-edit-description-dark.png
+    */}
+  </Step>
+  <Step title="Change project status">
+    Click the status badge next to the project title. Select from:
+    - **New**: Recently created projects
+    - **Opened**: Active projects you're working on
+    - **Closed**: Completed or archived projects
+
+    <Frame>
+      <img
+        src="/images/projects-edit-status-light.png"
+        alt="Project page showing status badge and status selection dropdown"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-edit-status-dark.png"
+        alt="Project page showing status badge and status selection dropdown"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-edit-status-light.png
+      Description: Project detail page showing the status badge next to the project title. Should show either the current status badge (New, Opened, or Closed) or a dropdown menu open with all three status options visible. The status badge should be clearly clickable.
+      Context: Step 4 showing how users can change the project status.
+      Dark variant: images/projects-edit-status-dark.png
+    */}
+  </Step>
+</Steps>
+
+## Project statuses
+
+<CardGroup cols={3}>
+  <Card title="New" icon="circle">
+    Recently created projects that haven't been started yet.
+  </Card>
+  <Card title="Opened" icon="play">
+    Active projects where you're currently conducting research or generating reports.
+  </Card>
+  <Card title="Closed" icon="check-circle">
+    Completed projects or projects you're no longer actively working on.
+  </Card>
+</CardGroup>
+
+<Tip>
+Status helps you filter projects in the Projects list. Use it to quickly find active work versus completed research.
+</Tip>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Keep names concise and descriptive">
+    Keep project names concise but descriptive. Update them if the research focus changes significantly.
+  </Accordion>
+  
+  <Accordion title="Use descriptions for context">
+    Use descriptions to add context that isn't obvious from the name, such as research timeline or key stakeholders.
+  </Accordion>
+  
+  <Accordion title="Update status regularly">
+    Update status as you progress through your research workflow to keep your project list organized.
+  </Accordion>
+</AccordionGroup>
+
+## Related topics
+- [Create a project](/projects/create)
+- [Manage projects](/projects/manage)
+- [Delete project](/projects/manage#delete-project)

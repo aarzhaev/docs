@@ -1,28 +1,305 @@
 ---
 title: "Share reports publicly"
-description: "Create a public link for stakeholders."
+description: "Create public links to share records and reports with stakeholders without requiring Aseed accounts."
 ---
 
 ## Overview
-Public links make it easy to share reports with people who do not have Aseed access.
 
-## Step-by-step guide
+Public links allow you to share records and project reports with stakeholders who don't have Aseed access. Anyone with the link can view the content in a read-only mode without needing to sign in or create an account. Public links are perfect for sharing research findings with clients, executives, or team members.
+
+<CardGroup cols={2}>
+  <Card title="No account required" icon="user-check">
+    Stakeholders can view records and reports without creating an Aseed account or signing in.
+  </Card>
+  <Card title="Easy sharing" icon="share">
+    Simply copy and share the link via email, messaging, documentation, or any communication channel.
+  </Card>
+  <Card title="Secure access" icon="lock">
+    Links are unique and can be disabled at any time. You maintain full control over access.
+  </Card>
+  <Card title="Read-only access" icon="eye">
+    Public links provide view-only access—recipients cannot edit, delete, or generate new reports.
+  </Card>
+</CardGroup>
+
+## What can be shared publicly
+
+You can create public links for two types of content:
+
+| Content Type | Description | Public URL Format |
+|--------------|-------------|-------------------|
+| **Single Records** | Individual interview records with all reports (Transcript, Q&A, General, Persona, JTBD, Custom) | `/space/records/public/{recordId}` |
+| **Project Reports** | Aggregated project reports with insights from multiple interviews | `/space/projects/public/{projectId}/reports/{reportId}` |
+
+<Tip>
+Public links work for both single records and project reports. Choose the content type that best fits what you want to share with stakeholders.
+</Tip>
+
+## How to share single records publicly
+
+Single records can be shared publicly, giving access to all reports (Transcript, Q&A, General, Persona, JTBD, Custom) for that specific interview.
+
 <Steps>
-  <Step title="Open the report">
-    Choose the report you want to share.
+  <Step title="Open the record">
+    Navigate to the record you want to share. You can access records from the Records page or from your project's records list.
+
+    <Frame>
+      <img
+        src="/images/sharing-public-record-view-light.png"
+        alt="Record view showing sharing options"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-public-record-view-dark.png"
+        alt="Record view showing sharing options"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-public-record-view-light.png
+      Description: Record view showing the record content with tabs for different reports (Transcript, Q&A, General, Persona, JTBD, Custom). Should show where users can find the sharing/public link settings, typically in a header menu or action button.
+      Context: Step 1 showing the record view where users can access sharing options for single records.
+      Dark variant: images/sharing-public-record-view-dark.png
+    */}
   </Step>
-  <Step title="Enable public sharing">
-    Turn on the public link and review access settings.
+  <Step title="Open sharing modal">
+    Click the **Share** button or find the sharing option in the record menu. This opens the sharing modal with public link options.
+
+    <Frame>
+      <img
+        src="/images/sharing-public-record-modal-light.png"
+        alt="Sharing modal for records showing public link toggle"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-public-record-modal-dark.png"
+        alt="Sharing modal for records showing public link toggle"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-public-record-modal-light.png
+      Description: Sharing modal showing "Share Report" title with "Invite-only" (disabled, "soon" badge) and "Public link" toggle switch. Should show the toggle in the off position initially.
+      Context: Step 2 showing the sharing modal where users can enable public sharing for records.
+      Dark variant: images/sharing-public-record-modal-dark.png
+    */}
   </Step>
-  <Step title="Copy the link">
-    Share the link with stakeholders.
+  <Step title="Enable public link">
+    Toggle the **Public link** switch to enable public sharing. The link is immediately generated and active.
+
+    <Tip>
+      When you enable public sharing, the link is automatically copied to your clipboard, making it easy to share right away.
+    </Tip>
+
+    <Frame>
+      <img
+        src="/images/sharing-public-record-enabled-light.png"
+        alt="Sharing modal with public link enabled showing the link and copy button"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-public-record-enabled-dark.png"
+        alt="Sharing modal with public link enabled showing the link and copy button"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-public-record-enabled-light.png
+      Description: Sharing modal with public link toggle enabled. Should show the public link URL displayed with a shimmer effect, a "Copy Link" button, and an info box below showing what is hidden in the public view (Your name & email, Research objectives, Messages you sent in AI Chat).
+      Context: Step 3 showing the enabled public link with copy functionality.
+      Dark variant: images/sharing-public-record-enabled-dark.png
+    */}
+  </Step>
+  <Step title="Copy and share the link">
+    Click **Copy Link** to copy the public URL to your clipboard, then share it via email, messaging apps, or any communication channel.
+
+    <Note>
+      You can also copy the public link directly from the Records table by clicking the "Public" badge in the Public column.
+    </Note>
+  </Step>
+  <Step title="Disable when needed">
+    To revoke access, open the sharing modal again and toggle off **Public link**. The link will immediately stop working for all recipients.
+
+    <Tip>
+      Disabling a public link is instant and affects everyone who has the link. Use this to maintain control over who can access your research.
+    </Tip>
   </Step>
 </Steps>
 
-## Best practices
+## How to share project reports publicly
+
+Project reports can be shared publicly, giving access to aggregated insights from multiple interviews.
+
+<Steps>
+  <Step title="Open the project report">
+    Navigate to the project report you want to share. You can access project reports from your project's reports section or from the Project Reports page.
+
+    <Frame>
+      <img
+        src="/images/sharing-public-project-report-view-light.png"
+        alt="Project report view showing sharing options"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-public-project-report-view-dark.png"
+        alt="Project report view showing sharing options"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-public-project-report-view-light.png
+      Description: Project report view showing the report content with tabs (Setup, Report). Should show where users can find the sharing/public link settings, typically in a header menu or action button.
+      Context: Step 1 showing the project report view where users can access sharing options.
+      Dark variant: images/sharing-public-project-report-view-dark.png
+    */}
+  </Step>
+  <Step title="Open sharing modal">
+    Click the **Share** button or find the sharing option in the report menu. This opens the sharing modal with public link options.
+
+    <Frame>
+      <img
+        src="/images/sharing-public-project-modal-light.png"
+        alt="Sharing modal for project reports showing public link toggle"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-public-project-modal-dark.png"
+        alt="Sharing modal for project reports showing public link toggle"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-public-project-modal-light.png
+      Description: Sharing modal showing "Share Project Report" title with "Invite-only" (disabled, "soon" badge) and "Public link" toggle switch. Should show the toggle in the off position initially.
+      Context: Step 2 showing the sharing modal where users can enable public sharing for project reports.
+      Dark variant: images/sharing-public-project-modal-dark.png
+    */}
+  </Step>
+  <Step title="Enable public link">
+    Toggle the **Public link** switch to enable public sharing. The system generates a unique link for this project report.
+
+    <Frame>
+      <img
+        src="/images/sharing-public-project-enabled-light.png"
+        alt="Sharing modal with public link enabled showing the link and copy button"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-public-project-enabled-dark.png"
+        alt="Sharing modal with public link enabled showing the link and copy button"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-public-project-enabled-light.png
+      Description: Sharing modal with public link toggle enabled. Should show the public link URL displayed with a shimmer effect, a "Copy Link" button, and an info box below showing what is hidden in the public view (Your name & email, Research objectives, Messages you sent in AI Chat).
+      Context: Step 3 showing the enabled public link with copy functionality for project reports.
+      Dark variant: images/sharing-public-project-enabled-dark.png
+    */}
+  </Step>
+  <Step title="Copy and share the link">
+    Click **Copy Link** to copy the public URL to your clipboard, then share it with stakeholders.
+
+    <Tip>
+      Include context when sharing project reports—explain the research objectives, key findings, or specific sections you want stakeholders to focus on.
+    </Tip>
+  </Step>
+  <Step title="Manage access">
+    You can disable the public link at any time from the sharing modal. When disabled, the link immediately stops working for all recipients.
+
+    <Note>
+      Project owners can still access the report through their regular Aseed account even if the public link is disabled.
+    </Note>
+  </Step>
+</Steps>
+
+## What's hidden in public view
+
+For security and privacy, certain information is automatically hidden from public pages:
+
+| Hidden Information | Description |
+|--------------------|-------------|
+| **Your name & email** | Personal account information is not visible to public viewers |
+| **Research objectives** | Project goals and research context are hidden from public access |
+| **AI Chat messages** | Messages you sent in the AI Chat are not visible on public pages |
+
 <Tip>
-Include a short summary when you send the link so readers know what to focus on.
+All report content (transcripts, insights, recommendations) is visible in public view. Only personal information and research context are hidden.
 </Tip>
+
+## Public page limitations
+
+Public pages have specific limitations to ensure security and prevent unauthorized actions:
+
+| Limitation | Description |
+|------------|-------------|
+| **Read-only access** | Public viewers cannot edit, delete, or modify any content |
+| **No report generation** | Public pages do not support generating new reports or re-running analysis |
+| **No AI Chat access** | The AI Chat feature is not available on public pages |
+| **No export functionality** | Public viewers cannot export reports to DOCX or Markdown |
+| **Setup tab locked** | For project reports, the Setup tab is locked for non-owners on public pages |
+
+<Note>
+Public pages are designed for viewing and sharing research findings, not for active collaboration or editing.
+</Note>
+
+## Quick copy from Records table
+
+You can quickly copy public links directly from the Records table:
+
+1. Navigate to the **Records** page
+2. Find the record you want to share
+3. Look for the **Public** column
+4. If the record is already public, click the **Public** badge to copy the link
+5. If the record is not public, enable public sharing first through the record's sharing modal
+
+<Tip>
+The Public column in the Records table shows a badge for records that are already public. Click the badge to instantly copy the public link.
+</Tip>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Review content before sharing">
+    Review the record or report content before enabling public sharing to ensure it's ready for external stakeholders. Check for any sensitive information, incomplete sections, or incomplete analysis.
+  </Accordion>
+  
+  <Accordion title="Include context when sharing">
+    Include a brief summary or context when you send the link so recipients know what to expect. Provide information about the research objectives, key findings, or specific sections you want stakeholders to focus on.
+  </Accordion>
+  
+  <Accordion title="Disable links when no longer needed">
+    Disable public links when they're no longer needed to maintain security and control access. This is especially important for records and reports containing sensitive research data or confidential information.
+  </Accordion>
+  
+  <Accordion title="Use for stakeholder communication">
+    Public links are ideal for sharing research findings with clients, executives, or team members who don't need full Aseed access but need to review insights and recommendations.
+  </Accordion>
+  
+  <Accordion title="Combine with export for presentations">
+    For presentations or meetings, consider exporting the report to DOCX or Markdown in addition to sharing the public link. This provides offline access and allows for annotation or note-taking.
+  </Accordion>
+  
+  <Accordion title="Monitor link usage">
+    While Aseed doesn't currently provide analytics on public link usage, you can track engagement by asking stakeholders for feedback or monitoring when links are accessed through your own communication channels.
+  </Accordion>
+</AccordionGroup>
+
+## Differences: Single records vs Project reports
+
+| Feature | Single Records | Project Reports |
+|---------|----------------|-----------------|
+| **Public URL** | `/space/records/public/{recordId}` | `/space/projects/public/{projectId}/reports/{reportId}` |
+| **Content shared** | All reports for one interview (Transcript, Q&A, General, Persona, JTBD, Custom) | Aggregated insights from multiple interviews |
+| **Access to tabs** | All report tabs visible | Setup tab locked for non-owners, Report tab visible |
+| **Copy from table** | Yes, via Public badge in Records table | No, only through sharing modal |
+| **Use case** | Share individual interview findings | Share project-level synthesis and insights |
 
 ## Related topics
 - [Export reports](/sharing/export)

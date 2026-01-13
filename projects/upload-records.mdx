@@ -1,0 +1,120 @@
+---
+title: "Upload records"
+description: "Add interview files to your project for transcription and analysis."
+---
+
+## Overview
+Upload interview recordings or transcripts to your project. Records can be audio files, video files, or text files. Once uploaded, you can transcribe recordings and generate reports.
+
+<CardGroup cols={2}>
+  <Card title="Supported formats" icon="file">
+    **Audio**: MP3, WAV, M4A, OGG  
+    **Video**: MP4, MOV, AVI, WebM  
+    **Text**: TXT, DOCX, PDF, MD, SRT, VTT
+  </Card>
+  <Card title="File size limits" icon="hard-drive">
+    **Minimum**: 1KB (text) or 1MB (media)  
+    **Maximum**: 5GB per file
+  </Card>
+</CardGroup>
+
+## How to upload records
+<Steps>
+  <Step title="Open your project">
+    Navigate to the project where you want to add records.
+  </Step>
+  <Step title="Upload records">
+    In the **Project Records** section, click **Upload Records** button. You can:
+    - Click to browse and select files
+    - Drag and drop files into the upload area
+    - Select multiple files at once
+
+    <Frame>
+      <img
+        src="/images/projects-upload-records-button-light.png"
+        alt="Project Records section showing Upload Records button"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-upload-records-button-dark.png"
+        alt="Project Records section showing Upload Records button"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-upload-records-button-light.png
+      Description: Project detail page showing the Project Records section. The "Upload Records" button should be clearly visible. May show the records list (empty or with existing records) and the upload button prominently displayed.
+      Context: Step 2 showing where users can find the Upload Records button to start uploading files.
+      Dark variant: images/projects-upload-records-button-dark.png
+    */}
+  </Step>
+  <Step title="Monitor upload progress">
+    After selecting files, you'll see upload progress for each file. You can:
+    - Cancel individual uploads by clicking the progress indicator
+    - See upload percentage in real-time
+    - Files appear in the records list as they upload
+
+    <Frame>
+      <img
+        src="/images/projects-upload-progress-light.png"
+        alt="Project Records section showing file upload progress indicators"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-upload-progress-dark.png"
+        alt="Project Records section showing file upload progress indicators"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-upload-progress-light.png
+      Description: Project Records section showing files being uploaded with progress indicators. Should display upload progress bars or percentage indicators for each file. May show file names, sizes, and upload status. Progress indicators should be clearly visible showing real-time upload status.
+      Context: Step 3 showing how users can monitor upload progress for their files.
+      Dark variant: images/projects-upload-progress-dark.png
+    */}
+  </Step>
+  <Step title="Wait for completion">
+    Once uploads complete, records appear in the **Uploaded** tab with status "Uploaded". You can then proceed to transcribe or generate reports.
+  </Step>
+</Steps>
+
+## Upload behavior
+
+<CardGroup cols={2}>
+  <Card title="Background upload" icon="clock">
+    Files upload asynchronously so you can continue working.
+  </Card>
+  <Card title="Progress tracking" icon="activity">
+    Real-time upload progress shown for each file.
+  </Card>
+  <Card title="Auto-retry" icon="refresh-cw">
+    Failed uploads can be retried easily.
+  </Card>
+  <Card title="Auto-linking" icon="link">
+    Files are automatically linked to the project.
+  </Card>
+</CardGroup>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Use clear file names">
+    Use clear file names that help you identify respondents later, for example: "Interview_John_Doe_2024-01-15.mp4"
+  </Accordion>
+  
+  <Accordion title="Upload in batches">
+    Upload files in batches rather than one at a time for better efficiency.
+  </Accordion>
+  
+  <Accordion title="Format text files correctly">
+    For text files, ensure they're properly formatted transcripts or notes that Aseed can process.
+  </Accordion>
+</AccordionGroup>
+
+## Related topics
+- [Manage records](/projects/manage-records)
+- [Transcribe interviews](/interviews/transcribe)
+- [Generate single reports](/reports/single)
+- [Batch generation](/projects/batch-generation)

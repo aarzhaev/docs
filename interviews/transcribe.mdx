@@ -1,29 +1,127 @@
 ---
-title: "Transcribe interviews"
-description: "Configure transcription settings and generate transcripts."
+title: "Transcribe records"
+description: "Configure transcription settings including language, participants, and speaker names to generate accurate transcripts."
 ---
 
 ## Overview
-Transcripts are the foundation for all reports. Set the right options before you generate them.
 
-## Step-by-step guide
+Transcripts are the foundation for all reports. Configure transcription settings before generating transcripts to ensure accuracy and proper speaker identification.
+
+## Transcription settings
+
+Before starting transcription, configure these settings in the **Setup** tab of your record:
+
+### Transcript language
+
+Select the language of your interview to improve transcription accuracy. The system supports:
+
+- **Auto detection** - Automatically detects the language
+- **Main languages**: English, Russian, Kazakh, Uzbek, Turkmen, Ukrainian, German, French, Spanish, Indonesian
+- **Other languages**: 50+ additional languages including Chinese, Japanese, Korean, Arabic, and more
+
+<Tip>
+Selecting the correct language significantly improves transcription accuracy, especially for non-English languages.
+</Tip>
+
+### Number of participants
+
+Specify the number of participants in your interview:
+
+- **Automatic detection** - Let the system detect participants automatically
+- **Manual selection** - Choose from 1 to 12 participants
+
+### Participant names
+
+Add known participant names to help the system identify speakers:
+
+1. Enter participant names in the **Participant Name** fields
+2. Add multiple participants using the **Add Participant** button
+3. Remove participants by clicking the X button next to their name
+
+<Tip>
+Providing participant names helps the system correctly identify speakers throughout the transcript, making reports more accurate.
+</Tip>
+
+## How to transcribe records
+
 <Steps>
-  <Step title="Choose transcription options">
-    Select the language and speaker settings that match your interview.
+  <Step title="Open record setup">
+    Navigate to a record and open the **Setup** tab.
+
+    <Frame>
+      <img
+        src="/images/records-setup-tab-light.png"
+        alt="Record detail page showing Setup tab with transcription settings"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/records-setup-tab-dark.png"
+        alt="Record detail page showing Setup tab with transcription settings"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/records-setup-tab-light.png
+      Description: Record detail page showing the Setup tab open. Should display the Transcript section with Activate toggle switch, language dropdown, participant count selector, and participant name fields. The tab should be clearly visible and the transcription settings section should be prominent.
+      Context: Step 1 showing where users can find the Setup tab to configure transcription settings.
+      Dark variant: images/records-setup-tab-dark.png
+    */}
+  </Step>
+  <Step title="Activate transcription">
+    Toggle the **Activate** switch in the Transcript section to enable transcription.
+
+    <Frame>
+      <img
+        src="/images/records-transcription-settings-light.png"
+        alt="Setup tab showing activated transcription with language, participants, and names configured"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/records-transcription-settings-dark.png"
+        alt="Setup tab showing activated transcription with language, participants, and names configured"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/records-transcription-settings-light.png
+      Description: Setup tab showing the Transcript section with Activate toggle switched ON. Should display: language dropdown with selected language (or Auto), participant count selector (Automatic or manual number), and participant name input fields with example names entered. The settings should look configured and ready for transcription.
+      Context: Step 2 showing the transcription settings interface with all options visible and configured.
+      Dark variant: images/records-transcription-settings-dark.png
+    */}
+  </Step>
+  <Step title="Configure language">
+    Select the transcript language from the dropdown menu. Choose from Auto detection or specific languages.
+  </Step>
+  <Step title="Set participant count">
+    Choose the number of participants (1-12) or leave it on automatic detection.
+  </Step>
+  <Step title="Add participant names">
+    Enter known participant names in the **Participant Name** fields to improve speaker identification. Click **Add Participant** to add more names.
   </Step>
   <Step title="Start transcription">
-    Begin transcription for one or more files in Project Records.
-  </Step>
-  <Step title="Wait for completion">
-    Transcripts appear when processing finishes.
+    The system automatically starts transcription when settings are configured. Wait for processing to complete. You can monitor progress in the Status column.
   </Step>
 </Steps>
 
 ## Best practices
-<Tip>
-Use one language per file for the best accuracy.
-</Tip>
+
+<AccordionGroup>
+  <Accordion title="Use one language per file">
+    Use one language per file for the best accuracy. Mixed-language interviews may have reduced accuracy.
+  </Accordion>
+  
+  <Accordion title="Fix speaker names early">
+    Fix speaker names early in the process. Correct speaker identification improves report quality.
+  </Accordion>
+  
+  <Accordion title="Specify number of speakers">
+    For interviews with multiple speakers, specify the exact number of participants to help the system distinguish between them.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
-- [Upload interviews](/interviews/upload)
-- [Review and edit transcripts](/interviews/edit)
+
+- [Records page](/interviews/records) - View and manage all records
+- [Edit transcripts](/interviews/edit) - Review and correct transcripts after generation

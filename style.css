@@ -77,18 +77,133 @@ html.dark .mint-content {
   background-color: inherit;
 }
 
-/* Accordion summary text color */
+/* Accordion summary text color - monochrome */
 summary.relative {
   color: rgba(122, 122, 122, 1) !important;
 }
 
-/* Accordion hover background color - gray */
+/* Accordion hover background color - gray (monochrome) */
 summary.relative:hover {
   background-color: rgba(156, 163, 175, 0.1) !important;
 }
 
-html.dark summary.relative:hover {
-  background-color: rgba(156, 163, 175, 0.1) !important;
+/* AccordionGroup and Accordion - remove all colors, make monochrome */
+/* Remove any primary/orange colors from accordions */
+body [data-mint-component="AccordionGroup"],
+body [data-mint-component="Accordion"],
+body summary.relative,
+body [class*="accordion"],
+body [class*="Accordion"] {
+  color: var(--text-neutral-700) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Remove colored borders, backgrounds, and text from accordions */
+body [data-mint-component="AccordionGroup"] *,
+body [data-mint-component="Accordion"] *,
+body summary.relative * {
+  color: inherit !important;
+}
+
+/* Remove any primary/orange colors from accordion borders and backgrounds */
+body [data-mint-component="AccordionGroup"],
+body [data-mint-component="Accordion"],
+body summary.relative {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: transparent !important;
+}
+
+body [data-mint-component="AccordionGroup"]:hover,
+body [data-mint-component="Accordion"]:hover,
+body summary.relative:hover {
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Dark theme - monochrome accordions with #080808 background (no blue tint) */
+html.dark body [data-mint-component="AccordionGroup"],
+html.dark body [data-mint-component="Accordion"],
+html.dark body summary.relative,
+html.dark body [class*="accordion"],
+html.dark body [class*="Accordion"],
+html.dark body details summary,
+html.dark body details[open] summary {
+  color: var(--text-neutral-400) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: #080808 !important;
+}
+
+html.dark body [data-mint-component="AccordionGroup"]:hover,
+html.dark body [data-mint-component="Accordion"]:hover,
+html.dark body summary.relative:hover,
+html.dark body details summary:hover,
+html.dark body details[open] summary:hover {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  background-color: #080808 !important;
+}
+
+/* Accordion content area - also #080808 */
+html.dark body [data-mint-component="AccordionGroup"] > div,
+html.dark body [data-mint-component="Accordion"] > div,
+html.dark body details[open] > div,
+html.dark body summary.relative + div {
+  background-color: #080808 !important;
+}
+
+/* Remove all primary/orange/green colors from accordion elements - force monochrome */
+body [data-mint-component="AccordionGroup"][class*="primary"],
+body [data-mint-component="Accordion"][class*="primary"],
+body summary.relative[class*="primary"],
+body [data-mint-component="AccordionGroup"][class*="orange"],
+body [data-mint-component="Accordion"][class*="orange"],
+body summary.relative[class*="orange"],
+body [data-mint-component="AccordionGroup"][class*="green"],
+body [data-mint-component="Accordion"][class*="green"],
+body summary.relative[class*="green"] {
+  color: var(--text-neutral-700) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: transparent !important;
+}
+
+html.dark body [data-mint-component="AccordionGroup"][class*="primary"],
+html.dark body [data-mint-component="Accordion"][class*="primary"],
+html.dark body summary.relative[class*="primary"],
+html.dark body [data-mint-component="AccordionGroup"][class*="orange"],
+html.dark body [data-mint-component="Accordion"][class*="orange"],
+html.dark body summary.relative[class*="orange"],
+html.dark body [data-mint-component="AccordionGroup"][class*="green"],
+html.dark body [data-mint-component="Accordion"][class*="green"],
+html.dark body summary.relative[class*="green"] {
+  color: var(--text-neutral-400) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: #080808 !important;
+}
+
+/* Remove colored icons, borders, and backgrounds from accordion content */
+body [data-mint-component="AccordionGroup"] [class*="primary"],
+body [data-mint-component="Accordion"] [class*="primary"],
+body summary.relative [class*="primary"],
+body [data-mint-component="AccordionGroup"] svg[class*="primary"],
+body [data-mint-component="Accordion"] svg[class*="primary"],
+body summary.relative svg[class*="primary"] {
+  color: var(--text-neutral-700) !important;
+  fill: var(--text-neutral-700) !important;
+  stroke: var(--text-neutral-700) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: transparent !important;
+}
+
+html.dark body [data-mint-component="AccordionGroup"] [class*="primary"],
+html.dark body [data-mint-component="Accordion"] [class*="primary"],
+html.dark body summary.relative [class*="primary"],
+html.dark body [data-mint-component="AccordionGroup"] svg[class*="primary"],
+html.dark body [data-mint-component="Accordion"] svg[class*="primary"],
+html.dark body summary.relative svg[class*="primary"] {
+  color: var(--text-neutral-400) !important;
+  fill: var(--text-neutral-400) !important;
+  stroke: var(--text-neutral-400) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  background-color: #080808 !important;
 }
 
 /* Content container background */
@@ -913,4 +1028,235 @@ body .mint-frame img {
   /* Ensure images inside Frame respect dark mode classes */
   max-width: 100%;
   height: auto;
+}
+
+/* Card component border - ensure border on all sides including bottom */
+/* Target Card components by class name with high specificity, exclude table of contents */
+body #content-container a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body #content-container .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body .mint-content a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body .mint-content .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [class*="card-group"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [class*="card-group"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [data-mint-component="CardGroup"] [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [data-mint-component="CardGroup"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [data-mint-component="CardGroup"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]) {
+  border: 1px solid !important;
+  border-bottom: 1px solid !important;
+}
+
+/* Light theme border color for Cards */
+body #content-container a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body #content-container .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body .mint-content a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body .mint-content .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [class*="card-group"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [class*="card-group"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [data-mint-component="CardGroup"] [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [data-mint-component="CardGroup"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+body [data-mint-component="CardGroup"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]) {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dark theme border color for Cards */
+html.dark body #content-container a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+html.dark body #content-container .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+html.dark body .mint-content a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+html.dark body .mint-content .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+html.dark body [class*="card-group"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+html.dark body [class*="card-group"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+html.dark body [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+html.dark body [data-mint-component="CardGroup"] [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+html.dark body [data-mint-component="CardGroup"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
+html.dark body [data-mint-component="CardGroup"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]) {
+  border: 1px solid !important;
+  border-bottom: 1px solid !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Explicitly remove all borders from table of contents and all its children */
+/* This overrides any Card styles that might affect table of contents */
+body #table-of-contents,
+body #table-of-contents *,
+body [id*="table-of-contents"],
+body [id*="table-of-contents"] *,
+body [class*="table-of-contents"],
+body [class*="table-of-contents"] * {
+  border-bottom: none !important;
+  border-bottom-width: 0 !important;
+  border-bottom-style: none !important;
+  border-bottom-color: transparent !important;
+}
+
+html.dark body #table-of-contents,
+html.dark body #table-of-contents *,
+html.dark body [id*="table-of-contents"],
+html.dark body [id*="table-of-contents"] *,
+html.dark body [class*="table-of-contents"],
+html.dark body [class*="table-of-contents"] * {
+  border-bottom: none !important;
+  border-bottom-width: 0 !important;
+  border-bottom-style: none !important;
+  border-bottom-color: transparent !important;
+}
+
+/* Navbar links hover effect - text should become brighter */
+/* Light theme: navbar links should become darker (more visible) on hover */
+body #navbar a[href]:not(.bg-primary-dark):hover,
+body #navbar a[href*="/"]:hover:not(.bg-primary-dark),
+body #navbar a[href*="mailto:"]:hover:not(.bg-primary-dark) {
+  color: var(--text-neutral-900) !important;
+  opacity: 1 !important;
+  transition: color 200ms ease-in-out, opacity 200ms ease-in-out !important;
+}
+
+/* Dark theme: navbar links should become brighter (almost white) on hover */
+html.dark body #navbar a[href]:not(.bg-primary-dark):hover,
+html.dark body #navbar a[href*="/"]:hover:not(.bg-primary-dark),
+html.dark body #navbar a[href*="mailto:"]:hover:not(.bg-primary-dark) {
+  color: rgba(255, 255, 255, 0.95) !important;
+  opacity: 1 !important;
+  transition: color 200ms ease-in-out, opacity 200ms ease-in-out !important;
+}
+
+/* Apply hover color to all child elements in navbar links */
+body #navbar a[href]:not(.bg-primary-dark):hover *,
+body #navbar a[href*="/"]:hover:not(.bg-primary-dark) *,
+body #navbar a[href*="mailto:"]:hover:not(.bg-primary-dark) * {
+  color: var(--text-neutral-900) !important;
+}
+
+html.dark body #navbar a[href]:not(.bg-primary-dark):hover *,
+html.dark body #navbar a[href*="/"]:hover:not(.bg-primary-dark) *,
+html.dark body #navbar a[href*="mailto:"]:hover:not(.bg-primary-dark) * {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Navigation group headers - make text and icons brighter */
+/* Light theme: group headers should be darker/more visible */
+body #sidebar-content summary,
+body #sidebar-content [role="button"][aria-expanded],
+body #navigation-items summary,
+body #navigation-items [role="button"][aria-expanded],
+body #sidebar-content [class*="group-header"],
+body #navigation-items [class*="group-header"],
+body #sidebar-content button[aria-expanded],
+body #navigation-items button[aria-expanded],
+body #sidebar-content [class*="group"] button,
+body #navigation-items [class*="group"] button,
+body #sidebar-content [class*="group"] summary,
+body #navigation-items [class*="group"] summary {
+  color: var(--text-neutral-900) !important;
+  font-weight: 600 !important;
+}
+
+/* Group header icons - light theme */
+body #sidebar-content summary svg,
+body #sidebar-content [role="button"][aria-expanded] svg,
+body #sidebar-content summary [class*="icon"],
+body #sidebar-content [role="button"][aria-expanded] [class*="icon"],
+body #navigation-items summary svg,
+body #navigation-items [role="button"][aria-expanded] svg,
+body #navigation-items summary [class*="icon"],
+body #navigation-items [role="button"][aria-expanded] [class*="icon"],
+body #sidebar-content button[aria-expanded] svg,
+body #navigation-items button[aria-expanded] svg,
+body #sidebar-content [class*="group"] button svg,
+body #navigation-items [class*="group"] button svg,
+body #sidebar-content [class*="group"] summary svg,
+body #navigation-items [class*="group"] summary svg {
+  color: var(--text-neutral-900) !important;
+  fill: var(--text-neutral-900) !important;
+  stroke: var(--text-neutral-900) !important;
+  opacity: 1 !important;
+}
+
+/* Group header icons with mask-image/background-color - light theme */
+body #sidebar-content summary [style*="mask-image"],
+body #sidebar-content summary [class*="bg-gray"],
+body #sidebar-content [role="button"][aria-expanded] [style*="mask-image"],
+body #sidebar-content [role="button"][aria-expanded] [class*="bg-gray"],
+body #navigation-items summary [style*="mask-image"],
+body #navigation-items summary [class*="bg-gray"],
+body #navigation-items [role="button"][aria-expanded] [style*="mask-image"],
+body #navigation-items [role="button"][aria-expanded] [class*="bg-gray"],
+body #sidebar-content button[aria-expanded] [style*="mask-image"],
+body #sidebar-content button[aria-expanded] [class*="bg-gray"],
+body #navigation-items button[aria-expanded] [style*="mask-image"],
+body #navigation-items button[aria-expanded] [class*="bg-gray"],
+body #sidebar-content [class*="group"] button [style*="mask-image"],
+body #sidebar-content [class*="group"] button [class*="bg-gray"],
+body #navigation-items [class*="group"] button [style*="mask-image"],
+body #navigation-items [class*="group"] button [class*="bg-gray"],
+body #sidebar-content [class*="group"] summary [style*="mask-image"],
+body #sidebar-content [class*="group"] summary [class*="bg-gray"],
+body #navigation-items [class*="group"] summary [style*="mask-image"],
+body #navigation-items [class*="group"] summary [class*="bg-gray"] {
+  background-color: var(--text-neutral-900) !important;
+  opacity: 1 !important;
+}
+
+/* Dark theme: group headers should be brighter/more visible */
+html.dark body #sidebar-content summary,
+html.dark body #sidebar-content [role="button"][aria-expanded],
+html.dark body #navigation-items summary,
+html.dark body #navigation-items [role="button"][aria-expanded],
+html.dark body #sidebar-content [class*="group-header"],
+html.dark body #navigation-items [class*="group-header"],
+html.dark body #sidebar-content button[aria-expanded],
+html.dark body #navigation-items button[aria-expanded],
+html.dark body #sidebar-content [class*="group"] button,
+html.dark body #navigation-items [class*="group"] button,
+html.dark body #sidebar-content [class*="group"] summary,
+html.dark body #navigation-items [class*="group"] summary {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-weight: 600 !important;
+}
+
+/* Group header icons - dark theme */
+html.dark body #sidebar-content summary svg,
+html.dark body #sidebar-content [role="button"][aria-expanded] svg,
+html.dark body #sidebar-content summary [class*="icon"],
+html.dark body #sidebar-content [role="button"][aria-expanded] [class*="icon"],
+html.dark body #navigation-items summary svg,
+html.dark body #navigation-items [role="button"][aria-expanded] svg,
+html.dark body #navigation-items summary [class*="icon"],
+html.dark body #navigation-items [role="button"][aria-expanded] [class*="icon"],
+html.dark body #sidebar-content button[aria-expanded] svg,
+html.dark body #navigation-items button[aria-expanded] svg,
+html.dark body #sidebar-content [class*="group"] button svg,
+html.dark body #navigation-items [class*="group"] button svg,
+html.dark body #sidebar-content [class*="group"] summary svg,
+html.dark body #navigation-items [class*="group"] summary svg {
+  color: rgba(255, 255, 255, 0.95) !important;
+  fill: rgba(255, 255, 255, 0.95) !important;
+  stroke: rgba(255, 255, 255, 0.95) !important;
+  opacity: 1 !important;
+}
+
+/* Group header icons with mask-image/background-color - dark theme */
+html.dark body #sidebar-content summary [style*="mask-image"],
+html.dark body #sidebar-content summary [class*="bg-gray"],
+html.dark body #sidebar-content [role="button"][aria-expanded] [style*="mask-image"],
+html.dark body #sidebar-content [role="button"][aria-expanded] [class*="bg-gray"],
+html.dark body #navigation-items summary [style*="mask-image"],
+html.dark body #navigation-items summary [class*="bg-gray"],
+html.dark body #navigation-items [role="button"][aria-expanded] [style*="mask-image"],
+html.dark body #navigation-items [role="button"][aria-expanded] [class*="bg-gray"],
+html.dark body #sidebar-content button[aria-expanded] [style*="mask-image"],
+html.dark body #sidebar-content button[aria-expanded] [class*="bg-gray"],
+html.dark body #navigation-items button[aria-expanded] [style*="mask-image"],
+html.dark body #navigation-items button[aria-expanded] [class*="bg-gray"],
+html.dark body #sidebar-content [class*="group"] button [style*="mask-image"],
+html.dark body #sidebar-content [class*="group"] button [class*="bg-gray"],
+html.dark body #navigation-items [class*="group"] button [style*="mask-image"],
+html.dark body #navigation-items [class*="group"] button [class*="bg-gray"],
+html.dark body #sidebar-content [class*="group"] summary [style*="mask-image"],
+html.dark body #sidebar-content [class*="group"] summary [class*="bg-gray"],
+html.dark body #navigation-items [class*="group"] summary [style*="mask-image"],
+html.dark body #navigation-items [class*="group"] summary [class*="bg-gray"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  opacity: 1 !important;
 }

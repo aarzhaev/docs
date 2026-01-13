@@ -4,27 +4,153 @@ description: "Set up a new project to organize interviews, context, and reports.
 ---
 
 ## Overview
-A project is the container for your research. It groups interviews, context, and reports so you can synthesize results in one place.
+A project is the container for your research. It groups interviews, context, and reports so you can synthesize results in one place. You can create a project with or without files—files can be uploaded during creation or added later.
 
-## Step-by-step guide
+## How to create a project
 <Steps>
-  <Step title="Start a new project">
-    In your workspace, click **Create Project**.
+  <Step title="Open Create Project">
+    In your workspace, click **Create Project** button in the Projects page or use the button in the sidebar.
+
+    <Frame>
+      <img
+        src="/images/projects-create-button-light.png"
+        alt="Projects page with Create Project button visible in header"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-create-button-dark.png"
+        alt="Projects page with Create Project button visible in header"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-create-button-light.png
+      Description: Projects page showing the main view with a grid of project cards. The "Create Project" button should be visible in the header/top area of the page, clearly labeled and accessible.
+      Context: Step 1 - showing where users can find the Create Project button to start creating a new project.
+      Dark variant: images/projects-create-button-dark.png
+    */}
   </Step>
-  <Step title="Name and describe the project">
-    Add a clear project name and a short description of the research goal.
+  <Step title="Enter project name">
+    Type a clear project name (up to 128 characters). The name should help you identify the research project at a glance.
+
+    <Frame>
+      <img
+        src="/images/projects-create-form-light.png"
+        alt="Create Project modal showing project name input field"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-create-form-dark.png"
+        alt="Create Project modal showing project name input field"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-create-form-light.png
+      Description: Create Project modal/dialog open, showing the project name input field at the top. The field should be clearly visible with placeholder text or label indicating where to enter the project name. Optionally show the file upload area below if it's visible in the same view.
+      Context: Step 2 showing the project creation form where users enter the project name.
+      Dark variant: images/projects-create-form-dark.png
+    */}
   </Step>
-  <Step title="Add files now or later">
-    You can upload interviews during creation or in Project Records after the project is created.
+  <Step title="Add files (optional)">
+    You can add interview files during project creation:
+    - Click **Add files to the Project** or drag and drop files
+    - Remove files before creating if needed
+
+    <Frame>
+      <img
+        src="/images/projects-create-upload-area-light.png"
+        alt="Create Project modal showing file upload area with drag and drop zone"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-create-upload-area-dark.png"
+        alt="Create Project modal showing file upload area with drag and drop zone"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-create-upload-area-light.png
+      Description: Create Project modal showing the file upload area. Should display the drag-and-drop zone with "Add files to the Project" button or similar upload interface. May show example file types or upload instructions.
+      Context: Step 3 showing where users can add files during project creation.
+      Dark variant: images/projects-create-upload-area-dark.png
+    */}
+    
+    <Expandable title="Supported formats and file size limits">
+      **Supported formats:**
+      - **Audio**: MP3, WAV, M4A, OGG
+      - **Video**: MP4, MOV, AVI, WebM
+      - **Text**: TXT, DOCX, PDF, MD, SRT, VTT
+      
+      **File size limits:**
+      - **Minimum**: 1KB for text files, 1MB for audio/video files
+      - **Maximum**: 5GB per file
+    </Expandable>
+  </Step>
+  <Step title="Create the project">
+    Click **Create Project**. The project is created immediately, and if you added files, they will upload in the background. You'll be redirected to the project page where you can see upload progress.
+
+    <Frame>
+      <img
+        src="/images/projects-created-page-light.png"
+        alt="Project page after creation showing project header and upload progress"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-created-page-dark.png"
+        alt="Project page after creation showing project header and upload progress"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-created-page-light.png
+      Description: Project detail page immediately after creation. Should show the project header with project name, and if files were added, show the Project Records section with upload progress indicators for files being uploaded. The page should look organized and ready for the user to continue working.
+      Context: Step 4 showing the result after project creation, where users land after clicking Create Project.
+      Dark variant: images/projects-created-page-dark.png
+    */}
   </Step>
 </Steps>
 
+## What happens after creation
+
+<CardGroup cols={2}>
+  <Card title="Project created" icon="check">
+    The project appears in your Projects list immediately.
+  </Card>
+  <Card title="Files uploading" icon="cloud-upload">
+    If you added files, they upload asynchronously in the background.
+  </Card>
+  <Card title="Monitor progress" icon="eye">
+    You can see upload progress on the project page.
+  </Card>
+  <Card title="Auto-linked" icon="link">
+    Files are automatically linked to the project.
+  </Card>
+</CardGroup>
+
 ## Best practices
-<Tip>
-Use a naming pattern like "Product - Study - Month" so projects are easy to scan.
-</Tip>
+
+<AccordionGroup>
+  <Accordion title="Use consistent naming patterns">
+    Use a naming pattern like "Product - Study - Month" so projects are easy to scan in the list.
+  </Accordion>
+  
+  <Accordion title="Create project structure first">
+    You can create a project without files and add them later. This is useful when you want to set up the project structure first.
+  </Accordion>
+  
+  <Accordion title="Retry failed uploads">
+    If file upload fails, you'll see a notification. You can upload the files again from the project page.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
+- [Edit project details](/projects/edit)
 - [Manage projects](/projects/manage)
+- [Upload records to project](/projects/upload-records)
 - [Add research context](/projects/context)
-- [Upload interviews](/interviews/upload)
+- [Create project reports](/reports/project)

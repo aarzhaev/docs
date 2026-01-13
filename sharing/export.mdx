@@ -1,28 +1,383 @@
 ---
 title: "Export reports"
-description: "Download reports for presentations or archives."
+description: "Download reports in DOCX or Markdown formats for presentations, editing, or archives."
 ---
 
 ## Overview
-Exporting lets you share reports in formats suitable for presentations and documentation.
 
-## Step-by-step guide
+Exporting lets you download reports in formats suitable for presentations, documentation, and offline access. You can export both single reports (per-interview) and project reports (aggregated) in DOCX or Markdown formats.
+
+<CardGroup cols={2}>
+  <Card title="DOCX format" icon="file-text">
+    Microsoft Word format with full formatting, ideal for presentations and documentation.
+  </Card>
+  <Card title="Markdown format" icon="code">
+    Plain text format with Markdown syntax, perfect for version control and editing.
+  </Card>
+  <Card title="Offline access" icon="download">
+    Download reports for viewing and sharing without internet connection.
+  </Card>
+  <Card title="Archive and backup" icon="archive">
+    Keep local copies of reports for archival or backup purposes.
+  </Card>
+</CardGroup>
+
+## Export formats
+
+Aseed supports two export formats:
+
+| Format | Description | Best for |
+|--------|-------------|----------|
+| **DOCX** | Microsoft Word document format with full formatting | Presentations, documentation, sharing with stakeholders who need to edit or annotate |
+| **Markdown (.md)** | Plain text format with Markdown syntax | Version control, editing in text editors, integration with documentation systems |
+
+## How to export single reports
+
+Single reports can be exported to DOCX format. Each report type (Transcript, Q&A, General, Persona, JTBD, Custom) can be exported individually.
+
 <Steps>
-  <Step title="Open the report">
-    Select the report you want to export.
+  <Step title="Open the record">
+    Navigate to the record containing the report you want to export. Open the record from the Records page or from your project's records list.
+
+    <Frame>
+      <img
+        src="/images/sharing-export-record-view-light.png"
+        alt="Record view showing report tabs and export button"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-export-record-view-dark.png"
+        alt="Record view showing report tabs and export button"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-export-record-view-light.png
+      Description: Record view showing the report tabs (Transcript, Q&A, General, Persona, JTBD, Custom) and the Export button in the navigation menu or header. Should show where users can find the export option.
+      Context: Step 1 showing the record view where users can access export options for single reports.
+      Dark variant: images/sharing-export-record-view-dark.png
+    */}
   </Step>
-  <Step title="Choose export">
-    Click **Export** and pick the format you need.
+  <Step title="Open export menu">
+    Click the **Export** button in the navigation menu or header. This opens a dropdown menu showing all available report types for export.
+
+    <Frame>
+      <img
+        src="/images/sharing-export-single-dropdown-light.png"
+        alt="Export dropdown showing available report types for DOCX export"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-export-single-dropdown-dark.png"
+        alt="Export dropdown showing available report types for DOCX export"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-export-single-dropdown-light.png
+      Description: Export dropdown menu showing "EXPORT TO .DOCX" label and list of available report types: Transcript, Q&A Report, General Report, Persona Report, JTBD Report, Custom Report. Some items may show "Not available" if the report hasn't been generated yet. Should show the dropdown clearly opened.
+      Context: Step 2 showing the export dropdown where users can select which report type to export.
+      Dark variant: images/sharing-export-single-dropdown-dark.png
+    */}
+  </Step>
+  <Step title="Select report type">
+    Choose the report type you want to export from the dropdown menu. Only report types that have been generated are available for export (others show "Not available").
+
+    <Tip>
+      You can export multiple report types separately. Each export creates a separate DOCX file with the report type name in the filename.
+    </Tip>
+  </Step>
+  <Step title="Wait for export">
+    The system converts the report to DOCX format. This may take a few seconds depending on the report size. You'll see a loading indicator during the process.
+
+    <Note>
+      Large reports (over 8 MB) cannot be exported. If you encounter this limitation, consider exporting smaller sections or using Markdown format for project reports.
+    </Note>
   </Step>
   <Step title="Download the file">
-    Save the export locally or share it with your team.
+    Once the export is complete, the DOCX file automatically downloads to your default download location. The filename includes the record title and report type (e.g., "Interview_John_Doe - Q&A Report.docx").
+
+    <Frame>
+      <img
+        src="/images/sharing-export-single-success-light.png"
+        alt="Success notification showing exported file download"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-export-single-success-dark.png"
+        alt="Success notification showing exported file download"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-export-single-success-light.png
+      Description: Success toast notification showing "Документ успешно экспортирован" (Document successfully exported) with filename description. May show the download in progress or completed.
+      Context: Step 5 showing successful export completion.
+      Dark variant: images/sharing-export-single-success-dark.png
+    */}
   </Step>
 </Steps>
 
-## Best practices
+## How to export project reports
+
+Project reports can be exported to both DOCX and Markdown formats. Project reports include aggregated insights from multiple interviews.
+
+<Steps>
+  <Step title="Open the project report">
+    Navigate to the project report you want to export. You can access project reports from your project's reports section or from the Project Reports page.
+
+    <Frame>
+      <img
+        src="/images/sharing-export-project-report-view-light.png"
+        alt="Project report view showing export button"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-export-project-report-view-dark.png"
+        alt="Project report view showing export button"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-export-project-report-view-light.png
+      Description: Project report view showing the report content and Export button in the navigation menu or header. Should show where users can find the export option for project reports.
+      Context: Step 1 showing the project report view where users can access export options.
+      Dark variant: images/sharing-export-project-report-view-dark.png
+    */}
+  </Step>
+  <Step title="Open export menu">
+    Click the **Export** button in the navigation menu or header. This opens a dropdown menu with two options: "Export to .Docx" and "Export to .md".
+
+    <Frame>
+      <img
+        src="/images/sharing-export-project-dropdown-light.png"
+        alt="Export dropdown showing DOCX and Markdown options for project reports"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-export-project-dropdown-dark.png"
+        alt="Export dropdown showing DOCX and Markdown options for project reports"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-export-project-dropdown-light.png
+      Description: Export dropdown menu showing "EXPORT PROJECT REPORT" label and two options: "Export to .Docx" (with FileDown icon) and "Export to .md" (with FileText icon). Should show the dropdown clearly opened.
+      Context: Step 2 showing the export dropdown where users can choose between DOCX and Markdown formats.
+      Dark variant: images/sharing-export-project-dropdown-dark.png
+    */}
+  </Step>
+  <Step title="Choose export format">
+    Select your preferred format:
+    - **Export to .Docx** - For presentations and documentation with full formatting
+    - **Export to .md** - For version control, editing, or integration with documentation systems
+
+    <Tip>
+      DOCX format includes a header with project name, report title, and export date. Markdown format is plain text and can be easily edited in any text editor.
+    </Tip>
+  </Step>
+  <Step title="Wait for export">
+    The system processes the export:
+    - **DOCX**: Converts Markdown content to Word format (may take longer for large reports)
+    - **Markdown**: Generates plain text file (usually instant)
+
+    <Note>
+      DOCX export has a 60-second timeout. Very large project reports may exceed this limit. In such cases, use Markdown export instead.
+    </Note>
+  </Step>
+  <Step title="Download the file">
+    Once the export is complete, the file automatically downloads. The filename includes the project name, report title, and export date (e.g., "Product_Research - Synthesis_Report - 2024-01-15.docx").
+
+    <Frame>
+      <img
+        src="/images/sharing-export-project-success-light.png"
+        alt="Success notification showing exported project report file download"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/sharing-export-project-success-dark.png"
+        alt="Success notification showing exported project report file download"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/sharing-export-project-success-light.png
+      Description: Success toast notification showing "Export completed" with filename description. May show the download in progress or completed for a project report.
+      Context: Step 5 showing successful export completion for project reports.
+      Dark variant: images/sharing-export-project-success-dark.png
+    */}
+  </Step>
+</Steps>
+
+## Export format details
+
+### DOCX format
+
+DOCX (Microsoft Word) format preserves all formatting, structure, and styling from your reports. This format is ideal for:
+
+- **Presentations** - Share with stakeholders in a professional format
+- **Documentation** - Include in project documentation
+- **Editing** - Recipients can edit and annotate the document
+- **Printing** - Professional print-ready format
+
+**Features:**
+- Full Markdown formatting preserved (headings, lists, tables, links)
+- Support for admonition blocks (info, warning, tip, note)
+- Automatic header with report title and metadata
+- Language-specific formatting (locale support)
+
+**File naming:**
+- Single reports: `[Record Title] - [Report Type].docx`
+- Project reports: `[Project Name] - [Report Title] - [Date].docx`
+
+### Markdown format
+
+Markdown (.md) format provides plain text with Markdown syntax. This format is ideal for:
+
+- **Version control** - Track changes in Git repositories
+- **Editing** - Edit in any text editor or Markdown editor
+- **Integration** - Use with documentation systems (MkDocs, Docusaurus, etc.)
+- **Lightweight** - Small file size, fast export
+
+**Features:**
+- Plain text format with Markdown syntax
+- Includes header with project name, report title, and export date
+- Compatible with all Markdown processors
+- Easy to convert to other formats
+
+**File naming:**
+- Project reports: `[Project Name] - [Report Title] - [Date].md`
+
 <Tip>
-Export after final edits so the shared version stays consistent.
+Markdown export is currently available only for project reports. Single reports can be exported to DOCX format.
 </Tip>
+
+## Export limitations and errors
+
+### File size limits
+
+- **Maximum file size**: 8 MB (Markdown content before conversion)
+- **Timeout**: 60 seconds for DOCX conversion
+- If your report exceeds these limits, you'll see an error message
+
+### Common errors
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| **File too large (413)** | Report content exceeds 8 MB limit | Export project reports in Markdown format, or split into smaller sections |
+| **Conversion timeout (504)** | Export took longer than 60 seconds | Use Markdown format for very large reports, or contact support |
+| **Report not found (404)** | Report hasn't been generated yet | Generate the report first before exporting |
+| **Conversion error (500)** | Markdown format issue | Check the report content for formatting errors, regenerate the report |
+
+<Tip>
+If you encounter size or timeout issues with DOCX export, try exporting to Markdown format instead. Markdown exports are faster and have no size limitations.
+</Tip>
+
+## Supported report types
+
+### Single reports export
+
+All single report types can be exported to DOCX format. Each report type is exported as a separate file.
+
+| Report Type | Export Format | Notes |
+|-------------|---------------|-------|
+| **Transcript** | DOCX | Raw transcript with speaker labels and utterance numbers |
+| **Q&A Report** | DOCX | Question-answer pairs with citations |
+| **General Report** | DOCX | Complete profile with insights and recommendations |
+| **Persona Report** | DOCX | Persona profile with motivations and pain points |
+| **JTBD Report** | DOCX | Jobs-to-be-Done framework analysis |
+| **Custom Report** | DOCX | Custom analysis based on your prompt |
+
+<Tip>
+Only generated reports can be exported. If a report type shows "Not available" in the export menu, generate that report type first.
+</Tip>
+
+### Project reports export
+
+Project reports can be exported to both DOCX and Markdown formats. Project reports include aggregated insights from multiple interviews.
+
+| Format | Available | Use Case |
+|--------|-----------|----------|
+| **DOCX** | Yes | Presentations, documentation, editing |
+| **Markdown** | Yes | Version control, text editing, integration |
+
+## DOCX format features
+
+### Admonition block support
+
+DOCX export supports custom admonition blocks in Markdown, which are converted to styled callout boxes in Word documents:
+
+- **Info blocks** (`ad-info`) - Blue information boxes
+- **Warning blocks** (`ad-warning`) - Yellow warning boxes  
+- **Tip blocks** (`ad-tip`) - Green tip boxes
+- **Note blocks** (`ad-note`) - Gray note boxes
+
+These blocks appear in your reports and are preserved in the exported DOCX file with appropriate styling.
+
+### Language and locale
+
+DOCX exports support language-specific formatting:
+
+- **Default locale**: ru-RU (Russian)
+- **Locale setting**: Automatically uses the report's language setting
+- **Formatting**: Language-specific date, number, and text formatting
+
+### File structure
+
+Exported DOCX files include:
+
+- **Report header** - Report type and title
+- **Full content** - All sections, formatting, and citations preserved
+- **Metadata** - Record/project information embedded in document properties
+
+## Differences: Single vs Project reports
+
+| Feature | Single Reports | Project Reports |
+|---------|----------------|-----------------|
+| **Available formats** | DOCX only | DOCX and Markdown |
+| **Export location** | Record page, Export dropdown | Project report page, Export dropdown |
+| **File naming** | `[Record Title] - [Report Type].docx` | `[Project] - [Report] - [Date].docx` or `.md` |
+| **Content** | Single interview analysis | Aggregated insights from multiple interviews |
+| **Header** | Report type and record title | Project name, report title, and export date |
+| **Size limits** | 8 MB, 60 sec timeout | 8 MB, 60 sec timeout (DOCX only) |
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Export after final edits">
+    Export after final edits so the shared version stays consistent. Make sure all edits, corrections, and updates are complete before exporting to avoid sharing outdated versions.
+  </Accordion>
+  
+  <Accordion title="Choose the right format">
+    Select the export format based on how the report will be used. DOCX is best for presentations and documents that need editing, while Markdown is ideal for version control and integration with documentation systems.
+  </Accordion>
+  
+  <Accordion title="Use descriptive file names">
+    Exported files automatically include the record/project name, report type/title, and date. The system generates descriptive filenames, but you can rename them after download if needed.
+  </Accordion>
+  
+  <Accordion title="Export for archival">
+    Export important reports for archival purposes. This ensures you have local copies even if reports are deleted or modified in Aseed. Consider exporting both DOCX and Markdown versions for maximum flexibility.
+  </Accordion>
+  
+  <Accordion title="Combine with public sharing">
+    For maximum flexibility, consider both exporting and creating a public link. Exports provide offline access, while public links allow real-time viewing of the latest version.
+  </Accordion>
+  
+  <Accordion title="Handle large reports">
+    For very large project reports, use Markdown export to avoid size and timeout limitations. Markdown files are smaller and export faster than DOCX.
+  </Accordion>
+  
+  <Accordion title="Export multiple report types">
+    For single reports, you can export each report type separately. This allows you to share specific analysis types (e.g., just Q&A or just Persona) without exporting everything.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
 - [Share reports publicly](/sharing/public)

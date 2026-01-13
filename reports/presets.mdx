@@ -4,26 +4,127 @@ description: "Start with a predefined report structure."
 ---
 
 ## Overview
-Presets are ready-made report structures that help you generate consistent results quickly.
 
-## Step-by-step guide
+Presets are ready-made report structures for project reports that help you generate consistent results quickly. Use presets when creating aggregated reports that synthesize insights from multiple interviews.
+
+<CardGroup cols={2}>
+  <Card title="Ready-made structures" icon="layout">
+    Predefined report structures designed for common research scenarios and frameworks.
+  </Card>
+  <Card title="Quick generation" icon="zap">
+    Start generating reports immediately without building custom structures.
+  </Card>
+  <Card title="Consistency" icon="repeat">
+    Use the same structure across multiple projects for consistent analysis.
+  </Card>
+  <Card title="Best practices built-in" icon="check-circle">
+    Structures incorporate proven methodologies and best practices.
+  </Card>
+</CardGroup>
+
+## How to use report presets
+
 <Steps>
-  <Step title="Open the report setup">
-    In the project report flow, open the **Presets** tab.
+  <Step title="Open Project Reports">
+    In your project, navigate to the **Project Reports** section and click **Create Report**.
+  </Step>
+  <Step title="Open the Presets tab">
+    In the report setup interface, click on the **Presets** tab to view available preset structures.
+
+    <Frame>
+      <img
+        src="/images/reports-presets-tab-light.png"
+        alt="Presets tab showing available preset structures"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-presets-tab-dark.png"
+        alt="Presets tab showing available preset structures"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-presets-tab-light.png
+      Description: Presets tab interface showing a list of available preset structures (e.g., "General Synthesis", "JTBD Analysis", "Persona Development", etc.). Each preset should show its name and possibly a brief description. Should show the tab clearly selected.
+      Context: Step 2 showing where users can see and select from available presets.
+      Dark variant: images/reports-presets-tab-dark.png
+    */}
   </Step>
   <Step title="Select a preset">
-    Choose the template that matches your research goal.
+    Browse the available presets and choose the one that matches your research goal. Each preset includes a predefined structure with sections and prompts optimized for specific analysis types.
+
+    <Tip>
+      Hover over or click on a preset to see its structure and included sections before selecting.
+    </Tip>
   </Step>
-  <Step title="Save and generate">
-    Save the structure and generate the report.
+  <Step title="Review the structure">
+    After selecting a preset, review the structure to ensure it matches your needs. You can see all sections and prompts that will be used in the synthesis.
+  </Step>
+  <Step title="Select records">
+    Choose which interview records to include in the synthesis. Select interviews that are relevant to the preset's analysis type.
+  </Step>
+  <Step title="Generate the report">
+    Click **Generate** to create the project report using the selected preset structure. The system will synthesize insights from all selected interviews according to the preset's methodology.
+
+    <Frame>
+      <img
+        src="/images/reports-presets-generation-light.png"
+        alt="Project report generation using a preset structure"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-presets-generation-dark.png"
+        alt="Project report generation using a preset structure"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-presets-generation-light.png
+      Description: Project report generation interface showing a preset selected, records chosen, and the Generate button. May show the preset structure preview or generation progress.
+      Context: Step 6 showing the final step of generating a report with a preset.
+      Dark variant: images/reports-presets-generation-dark.png
+    */}
   </Step>
 </Steps>
 
-## Best practices
+## Available presets
+
+Common preset types include:
+
+- **General Synthesis** - Comprehensive analysis combining multiple report types
+- **JTBD Analysis** - Jobs-to-be-Done framework synthesis across interviews
+- **Persona Development** - Persona development from aggregated insights
+- **Theme Analysis** - Pattern and theme identification across interviews
+- **Pain Point Synthesis** - Aggregated pain point and frustration analysis
+
 <Tip>
-Use presets when you want speed and consistency across projects.
+The exact presets available may vary. Check the Presets tab in your project to see all available options.
 </Tip>
 
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Use presets for speed and consistency">
+    Use presets when you want speed and consistency across projects. They're ideal for teams that need standardized analysis approaches.
+  </Accordion>
+  
+  <Accordion title="Match preset to research goal">
+    Choose a preset that aligns with your research goals. Each preset is optimized for specific types of analysis and frameworks.
+  </Accordion>
+  
+  <Accordion title="Review preset structure first">
+    Before generating, review the preset's structure to ensure it includes all sections you need. You can always switch to custom if a preset doesn't fit.
+  </Accordion>
+  
+  <Accordion title="Use same preset across related projects">
+    For consistency, use the same preset structure across related research projects to enable easier comparison and synthesis.
+  </Accordion>
+</AccordionGroup>
+
 ## Related topics
-- [Build a custom report](/reports/custom)
 - [Create a project report](/reports/project)
+- [Build a custom report](/reports/custom)
+- [Generate single reports](/reports/single) - For individual interview analysis
+- [Report types](/reports/report-types) - Understand what each single report type contains

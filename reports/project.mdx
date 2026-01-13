@@ -1,30 +1,154 @@
 ---
 title: "Create a project report"
-description: "Synthesize insights across interviews into one report."
+description: "Synthesize insights across multiple interviews into one aggregated report."
 ---
 
 ## Overview
-Project reports combine insights from multiple interviews into a single narrative.
 
-## Step-by-step guide
+Project reports are synthesized reports that aggregate insights from multiple interview records within your project. Unlike single reports that analyze one interview in isolation, project reports combine data from all selected records to identify patterns, themes, and insights across your entire research project.
+
+<CardGroup cols={2}>
+  <Card title="Multi-interview synthesis" icon="layers">
+    Combines insights from multiple interviews to reveal patterns and themes across your entire research project.
+  </Card>
+  <Card title="Pattern identification" icon="search">
+    Identifies common themes, pain points, and opportunities across all selected interviews.
+  </Card>
+  <Card title="Preset or custom structure" icon="settings">
+    Use predefined presets or build your own custom structure to organize the synthesis.
+  </Card>
+  <Card title="Research-wide insights" icon="target">
+    Provides a comprehensive view of your research project, not just individual interviews.
+  </Card>
+</CardGroup>
+
+## How to create a project report
+
 <Steps>
+  <Step title="Open your project">
+    Navigate to the project containing the interviews you want to synthesize.
+  </Step>
   <Step title="Open Project Reports">
-    In your project, go to the **Project Reports** section.
+    In your project, scroll to the **Project Reports** section and click **Create Report** or **Generate Report**.
+
+    <Frame>
+      <img
+        src="/images/reports-project-section-light.png"
+        alt="Project Reports section showing Create Report button"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-project-section-dark.png"
+        alt="Project Reports section showing Create Report button"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-project-section-light.png
+      Description: Project Reports section in a project view, showing the "Create Report" or "Generate Report" button. Should show the section clearly with any existing project reports listed above or below.
+      Context: Step 2 showing where users can find the Project Reports section to start creating a project report.
+      Dark variant: images/reports-project-section-dark.png
+    */}
   </Step>
   <Step title="Choose structure">
-    Select a preset or build a custom structure before generating.
+    Select a preset from the **Presets** tab or build a custom structure in the **Custom** tab. Presets provide ready-made structures, while custom lets you define your own sections and prompts.
+
+    <Frame>
+      <img
+        src="/images/reports-project-setup-light.png"
+        alt="Project report setup interface showing Presets and Custom tabs"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-project-setup-dark.png"
+        alt="Project report setup interface showing Presets and Custom tabs"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-project-setup-light.png
+      Description: Project report setup interface showing the Presets and Custom tabs. Should show available presets or the custom structure builder interface. May show record selection, language options, and other configuration options.
+      Context: Step 3 showing the interface where users choose between presets and custom structures.
+      Dark variant: images/reports-project-setup-dark.png
+    */}
+  </Step>
+  <Step title="Select records">
+    Choose which interview records to include in the synthesis. You can select all records or specific ones that share common themes or research questions.
+  </Step>
+  <Step title="Configure options">
+    Set language options and review any additional settings. If using a custom structure, ensure all sections and prompts are configured correctly.
   </Step>
   <Step title="Generate the report">
-    Confirm the context and start generation.
+    Click **Generate** to start the synthesis process. The system will analyze all selected interviews and create an aggregated report based on your chosen structure.
+
+    <Frame>
+      <img
+        src="/images/reports-project-generation-light.png"
+        alt="Project report generation in progress"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-project-generation-dark.png"
+        alt="Project report generation in progress"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-project-generation-light.png
+      Description: Project report generation interface showing progress or completion status. May show a progress indicator, token estimate, or the generated report preview.
+      Context: Step 6 showing the generation process or result.
+      Dark variant: images/reports-project-generation-dark.png
+    */}
   </Step>
 </Steps>
 
+## Key differences
+
+<CardGroup cols={2}>
+  <Card title="Single Reports" icon="file-text">
+    - Analyze a single interview record in isolation
+    - Focus on one respondent's insights
+    - Generated per interview from transcripts
+    - Foundation for project synthesis
+  </Card>
+  <Card title="Project Reports" icon="layers">
+    - Synthesize data from multiple records
+    - Reveal patterns and themes across your entire project
+    - Combine insights from all selected interviews
+    - Use presets or custom structures for organization
+  </Card>
+</CardGroup>
+
 ## Best practices
-<Tip>
-Review single reports first so the synthesis is clean.
-</Tip>
+
+<AccordionGroup>
+  <Accordion title="Review single reports first">
+    Review single reports first so the synthesis is clean. Project reports work best when you've already generated and reviewed individual reports for the interviews you want to include. This ensures accurate transcripts and quality insights before aggregation.
+  </Accordion>
+  
+  <Accordion title="Select related interviews">
+    Select interviews that share common themes or research questions. Project reports are most valuable when synthesizing related interviews that address similar research goals or user segments.
+  </Accordion>
+  
+  <Accordion title="Use presets for consistency">
+    Start with presets when you want speed and consistency across projects. Presets provide proven structures that work well for common research scenarios.
+  </Accordion>
+  
+  <Accordion title="Build custom structures for specific needs">
+    Use custom structures when you have specific research questions or frameworks that aren't covered by presets. Custom structures give you full control over the synthesis approach.
+  </Accordion>
+  
+  <Accordion title="Include sufficient context">
+    Ensure your project has Research Goals and Interview Guide defined—they're automatically included in the synthesis context for better results.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
+- [Report types](/reports/report-types) - Understand single report types used in project synthesis
 - [Use report presets](/reports/presets)
 - [Build a custom report](/reports/custom)
 - [Edit and regenerate reports](/reports/edit)
+- [Generate single reports](/reports/single) - Create individual reports before synthesis

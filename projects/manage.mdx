@@ -1,29 +1,175 @@
 ---
 title: "Manage projects"
-description: "Update project details and keep your research organized."
+description: "Organize and navigate your projects using filters, search, and status management."
 ---
 
 ## Overview
-Project details help teammates understand the scope and purpose of your research.
+The Projects page helps you organize and find your research projects. Use filters, search, and status management to keep track of active and completed work.
 
-## Step-by-step guide
+## How to manage projects
 <Steps>
-  <Step title="Open the project">
-    From the workspace, open the project you want to update.
+  <Step title="View all projects">
+    Navigate to **Projects** in the sidebar. You'll see all your projects in a grid layout with cards showing project name, status, record count, and project reports count.
+
+    <Frame>
+      <img
+        src="/images/projects-list-grid-light.png"
+        alt="Projects page showing grid layout of project cards with names, statuses, and counts"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-list-grid-dark.png"
+        alt="Projects page showing grid layout of project cards with names, statuses, and counts"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-list-grid-light.png
+      Description: Projects page showing a grid layout of project cards. Each card should display: project name/title, status badge (New/Opened/Closed), number of records, and number of project reports. Should show at least 3-4 project cards to demonstrate the grid layout. The "Create Project" button should be visible in the header.
+      Context: Step 1 showing the main Projects page with all projects displayed in a grid.
+      Dark variant: images/projects-list-grid-dark.png
+    */}
   </Step>
-  <Step title="Update project details">
-    Edit the project name or description to reflect the current research focus.
+  <Step title="Filter by status">
+    Use the tabs at the top to filter projects:
+    - **All Projects**: Shows every project regardless of status
+    - **New**: Projects with "New" status
+    - **Opened**: Active projects with "Opened" status
+    - **Closed**: Completed projects with "Closed" status
+
+    <Frame>
+      <img
+        src="/images/projects-status-filters-light.png"
+        alt="Projects page showing status filter tabs at the top"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-status-filters-dark.png"
+        alt="Projects page showing status filter tabs at the top"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-status-filters-light.png
+      Description: Projects page showing the status filter tabs at the top of the page. Should clearly show tabs labeled "All Projects", "New", "Opened", and "Closed". One tab should be highlighted/active to show the current filter. The tabs should be clearly clickable.
+      Context: Step 2 showing how users can filter projects by status using the tabs.
+      Dark variant: images/projects-status-filters-dark.png
+    */}
   </Step>
-  <Step title="Review your changes">
-    Make sure the description stays concise and goal-focused.
+  <Step title="Open a project">
+    Click on any project card to open the project detail page where you can view records, reports, and context.
+  </Step>
+  <Step title="Create a new project">
+    Click **Create Project** button in the header to start a new research project.
+  </Step>
+</Steps>
+
+## Project cards
+Each project card displays:
+- Project title
+- Status badge (New, Opened, or Closed)
+- Number of records (interviews) in the project
+- Number of project reports generated
+
+<CardGroup cols={3}>
+  <Card title="New" icon="circle">
+    Recently created projects that haven't been started yet.
+  </Card>
+  <Card title="Opened" icon="play">
+    Active projects you're currently working on.
+  </Card>
+  <Card title="Closed" icon="check-circle">
+    Completed or archived projects.
+  </Card>
+</CardGroup>
+
+<AccordionGroup>
+  <Accordion title="Admin features">
+    If you're an admin, you'll see an additional **User Projects** section below your own projects:
+    - Search projects by owner email or project name
+    - View all projects across all users
+    - Use the same status filters (All, New, Opened, Closed)
+  </Accordion>
+</AccordionGroup>
+
+## Delete project
+<Warning>
+Deleting a project permanently removes it. Your records (interviews) remain safe and accessible, but they will no longer be organized under this project.
+</Warning>
+
+<Steps>
+  <Step title="Open project settings">
+    In the project detail page, click the settings icon (⚙️) in the header.
+  </Step>
+  <Step title="Delete project">
+    Select **Delete Project** from the dropdown menu.
+
+    <Frame>
+      <img
+        src="/images/projects-delete-menu-light.png"
+        alt="Project page showing settings dropdown menu with Delete Project option"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-delete-menu-dark.png"
+        alt="Project page showing settings dropdown menu with Delete Project option"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-delete-menu-light.png
+      Description: Project detail page showing the settings icon clicked/open, displaying a dropdown menu. The menu should show "Delete Project" option clearly visible. May show other menu options as well.
+      Context: Step 2 of delete process showing the settings menu with Delete Project option.
+      Dark variant: images/projects-delete-menu-dark.png
+    */}
+  </Step>
+  <Step title="Confirm deletion">
+    Review the warning message and click **Delete Project** to confirm. The project will be permanently deleted, and you'll be redirected to the Projects page.
+
+    <Frame>
+      <img
+        src="/images/projects-delete-confirm-light.png"
+        alt="Delete Project confirmation dialog with warning message"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-delete-confirm-dark.png"
+        alt="Delete Project confirmation dialog with warning message"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-delete-confirm-light.png
+      Description: Modal/dialog showing the delete confirmation. Should display a warning message about permanent deletion, the project name being deleted, and confirmation buttons (Cancel and Delete Project). The warning should be clearly visible and the Delete button should be prominent (possibly red/destructive style).
+      Context: Step 3 of delete process showing the confirmation dialog before deleting.
+      Dark variant: images/projects-delete-confirm-dark.png
+    */}
   </Step>
 </Steps>
 
 ## Best practices
-<Tip>
-Keep the description to one or two sentences so it stays easy to scan.
-</Tip>
+
+<AccordionGroup>
+  <Accordion title="Use status filters">
+    Use status filters to quickly find active projects versus completed research.
+  </Accordion>
+  
+  <Accordion title="Maintain consistent naming">
+    Keep project names consistent with a naming pattern to make scanning easier.
+  </Accordion>
+  
+  <Accordion title="Update statuses regularly">
+    Regularly update project statuses to keep your workspace organized as projects progress.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
 - [Create a project](/projects/create)
+- [Edit project](/projects/edit)
+- [Upload records](/projects/upload-records)
 - [Add research context](/projects/context)
+- [Create project reports](/reports/project)

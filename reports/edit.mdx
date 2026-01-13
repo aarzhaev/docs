@@ -1,29 +1,151 @@
 ---
 title: "Edit and regenerate reports"
-description: "Refine report output after review."
+description: "Refine report output after review and regenerate with updated context."
 ---
 
 ## Overview
-Editing reports helps you improve clarity, correct issues, and align output with stakeholder expectations.
 
-## Step-by-step guide
+Editing reports helps you improve clarity, correct issues, and align output with stakeholder expectations. You can edit both single reports (for individual interviews) and project reports (aggregated insights from multiple interviews). After making changes, regenerate the report to apply updates.
+
+<CardGroup cols={2}>
+  <Card title="Edit single reports" icon="file-text">
+    Refine individual interview reports to improve clarity and accuracy.
+  </Card>
+  <Card title="Edit project reports" icon="stack">
+    Adjust aggregated reports that synthesize insights across multiple interviews.
+  </Card>
+  <Card title="Regenerate with updates" icon="repeat">
+    After editing, regenerate reports to reflect changes in context or transcripts.
+  </Card>
+  <Card title="Improve quality" icon="star">
+    Edit reports to better align with stakeholder expectations and research goals.
+  </Card>
+</CardGroup>
+
+## How to edit reports
+
 <Steps>
   <Step title="Open the report">
-    Select the single report or project report you want to edit.
+    Navigate to the report you want to edit:
+    - For single reports: Open the record detail page and go to the **Reports** tab
+    - For project reports: Open your project and go to the **Project Reports** section
+
+    <Frame>
+      <img
+        src="/images/reports-edit-single-view-light.png"
+        alt="Record detail page showing Reports tab with generated reports list"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-edit-single-view-dark.png"
+        alt="Record detail page showing Reports tab with generated reports list"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-edit-single-view-light.png
+      Description: Record detail page showing the Reports tab open. Should display a list of generated reports (Transcript, Q&A, General, etc.) with options to view, edit, or regenerate each report. The interface should show report status and actions available.
+      Context: Step 1 showing where users can find and access reports for editing.
+      Dark variant: images/reports-edit-single-view-dark.png
+    */}
+  </Step>
+  <Step title="Select report to edit">
+    Click on the report you want to edit, or use the edit/actions menu if available.
   </Step>
   <Step title="Make updates">
-    Adjust content or structure based on your review.
+    Adjust content or structure based on your review. You may be able to:
+    - Edit report text directly
+    - Modify report structure
+    - Update research context or prompts
+    - Adjust report settings
+
+    <Frame>
+      <img
+        src="/images/reports-edit-interface-light.png"
+        alt="Report editor showing editable report content"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-edit-interface-dark.png"
+        alt="Report editor showing editable report content"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-edit-interface-light.png
+      Description: Report editor interface showing the report content in editable mode. Should display the report text/content with editing capabilities. May show formatting options, save buttons, or edit controls. The interface should look like a text editor or rich text editor.
+      Context: Step 3 showing the report editing interface where users can make changes.
+      Dark variant: images/reports-edit-interface-dark.png
+    */}
+  </Step>
+  <Step title="Save changes">
+    Save your edits. Changes are applied immediately to the report.
   </Step>
   <Step title="Regenerate if needed">
-    Regenerate the report to reflect the changes.
+    If you've updated research context, transcripts, or prompts, regenerate the report to reflect these changes. Click **Regenerate** to create a new version with updated information.
+
+    <Frame>
+      <img
+        src="/images/reports-regenerate-button-light.png"
+        alt="Report view showing Regenerate button or option"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/reports-regenerate-button-dark.png"
+        alt="Report view showing Regenerate button or option"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/reports-regenerate-button-light.png
+      Description: Report view showing the Regenerate button or option. Should display the report with a clearly visible Regenerate button, possibly in a header or action menu. May show a confirmation dialog or settings before regeneration.
+      Context: Step 5 showing where users can regenerate reports after making changes.
+      Dark variant: images/reports-regenerate-button-dark.png
+    */}
   </Step>
 </Steps>
 
+## Editing tips
+
+### Before regenerating
+
+- **Update transcripts** - Fix any errors in the transcript first
+- **Review research context** - Ensure Research Goals and Interview Guide are current
+- **Check prompts** - For Custom reports, refine your prompt if needed
+- **Verify settings** - Confirm language and other generation settings
+
+### After editing
+
+- **Review changes** - Check that edits improve clarity and accuracy
+- **Validate against transcript** - Ensure edited content aligns with source material
+- **Share for feedback** - Get stakeholder input before finalizing
+
 ## Best practices
-<Tip>
-Update research context or transcripts before regenerating for better results.
-</Tip>
+
+<AccordionGroup>
+  <Accordion title="Update context before regenerating">
+    Update research context or transcripts before regenerating for better results. The system uses the latest context when regenerating.
+  </Accordion>
+  
+  <Accordion title="Edit reports for clarity">
+    Edit reports to improve clarity and remove any inaccuracies. Manual edits can significantly improve report quality.
+  </Accordion>
+  
+  <Accordion title="Regenerate after updates">
+    Regenerate reports after updating transcripts or research context to ensure reports reflect the latest information.
+  </Accordion>
+  
+  <Accordion title="Refine Custom report prompts">
+    For Custom reports, refine your prompt based on initial results, then regenerate for better alignment with your research questions.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
-- [Generate single reports](/reports/single)
-- [Create a project report](/reports/project)
+
+- [Report types](/reports/report-types) - Understand report structure and methodology
+- [Generate single reports](/reports/single) - Create reports for individual interviews
+- [Create a project report](/reports/project) - Generate aggregated reports from multiple interviews
+- [Review and edit transcripts](/interviews/edit) - Ensure transcript accuracy before generating reports

@@ -9,46 +9,109 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Getting started",
-        "pages": [
-          "what-is-aseed",
-          "index",
-          "quickstart"
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting started",
+            "icon": "rocket",
+            "pages": [
+              "overview",
+              "what-is-aseed",
+              "workflow",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Projects",
+            "icon": "folder",
+            "pages": [
+              "projects/create",
+              "projects/edit",
+              "projects/manage",
+              "projects/upload-records",
+              "projects/manage-records",
+              "projects/batch-generation",
+              "projects/context"
+            ]
+          },
+          {
+            "group": "Records",
+            "icon": "radio",
+            "pages": [
+              "interviews/records",
+              "interviews/upload",
+              "interviews/text-transcripts",
+              "interviews/transcribe",
+              "interviews/edit",
+              "interviews/guide-builder"
+            ]
+          },
+          {
+            "group": "Single Reports",
+            "icon": "file-text",
+            "pages": [
+              "reports/single",
+              "reports/edit"
+            ]
+          },
+          {
+            "group": "Report types",
+            "icon": "clipboard-list",
+            "pages": [
+              "reports/report-types",
+              "reports/report-types/transcript",
+              "reports/report-types/qa",
+              "reports/report-types/general",
+              "reports/report-types/jtbd",
+              "reports/report-types/persona",
+              "reports/report-types/custom"
+            ]
+          },
+          {
+            "group": "Project Reports",
+            "icon": "folder-tree",
+            "pages": [
+              "reports/project",
+              "reports/presets",
+              "reports/custom"
+            ]
+          },
+          {
+            "group": "Sharing",
+            "icon": "share",
+            "pages": [
+              "sharing/public",
+              "sharing/export"
+            ]
+          },
+          {
+            "group": "Account & Billing",
+            "icon": "wallet",
+            "pages": [
+              "account/overview",
+              "account/purchase",
+              "account/referral",
+              "account/usage"
+            ]
+          }
         ]
       },
       {
-        "group": "Projects",
-        "pages": [
-          "projects/create",
-          "projects/manage",
-          "projects/context"
-        ]
-      },
-      {
-        "group": "Interviews",
-        "pages": [
-          "interviews/upload",
-          "interviews/transcribe",
-          "interviews/edit"
-        ]
-      },
-      {
-        "group": "Reports",
-        "pages": [
-          "reports/single",
-          "reports/project",
-          "reports/presets",
-          "reports/custom",
-          "reports/edit"
-        ]
-      },
-      {
-        "group": "Sharing",
-        "pages": [
-          "sharing/public",
-          "sharing/export"
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "API Reference",
+            "icon": "code",
+            "pages": [
+              "api-reference/introduction",
+              "api-reference/endpoint/create",
+              "api-reference/endpoint/get",
+              "api-reference/endpoint/delete",
+              "api-reference/endpoint/webhook"
+            ]
+          }
         ]
       }
     ]

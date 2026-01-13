@@ -1,0 +1,224 @@
+---
+title: "Token usage"
+description: "Understand how tokens are calculated and charged for transcription and report generation."
+---
+
+## Overview
+
+Tokens are consumed when you generate transcripts and reports. The system calculates costs based on interview length, file type, and the number of report types you select. You can see estimated costs before generating, and actual usage may vary slightly.
+
+<CardGroup cols={2}>
+  <Card title="Transparent pricing" icon="eye">
+    See estimated token costs before generating transcripts or reports.
+  </Card>
+  <Card title="Pay per use" icon="credit-card">
+    Tokens are only charged when you actually generate transcripts or reports.
+  </Card>
+  <Card title="No hidden fees" icon="shield-check">
+    The estimated cost shown is what you'll be charged. Actual usage may vary slightly based on complexity.
+  </Card>
+  <Card title="Batch calculations" icon="calculator">
+    For batch operations, see the total cost upfront before confirming.
+  </Card>
+</CardGroup>
+
+## How token costs are calculated
+
+### Transcription costs
+
+Tokens are charged for generating transcripts from audio or video files. The cost is calculated based on:
+
+- **Interview length**: Longer interviews require more tokens
+- **File duration**: The system processes the entire audio/video file
+- **File type**: Different file formats may have varying processing requirements
+
+<Tip>
+Text transcripts uploaded directly don't require transcription tokens since they're already in text format and don't need processing.
+</Tip>
+
+### Report generation costs
+
+Tokens are charged for generating analysis reports. The cost is calculated based on:
+
+- **Base report cost**: Each report type has a base cost
+- **Number of report types**: The base cost is multiplied by the number of report types you select
+- **Interview complexity**: More complex interviews with longer transcripts may require additional processing
+
+<Note>
+If you select multiple report types (e.g., Q&A, General, and Persona), the cost is calculated as: base cost × number of report types.
+</Note>
+
+### Example calculations
+
+**Single record with one report type:**
+- Transcription: Based on interview length
+- Q&A Report: Base report cost
+- **Total**: Transcription cost + Report cost
+
+**Single record with multiple report types:**
+- Transcription: Based on interview length
+- Q&A Report: Base report cost
+- General Report: Base report cost
+- Persona Report: Base report cost
+- **Total**: Transcription cost + (Base report cost × 3)
+
+**Batch generation:**
+- Each record that needs transcription: Individual transcription cost
+- Each report type for each record: Base report cost × number of types
+- **Total**: Sum of all transcription and report costs
+
+## Viewing estimated costs
+
+### Before generation
+
+Before generating transcripts or reports, you can see the estimated token cost:
+
+1. **Single record**: The token summary shows estimated costs when you select transcript or report options
+2. **Batch operations**: The batch generation modal shows total estimated costs for all selected records
+
+<Frame>
+  <img
+    src="/images/account-usage-estimate-light.png"
+    alt="Token summary showing estimated token cost before generation"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/account-usage-estimate-dark.png"
+    alt="Token summary showing estimated token cost before generation"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/account-usage-estimate-light.png
+  Description: Record setup page showing token summary component with "Estimated tokens: X" text, breakdown showing transcript and report costs, and "Generate Report" button. Should show the calculation clearly.
+  Context: Showing how estimated costs are displayed before generation.
+  Dark variant: images/account-usage-estimate-dark.png
+*/}
+
+### Insufficient tokens
+
+If you don't have enough tokens, the system will:
+
+1. **Show required amount**: Display how many tokens you need
+2. **Offer to purchase**: Provide a button to buy tokens
+3. **Block generation**: Prevent generation until you have enough tokens
+
+<Frame>
+  <img
+    src="/images/account-usage-insufficient-light.png"
+    alt="Token summary showing insufficient tokens warning"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/account-usage-insufficient-dark.png"
+    alt="Token summary showing insufficient tokens warning"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/account-usage-insufficient-light.png
+  Description: Token summary showing "Need X more tokens - Purchase tokens to continue" warning in orange text, with "Buy Tokens" button instead of "Generate Report" button.
+  Context: Showing what happens when tokens are insufficient.
+  Dark variant: images/account-usage-insufficient-dark.png
+*/}
+
+## When tokens are charged
+
+Tokens are deducted from your balance:
+
+- **After successful generation**: Tokens are charged only after transcripts or reports are successfully generated
+- **Not for failed operations**: If generation fails, tokens are not charged
+- **Not for viewing**: Viewing existing transcripts or reports doesn't consume tokens
+- **Not for editing**: Editing transcripts or reports doesn't consume additional tokens
+
+<Tip>
+Tokens are only charged for successful operations. If something goes wrong during generation, you won't be charged.
+</Tip>
+
+## Regeneration costs
+
+If you regenerate a transcript or report:
+
+- **Full cost applies**: You're charged the same amount as generating it for the first time
+- **Warning shown**: The system warns you if you're about to regenerate something that already exists
+- **Consider carefully**: Regenerating typically produces the same result, so consider if it's necessary
+
+<Note>
+Regenerating transcripts or reports usually produces identical results. Only regenerate if you've made significant changes to the source material or settings.
+</Note>
+
+## Batch generation costs
+
+When generating reports for multiple records:
+
+- **Total shown upfront**: The batch generation modal shows the total estimated cost
+- **Per-record breakdown**: You can see which records will be processed and their individual costs
+- **All or nothing**: Tokens are charged for all successfully generated items
+
+<Frame>
+  <img
+    src="/images/account-usage-batch-light.png"
+    alt="Batch generation modal showing total token cost for multiple records"
+    className="block dark:hidden"
+      />
+  <img
+    src="/images/account-usage-batch-dark.png"
+    alt="Batch generation modal showing total token cost for multiple records"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/account-usage-batch-light.png
+  Description: Batch generation modal showing: list of records to process, breakdown of transcripts to generate (X), new reports to generate (Y), reports to regenerate (Z), and total tokens required. Should show the calculation clearly.
+  Context: Showing batch generation cost calculation.
+  Dark variant: images/account-usage-batch-dark.png
+*/}
+
+## Factors affecting token usage
+
+Several factors can influence how many tokens are used:
+
+| Factor | Impact | Notes |
+|--------|--------|-------|
+| **Interview length** | Higher for longer interviews | Longer audio/video files require more processing |
+| **File type** | Varies by format | Different formats may have different processing requirements |
+| **Number of report types** | Linear increase | Each additional report type adds to the cost |
+| **Interview complexity** | Slight variation | More complex content may require additional processing |
+| **Text transcripts** | No transcription cost | Uploaded text files skip transcription, saving tokens |
+
+<Tip>
+The estimated cost shown before generation is usually accurate. Actual usage may vary slightly based on content complexity, but the difference is typically minimal.
+</Tip>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Check costs before generating">
+    Always review the estimated token cost before generating transcripts or reports. This helps you plan your token usage and avoid unexpected charges.
+  </Accordion>
+  
+  <Accordion title="Generate only what you need">
+    Select only the report types you actually need. Each additional report type increases the cost, so be selective.
+  </Accordion>
+  
+  <Accordion title="Use text transcripts when possible">
+    If you have text transcripts, upload them directly instead of audio/video files. This saves transcription tokens.
+  </Accordion>
+  
+  <Accordion title="Avoid unnecessary regeneration">
+    Regenerating transcripts or reports typically produces the same result. Only regenerate if you've made significant changes or need to update settings.
+  </Accordion>
+  
+  <Accordion title="Plan batch operations">
+    For batch generation, review the total cost before confirming. This helps ensure you have enough tokens for all operations.
+  </Accordion>
+</AccordionGroup>
+
+## Related topics
+
+- [Account overview](/account/overview)
+- [Purchase tokens](/account/purchase)
+- [Referral program](/account/referral)

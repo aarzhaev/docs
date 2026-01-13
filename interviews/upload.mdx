@@ -1,34 +1,121 @@
 ---
-title: "Upload interviews"
-description: "Add audio, video, or text files to your project."
+title: "Upload records"
+description: "Upload audio, video, or text files to create new interview records."
 ---
 
 ## Overview
-Upload interviews to create transcripts and generate reports.
 
-## Supported formats
-- Audio: MP3, WAV, M4A, OGG
-- Video: MP4, MOV, AVI, WebM
-- Text: TXT, DOCX, PDF, MD, SRT, VTT
+Upload interview recordings or text transcripts to create new records. Records can be audio files, video files, or text files. Once uploaded, you can transcribe recordings and generate reports.
 
-## Step-by-step guide
+<CardGroup cols={2}>
+  <Card title="Supported formats" icon="file">
+    **Audio**: MP3, WAV, M4A, FLAC, OGG, and other common audio formats  
+    **Video**: MP4, MOV, AVI, MKV, and other common video formats  
+    **Text**: TXT, MD, SRT, VTT (for text transcripts)
+  </Card>
+  <Card title="File size limits" icon="hard-drive">
+    **Minimum**: 1MB for media files, 1KB for text files  
+    **Maximum**: 5GB per file
+  </Card>
+</CardGroup>
+
+## How to upload records
+
 <Steps>
-  <Step title="Open Project Records">
-    Go to your project and find the **Project Records** section.
+  <Step title="Open Records page">
+    Navigate to **Records** in the sidebar to view all your records.
   </Step>
-  <Step title="Upload files">
-    Click **Upload Records** and select one or more files.
+  <Step title="Click Upload Files">
+    Click **Upload Files** button in the top-right corner of the Records page.
+
+    <Frame>
+      <img
+        src="/images/records-upload-button-light.png"
+        alt="Records page showing Upload Files button in the top-right corner"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/records-upload-button-dark.png"
+        alt="Records page showing Upload Files button in the top-right corner"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/records-upload-button-light.png
+      Description: Records page showing the main records table view. The "Upload Files" button should be clearly visible in the top-right corner of the page. The records table should be visible below showing existing records if any.
+      Context: Step 2 showing where users can find the Upload Files button to start uploading new records.
+      Dark variant: images/records-upload-button-dark.png
+    */}
   </Step>
-  <Step title="Confirm upload">
-    Wait for the files to appear in the records list.
+  <Step title="Select files">
+    Select one or multiple files from your computer. You can select multiple files at once.
+  </Step>
+  <Step title="Monitor upload">
+    Files start uploading immediately. You can see upload progress in the Status column of the records table.
+
+    <Frame>
+      <img
+        src="/images/records-upload-progress-light.png"
+        alt="Records table showing file upload progress indicators"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/records-upload-progress-dark.png"
+        alt="Records table showing file upload progress indicators"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/records-upload-progress-light.png
+      Description: Records table showing files being uploaded with progress indicators. Should display upload progress bars or percentage indicators for each file. May show file names, sizes, and upload status. Progress indicators should be clearly visible showing real-time upload status.
+      Context: Step 4 showing how users can monitor upload progress for their files.
+      Dark variant: images/records-upload-progress-dark.png
+    */}
+  </Step>
+  <Step title="Wait for processing">
+    Once uploaded, files are automatically processed for transcription. The status will change from "Uploaded" to "Processing" to "Finished".
   </Step>
 </Steps>
 
+## Upload behavior
+
+<CardGroup cols={2}>
+  <Card title="Background upload" icon="clock">
+    Files upload asynchronously so you can continue working.
+  </Card>
+  <Card title="Progress tracking" icon="activity">
+    Real-time upload progress shown for each file.
+  </Card>
+  <Card title="Auto-retry" icon="refresh-cw">
+    Failed uploads can be retried easily.
+  </Card>
+  <Card title="Auto-linking" icon="link">
+    Files are automatically linked to the project if uploaded from a project page.
+  </Card>
+</CardGroup>
+
 ## Best practices
-<Tip>
-Use clear file names so you can quickly identify respondents later.
-</Tip>
+
+<AccordionGroup>
+  <Accordion title="Use clear file names">
+    Use clear file names that help you identify respondents later, for example: "Interview_John_Doe_2024-01-15.mp4"
+  </Accordion>
+  
+  <Accordion title="Upload multiple files at once">
+    You can upload multiple files at once. The system will process them sequentially.
+  </Accordion>
+  
+  <Accordion title="Format text files correctly">
+    For text files, ensure they're properly formatted transcripts or notes that Aseed can process. See [Upload text transcripts](/interviews/text-transcripts) for detailed information about text file formats and parsers.
+  </Accordion>
+</AccordionGroup>
 
 ## Related topics
-- [Transcribe interviews](/interviews/transcribe)
-- [Review and edit transcripts](/interviews/edit)
+
+- [Records page](/interviews/records) - View and manage all records
+- [Upload text transcripts](/interviews/text-transcripts) - Upload and parse text transcripts with detailed parser information
+- [Upload records to project](/projects/upload-records) - Upload files directly to a project
+- [Transcribe interviews](/interviews/transcribe) - Configure transcription settings
+- [Generate single reports](/reports/single) - Create reports from uploaded records

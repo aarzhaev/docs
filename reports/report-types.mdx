@@ -1,0 +1,74 @@
+---
+title: "Overview"
+description: "Understand what each report type contains, its methodology, and structure."
+---
+
+Aseed generates different types of reports, each designed for specific analysis needs. Each report type uses a different methodology and structure to extract insights from interview transcripts. Understanding what each report contains helps you choose the right type for your research goals.
+
+## Report types
+
+- **[Transcript](/reports/report-types/transcript)** - Raw text conversion from audio/video files.
+
+- **[Q&amp;A](/reports/report-types/qa)** - Structured question-answer pairs with citations.
+
+- **[General](/reports/report-types/general)** - Comprehensive profile, insights, and recommendations.
+
+- **[JTBD](/reports/report-types/jtbd)** - Jobs-to-be-Done framework analysis.
+
+- **[Persona](/reports/report-types/persona)** - Deep persona profile with motivations and pain points.
+
+- **[Custom](/reports/report-types/custom)** - Tailored analysis based on your specific prompt.
+
+## Choosing the right report type
+
+<CardGroup cols={2}>
+  <Card title="Start with Transcript + Q&amp;A" icon="play">
+    Best for: Quick understanding of what was discussed. Foundation for all other reports.
+  </Card>
+  <Card title="Use General for comprehensive analysis" icon="bar-chart">
+    Best for: Complete respondent profile with insights and recommendations.
+  </Card>
+  <Card title="Choose JTBD for product strategy" icon="circle-dot">
+    Best for: Understanding fundamental user jobs and innovation opportunities.
+  </Card>
+  <Card title="Select Persona for user understanding" icon="user">
+    Best for: Deep persona development and behavioral insights.
+  </Card>
+  <Card title="Use Custom for specific questions" icon="sparkles">
+    Best for: Answering targeted research questions or applying custom frameworks.
+  </Card>
+</CardGroup>
+
+## Report generation process
+
+All reports (except Transcript) follow a two-stage process:
+
+1. **Draft generation**: Creates initial report from transcript
+2. **Refinement**: Validates against transcript, corrects errors, enhances insights
+
+This ensures accuracy and quality in the final output.
+
+<Frame>
+  <img
+    src="/images/report-types-selection-light.png"
+    alt="Report type selection interface showing all available report types"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/report-types-selection-dark.png"
+    alt="Report type selection interface showing all available report types"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/report-types-selection-light.png
+  Description: Interface showing the selection of report types (Transcript, Q&A, General, JTBD, Persona, Custom) with checkboxes or radio buttons. Should show the modal or page where users choose which report types to generate. May include descriptions or icons for each type.
+  Context: Illustrating where users select report types when generating reports.
+  Dark variant: images/report-types-selection-dark.png
+*/}
+
+## Related topics
+- [Generate single reports](/reports/single)
+- [Edit reports](/reports/edit)
+- [Create project reports](/reports/project)

@@ -1,0 +1,75 @@
+---
+title: "Q&A Report"
+description: "Structured question-answer pairs organized by topic with citations."
+---
+
+## What it is
+A **Q&A Report** extracts and organizes all questions and answers from the interview into a structured format. It preserves the conversational flow while making it easy to find specific information.
+
+## Methodology
+- **Extraction-based**: Pulls questions and answers directly from the transcript
+- **Topic grouping**: Organizes Q&A pairs into logical topics or sections
+- **Citation tracking**: Every question and answer includes utterance numbers for verification
+- **Light editing**: Removes fillers and transcription errors while preserving meaning
+
+## Structure
+
+The Q&A report follows this structure:
+
+| Section | Description |
+|---------|-------------|
+| **Main summary** | Key insights at the report level |
+| **Topic sections** | Organized by topic with subsection summaries |
+| **Question and answer pairs** | Question and answer pairs with utterance citations |
+| **First-person answers** | Respondent's answers preserved in their voice |
+
+<Frame>
+  <img
+    src="/images/report-qa-example-light.png"
+    alt="Example Q&A report showing topic sections with question-answer pairs and citations"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/report-qa-example-dark.png"
+    alt="Example Q&A report showing topic sections with question-answer pairs and citations"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/report-qa-example-light.png
+  Description: Example of a Q&A report showing: main summary section, topic sections (e.g., "Product Usage", "Pain Points"), question-answer pairs with utterance citations (e.g., [15], [16]), and first-person answers. Should demonstrate the structured format and citation system.
+  Context: Illustrating the structure and format of a Q&A report.
+  Dark variant: images/report-qa-example-dark.png
+*/}
+
+## What you get
+
+<CardGroup cols={2}>
+  <Card title="Complete Q&A pairs" icon="check">
+    Every question and answer from the interview
+  </Card>
+  <Card title="Topic organization" icon="folder-tree">
+    Related questions grouped together
+  </Card>
+  <Card title="Utterance citations" icon="hash">
+    Each question and answer linked to transcript line numbers
+  </Card>
+  <Card title="Summary blocks" icon="file-text">
+    Key insights at the report and subsection level
+  </Card>
+  <Card title="First-person answers" icon="user">
+    Respondent's answers preserved in their voice
+  </Card>
+</CardGroup>
+
+## Best for
+- **Quick reference**: Find specific questions and answers quickly
+- **Interview review**: See the complete conversation structure
+- **Quote extraction**: Easy access to respondent quotes with citations
+- **Topic analysis**: Understand what was discussed in each area
+
+## Related topics
+- [Generate single reports](/reports/single)
+- [Transcript Report](/reports/report-types/transcript)
+- [General Report](/reports/report-types/general)

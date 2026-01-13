@@ -1,0 +1,203 @@
+---
+title: "Upload text transcripts"
+description: "Upload pre-written transcripts as text files and select the right parser for your format."
+---
+
+## Overview
+
+You can upload pre-written transcripts as text files. This is useful when you have transcripts from other tools or want to import existing transcripts. The system supports multiple text formats and provides parsers to extract speaker names, timestamps, and text from your transcript.
+
+## Supported text formats
+
+- **.txt** - Plain text files
+- **.md** - Markdown files
+- **.srt** - Subtitle files
+- **.vtt** - WebVTT subtitle files
+
+## Text transcript parsers
+
+When uploading a text file, you need to select a parser that matches your transcript format. The system supports 6 different parsers, each designed for specific transcript formats.
+
+### Choosing the right parser
+
+The parser extracts speaker names, timestamps, and text from your transcript. Select the parser that matches your source format:
+
+| Parser | Best for | Key features |
+|--------|----------|-------------|
+| **Speaker Text** | Google Meet, Otter.ai, Trint, Tactiq | No timestamps, speaker names optional |
+| **Tab-Separated** | Zoom .txt export, Kontur Talk | Timestamps and speakers separated by tabs |
+| **Plain Text** | Freeform transcripts | Simple line breaks, no structure |
+| **Subtitles** | Zoom, YouTube, MS Teams, .srt, .vtt | Numbered blocks with time ranges |
+| **Aseed** | Aseed exported transcripts | Aseed markdown format |
+| **Datetime** | Custom datetime formats | Full date-time timestamps |
+
+### Parser examples
+
+Compare parser formats side-by-side:
+
+<CodeGroup>
+
+```text Speaker Text
+Alice: Hello Bob! Are you ready for the meeting?
+Bob: Yes, Alice. I have prepared the report.
+```
+
+```text Tab-Separated
+00:00:02	Alice	Hello Bob! Are you ready for the meeting?
+00:00:07	Bob	Yes, Alice. I have prepared the report.
+```
+
+```text Plain Text
+Hello Bob! Are you ready for the meeting?
+
+Yes, Alice. I have prepared the report.
+```
+
+```text Subtitles
+1
+00:00:02,000 --> 00:00:05,000
+Alice: Hello Bob! Are you ready for the meeting?
+
+2
+00:00:05,000 --> 00:00:09,000
+Bob: Yes, Alice. I have prepared the report.
+```
+
+```markdown Aseed
+### Transcript
+
+`1`
+**Alice (Interviewer):**
+Hello Bob! Are you ready for the meeting?
+
+`2`
+**Bob:**
+Yes, Alice. I have prepared the report.
+```
+
+```text Datetime
+<2025-12-19 09:32:43> Alice: Hello Bob! Are you ready for the meeting?
+<2025-12-19 09:32:45> Bob: Yes, Alice. I have prepared the report.
+```
+
+</CodeGroup>
+
+### Parser details
+
+**Speaker Text** — Extracts speaker names from text before colons. Calculates timestamps based on word count. Best for Google Meet, Otter.ai, Trint, Tactiq.
+
+**Tab-Separated** — Parses timestamps (HH:MM:SS) and speaker names from tab-separated values. Uses provided timestamps or calculates from sequence. Best for Zoom .txt export, Kontur Talk.
+
+**Plain Text** — Treats each non-empty line as a separate utterance. Assigns "Unknown" as speaker. Calculates timestamps from word count. Best for freeform transcripts from other sources.
+
+**Subtitles** — Extracts timestamps from subtitle time ranges (HH:MM:SS,mmm --> HH:MM:SS,mmm). Optionally extracts speaker names if present in text. Best for Zoom, YouTube, MS Teams, .srt, .vtt files.
+
+**Aseed** — Parses Aseed markdown format with utterance numbers in backticks and speaker names in bold. Calculates timestamps from word count. Best for transcripts exported from Aseed interviews.
+
+**Datetime** — Extracts full datetime timestamps and converts them to relative times. Uses time differences between entries for accurate duration calculation. Best for custom formats with full datetime timestamps.
+
+## How to upload text transcripts
+
+<Steps>
+  <Step title="Click Upload Files">
+    Click **Upload Files** button on the Records page.
+  </Step>
+  <Step title="Select text file">
+    Select a text file (.txt, .md, .srt, or .vtt) from your computer. The **Text File Upload** modal opens automatically.
+
+    <Frame>
+      <img
+        src="/images/records-text-upload-modal-light.png"
+        alt="Text File Upload modal showing record name field, parser selection, and preview"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/records-text-upload-modal-dark.png"
+        alt="Text File Upload modal showing record name field, parser selection, and preview"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/records-text-upload-modal-light.png
+      Description: Text File Upload modal/dialog showing the interface for uploading text transcripts. Should display: Record Name input field, Parser selection dropdown with all 6 parser options, Preview section showing parsed transcript (first 30 lines), validation messages, and Upload Transcript button. May show Edit Text mode toggle.
+      Context: Step 2 showing the text file upload modal where users configure parser and preview their transcript.
+      Dark variant: images/records-text-upload-modal-dark.png
+    */}
+  </Step>
+  <Step title="Enter record name">
+    Enter a **Record Name** for your transcript in the input field.
+  </Step>
+  <Step title="Select parser">
+    **Select Parser** that matches your transcript format from the dropdown menu. See parser examples above to choose the right one.
+
+    <Tip>
+      If you're unsure which parser to use, try different parsers and check the preview to see which one correctly extracts speakers and timestamps.
+    </Tip>
+  </Step>
+  <Step title="Review preview">
+    Review the **Preview** section to see how your transcript will be parsed. The preview shows the first 30 lines with speaker names, timestamps, and utterance numbers.
+  </Step>
+  <Step title="Edit if needed">
+    Switch to **Edit Text** mode if you need to make manual adjustments to the transcript before uploading.
+  </Step>
+  <Step title="Check validation">
+    Check validation messages:
+    - Duration should be between 5 minutes and 2.5 hours
+    - Utterances should be between 5 and 1000
+    - Content must contain detectable utterances
+  </Step>
+  <Step title="Upload transcript">
+    Click **Upload Transcript** when ready. The transcript will be processed and added to your records.
+  </Step>
+</Steps>
+
+## Validation rules
+
+The system validates your transcript before upload:
+
+- **Duration**: Must be between 5 minutes and 2.5 hours
+- **Utterances**: Must be between 5 and 1000 utterances
+- **Content**: Must contain detectable utterances based on selected parser
+
+If validation fails, you'll see an error message. Try:
+- Selecting a different parser
+- Adjusting the transcript format
+- Checking for formatting issues
+
+## Preview mode
+
+The preview shows how your transcript will look after import:
+- Speaker names are extracted automatically
+- Utterances are numbered
+- Timestamps are calculated (if not present in source)
+- First 30 lines are shown for performance
+
+Switch to **Edit Text** mode to make manual adjustments before uploading.
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Match parser to source format">
+    Match your parser to the source format. Using the wrong parser can result in incorrect speaker identification or missing timestamps.
+  </Accordion>
+  
+  <Accordion title="Review preview before uploading">
+    Review the preview carefully before uploading. This helps catch formatting issues early.
+  </Accordion>
+  
+  <Accordion title="Use Plain Text parser as fallback">
+    If your transcript doesn't match any parser format exactly, try the Plain Text parser or use Edit Text mode to adjust the format manually.
+  </Accordion>
+  
+  <Accordion title="Preserve timestamps with appropriate parsers">
+    For transcripts with timestamps, use Tab-Separated or Subtitles parsers to preserve timing information.
+  </Accordion>
+</AccordionGroup>
+
+## Related topics
+
+- [Records page](/interviews/records) - View and manage all records
+- [Upload records](/interviews/upload) - Upload audio, video, or text files
+- [Transcribe records](/interviews/transcribe) - Configure transcription settings
+- [Edit transcripts](/interviews/edit) - Review and correct transcripts after upload

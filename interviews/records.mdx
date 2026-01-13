@@ -1,0 +1,161 @@
+---
+title: "Records page"
+description: "View, search, filter, and manage all your interview records in one place."
+---
+
+## Overview
+
+The Records page displays all your interview records in a sortable, filterable table. You can view record details, search and filter records, manage them individually or in bulk, and organize them by projects.
+
+## Records table
+
+The records table shows all your interviews with the following information:
+
+<Frame>
+  <img
+    src="/images/records-table-light.png"
+    alt="Records page showing the main records table with columns and data"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/records-table-dark.png"
+    alt="Records page showing the main records table with columns and data"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/records-table-light.png
+  Description: Records page showing the main records table. Should display multiple records (at least 3-4) with visible columns: Title, Project, Reports, Participants, Version, Status, Public, Type, Duration, Size, Created At, Updated At, Archived, Actions. Should show the search bar at the top, column headers that are clickable for filtering/sorting, and action menus (three dots) on records. May show checkboxes for bulk selection.
+  Context: Showing the main records table interface where users can view, search, filter, and manage all their interview records.
+  Dark variant: images/records-table-dark.png
+*/}
+
+| Column | Description |
+|--------|-------------|
+| **Title** | Record name (clickable link to record details) |
+| **Project** | Associated project (clickable link to project) |
+| **Reports** | Number of generated reports for this record |
+| **Participants** | Number of interview participants |
+| **Version** | Record version number |
+| **Status** | Current processing status (Uploaded, Processing, Finished, Error) |
+| **Public** | Public link availability indicator |
+| **Type** | Record type: audio, video, or text |
+| **Duration** | Interview duration (for audio/video records) |
+| **Size** | File size in MB |
+| **Created At** | Record creation date and time |
+| **Updated At** | Last modification date and time |
+| **Archived** | Archive status indicator |
+| **Actions** | Quick actions menu (rename, archive, delete, assign to project) |
+
+### Table features
+
+- **Search**: Use the search bar to find records by name
+- **Filtering**: Click column headers to filter by status, type, project, or other attributes
+- **Sorting**: Click column headers to sort records
+- **Column visibility**: Show or hide columns using the column visibility menu
+- **Bulk actions**: Select multiple records to archive or delete them together
+- **Pagination**: Table loads more records automatically as you scroll
+
+## Managing records
+
+### Bulk actions
+
+<Steps>
+  <Step title="Select records">
+    Select multiple records using checkboxes in the first column of the table.
+
+    <Frame>
+      <img
+        src="/images/records-bulk-select-light.png"
+        alt="Records table showing multiple records selected with checkboxes"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/records-bulk-select-dark.png"
+        alt="Records table showing multiple records selected with checkboxes"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/records-bulk-select-light.png
+      Description: Records table showing multiple records selected with checkboxes checked. Should show the toolbar with Archive and Delete buttons appearing when records are selected. At least 2-3 records should be selected to demonstrate bulk selection.
+      Context: Step 1 showing how users can select multiple records for bulk actions.
+      Dark variant: images/records-bulk-select-dark.png
+    */}
+  </Step>
+  <Step title="Choose action">
+    Use **Archive** or **Delete** buttons in the toolbar that appears when records are selected.
+  </Step>
+  <Step title="Confirm">
+    Confirm the action in the confirmation dialog that appears.
+  </Step>
+</Steps>
+
+### Individual actions
+
+Click the **Actions** menu (three dots) on any record to:
+- **Rename** the record
+- **Archive** or **Unarchive** the record
+- **Delete** the record
+- **Assign to Project** or **Remove from Project**
+- **Copy Public Link** (if record is public)
+- **Change Status** (admin only)
+
+<Frame>
+  <img
+    src="/images/records-actions-menu-light.png"
+    alt="Records table showing actions menu dropdown for a record"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/records-actions-menu-dark.png"
+    alt="Records table showing actions menu dropdown for a record"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/records-actions-menu-light.png
+  Description: Records table showing the actions menu (three dots) clicked/open for a record. Should display dropdown menu with options: Rename, Archive, Delete, Assign to Project, Remove from Project, Copy Public Link, Change Status. The menu should be clearly visible and all options should be readable.
+  Context: Showing the individual actions menu where users can manage a single record.
+  Dark variant: images/records-actions-menu-dark.png
+*/}
+
+### Filtering and searching
+
+- **Search**: Type in the search bar to find records by name
+- **Status filter**: Click Status column header to filter by processing status
+- **Type filter**: Click Type column header to filter by audio/video/text
+- **Project filter**: Click Project column header to filter by project
+- **User filter**: Admins can filter by user (Email column)
+
+<Frame>
+  <img
+    src="/images/records-filtering-light.png"
+    alt="Records table showing search bar and filter options"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/records-filtering-dark.png"
+    alt="Records table showing search bar and filter options"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/records-filtering-light.png
+  Description: Records table showing the search bar at the top and filter dropdowns or column header filters. Should show active filters if any, and demonstrate how users can filter by status, type, project, etc. The search bar should be clearly visible.
+  Context: Showing the filtering and searching interface for finding specific records.
+  Dark variant: images/records-filtering-dark.png
+*/}
+
+## Related topics
+
+- [Upload records](/interviews/upload) - Upload audio, video, or text files
+- [Upload text transcripts](/interviews/text-transcripts) - Upload and parse text transcripts
+- [Transcribe records](/interviews/transcribe) - Configure transcription settings
+- [Edit transcripts](/interviews/edit) - Review and correct transcripts
+- [Create interview guide](/interviews/guide-builder) - Generate interview guides with AI
+- [Manage projects](/projects/manage) - Organize records in projects

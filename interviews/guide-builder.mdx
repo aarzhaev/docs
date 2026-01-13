@@ -1,0 +1,149 @@
+---
+title: "Create interview guide"
+description: "Use AI to generate structured interview guides tailored to your research goals."
+---
+
+## Overview
+The Interview Guide Builder uses AI to help you create comprehensive interview guides. The AI agent asks questions about your research goals, target audience, and context, then generates a structured guide with numbered questions organized into logical sections.
+
+## How to create an interview guide
+<Steps>
+  <Step title="Open Interview Guide Builder">
+    Navigate to **Interview Guide** in the sidebar (available to admins) or go to `/space/agent`.
+
+    <Frame>
+      <img
+        src="/images/interviews-guide-builder-page-light.png"
+        alt="Interview Guide Builder page showing the AI chat interface"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/interviews-guide-builder-page-dark.png"
+        alt="Interview Guide Builder page showing the AI chat interface"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/interviews-guide-builder-page-light.png
+      Description: Interview Guide Builder page showing the main interface. Should display the AI chat interface with a message input area, and possibly an initial message or "Create Interview Guide" button. The interface should look like a conversational AI assistant ready to help create interview guides.
+      Context: Step 1 showing the Interview Guide Builder interface where users start creating guides.
+      Dark variant: images/interviews-guide-builder-page-dark.png
+    */}
+  </Step>
+  <Step title="Start creating a guide">
+    Click **Create Interview Guide** or type a message asking to create an interview guide. The AI will start asking questions about your research.
+  </Step>
+  <Step title="Answer questions">
+    Respond to the AI's questions about:
+    - Research goals (discovery, validation, usability testing, etc.)
+    - Target audience (existing customers, prospects, churned users, etc.)
+    - Context (product, service, or problem you're researching)
+    - Interview format (video call, phone, in-person, async)
+    - Duration (15min, 30min, 45min, 60min)
+    - Additional context or constraints
+
+    <Frame>
+      <img
+        src="/images/interviews-guide-builder-conversation-light.png"
+        alt="Interview Guide Builder showing AI conversation with questions and user answers"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/interviews-guide-builder-conversation-dark.png"
+        alt="Interview Guide Builder showing AI conversation with questions and user answers"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/interviews-guide-builder-conversation-light.png
+      Description: Interview Guide Builder showing an active conversation between the user and AI. Should display multiple message bubbles showing AI questions and user responses. The conversation should show the AI asking about research goals, target audience, context, etc., and user providing answers. The chat interface should look natural and conversational.
+      Context: Step 3 showing the interactive conversation where users answer AI questions.
+      Dark variant: images/interviews-guide-builder-conversation-dark.png
+    */}
+  </Step>
+  <Step title="Review and confirm">
+    After the AI gathers enough information, it will show a summary and ask for confirmation. Review the plan and choose to generate the guide, continue with more questions, or cancel.
+
+    <Frame>
+      <img
+        src="/images/interviews-guide-builder-summary-light.png"
+        alt="Interview Guide Builder showing summary and confirmation dialog"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/interviews-guide-builder-summary-dark.png"
+        alt="Interview Guide Builder showing summary and confirmation dialog"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/interviews-guide-builder-summary-light.png
+      Description: Interview Guide Builder showing a summary message from the AI with the gathered information. Should display a summary of research goals, target audience, context, format, duration, etc. Should show action buttons like "Generate Guide", "Continue Questions", "Cancel". The summary should be clearly formatted and easy to review.
+      Context: Step 4 showing the summary and confirmation step before generating the guide.
+      Dark variant: images/interviews-guide-builder-summary-dark.png
+    */}
+  </Step>
+  <Step title="View the generated guide">
+    Once generated, the guide appears in a panel on the right side. The guide includes:
+    - Research overview and objectives
+    - Numbered questions organized into logical sections
+    - Follow-up questions for deeper exploration
+    - Researcher recommendations
+    - Preparation checklist
+
+    <Frame>
+      <img
+        src="/images/interviews-guide-builder-result-light.png"
+        alt="Interview Guide Builder showing the generated guide in the right panel"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/interviews-guide-builder-result-dark.png"
+        alt="Interview Guide Builder showing the generated guide in the right panel"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/interviews-guide-builder-result-light.png
+      Description: Interview Guide Builder showing the generated interview guide in a panel on the right side. Should display a well-structured guide with: research overview/objectives section, numbered questions organized into logical sections (e.g., Opening, Main Questions, Follow-up, Closing), researcher recommendations, and preparation checklist. The guide should be clearly formatted and easy to read. May show a copy button or export option.
+      Context: Step 5 showing the final generated interview guide that users can use.
+      Dark variant: images/interviews-guide-builder-result-dark.png
+    */}
+  </Step>
+</Steps>
+
+## How it works
+The AI agent uses natural language processing to:
+- Ask contextual questions in your language
+- Adapt the conversation based on your answers
+- Determine when enough information has been collected
+- Generate a structured guide with numbered questions
+
+<Tip>
+You can ask the AI to modify the guide after it's generated. For example, request a shorter version, add specific topics, or change the style.
+</Tip>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Be specific about research goals">
+    Be specific about your research goals. The more context you provide, the better the guide will be tailored to your needs.
+  </Accordion>
+  
+  <Accordion title="Skip questions if needed">
+    You can skip questions if you don't have the answer. The AI will ask alternative questions to gather the information it needs.
+  </Accordion>
+  
+  <Accordion title="Use guide in project context">
+    After generating a guide, you can copy it and paste it into your project's Research Context section for use during interviews.
+  </Accordion>
+</AccordionGroup>
+
+## Related topics
+- [Add research context](/projects/context) - Use your generated guide in project context
+- [Records page](/interviews/records) - Upload and manage interview records
+- [Transcribe records](/interviews/transcribe) - Create transcripts from recorded interviews

@@ -14,25 +14,33 @@ The Interview Guide Builder uses AI to help you create comprehensive interview g
     <Frame>
       <img
         src="/images/interviews-guide-builder-page-light.png"
-        alt="Interview Guide Builder page showing the AI chat interface"
+        alt="Interview Guide Builder page showing the AI chat interface with empty state and suggestion buttons"
         className="block dark:hidden"
       />
       <img
         src="/images/interviews-guide-builder-page-dark.png"
-        alt="Interview Guide Builder page showing the AI chat interface"
+        alt="Interview Guide Builder page showing the AI chat interface with empty state and suggestion buttons"
         className="hidden dark:block"
       />
     </Frame>
 
     {/* TODO: Add screenshot
       File: images/interviews-guide-builder-page-light.png
-      Description: Interview Guide Builder page showing the main interface. Should display the AI chat interface with a message input area, and possibly an initial message or "Create Interview Guide" button. The interface should look like a conversational AI assistant ready to help create interview guides.
+      Description: Interview Guide Builder page showing the main interface with empty state. Should display: centered header "Research Context Builder" with description, three suggestion buttons ("Create Research Context", "Create Interview Guide", "Ask About Service"), tip message at bottom, and message input area at the bottom. The interface should look clean and welcoming for first-time users.
       Context: Step 1 showing the Interview Guide Builder interface where users start creating guides.
       Dark variant: images/interviews-guide-builder-page-dark.png
     */}
   </Step>
   <Step title="Start creating a guide">
-    Click **Create Interview Guide** or type a message asking to create an interview guide. The AI will start asking questions about your research.
+    You can start in two ways:
+    - **Click the suggestion button**: Click **"Create Interview Guide"** button in the empty state
+    - **Type a message**: Type a message asking to create an interview guide (e.g., "Help me create a guide for depth interviews")
+    
+    The AI will start asking questions about your research.
+
+    <Tip>
+      You can also ask questions about Aseed features, workflows, and best practices using the **"Ask About Service"** suggestion button.
+    </Tip>
   </Step>
   <Step title="Answer questions">
     Respond to the AI's questions about:
@@ -46,22 +54,30 @@ The Interview Guide Builder uses AI to help you create comprehensive interview g
     <Frame>
       <img
         src="/images/interviews-guide-builder-conversation-light.png"
-        alt="Interview Guide Builder showing AI conversation with questions and user answers"
+        alt="Interview Guide Builder showing AI conversation with questions and user answers, including mode selector and skip button"
         className="block dark:hidden"
       />
       <img
         src="/images/interviews-guide-builder-conversation-dark.png"
-        alt="Interview Guide Builder showing AI conversation with questions and user answers"
+        alt="Interview Guide Builder showing AI conversation with questions and user answers, including mode selector and skip button"
         className="hidden dark:block"
       />
     </Frame>
 
     {/* TODO: Add screenshot
       File: images/interviews-guide-builder-conversation-light.png
-      Description: Interview Guide Builder showing an active conversation between the user and AI. Should display multiple message bubbles showing AI questions and user responses. The conversation should show the AI asking about research goals, target audience, context, etc., and user providing answers. The chat interface should look natural and conversational.
+      Description: Interview Guide Builder showing an active conversation between the user and AI. Should display: multiple message bubbles showing AI questions and user responses, question cards with options and Skip button, mode selector (Fast/Thinking) in the input area, and possibly a model divider if mode was changed. The conversation should show the AI asking about research goals, target audience, context, etc., and user providing answers. The chat interface should look natural and conversational.
       Context: Step 3 showing the interactive conversation where users answer AI questions.
       Dark variant: images/interviews-guide-builder-conversation-dark.png
     */}
+
+    <Tip>
+      **Choose your reasoning mode**: Use the mode selector in the input area to switch between **Fast** (2 tokens) and **Thinking** (5 tokens) modes. Fast mode is suitable for most cases, while Thinking mode provides deeper analysis for complex scenarios.
+    </Tip>
+
+    <Tip>
+      **Skip questions if needed**: If you don't know the answer to a question, click the **Skip** button. The AI will ask alternative questions to gather the information it needs.
+    </Tip>
   </Step>
   <Step title="Review and confirm">
     After the AI gathers enough information, it will show a summary and ask for confirmation. Review the plan and choose to generate the guide, continue with more questions, or cancel.
@@ -87,7 +103,11 @@ The Interview Guide Builder uses AI to help you create comprehensive interview g
     */}
   </Step>
   <Step title="View the generated guide">
-    Once generated, the guide appears in a panel on the right side. The guide includes:
+    Once generated, you'll see:
+    1. **Preview card in chat** - A card showing the first few lines of the guide with a **View** button
+    2. **Full guide panel** - Click **View** to open the complete guide in a panel on the right side
+    
+    The guide includes:
     - Research overview and objectives
     - Numbered questions organized into logical sections
     - Follow-up questions for deeper exploration
@@ -97,22 +117,60 @@ The Interview Guide Builder uses AI to help you create comprehensive interview g
     <Frame>
       <img
         src="/images/interviews-guide-builder-result-light.png"
-        alt="Interview Guide Builder showing the generated guide in the right panel"
+        alt="Interview Guide Builder showing the generated guide preview card and full panel with Save button"
         className="block dark:hidden"
       />
       <img
         src="/images/interviews-guide-builder-result-dark.png"
-        alt="Interview Guide Builder showing the generated guide in the right panel"
+        alt="Interview Guide Builder showing the generated guide preview card and full panel with Save button"
         className="hidden dark:block"
       />
     </Frame>
 
     {/* TODO: Add screenshot
       File: images/interviews-guide-builder-result-light.png
-      Description: Interview Guide Builder showing the generated interview guide in a panel on the right side. Should display a well-structured guide with: research overview/objectives section, numbered questions organized into logical sections (e.g., Opening, Main Questions, Follow-up, Closing), researcher recommendations, and preparation checklist. The guide should be clearly formatted and easy to read. May show a copy button or export option.
+      Description: Interview Guide Builder showing: 1) A preview card in the chat with guide title, first few lines of content, and "View" button; 2) The full guide panel on the right side with complete guide content, Save button with dropdown menu. The guide should be well-structured with research overview, numbered questions in sections, recommendations, and checklist. Should show Save dropdown with options: Download .md file, Copy to Clipboard, and Save to project section with project list showing badges (Has guide / No guide).
       Context: Step 5 showing the final generated interview guide that users can use.
       Dark variant: images/interviews-guide-builder-result-dark.png
     */}
+
+    <Tip>
+      After generating the guide, the AI may suggest creating a Research Context Brief. This helps structure your research goals and hypotheses. You can accept the suggestion or continue with the guide.
+    </Tip>
+  </Step>
+  <Step title="Save the guide to your project">
+    Use the **Save** button in the guide panel to:
+    - **Download as Markdown** - Save the guide as a `.md` file with automatic filename formatting
+    - **Copy to clipboard** - Copy the guide text for pasting elsewhere
+    - **Save to project** - Select a project from the dropdown to attach the guide directly to that project's Interview Guide field
+    
+    <Frame>
+      <img
+        src="/images/interviews-guide-save-menu-light.png"
+        alt="Save dropdown menu showing Download, Copy options and project list with badges"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/interviews-guide-save-menu-dark.png"
+        alt="Save dropdown menu showing Download, Copy options and project list with badges"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/interviews-guide-save-menu-light.png
+      Description: Save dropdown menu open showing: Download .md file option, Copy to Clipboard option, separator, "Save to project" header, and list of projects. Each project should show: project name, and a badge indicating "Has guide" (colored badge) or "No guide" (dashed border badge). Should show loading state if projects are loading, or error state if failed.
+      Context: Step 6 showing the save options available for the generated guide.
+      Dark variant: images/interviews-guide-save-menu-dark.png
+    */}
+
+    <Tip>
+      When you save the guide to a project, it automatically populates the Interview Guide field in that project's Research Context section. If the project already has a guide, you'll be asked to confirm overwriting it.
+    </Tip>
+
+    <Note>
+      Projects with existing guides show a **"Has guide"** badge. Projects without guides show **"No guide"** badge. This helps you see which projects already have interview guides.
+    </Note>
   </Step>
 </Steps>
 
@@ -122,6 +180,36 @@ The AI agent uses natural language processing to:
 - Adapt the conversation based on your answers
 - Determine when enough information has been collected
 - Generate a structured guide with numbered questions
+
+## Token usage and cost
+
+The AI Agent uses tokens for each assistant message. You can choose between two reasoning modes:
+
+<CardGroup cols={2}>
+  <Card title="Fast mode" icon="zap">
+    **Cost:** 2 tokens per assistant message
+    
+    Use Fast mode for quick responses and standard guide generation. This mode provides fast, efficient answers suitable for most use cases.
+  </Card>
+  
+  <Card title="Thinking mode" icon="brain">
+    **Cost:** 5 tokens per assistant message
+    
+    Use Thinking mode for more complex research scenarios that require deeper analysis and reasoning. This mode provides more thorough responses and better handles nuanced requirements.
+  </Card>
+</CardGroup>
+
+<Tip>
+You can switch between Fast and Thinking modes at any time during the conversation using the mode selector in the input area. Choose Fast mode for speed and efficiency, or Thinking mode when you need more comprehensive analysis. Tokens are only charged for assistant messages, not for your questions or input.
+</Tip>
+
+<Note>
+**Example:** If the AI asks 10 questions and you answer each one, that's 10 assistant responses. In Fast mode, this costs 20 tokens (10 × 2). In Thinking mode, this costs 50 tokens (10 × 5). Your questions don't cost tokens.
+</Note>
+
+<Note>
+For more details about token usage and costs, see [Token usage](/account/usage).
+</Note>
 
 <Tip>
 You can ask the AI to modify the guide after it's generated. For example, request a shorter version, add specific topics, or change the style.
@@ -135,15 +223,57 @@ You can ask the AI to modify the guide after it's generated. For example, reques
   </Accordion>
   
   <Accordion title="Skip questions if needed">
-    You can skip questions if you don't have the answer. The AI will ask alternative questions to gather the information it needs.
+    If you don't know the answer to a question, click the **Skip** button on the question card. The AI will ask alternative questions to gather the information it needs. Skipping is useful when:
+    - You haven't decided on a particular aspect yet
+    - The question doesn't apply to your research
+    - You want to provide that information later
   </Accordion>
   
-  <Accordion title="Use guide in project context">
-    After generating a guide, you can copy it and paste it into your project's Research Context section for use during interviews.
+  <Accordion title="Choose the right reasoning mode">
+    Select **Fast** mode (2 tokens) for quick responses and standard guide generation. Use **Thinking** mode (5 tokens) when you need deeper analysis for complex research scenarios. You can switch modes at any time during the conversation using the mode selector in the input area.
+  </Accordion>
+  
+  <Accordion title="Provide materials instead of Q&A">
+    If you have existing research materials, documentation, or notes, you can provide them in your first message. The AI will analyze the materials and extract information, asking only follow-up questions about missing or unclear details. This can save time compared to answering questions one by one.
+  </Accordion>
+  
+  <Accordion title="Save guide directly to project">
+    After generating a guide, use the **Save** button in the guide panel to save it directly to a project. This automatically populates the Interview Guide field in that project's Research Context section, eliminating the need to copy and paste manually.
+  </Accordion>
+  
+  <Accordion title="Modify generated guides">
+    You can ask the AI to modify the guide after it's generated. For example:
+    - "Make the guide shorter"
+    - "Add questions about pricing"
+    - "Focus more on user pain points"
+    - "Change the style to be more conversational"
+    
+    The AI will update the guide based on your requirements.
+  </Accordion>
+  
+  <Accordion title="Understanding the guide structure">
+    Generated guides follow a structured format:
+    - **Introduction Section**: Research overview and objectives
+    - **Question Blocks**: Organized into logical subsections (e.g., Opening, Main Questions, Follow-up, Closing)
+    - **Researcher Recommendations**: Tips and things to watch for
+    - **Preparation Checklist**: What to prepare before interviews
+    
+    Questions are numbered and include optional follow-up questions for deeper exploration.
   </Accordion>
 </AccordionGroup>
 
+## Ask questions about Aseed
+
+The AI Agent can answer questions about Aseed features, workflows, and best practices. Click **"Ask About Service"** in the empty state or ask questions like:
+- "How do I create a project?"
+- "What report types does Aseed support?"
+- "How does batch generation work?"
+- "What is the difference between Q&A and General reports?"
+
+Messages with documentation answers are marked with a **"Documentation"** tag to indicate they're based on Aseed documentation.
+
 ## Related topics
-- [Add research context](/projects/context) - Use your generated guide in project context
+- [Add research context](/projects/context) - Use your generated guide in project context or generate Research Context Brief with AI
 - [Records page](/interviews/records) - Upload and manage interview records
 - [Transcribe records](/interviews/transcribe) - Create transcripts from recorded interviews
+- [Token usage](/account/usage) - Learn about token costs and usage

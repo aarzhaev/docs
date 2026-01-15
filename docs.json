@@ -28,12 +28,12 @@
             "icon": "folder",
             "pages": [
               "projects/create",
+              "projects/context",
               "projects/edit",
               "projects/manage",
               "projects/upload-records",
               "projects/manage-records",
-              "projects/batch-generation",
-              "projects/context"
+              "projects/batch-generation"
             ]
           },
           {
@@ -43,9 +43,9 @@
               "interviews/records",
               "interviews/upload",
               "interviews/text-transcripts",
+              "interviews/guide-builder",
               "interviews/transcribe",
-              "interviews/edit",
-              "interviews/guide-builder"
+              "interviews/edit"
             ]
           },
           {
@@ -110,6 +110,18 @@
               "api-reference/endpoint/get",
               "api-reference/endpoint/delete",
               "api-reference/endpoint/webhook"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "icon": "sparkles",
+            "pages": [
+              "changelog"
             ]
           }
         ]

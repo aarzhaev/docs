@@ -6,7 +6,150 @@ description: "Provide research goals and interview guide to help Aseed analyze i
 ## Overview
 Research context helps Aseed understand your research objectives and interview structure. This information is automatically included when generating reports, making the analysis more accurate and aligned with your goals.
 
-## How to add research context
+You can add research context in two ways:
+- **AI Generation**: Use the AI Agent to generate a Research Context Brief through an interactive Q&A session
+- **Manual Entry**: Write or paste your research goals and interview guide directly
+
+## Generate research context with AI
+
+The AI Agent can help you create a comprehensive Research Context Brief by asking questions about your research project. This is especially useful if you're starting a new project or want to structure your research systematically.
+
+The Research Context Brief includes 11 sections covering all aspects of your research: metadata, decision framing, product context, goals, questions, hypotheses, participants, method, analysis, outputs, glossary, and limitations.
+
+<Steps>
+  <Step title="Open AI Agent">
+    Navigate to the AI Agent interface (available in the sidebar or at `/space/agent`). You'll see an empty state with suggestion buttons.
+
+    <Frame>
+      <img
+        src="/images/projects-context-agent-empty-state-light.png"
+        alt="AI Agent empty state showing suggestion buttons"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-context-agent-empty-state-dark.png"
+        alt="AI Agent empty state showing suggestion buttons"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-context-agent-empty-state-light.png
+      Description: AI Agent interface showing empty state with centered header "Research Context Builder", description text, and three suggestion buttons: "Create Research Context", "Create Interview Guide", "Ask About Service". Should show tip message at bottom and message input area.
+      Context: Step 1 showing the AI Agent interface where users start creating Research Context Brief.
+      Dark variant: images/projects-context-agent-empty-state-dark.png
+    */}
+  </Step>
+  <Step title="Request Research Context">
+    You can start in two ways:
+    - **Click the suggestion button**: Click **"Create Research Context"** button in the empty state
+    - **Type a message**: Ask the AI to create a research context brief. For example:
+      - "Create a research context brief for my project"
+      - "Help me define research goals and hypotheses"
+      - "I need to prepare a research context"
+  </Step>
+  <Step title="Answer questions or provide materials">
+    You have two options:
+    
+    **Option 1: Answer questions interactively**
+    The AI will ask you questions about:
+    - Research type and stage
+    - Decision framing (what decisions will be made)
+    - Product or service context
+    - Research goals and questions
+    - Target participants and segments
+    - Research method and protocol
+    - Hypotheses to test
+    - Analysis approach
+    - Expected outputs
+    
+    Answer each question to help the AI build a comprehensive brief.
+    
+    **Option 2: Provide materials**
+    If you have existing research materials, documentation, or notes, you can provide them in your first message or when the AI asks. The AI will analyze the materials and extract information, asking only follow-up questions about missing or unclear details.
+
+    <Tip>
+      **Choose your reasoning mode**: Use the mode selector in the input area to switch between **Fast** (2 tokens) and **Thinking** (5 tokens) modes. Fast mode is suitable for most cases, while Thinking mode provides deeper analysis for complex scenarios.
+    </Tip>
+
+    <Tip>
+      **Skip questions if needed**: If you don't know the answer, click the **Skip** button. The AI will ask alternative questions.
+    </Tip>
+  </Step>
+  <Step title="Review and generate">
+    After gathering enough information, the AI will show a summary. Review it and confirm to generate the Research Context Brief.
+  </Step>
+  <Step title="View and save the brief">
+    Once generated, you'll see:
+    1. **Preview card in chat** - A card showing the first few lines of the brief with a **View** button
+    2. **Full brief panel** - Click **View** to open the complete brief in a panel on the right side
+    
+    Use the **Save** button in the brief panel to:
+    - **Download as Markdown** - Save the brief as a `.md` file with automatic filename formatting
+    - **Copy to clipboard** - Copy the brief text for pasting elsewhere
+    - **Save directly to a project** - Select a project from the dropdown to attach the brief to that project's Research Goals field
+
+    <Frame>
+      <img
+        src="/images/projects-context-save-menu-light.png"
+        alt="Save dropdown menu showing Download, Copy options and project list with badges"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-context-save-menu-dark.png"
+        alt="Save dropdown menu showing Download, Copy options and project list with badges"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-context-save-menu-light.png
+      Description: Save dropdown menu open showing: Download .md file option, Copy to Clipboard option, separator, "Save to project" header, and list of projects. Each project should show: project name, and a badge indicating "Has context" (colored badge) or "No context" (dashed border badge). Should show loading state if projects are loading, or error state if failed.
+      Context: Step 5 showing the save options available for the generated Research Context Brief.
+      Dark variant: images/projects-context-save-menu-dark.png
+    */}
+
+    <Tip>
+      When you save the Research Context Brief to a project, it automatically populates the Research Goals field in that project's Research Context section. If the project already has research goals, you'll be asked to confirm overwriting them.
+    </Tip>
+
+    <Note>
+      Projects with existing research context show a **"Has context"** badge. Projects without context show **"No context"** badge. This helps you see which projects already have research goals defined.
+    </Note>
+  </Step>
+</Steps>
+
+## Token usage and cost
+
+The AI Agent uses tokens for each assistant message when generating Research Context Brief. You can choose between two reasoning modes:
+
+<CardGroup cols={2}>
+  <Card title="Fast mode" icon="zap">
+    **Cost:** 2 tokens per assistant message
+    
+    Use Fast mode for quick responses and standard brief generation. This mode provides fast, efficient answers suitable for most use cases.
+  </Card>
+  
+  <Card title="Thinking mode" icon="brain">
+    **Cost:** 5 tokens per assistant message
+    
+    Use Thinking mode for more complex research scenarios that require deeper analysis and reasoning. This mode provides more thorough responses and better handles nuanced requirements.
+  </Card>
+</CardGroup>
+
+<Tip>
+You can switch between Fast and Thinking modes at any time during the conversation using the mode selector in the input area. Choose Fast mode for speed and efficiency, or Thinking mode when you need more comprehensive analysis. Tokens are only charged for assistant messages, not for your questions or input.
+</Tip>
+
+<Note>
+**Example:** If the AI asks 10 questions and you answer each one, that's 10 assistant responses. In Fast mode, this costs 20 tokens (10 × 2). In Thinking mode, this costs 50 tokens (10 × 5). Your questions don't cost tokens.
+</Note>
+
+<Note>
+For more details about token usage and costs, see [Token usage](/account/usage).
+</Note>
+
+## How to add research context manually
 <Steps>
   <Step title="Open Research Context">
     Inside your project, scroll to the **Research Context** section below the project header.
@@ -62,9 +205,13 @@ Research context helps Aseed understand your research objectives and interview s
   <Step title="Add interview guide">
     Click on the **Interview Guide** card. You can:
     - Paste your interview script or topic list
-    - Use a guide created with the [Interview Guide Builder](/interviews/guide-builder)
+    - Use a guide created with the [Interview Guide Builder](/interviews/guide-builder) - you can save AI-generated guides directly to projects
     - Write the guide manually
     Click **Save** to store your guide.
+    
+    <Tip>
+      If you generated an interview guide using the AI Agent, you can save it directly to your project from the guide panel using the **Save** button.
+    </Tip>
 
     <Frame>
       <img
@@ -180,9 +327,57 @@ The Documents card is currently in development. This feature will allow you to u
   </Accordion>
   
   <Accordion title="Use Interview Guide Builder">
-    Use the [Interview Guide Builder](/interviews/guide-builder) to create comprehensive, structured guides tailored to your research needs.
+    Use the [Interview Guide Builder](/interviews/guide-builder) to create comprehensive, structured guides tailored to your research needs. AI-generated guides can be saved directly to your project.
+  </Accordion>
+  
+  <Accordion title="Use AI to generate Research Context Brief">
+    For new projects or when you need to structure your research systematically, use the AI Agent to generate a Research Context Brief. The AI will guide you through all necessary sections and create a comprehensive document that you can save directly to your project.
+  </Accordion>
+  
+  <Accordion title="Choose the right reasoning mode">
+    Select **Fast** mode (2 tokens) for quick responses and standard brief generation. Use **Thinking** mode (5 tokens) when you need deeper analysis for complex research scenarios. You can switch modes at any time during the conversation using the mode selector in the input area.
+  </Accordion>
+  
+  <Accordion title="Provide materials instead of Q&A">
+    If you have existing research materials, documentation, or notes, you can provide them in your first message. The AI will analyze the materials and extract information, asking only follow-up questions about missing or unclear details. This can save time compared to answering questions one by one.
+  </Accordion>
+  
+  <Accordion title="Skip questions if needed">
+    If you don't know the answer to a question, click the **Skip** button on the question card. The AI will ask alternative questions to gather the information it needs. Skipping is useful when you haven't decided on a particular aspect yet or the question doesn't apply to your research.
+  </Accordion>
+  
+  <Accordion title="Modify existing briefs">
+    You can ask the AI to modify an existing Research Context Brief. For example:
+    - "Add more details about hypotheses"
+    - "Update the participant segments"
+    - "Change the analysis approach to focus on JTBD"
+    - "Make the brief shorter"
+    
+    The AI will regenerate the brief based on your modifications.
+  </Accordion>
+  
+  <Accordion title="Understanding validation and follow-up questions">
+    The AI uses validation to ensure your Research Context Brief is complete. If important information is missing, the AI will ask follow-up questions with different priorities:
+    - **Must** questions: Critical information needed before generation
+    - **Should** questions: Helpful but not required
+    
+    The AI prioritizes "must" questions and won't ask for confirmation to generate until all critical information is collected.
+  </Accordion>
+  
+  <Accordion title="Fallback generation">
+    If there's an error during generation (e.g., LLM service unavailable), the system uses a fallback template to create the brief from collected data. Fallback documents are marked with "(fallback)" in the title and include a warning message. While functional, fallback documents may lack some contextual refinement. You can regenerate the brief when the service is available.
   </Accordion>
 </AccordionGroup>
+
+## Ask questions about Aseed
+
+The AI Agent can answer questions about Aseed features, workflows, and best practices. Click **"Ask About Service"** in the empty state or ask questions like:
+- "How do I create a project?"
+- "What report types does Aseed support?"
+- "How does batch generation work?"
+- "How do I export reports?"
+
+Messages with documentation answers are marked with a **"Documentation"** tag to indicate they're based on Aseed documentation.
 
 ## Related topics
 - [Create a project](/projects/create)
@@ -191,4 +386,5 @@ The Documents card is currently in development. This feature will allow you to u
 - [Batch generation](/projects/batch-generation)
 - [Generate single reports](/reports/single)
 - [Create project reports](/reports/project)
+- [Token usage](/account/usage) - Learn about token costs and usage
 

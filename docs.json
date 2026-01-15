@@ -100,16 +100,13 @@
       },
       {
         "tab": "API Reference",
+        "openapi": "api-reference/openapi-filtered.json",
         "groups": [
           {
             "group": "API Reference",
             "icon": "code",
             "pages": [
-              "api-reference/introduction",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "api-reference/introduction"
             ]
           }
         ]

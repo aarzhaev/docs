@@ -1,0 +1,68 @@
+# Aseed Insight Documentation
+
+## Getting started
+
+- [Overview](/overview) - Navigate the Aseed documentation and find the right guide for your task.
+- [What is Aseed?](/what-is-aseed) - Aseed is a research-focused AI assistant built to turn interview data into structured insights and reports.
+- [Workflow](/workflow) - Understand the complete Aseed workflow from project creation to sharing reports.
+- [Quick Start: First Project](/quickstart) - Create a project, upload interviews, and generate a shareable report in minutes.
+
+## Projects
+
+- [Create a project](/projects/create) - Set up a new project to organize interviews, context, and reports.
+- [Add research context](/projects/context) - Provide research goals and interview guide to help Aseed analyze interviews accurately.
+- [Edit project](/projects/edit) - Update project name, description, and status to keep your research organized.
+- [Manage projects](/projects/manage) - Organize and navigate your projects using filters, search, and status management.
+- [Upload records](/projects/upload-records) - Add interview files to your project for transcription and analysis.
+- [Manage records](/projects/manage-records) - Rename, archive, delete, or remove records from your project.
+- [Batch generation](/projects/batch-generation) - Generate multiple reports for multiple records at once to save time.
+
+## Records
+
+- [Records page](/interviews/records) - View, search, filter, and manage all your interview records in one place.
+- [Upload records](/interviews/upload) - Upload audio, video, or text files to create new interview records.
+- [Upload text transcripts](/interviews/text-transcripts) - Upload pre-written transcripts as text files and select the right parser for your format.
+- [Create interview guide](/interviews/guide-builder) - Use AI to generate structured interview guides tailored to your research goals.
+- [Transcribe records](/interviews/transcribe) - Configure transcription settings including language, participants, and speaker names to generate accurate transcripts.
+- [Edit transcripts](/interviews/edit) - Review and edit transcript text, speaker names, and timestamps to ensure accuracy before generating reports.
+
+## Single Reports
+
+- [Generate single reports](/reports/single) - Create per-interview reports like Transcript, Q&A, General, JTBD, Persona, or Custom.
+- [Edit and regenerate reports](/reports/edit) - Refine report output after review and regenerate with updated context.
+
+## Report types
+
+- [Overview](/reports/report-types) - Understand what each report type contains, its methodology, and structure.
+- [Transcript Report](/reports/report-types/transcript) - Raw text conversion from audio/video files - the foundation for all other reports.
+- [Q&A Report](/reports/report-types/qa) - Structured question-answer pairs organized by topic with citations.
+- [General Report](/reports/report-types/general) - Comprehensive profile, insights, and recommendations analysis.
+- [JTBD Report](/reports/report-types/jtbd) - Jobs-to-be-Done framework with job stories, ODI scores, and recommendations.
+- [Persona Report](/reports/report-types/persona) - Deep persona profile with motivations, pain points, and behavioral patterns.
+- [Custom Report](/reports/report-types/custom) - Tailored analysis based on your specific research questions and prompt.
+
+## Project Reports
+
+- [Create a project report](/reports/project) - Synthesize insights across multiple interviews into one aggregated report.
+- [Use report presets](/reports/presets) - Start with a predefined report structure.
+- [Build a custom report](/reports/custom) - Design your own report structure and prompts.
+
+## Sharing
+
+- [Share reports publicly](/sharing/public) - Create public links to share records and reports with stakeholders without requiring Aseed accounts.
+- [Export reports](/sharing/export) - Download reports in DOCX or Markdown formats for presentations, editing, or archives.
+
+## Account & Billing
+
+- [Account & Billing](/account/overview) - Manage your token balance, purchase tokens, and understand how tokens are used for transcription and report generation.
+- [Purchase tokens](/account/purchase) - Buy token packages to generate transcripts and reports.
+- [Referral program](/account/referral) - Earn free tokens by inviting friends to Aseed.
+- [Token usage](/account/usage) - Understand how tokens are calculated and charged for transcription and report generation.
+
+## API Reference
+
+- [API Reference](/api-reference/introduction) - Complete API documentation for Aseed Insight Server
+
+## Changelog
+
+- [Product updates](/changelog) - New releases and improvements

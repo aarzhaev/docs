@@ -72,11 +72,10 @@ The Interview Guide Builder uses AI to help you create comprehensive interview g
     */}
 
     <Tip>
-      **Choose your reasoning mode**: Use the mode selector in the input area to switch between **Fast** (2 tokens) and **Thinking** (5 tokens) modes. Fast mode is suitable for most cases, while Thinking mode provides deeper analysis for complex scenarios.
-    </Tip>
-
-    <Tip>
-      **Skip questions if needed**: If you don't know the answer to a question, click the **Skip** button. The AI will ask alternative questions to gather the information it needs.
+      **Tips for answering questions:**
+      - **Choose your reasoning mode**: Use the mode selector in the input area to switch between **Fast** (2 tokens) and **Thinking** (5 tokens) modes. Fast mode is suitable for most cases, while Thinking mode provides deeper analysis for complex scenarios.
+      - **Skip questions if needed**: If you don't know the answer to a question, click the **Skip** button. The AI will ask alternative questions to gather the information it needs.
+      - **Long messages are automatically collapsed**: If your message is longer than 500 characters, it will be collapsed with a "Show more" button. Click to expand and see the full message.
     </Tip>
   </Step>
   <Step title="Review and confirm">
@@ -200,7 +199,9 @@ The AI Agent uses tokens for each assistant message. You can choose between two 
 </CardGroup>
 
 <Tip>
-You can switch between Fast and Thinking modes at any time during the conversation using the mode selector in the input area. Choose Fast mode for speed and efficiency, or Thinking mode when you need more comprehensive analysis. Tokens are only charged for assistant messages, not for your questions or input.
+**Tips for working with the AI Agent:**
+- **Switch modes anytime**: You can switch between Fast and Thinking modes at any time during the conversation using the mode selector in the input area. Choose Fast mode for speed and efficiency, or Thinking mode when you need more comprehensive analysis. Tokens are only charged for assistant messages, not for your questions or input.
+- **Modify generated guides**: You can ask the AI to modify the guide after it's generated. For example, request a shorter version, add specific topics, or change the style.
 </Tip>
 
 <Note>
@@ -210,10 +211,6 @@ You can switch between Fast and Thinking modes at any time during the conversati
 <Note>
 For more details about token usage and costs, see [Token usage](/account/usage).
 </Note>
-
-<Tip>
-You can ask the AI to modify the guide after it's generated. For example, request a shorter version, add specific topics, or change the style.
-</Tip>
 
 ## Best practices
 
@@ -262,6 +259,41 @@ You can ask the AI to modify the guide after it's generated. For example, reques
   </Accordion>
 </AccordionGroup>
 
+## Force specific tool calls
+
+You can force the AI Agent to use a specific tool for your request. This ensures your message is processed with the right context and capabilities.
+
+<Steps>
+  <Step title="Select an action">
+    You can select an action in two ways:
+    
+    **Option 1: Use the action button**
+    - Click the **`+`** button in the input toolbar
+    - Select an action from the dropdown menu:
+      - **Research Context**: Force the AI to create research briefs
+      - **Interview Guide**: Force the AI to generate interview guides
+      - **Documentation**: Force the AI to answer questions about Aseed service
+    
+    **Option 2: Use slash commands**
+    - Type **`/`** in the message input
+    - A menu appears with the same action options
+    - Select an action to apply it to your message
+    
+    The selected action appears as a badge next to the input. You can remove it by clicking the badge.
+  </Step>
+  <Step title="Send your message">
+    Type your message and send it. The AI will process your request using the selected tool, ensuring the response is tailored to that specific function.
+  </Step>
+</Steps>
+
+<Tip>
+  Forcing the Interview Guide tool is especially useful when you want to ensure your guide request is processed with the guide generation capabilities, even if the AI might interpret your message differently.
+</Tip>
+
+<Note>
+  When an action is selected, messages are marked with a badge indicating which tool is being used (e.g., "Context Builder", "Guide Builder", "Documentation").
+</Note>
+
 ## Ask questions about Aseed
 
 The AI Agent can answer questions about Aseed features, workflows, and best practices. Click **"Ask About Service"** in the empty state or ask questions like:
@@ -269,6 +301,8 @@ The AI Agent can answer questions about Aseed features, workflows, and best prac
 - "What report types does Aseed support?"
 - "How does batch generation work?"
 - "What is the difference between Q&A and General reports?"
+
+You can also force documentation mode by selecting the **Documentation** action before asking your question. This ensures the AI uses the documentation tool to provide accurate, up-to-date answers.
 
 Messages with documentation answers are marked with a **"Documentation"** tag to indicate they're based on Aseed documentation.
 

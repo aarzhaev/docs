@@ -4,7 +4,7 @@ description: "Provide research goals and interview guide to help Aseed analyze i
 ---
 
 ## Overview
-Research context helps Aseed understand your research objectives and interview structure. This information is automatically included when generating reports, making the analysis more accurate and aligned with your goals.
+Research context tells Aseed what you want to learn and how interviews should run. Aseed uses this context in report generation.
 
 You can add research context in two ways:
 - **AI Generation**: Use the AI Agent to generate a Research Context Brief through an interactive Q&A session
@@ -12,9 +12,9 @@ You can add research context in two ways:
 
 ## Generate research context with AI
 
-The AI Agent can help you create a comprehensive Research Context Brief by asking questions about your research project. This is especially useful if you're starting a new project or want to structure your research systematically.
+The AI Agent can build a Research Context Brief by asking focused questions about your project.
 
-The Research Context Brief includes 11 sections covering all aspects of your research: metadata, decision framing, product context, goals, questions, hypotheses, participants, method, analysis, outputs, glossary, and limitations.
+The brief includes 11 sections: metadata, decision framing, product context, goals, questions, hypotheses, participants, method, analysis, outputs, glossary, and limitations.
 
 <Steps>
   <Step title="Open AI Agent">
@@ -63,14 +63,14 @@ The Research Context Brief includes 11 sections covering all aspects of your res
     - Analysis approach
     - Expected outputs
     
-    Answer each question to help the AI build a comprehensive brief.
+    Answer each question so the AI can build a complete brief.
     
     **Option 2: Provide materials**
-    If you have existing research materials, documentation, or notes, you can provide them in your first message or when the AI asks. The AI will analyze the materials and extract information, asking only follow-up questions about missing or unclear details.
+    If you already have notes or materials, share them in your first message (or later when asked). The AI will extract what it can and ask follow-up questions only for missing details.
 
     <Tip>
       **Tips for answering questions:**
-      - **Choose your reasoning mode**: Use the mode selector in the input area to switch between **Fast** (2 tokens) and **Thinking** (5 tokens) modes. Fast mode is suitable for most cases, while Thinking mode provides deeper analysis for complex scenarios.
+      - **Choose your reasoning mode**: Switch between **Fast** (2 tokens) and **Thinking** (5 tokens). Use Fast for most tasks and Thinking for complex cases.
       - **Skip questions if needed**: If you don't know the answer, click the **Skip** button. The AI will ask alternative questions.
       - **Long messages are automatically collapsed**: If your message is longer than 500 characters, it will be collapsed with a "Show more" button. Click to expand and see the full message.
     </Tip>
@@ -113,7 +113,7 @@ The Research Context Brief includes 11 sections covering all aspects of your res
     </Tip>
 
     <Note>
-      Projects with existing research context show a **"Has context"** badge. Projects without context show **"No context"** badge. This helps you see which projects already have research goals defined.
+      Projects with research context show a **"Has context"** badge. Projects without it show **"No context"**.
     </Note>
   </Step>
 </Steps>
@@ -137,7 +137,7 @@ The AI Agent uses tokens for each assistant message when generating Research Con
 </CardGroup>
 
 <Tip>
-You can switch between Fast and Thinking modes at any time during the conversation using the mode selector in the input area. Choose Fast mode for speed and efficiency, or Thinking mode when you need more comprehensive analysis. Tokens are only charged for assistant messages, not for your questions or input.
+You can switch between Fast and Thinking at any time with the mode selector. Use Fast for speed and Thinking for deeper analysis. Tokens are charged only for assistant messages.
 </Tip>
 
 <Note>
@@ -296,6 +296,9 @@ The Documents card is currently in development. This feature will allow you to u
 ## How context is used
 
 <CardGroup cols={2}>
+  <Card title="AI Interviewer" icon="mic">
+    Research goals and interview guide are used as the default context for AI interview links in this project.
+  </Card>
   <Card title="Report generation" icon="file-text">
     Research goals and interview guide are automatically included when generating reports.
   </Card>
@@ -306,7 +309,7 @@ The Documents card is currently in development. This feature will allow you to u
     Context helps synthesize insights across multiple interviews.
   </Card>
   <Card title="Better analysis" icon="sparkles">
-    Aseed uses context to provide more relevant and focused insights.
+    Better context produces more relevant insights.
   </Card>
 </CardGroup>
 
@@ -326,11 +329,11 @@ The Documents card is currently in development. This feature will allow you to u
   </Accordion>
   
   <Accordion title="Use Interview Guide Builder">
-    Use the [Interview Guide Builder](/interviews/guide-builder) to create comprehensive, structured guides tailored to your research needs. AI-generated guides can be saved directly to your project.
+    Use [Interview Guide Builder](/interviews/guide-builder) to create structured guides for your research. You can save AI-generated guides directly to the project.
   </Accordion>
   
   <Accordion title="Use AI to generate Research Context Brief">
-    For new projects or when you need to structure your research systematically, use the AI Agent to generate a Research Context Brief. The AI will guide you through all necessary sections and create a comprehensive document that you can save directly to your project.
+    For new projects, use AI Agent to generate a Research Context Brief. The AI guides you through required sections and creates a document you can save directly to the project.
   </Accordion>
   
   <Accordion title="Choose the right reasoning mode">
@@ -420,10 +423,10 @@ Messages with documentation answers are marked with a **"Documentation"** tag to
 
 ## Related topics
 - [Create a project](/projects/create)
+- [AI Interviewer](/projects/ai-interviewer)
 - [Create interview guide](/interviews/guide-builder)
 - [Upload records](/projects/upload-records)
 - [Batch generation](/projects/batch-generation)
 - [Generate single reports](/reports/single)
 - [Create project reports](/reports/project)
 - [Token usage](/account/usage) - Learn about token costs and usage
-

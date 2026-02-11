@@ -37,7 +37,7 @@ body {
 
 /* Dark theme background - #000000 */
 html.dark {
-  --background: var(--background-dark);
+  --background: var(--background-dark)!important;
   background-color: var(--background-dark) !important;
   /* Content container and search bar background colors for dark theme */
   --content-container-bg: rgb(15, 15, 15);
@@ -150,6 +150,19 @@ html.dark body summary.relative + div {
   background-color: #080808 !important;
 }
 
+/* API Reference expandables (Hide child attributes) - no background */
+body details.expandable,
+body details.expandable summary,
+body details.expandable summary:hover,
+body details.expandable .expandable-content,
+html.dark body details.expandable,
+html.dark body details.expandable summary,
+html.dark body details.expandable summary:hover,
+html.dark body details.expandable .expandable-content {
+  background-color: transparent !important;
+  background: none !important;
+}
+
 /* Remove all primary/orange/green colors from accordion elements - force monochrome */
 body [data-mint-component="AccordionGroup"][class*="primary"],
 body [data-mint-component="Accordion"][class*="primary"],
@@ -206,20 +219,38 @@ html.dark body summary.relative svg[class*="primary"] {
   background-color: #080808 !important;
 }
 
-/* Content container background */
+/* Content container background and consistent padding */
 #content-container {
   background-color: var(--content-container-bg) !important;
+  /* Match bottom padding to right (3rem) so layout is even on all sides */
+  padding-bottom: 3rem !important;
 }
 
-/* Fix container height calculation - add 8px to height */
-body .almond-layout > div.flex.rounded-2xl[class*="h-[calc(100vh-8rem)]"],
-body .almond-layout > div.flex.rounded-2xl[class*="h-[calc(100vh-4.5rem)]"] {
-  height: calc(100vh - 8rem + 8px) !important;
+/* Content area: same horizontal and bottom spacing (3rem) */
+body #content-area,
+body .almond-layout div[class*="lg:flex-1"][class*="lg:min-w-0"][class*="overflow-x-clip"] {
+  padding-bottom: 3rem !important;
+}
+
+/* Prose/content wrapper: reduce large bottom margin so total bottom = right (3rem) */
+body #content-container .mdx-content.mb-14,
+body #content-container .prose.mb-14,
+body #content-container .mb-14,
+body #content-area .mdx-content.mb-14,
+body #content-area .prose.mb-14,
+body #content-area .mb-14 {
+  margin-bottom: 3rem !important;
+}
+
+/* Override API Reference panel height: flex rounded-2xl h-[calc(100dvh-8rem)] lg:h-[calc(100dvh-4.5rem)].
+   Force -7rem so height is calc(100dvh - 7rem). [class*="100dv"] matches 100dvh. */
+body .almond-layout div.flex.rounded-2xl[class*="100dv"] {
+  height: calc(100dvh - 7.5rem) !important;
 }
 
 @media (min-width: 1024px) {
-  body .almond-layout > div.flex.rounded-2xl[class*="h-[calc(100vh-4.5rem)]"] {
-    height: calc(100vh - 4.5rem + 8px) !important;
+  body .almond-layout div.flex.rounded-2xl[class*="100dv"] {
+    height: calc(100dvh - 4rem) !important;
   }
 }
 
@@ -1100,6 +1131,40 @@ html.dark body [class*="table-of-contents"] * {
   border-bottom-width: 0 !important;
   border-bottom-style: none !important;
   border-bottom-color: transparent !important;
+}
+
+/* Changelog filter buttons - only INACTIVE tags; active/selected keep original (primary) style */
+
+/* Light theme: light gray for inactive tags */
+body #changelog-filters-content button:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]),
+body #changelog-filters-content a[role="button"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]),
+body #changelog-filters-content [class*="rounded"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]) {
+  background-color: #e5e5e5 !important;
+  color: #404040 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+body #changelog-filters-content button:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover,
+body #changelog-filters-content a[role="button"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover,
+body #changelog-filters-content [class*="rounded"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover {
+  background-color: #d4d4d4 !important;
+  color: #171717 !important;
+}
+
+/* Dark theme: dark gray #242424 for inactive tags */
+html.dark body #changelog-filters-content button:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]),
+html.dark body #changelog-filters-content a[role="button"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]),
+html.dark body #changelog-filters-content [class*="rounded"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]) {
+  background-color: #171717 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark body #changelog-filters-content button:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover,
+html.dark body #changelog-filters-content a[role="button"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover,
+html.dark body #changelog-filters-content [class*="rounded"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover {
+  background-color: #2d2d2d !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Navbar links hover effect - text should become brighter */

@@ -1,9 +1,9 @@
 ---
 title: "Quick Start: First Project"
-description: "Create a project, upload interviews, and generate a shareable report in minutes."
+description: "Create a project, prepare AI interviews, add recordings, and generate a shareable report in minutes."
 ---
 
-Use this quick start to get your first project report. You will create a project, add context, upload interviews, and generate reports.
+Use this quick start to create your first project report.
 
 ## Outcome
 - A project with interviews and transcripts
@@ -19,47 +19,70 @@ Use this quick start to get your first project report. You will create a project
       <img src="/images/quickstart-create-project-light.png" alt="Create Project modal showing project name input and file upload area" className="block dark:hidden" />
       <img src="/images/quickstart-create-project-dark.png" alt="Create Project modal showing project name input and file upload area" className="hidden dark:block" />
     </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/quickstart-create-project-light.png
+      Description: Create Project modal with project name field, optional file upload area, and Create Project button.
+      Context: Step 1 showing where users create a new project.
+      Dark variant: images/quickstart-create-project-dark.png
+    */}
   </Step>
 
-  <Step title="Fill research context">
-    Define your **Research Goals** to help Aseed understand what you're trying to learn. You can:
-    - Use the AI Agent to generate a Research Context Brief through an interactive Q&A session
-    - Add goals manually by writing or pasting your objectives
+  <Step title="Fill research context and interview guide">
+    Define your **Research Goals** and **Interview Guide** in the same setup step.
+
+    Use the **Research Context Builder** in AI Agent to generate both through guided Q&A, or fill both fields manually.
 
     <Frame caption="Research Context section">
       <img src="/images/quickstart-research-context-light.png" alt="Research Context section showing Research Goals and Interview Guide cards" className="block dark:hidden" />
       <img src="/images/quickstart-research-context-dark.png" alt="Research Context section showing Research Goals and Interview Guide cards" className="hidden dark:block" />
     </Frame>
 
+    {/* TODO: Add screenshot
+      File: images/quickstart-research-context-light.png
+      Description: Project page section with Research Goals and Interview Guide cards visible in the same viewport.
+      Context: Step 2 showing where users prepare context and interview guide.
+      Dark variant: images/quickstart-research-context-dark.png
+    */}
+
     <Tip>
-      Clear goals lead to sharper insights. AI-generated context can be saved directly to your project.
+      Clear goals and a clear guide lead to sharper interviews and better reports.
     </Tip>
   </Step>
 
-  <Step title="Upload interviews or text transcripts">
-    Upload audio, video, or text files in **Project Records**. For text files, upload transcripts directly. For audio/video, files will need transcription.
+  <Step title="Create AI interview links and send them">
+    Open **AI Interviewer** in the project, create links, and send one link to each respondent.
+
+    **Learn more:** [AI Interviewer](/projects/ai-interviewer)
+
+    {/* TODO: Add screenshot
+      File: images/quickstart-ai-interviewer-links-light.png
+      Description: AI Interviewer section with Create Links action and list of generated links ready to copy and send.
+      Context: Step 3 showing link creation and respondent distribution.
+      Dark variant: images/quickstart-ai-interviewer-links-dark.png
+    */}
+  </Step>
+
+  <Step title="Upload previously recorded interviews">
+    Add past interviews from outside Aseed (audio, video, or text) in **Project Records**.
 
     <Frame caption="Upload Records button">
       <img src="/images/quickstart-upload-records-light.png" alt="Project Records section with Upload Records button" className="block dark:hidden" />
       <img src="/images/quickstart-upload-records-dark.png" alt="Project Records section with Upload Records button" className="hidden dark:block" />
     </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/quickstart-upload-records-light.png
+      Description: Project Records section with Upload Records button and records area.
+      Context: Step 4 showing where users add previously recorded interviews.
+      Dark variant: images/quickstart-upload-records-dark.png
+    */}
   </Step>
 
   <Step title="Transcribe and review (if needed)">
-    For audio/video files, generate transcripts. For text files, review and edit if needed. Accurate transcripts lead to better insights.
+    Generate transcripts for audio/video files. Review and edit transcripts as needed.
 
     **Learn more:** [Transcribe interviews](/interviews/transcribe) and [Edit transcripts](/interviews/edit)
-  </Step>
-
-  <Step title="Create interview guide">
-    Prepare your interview structure and questions using the [Interview Guide Builder](/interviews/guide-builder). You can:
-    - Use the AI Agent to generate a structured guide based on your research goals
-    - Write the guide manually
-    - Save generated guides directly to your project
-
-    <Tip>
-      A well-structured guide ensures consistent data collection across interviews.
-    </Tip>
   </Step>
 
   <Step title="Generate single reports">
@@ -77,10 +100,17 @@ Use this quick start to get your first project report. You will create a project
       <img src="/images/quickstart-report-templates-light.png" alt="Report setup page showing preset templates" className="block dark:hidden" />
       <img src="/images/quickstart-report-templates-dark.png" alt="Report setup page showing preset templates" className="hidden dark:block" />
     </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/quickstart-report-templates-light.png
+      Description: Project report setup page with preset templates and generate action.
+      Context: Step 7 showing project report creation from templates.
+      Dark variant: images/quickstart-report-templates-dark.png
+    */}
   </Step>
 
   <Step title="Share or export">
-    Share a public link or export the report for stakeholders.
+    Share a public link or export the report.
   </Step>
 </Steps>
 

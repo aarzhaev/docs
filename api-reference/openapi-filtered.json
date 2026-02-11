@@ -1273,6 +1273,71 @@
         }
       }
     },
+    "/insight/{rec_id}/transcript_refine": {
+      "post": {
+        "tags": [
+          "insight"
+        ],
+        "summary": "Refine Transcript",
+        "description": "Refine transcript using LLM to fix diarization errors.\n\nCreates a new version with the refined transcript.\nReturns the new version number.",
+        "operationId": "refine_transcript_insight__rec_id__transcript_refine_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "rec_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Rec Id"
+            }
+          },
+          {
+            "name": "version",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "The version of the transcript to refine",
+              "title": "Version"
+            },
+            "description": "The version of the transcript to refine"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/insight/{rec_id}/chat/": {
       "post": {
         "tags": [
@@ -1302,7 +1367,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ChatRequest"
+                "$ref": "#/components/schemas/Controllers__models__requests__ChatRequest"
               }
             }
           }
@@ -3566,72 +3631,1099 @@
           }
         }
       }
+    },
+    "/agent/chat": {
+      "post": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Chat",
+        "description": "Send a message to the AI agent and receive a streaming response.\n\nRequest body:\n- thread_id: Agent thread ID\n- message: User message text\n\nReturns:\n- Streaming response chunks",
+        "operationId": "chat_agent_chat_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Services__AgentService__models__ChatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/agent/threads": {
+      "get": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Get Threads",
+        "description": "Get all agent threads for the current user.\n\nReturns:\n- List of user threads",
+        "operationId": "get_threads_agent_threads_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/AgentThreadDTO"
+                  },
+                  "type": "array",
+                  "title": "Response Get Threads Agent Threads Get"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Create Thread",
+        "description": "Create a new agent thread.\n\nRequest body:\n- name: Optional thread name\n\nReturns:\n- Created thread object",
+        "operationId": "create_thread_agent_threads_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateThreadRequest",
+                "default": {
+                  "name": "Thread"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentThreadDTO"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/agent/threads/{thread_id}": {
+      "patch": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Update Thread",
+        "description": "Update an existing agent thread.\n\nPath params:\n- thread_id: Thread ID\n\nRequest body:\n- name: New thread name\n\nReturns:\n- Updated thread object",
+        "operationId": "update_thread_agent_threads__thread_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "thread_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Thread Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateThreadRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentThreadDTO"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Delete Thread",
+        "description": "Soft-delete an agent thread.\n\nPath params:\n- thread_id: Thread ID",
+        "operationId": "delete_thread_agent_threads__thread_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "thread_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Thread Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Delete Thread Agent Threads  Thread Id  Delete"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Get Thread",
+        "description": "Get an agent thread by ID.\n\nPath params:\n- thread_id: Thread ID\n\nReturns:\n- Thread object",
+        "operationId": "get_thread_agent_threads__thread_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "thread_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Thread Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentThreadDTO"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent/threads/{thread_id}/history": {
+      "get": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Get History",
+        "description": "Get message history for an agent thread.\n\nPath params:\n- thread_id: Thread ID\n\nReturns:\n- Ordered list of thread messages",
+        "operationId": "get_history_agent_threads__thread_id__history_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "thread_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Thread Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AgentMessageDTO"
+                  },
+                  "title": "Response Get History Agent Threads  Thread Id  History Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/agent/chat/cancel": {
+      "post": {
+        "tags": [
+          "agent"
+        ],
+        "summary": "Cancel Chat",
+        "description": "Cancel an in-progress chat request.\n\nRequest body:\n- thread_id: Thread ID\n\nReturns:\n- Cancellation status",
+        "operationId": "cancel_chat_agent_chat_cancel_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelChatRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Cancel Chat Agent Chat Cancel Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/interviews/config": {
+      "get": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Get Interview Config",
+        "description": "Return interview config (e.g. tokens per 30 min) so the client can show correct costs.",
+        "operationId": "get_interview_config_api_interviews_config_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterviewConfigResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/interviews/rooms": {
+      "post": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Create Rooms",
+        "description": "Create interview rooms for a project.\n\nCreates one or more interview rooms linked to a project.\nEach room gets a unique access token for the respondent URL.\n\nParameters:\n- project_id: UUID of the project (required)\n- count: Number of rooms to create (default: 1, max: 100)\n- max_duration_minutes: Maximum interview duration (default: 30)\n- expires_in_days: Days until room links expire (default: 7)\n\nReturns:\n- List of created rooms with their URLs",
+        "operationId": "create_rooms_api_interviews_rooms_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRoomsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateRoomsResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Get Rooms",
+        "description": "Get interview rooms for the current user.\n\nParameters:\n- project_id: Optional filter by project\n- status: Optional filter by status (pending, active, completed, expired, cancelled)\n\nReturns:\n- List of interview rooms",
+        "operationId": "get_rooms_api_interviews_rooms_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "project_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Project Id"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/InterviewRoomResponse"
+                  },
+                  "title": "Response Get Rooms Api Interviews Rooms Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/interviews/rooms/{room_id}": {
+      "get": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Get Room",
+        "description": "Get details of a specific interview room.\n\nParameters:\n- room_id: UUID of the room\n\nReturns:\n- Room details",
+        "operationId": "get_room_api_interviews_rooms__room_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "room_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Room Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterviewRoomResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Update Room",
+        "description": "Update an interview room.\n\nOnly rooms in 'pending' status can be updated.\nUse this to override project context for a specific interview.\n\nParameters:\n- room_id: UUID of the room\n- research_goals_override: Override research goals (null to clear)\n- interview_guide_override: Override interview guide (null to clear)\n- max_duration_minutes: New max duration\n- expires_at: New expiration time\n\nReturns:\n- Updated room details",
+        "operationId": "update_room_api_interviews_rooms__room_id__patch",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "room_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Room Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoomRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InterviewRoomResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Delete Room",
+        "description": "Cancel/delete an interview room.\n\nParameters:\n- room_id: UUID of the room\n\nReturns:\n- Success message",
+        "operationId": "delete_room_api_interviews_rooms__room_id__delete",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "room_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Room Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/interviews/join/{access_token}": {
+      "get": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Get Room Info",
+        "description": "Get public information about an interview room.\n\nThis is a public endpoint for respondents to get room info\nbefore joining. Does not require authentication.\n\nParameters:\n- access_token: The unique token from the interview URL\n\nReturns:\n- Room information (name, duration, status)",
+        "operationId": "get_room_info_api_interviews_join__access_token__get",
+        "parameters": [
+          {
+            "name": "access_token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Access Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoomInfoResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Join Room",
+        "description": "Join an interview room as a respondent.\n\nThis is a public endpoint. Validates the room, records the\nrespondent email, and returns a LiveKit token for connection.\n\nParameters:\n- access_token: The unique token from the interview URL\n- email: Respondent's email address\n\nReturns:\n- LiveKit token and connection details",
+        "operationId": "join_room_api_interviews_join__access_token__post",
+        "parameters": [
+          {
+            "name": "access_token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Access Token"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JoinRoomRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JoinRoomResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/interviews/agent-config/{interview_room_id}": {
+      "get": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Get Agent Config",
+        "description": "Get full interview configuration for the agent.\n\nThis endpoint is used by the LiveKit agent to fetch complete interview\nconfiguration (including interview_guide) when only interview_room_id\nis provided in the token metadata. This avoids HTTP 414 errors from\noverly long tokens.\n\nParameters:\n- interview_room_id: UUID of the interview room\n\nHeaders:\n- X-Agent-Secret: Optional shared secret for authentication\n\nReturns:\n- Full interview configuration including interview_guide",
+        "operationId": "get_agent_config_api_interviews_agent_config__interview_room_id__get",
+        "parameters": [
+          {
+            "name": "interview_room_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Interview Room Id"
+            }
+          },
+          {
+            "name": "x-agent-secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Agent-Secret"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentConfigResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/interviews/join/{access_token}/leave": {
+      "post": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Participant Leave",
+        "description": "Notify that the respondent has left the interview (e.g. clicked End call).\n\nPublic endpoint. Marks the room as completed so status updates even when\nthe LiveKit room_finished webhook does not reach the backend (e.g. local dev).",
+        "operationId": "participant_leave_api_interviews_join__access_token__leave_post",
+        "parameters": [
+          {
+            "name": "access_token",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Access Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/interviews/session-report": {
+      "post": {
+        "tags": [
+          "interviews"
+        ],
+        "summary": "Receive Session Report",
+        "description": "Receive session report from the LiveKit agent.\n\nThis endpoint is called by the agent when an interview session ends.\nThe report contains the conversation transcript which is parsed\nand saved in AssemblyAI format.\n\nParameters:\n- interview_room_id: UUID of the interview room\n- report: Session report dictionary from the agent\n\nHeaders:\n- X-Agent-Secret: Optional shared secret for authentication\n\nReturns:\n- Success message with room and record IDs",
+        "operationId": "receive_session_report_api_interviews_session_report_post",
+        "parameters": [
+          {
+            "name": "x-agent-secret",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "X-Agent-Secret"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionReportRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/webhooks/livekit": {
+      "post": {
+        "tags": [
+          "webhooks"
+        ],
+        "summary": "Handle Livekit Webhook",
+        "description": "Handle webhooks from LiveKit server.\n\nLiveKit sends webhooks for various events:\n- room_started: When a room is created\n- room_finished: When a room is closed\n- participant_joined: When someone joins\n- participant_left: When someone leaves\n- egress_started: When recording starts\n- egress_ended: When recording finishes\n\nSecurity: Webhook signature verification is REQUIRED.\nThe Authorization header must contain a valid JWT signed with LIVEKIT_API_SECRET.\n\nSee: https://docs.livekit.io/home/server/webhooks/",
+        "operationId": "handle_livekit_webhook_api_webhooks_livekit_post",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Authorization"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
-      "AdminRecordItem": {
+      "AgentConfigResponse": {
+        "properties": {
+          "interview_room_id": {
+            "type": "string",
+            "title": "Interview Room Id"
+          },
+          "research_goals": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Research Goals"
+          },
+          "interview_guide": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interview Guide"
+          },
+          "max_duration_minutes": {
+            "type": "integer",
+            "title": "Max Duration Minutes"
+          },
+          "respondent_email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Respondent Email"
+          },
+          "voice": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voice"
+          },
+          "realtime_provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Realtime Provider"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          }
+        },
+        "type": "object",
+        "required": [
+          "interview_room_id",
+          "max_duration_minutes"
+        ],
+        "title": "AgentConfigResponse",
+        "description": "Response model for agent configuration (full interview config)."
+      },
+      "AgentMessageDTO": {
         "properties": {
           "id": {
             "type": "string",
             "title": "Id"
           },
-          "name": {
+          "thread_id": {
             "type": "string",
-            "title": "Name"
+            "title": "Thread Id"
           },
-          "size_mb": {
-            "type": "number",
-            "title": "Size Mb"
-          },
-          "creation_date": {
+          "message_type": {
             "type": "string",
-            "format": "date-time",
-            "title": "Creation Date"
-          },
-          "modified_date": {
-            "type": "string",
-            "format": "date-time",
-            "title": "Modified Date"
-          },
-          "status": {
-            "$ref": "#/components/schemas/RecordStatus"
-          },
-          "is_archived": {
-            "type": "boolean",
-            "title": "Is Archived"
-          },
-          "is_public": {
-            "type": "boolean",
-            "title": "Is Public"
-          },
-          "participants_count": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
+            "enum": [
+              "user",
+              "assistant"
             ],
-            "title": "Participants Count"
+            "title": "Message Type"
           },
-          "respondents_count": {
-            "anyOf": [
-              {
-                "type": "integer"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Respondents Count"
+          "content": {
+            "type": "string",
+            "title": "Content"
           },
-          "respondent_names": {
+          "parts": {
             "anyOf": [
               {
                 "items": {
-                  "type": "string"
+                  "additionalProperties": true,
+                  "type": "object"
                 },
                 "type": "array"
               },
@@ -3639,100 +4731,154 @@
                 "type": "null"
               }
             ],
-            "title": "Respondent Names"
+            "title": "Parts"
           },
-          "has_reports": {
+          "llm_model": {
             "anyOf": [
               {
-                "type": "boolean"
+                "type": "string",
+                "enum": [
+                  "fast",
+                  "thinking"
+                ]
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Has Reports"
+            "title": "Llm Model"
           },
-          "duration_sec": {
+          "mode": {
             "anyOf": [
               {
-                "type": "number"
+                "type": "string",
+                "enum": [
+                  "normal",
+                  "interview_guide",
+                  "research_context",
+                  "documentation"
+                ]
               },
               {
                 "type": "null"
               }
             ],
-            "title": "Duration Sec"
+            "title": "Mode"
           },
-          "file_extension": {
+          "created_at": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "format": "date-time"
               },
               {
                 "type": "null"
               }
             ],
-            "title": "File Extension"
-          },
-          "file_name": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "File Name"
-          },
-          "file_path": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "File Path"
-          },
-          "type": {
-            "type": "string",
-            "title": "Type",
-            "default": "text"
-          },
-          "project": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Project"
-          },
-          "email": {
-            "type": "string",
-            "title": "Email"
+            "title": "Created At"
           }
         },
         "type": "object",
         "required": [
           "id",
-          "name",
-          "size_mb",
-          "creation_date",
-          "modified_date",
-          "status",
-          "is_archived",
-          "is_public",
-          "participants_count",
-          "respondents_count",
-          "respondent_names",
-          "email"
+          "thread_id",
+          "message_type",
+          "content"
         ],
-        "title": "AdminRecordItem"
+        "title": "AgentMessageDTO",
+        "description": "Data transfer object for an agent message."
+      },
+      "AgentThreadDTO": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "user_id": {
+            "type": "string",
+            "title": "User Id"
+          },
+          "thread_name": {
+            "type": "string",
+            "title": "Thread Name"
+          },
+          "state": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "State"
+          },
+          "guide_content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Guide Content"
+          },
+          "research_context_content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Research Context Content"
+          },
+          "is_deleted": {
+            "type": "boolean",
+            "title": "Is Deleted",
+            "default": false
+          },
+          "created_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Created At"
+          },
+          "updated_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updated At"
+          },
+          "message_count": {
+            "type": "integer",
+            "title": "Message Count",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "user_id",
+          "thread_name"
+        ],
+        "title": "AgentThreadDTO",
+        "description": "Data transfer object for an agent thread."
       },
       "AssignLink": {
         "properties": {
@@ -3837,6 +4983,20 @@
         ],
         "title": "Body_export_to_docx_insight_export_docx_post"
       },
+      "CancelChatRequest": {
+        "properties": {
+          "thread_id": {
+            "type": "string",
+            "title": "Thread Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "thread_id"
+        ],
+        "title": "CancelChatRequest",
+        "description": "Request model for canceling an in-progress chat."
+      },
       "ChangeName": {
         "properties": {
           "id": {
@@ -3927,28 +5087,6 @@
         ],
         "title": "ChatMessageResponse"
       },
-      "ChatRequest": {
-        "properties": {
-          "message": {
-            "type": "string",
-            "maxLength": 1000,
-            "title": "Message"
-          },
-          "search_settings": {
-            "$ref": "#/components/schemas/SearchSettings"
-          },
-          "thread_id": {
-            "type": "integer",
-            "title": "Thread Id",
-            "default": 1
-          }
-        },
-        "type": "object",
-        "required": [
-          "search_settings"
-        ],
-        "title": "ChatRequest"
-      },
       "ChatThreadResponse": {
         "properties": {
           "thread_id": {
@@ -4032,6 +5170,28 @@
         ],
         "title": "ContextTokensResponse",
         "description": "Aggregated token count for a set of records."
+      },
+      "Controllers__models__requests__ChatRequest": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "maxLength": 1000,
+            "title": "Message"
+          },
+          "search_settings": {
+            "$ref": "#/components/schemas/SearchSettings"
+          },
+          "thread_id": {
+            "type": "integer",
+            "title": "Thread Id",
+            "default": 1
+          }
+        },
+        "type": "object",
+        "required": [
+          "search_settings"
+        ],
+        "title": "ChatRequest"
       },
       "Costs": {
         "properties": {
@@ -4357,6 +5517,110 @@
         ],
         "title": "CreatePromptRequest",
         "description": "Request model for creating a new prompt."
+      },
+      "CreateRoomsRequest": {
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Project Id"
+          },
+          "count": {
+            "type": "integer",
+            "title": "Count",
+            "default": 1
+          },
+          "max_duration_minutes": {
+            "type": "integer",
+            "title": "Max Duration Minutes",
+            "default": 30
+          },
+          "expires_in_days": {
+            "type": "integer",
+            "title": "Expires In Days",
+            "default": 7
+          },
+          "voice": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voice"
+          },
+          "realtime_provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Realtime Provider"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "topics_for_respondent": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Topics For Respondent"
+          }
+        },
+        "type": "object",
+        "required": [
+          "project_id"
+        ],
+        "title": "CreateRoomsRequest",
+        "description": "Request model for creating interview rooms."
+      },
+      "CreateRoomsResponse": {
+        "properties": {
+          "rooms": {
+            "items": {
+              "$ref": "#/components/schemas/InterviewRoomResponse"
+            },
+            "type": "array",
+            "title": "Rooms"
+          }
+        },
+        "type": "object",
+        "required": [
+          "rooms"
+        ],
+        "title": "CreateRoomsResponse",
+        "description": "Response model for room creation."
+      },
+      "CreateThreadRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "title": "Name",
+            "default": "Thread"
+          }
+        },
+        "type": "object",
+        "title": "CreateThreadRequest",
+        "description": "Request model for creating an agent thread."
       },
       "DefinedContext": {
         "properties": {
@@ -4934,6 +6198,211 @@
         ],
         "title": "Insights"
       },
+      "InterviewConfigResponse": {
+        "properties": {
+          "tokens_per_30_min": {
+            "type": "integer",
+            "title": "Tokens Per 30 Min"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tokens_per_30_min"
+        ],
+        "title": "InterviewConfigResponse",
+        "description": "Public config for interview links (tokens per 30 min)."
+      },
+      "InterviewRoomResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "project_id": {
+            "type": "string",
+            "title": "Project Id"
+          },
+          "record_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Record Id"
+          },
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "room_name": {
+            "type": "string",
+            "title": "Room Name"
+          },
+          "respondent_email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Respondent Email"
+          },
+          "max_duration_minutes": {
+            "type": "integer",
+            "title": "Max Duration Minutes"
+          },
+          "research_goals_override": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Research Goals Override"
+          },
+          "interview_guide_override": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interview Guide Override"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Created At"
+          },
+          "started_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Started At"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "expires_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires At"
+          },
+          "created_by": {
+            "type": "string",
+            "title": "Created By"
+          },
+          "voice": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Voice"
+          },
+          "realtime_provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Realtime Provider"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "topics_for_respondent": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Topics For Respondent"
+          },
+          "display_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 42
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Display Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "project_id",
+          "access_token",
+          "url",
+          "room_name",
+          "max_duration_minutes",
+          "status",
+          "created_at",
+          "created_by"
+        ],
+        "title": "InterviewRoomResponse",
+        "description": "Response model for interview room details."
+      },
       "JTBD": {
         "properties": {
           "identified_jobs": {
@@ -5067,6 +6536,50 @@
         ],
         "title": "Job"
       },
+      "JoinRoomRequest": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email"
+          }
+        },
+        "type": "object",
+        "required": [
+          "email"
+        ],
+        "title": "JoinRoomRequest",
+        "description": "Request model for joining an interview room."
+      },
+      "JoinRoomResponse": {
+        "properties": {
+          "token": {
+            "type": "string",
+            "title": "Token"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          },
+          "room_name": {
+            "type": "string",
+            "title": "Room Name"
+          },
+          "max_duration_minutes": {
+            "type": "integer",
+            "title": "Max Duration Minutes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "token",
+          "url",
+          "room_name",
+          "max_duration_minutes"
+        ],
+        "title": "JoinRoomResponse",
+        "description": "Response model for joining an interview room."
+      },
       "MessageType": {
         "type": "string",
         "enum": [
@@ -5074,80 +6587,6 @@
           "assistant"
         ],
         "title": "MessageType"
-      },
-      "OrphanedFileInfo": {
-        "properties": {
-          "filename": {
-            "type": "string",
-            "title": "Filename"
-          },
-          "owner": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Owner"
-          }
-        },
-        "type": "object",
-        "required": [
-          "filename",
-          "owner"
-        ],
-        "title": "OrphanedFileInfo"
-      },
-      "PaginatedAdminRecordResponse": {
-        "properties": {
-          "records": {
-            "items": {
-              "$ref": "#/components/schemas/AdminRecordItem"
-            },
-            "type": "array",
-            "title": "Records"
-          },
-          "total": {
-            "type": "integer",
-            "title": "Total"
-          },
-          "page": {
-            "type": "integer",
-            "title": "Page"
-          },
-          "limit": {
-            "type": "integer",
-            "title": "Limit"
-          },
-          "has_more": {
-            "type": "boolean",
-            "title": "Has More"
-          },
-          "filters_applied": {
-            "anyOf": [
-              {
-                "additionalProperties": true,
-                "type": "object"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Filters Applied"
-          }
-        },
-        "type": "object",
-        "required": [
-          "records",
-          "total",
-          "page",
-          "limit",
-          "has_more"
-        ],
-        "title": "PaginatedAdminRecordResponse",
-        "description": "Paginated response for admin records list with filters metadata."
       },
       "PaginatedRecordResponse": {
         "properties": {
@@ -6180,6 +7619,75 @@
         "title": "RecordsMetaBatchResponse",
         "description": "Batch response for multiple record metadata."
       },
+      "RoomInfoResponse": {
+        "properties": {
+          "room_name": {
+            "type": "string",
+            "title": "Room Name"
+          },
+          "max_duration_minutes": {
+            "type": "integer",
+            "title": "Max Duration Minutes"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "project_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Project Name"
+          },
+          "expires_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires At"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "topics_for_respondent": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Topics For Respondent"
+          }
+        },
+        "type": "object",
+        "required": [
+          "room_name",
+          "max_duration_minutes",
+          "status"
+        ],
+        "title": "RoomInfoResponse",
+        "description": "Response model for public room information."
+      },
       "SearchScope": {
         "type": "string",
         "enum": [
@@ -6205,6 +7713,75 @@
           "use_web"
         ],
         "title": "SearchSettings"
+      },
+      "Services__AgentService__models__ChatRequest": {
+        "properties": {
+          "thread_id": {
+            "type": "string",
+            "title": "Thread Id"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 20000,
+            "minLength": 1,
+            "title": "Message"
+          },
+          "reasoning_mode": {
+            "type": "string",
+            "enum": [
+              "fast",
+              "thinking"
+            ],
+            "title": "Reasoning Mode",
+            "description": "Reasoning mode: fast or thinking",
+            "default": "fast"
+          },
+          "forced_action": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "research_context",
+                  "interview_guide",
+                  "documentation"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Forced Action",
+            "description": "Принудительный выбор инструмента/агента на основе активного тега"
+          }
+        },
+        "type": "object",
+        "required": [
+          "thread_id",
+          "message"
+        ],
+        "title": "ChatRequest",
+        "description": "Request model for sending a chat message."
+      },
+      "SessionReportRequest": {
+        "properties": {
+          "interview_room_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Interview Room Id"
+          },
+          "report": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Report"
+          }
+        },
+        "type": "object",
+        "required": [
+          "interview_room_id",
+          "report"
+        ],
+        "title": "SessionReportRequest",
+        "description": "Request model for session report from agent."
       },
       "Solution": {
         "properties": {
@@ -6257,7 +7834,7 @@
           "speaker": {
             "type": "string",
             "title": "Speaker",
-            "description": "Unique speaker identifier (e.g., 'Speaker_A')"
+            "description": "Unique speaker identifier (e.g., 'Speaker_A', 'Speaker_1', 'Speaker_1A')"
           },
           "speaker_name": {
             "type": "string",
@@ -6279,7 +7856,7 @@
           "speaker": {
             "type": "string",
             "title": "Speaker",
-            "description": "Unique speaker identifier (e.g., 'Speaker_A')"
+            "description": "Unique speaker identifier (e.g., 'Speaker_A', 'Speaker_1', 'Speaker_1A')"
           },
           "is_respondent": {
             "type": "boolean",
@@ -6778,6 +8355,101 @@
         ],
         "title": "UpdateRecordsRequest"
       },
+      "UpdateRoomRequest": {
+        "properties": {
+          "research_goals_override": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Research Goals Override"
+          },
+          "interview_guide_override": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Interview Guide Override"
+          },
+          "topics_for_respondent": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Topics For Respondent"
+          },
+          "max_duration_minutes": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Duration Minutes"
+          },
+          "expires_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Expires At"
+          },
+          "clear_research_goals_override": {
+            "type": "boolean",
+            "title": "Clear Research Goals Override",
+            "default": false
+          },
+          "clear_interview_guide_override": {
+            "type": "boolean",
+            "title": "Clear Interview Guide Override",
+            "default": false
+          },
+          "clear_topics_for_respondent": {
+            "type": "boolean",
+            "title": "Clear Topics For Respondent",
+            "default": false
+          },
+          "display_name": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 42
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Display Name"
+          },
+          "clear_display_name": {
+            "type": "boolean",
+            "title": "Clear Display Name",
+            "default": false
+          }
+        },
+        "type": "object",
+        "title": "UpdateRoomRequest",
+        "description": "Request model for updating an interview room."
+      },
       "UpdateSetupRequest": {
         "properties": {
           "goals": {
@@ -6883,6 +8555,22 @@
         "title": "UpdateSetupRequest",
         "description": "Request model for updating setup configuration without generating reports."
       },
+      "UpdateThreadRequest": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1,
+            "title": "Name"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "UpdateThreadRequest",
+        "description": "Request model for updating an agent thread."
+      },
       "UploadFileRequest": {
         "properties": {
           "record_name": {
@@ -6969,7 +8657,7 @@
           "new_speaker": {
             "type": "string",
             "title": "New Speaker",
-            "description": "Unique speaker identifier to assign (e.g., 'Speaker_B')"
+            "description": "Unique speaker identifier to assign (e.g., 'Speaker_B', 'Speaker_2', 'Speaker_1A')"
           }
         },
         "type": "object",
@@ -7037,5 +8725,62 @@
         "scheme": "bearer"
       }
     }
-  }
+  },
+  "servers": [
+    {
+      "url": "https://app.aseed.ai/custdev"
+    }
+  ],
+  "tags": [
+    {
+      "name": "insight",
+      "description": "Core insight endpoints: records, transcripts, generation, and chat.",
+      "x-displayName": "Insight"
+    },
+    {
+      "name": "insight_public",
+      "description": "Public insight endpoints for shared/public access.",
+      "x-displayName": "Insight Public"
+    },
+    {
+      "name": "projects",
+      "description": "Project management endpoints.",
+      "x-displayName": "Projects"
+    },
+    {
+      "name": "project_reports",
+      "description": "Project report generation and management endpoints.",
+      "x-displayName": "Project Reports"
+    },
+    {
+      "name": "project_reports_public",
+      "description": "Public project report endpoints.",
+      "x-displayName": "Project Reports Public"
+    },
+    {
+      "name": "prompts",
+      "description": "Custom prompts management endpoints.",
+      "x-displayName": "Prompts"
+    },
+    {
+      "name": "presets",
+      "description": "Presets and templates endpoints.",
+      "x-displayName": "Presets"
+    },
+    {
+      "name": "agent",
+      "description": "AI agent threads and chat endpoints.",
+      "x-displayName": "Agent"
+    },
+    {
+      "name": "interviews",
+      "description": "AI interviewer room and session endpoints.",
+      "x-displayName": "Interviews"
+    },
+    {
+      "name": "webhooks",
+      "description": "Incoming webhook endpoints.",
+      "x-displayName": "Webhooks"
+    }
+  ]
 }

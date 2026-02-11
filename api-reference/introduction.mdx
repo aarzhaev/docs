@@ -1,46 +1,58 @@
 ---
 title: 'API Reference'
-description: 'Complete API documentation for Aseed Insight Server'
+description: 'Public API reference for Aseed Insight'
 ---
 
 ## Welcome
 
-This is the complete API reference for **Aseed Insight Server**. All API endpoints are automatically generated from the OpenAPI specification.
+This section contains the public API reference for **Aseed Insight**. Endpoints in this tab are generated from the filtered OpenAPI schema used by Mintlify.
 
-<Card
-  title="OpenAPI Specification"
-  icon="code"
-  href="https://app.aseed.ai/custdev/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+<CardGroup cols={2}>
+  <Card
+    title="Public OpenAPI schema"
+    icon="file-code"
+    href="/api-reference/openapi-filtered.json"
+  >
+    Schema used for this documentation (admin routes excluded).
+  </Card>
+  <Card
+    title="Full OpenAPI schema"
+    icon="code"
+    href="https://app.aseed.ai/custdev/openapi.json"
+  >
+    Raw backend schema with all available routes.
+  </Card>
+</CardGroup>
 
 ## Base URL
 
-All API requests should be made to:
+Use this base URL for API requests:
 
 ```
 https://app.aseed.ai/custdev
 ```
 
-## API Overview
+## API Groups
 
-The Aseed Insight API is organized into the following sections:
+Main endpoint groups in the current schema:
 
-- **Insight API** - Core functionality for managing insights, records, transcripts, and exports
-- **Projects API** - Project management and project reports
-- **Prompts API** - Managing prompts and templates
-- **Presets API** - System and custom presets management
-- **Notifications** - WebSocket-based real-time notifications
+- **insight / insight_public** - records, transcripts, generation, and chat
+- **projects** - project management
+- **project_reports / project_reports_public** - project report generation and public access
+- **prompts** - custom prompt operations
+- **presets** - preset operations
+- **agent** - AI assistant and related endpoints
+- **interviews** - interview rooms and interview flow
+- **webhooks** - integration webhook endpoints
 
 <Note>
-Admin endpoints are excluded from this documentation. For administrative operations, please refer to the full OpenAPI specification or contact your system administrator.
+Admin endpoints are intentionally excluded from this tab.
 </Note>
 
 ## Authentication
 
-API authentication details are defined in the OpenAPI specification. Please refer to individual endpoint documentation for specific authentication requirements.
+This API uses `Bearer` authentication (`HTTPBearer`). Check each endpoint for exact requirements.
 
 <Tip>
-Use the OpenAPI specification file to explore API endpoints. You can import it into tools like Postman or Insomnia for testing.
+You can import the OpenAPI schema into Postman or Insomnia for testing and collections generation.
 </Tip>

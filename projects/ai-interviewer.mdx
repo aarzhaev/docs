@@ -1,0 +1,192 @@
+---
+title: "AI Interviewer"
+description: "Create interview links, run voice AI interviews, and store completed sessions in your project."
+---
+
+## Overview
+
+AI Interviewer runs live voice interviews through unique links. You create links in a project, share them with respondents, and each completed session is saved as a project record.
+
+<CardGroup cols={2}>
+  <Card title="Where it lives" icon="folder">
+    Open any project and use the **AI Interviewer** section.
+  </Card>
+  <Card title="What you get" icon="mic">
+    A respondent speaks with AI in real time. The completed session is saved as a record for transcripts and reports.
+  </Card>
+</CardGroup>
+
+## Before you start
+
+<Note>
+To create and use interview links, fill both **Research Goals** and **Interview Guide** in the project context first.
+</Note>
+
+You should also have enough tokens available for the links you create. Link creation reserves tokens based on link count and duration.
+
+## Create interview links
+
+<Steps>
+  <Step title="Open your project">
+    Go to a project, then scroll to the **AI Interviewer** section.
+
+    <Frame>
+      <img
+        src="/images/projects-ai-interviewer-section-light.png"
+        alt="Project page showing AI Interviewer section and Create Links button"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-ai-interviewer-section-dark.png"
+        alt="Project page showing AI Interviewer section and Create Links button"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-ai-interviewer-section-light.png
+      Description: Project detail page showing the AI Interviewer section with section title, short description, and Create Links button visible. Keep Research Context section visible above if possible for orientation.
+      Context: Step 1 showing where users can find AI Interviewer inside a project.
+      Dark variant: images/projects-ai-interviewer-section-dark.png
+    */}
+  </Step>
+  <Step title="Click Create Links">
+    Click **Create Links**. If context is missing, the button is disabled until you add Research Goals and Interview Guide.
+  </Step>
+  <Step title="Set link parameters">
+    In the create modal, set:
+    - Number of links
+    - Interview duration (minutes)
+    - Link expiration (days)
+    - Voice
+    - Language (`Auto`, `Russian`, `English`)
+    - Optional interview topics shown to respondents in onboarding
+
+    <Frame>
+      <img
+        src="/images/projects-ai-interviewer-create-modal-light.png"
+        alt="Create Interview Links modal showing duration, expiration, voice, language, and interview topics"
+        className="block dark:hidden"
+      />
+      <img
+        src="/images/projects-ai-interviewer-create-modal-dark.png"
+        alt="Create Interview Links modal showing duration, expiration, voice, language, and interview topics"
+        className="hidden dark:block"
+      />
+    </Frame>
+
+    {/* TODO: Add screenshot
+      File: images/projects-ai-interviewer-create-modal-light.png
+      Description: Create Interview Links modal open. Show fields for links count, duration, expiration, voice selector, language selector, and interview topics textarea. Keep token reservation block visible in the same frame if possible.
+      Context: Step 3 showing required and optional settings when creating interview links.
+      Dark variant: images/projects-ai-interviewer-create-modal-dark.png
+    */}
+  </Step>
+  <Step title="Review token reservation and create">
+    Review token reservation, then click **Create Links**. If balance is insufficient, you will see **Buy Tokens**.
+  </Step>
+  <Step title="Share links with respondents">
+    Use row actions to copy or open each link. Each link is single-use for one respondent interview.
+  </Step>
+</Steps>
+
+## Manage interview links
+
+After creation, links appear in three tabs:
+- **Active**: pending and in-progress links
+- **Completed**: finished interviews
+- **Archived**: cancelled or expired links
+
+<Frame>
+  <img
+    src="/images/projects-ai-interviewer-links-list-light.png"
+    alt="AI Interviewer links list with Active, Completed, and Archived tabs"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/projects-ai-interviewer-links-list-dark.png"
+    alt="AI Interviewer links list with Active, Completed, and Archived tabs"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/projects-ai-interviewer-links-list-light.png
+  Description: AI Interviewer links list showing tab bar with Active, Completed, and Archived tabs. At least one link row should be visible with status badge and actions menu.
+  Context: Shows how users monitor created links and interview progress.
+  Dark variant: images/projects-ai-interviewer-links-list-dark.png
+*/}
+
+### Link statuses
+
+| Status | Meaning |
+|--------|---------|
+| `pending` | Link is created but interview has not started. |
+| `active` | Respondent is currently in session. |
+| `completed` | Interview is finished and saved. |
+| `expired` | Link validity period ended. |
+| `cancelled` | Link was cancelled manually. |
+
+### Row actions
+
+Depending on status, you can:
+- **Copy link**
+- **Open link**
+- **Rename** (pending links)
+- **Edit Context** (pending links)
+- **Cancel** (pending links)
+
+## What respondents see
+
+Respondents open `/interview/[token]` without login, enter email, and join the voice interview. The page includes onboarding cards, microphone permission flow, call controls, and a countdown timer.
+
+Key behavior:
+- Rejoin is supported for the same email while the interview is still active.
+- If the call ends from timer or explicit leave, the session is marked complete.
+- The transcript panel is available during and after the call.
+
+<Frame>
+  <img
+    src="/images/projects-ai-interviewer-respondent-page-light.png"
+    alt="Public interview page with onboarding card and Start interview button"
+    className="block dark:hidden"
+  />
+  <img
+    src="/images/projects-ai-interviewer-respondent-page-dark.png"
+    alt="Public interview page with onboarding card and Start interview button"
+    className="hidden dark:block"
+  />
+</Frame>
+
+{/* TODO: Add screenshot
+  File: images/projects-ai-interviewer-respondent-page-light.png
+  Description: Public interview page opened by respondent via token link. Show onboarding card content and Start Interview flow with email field and language selector visible.
+  Context: Demonstrates respondent experience before joining the call.
+  Dark variant: images/projects-ai-interviewer-respondent-page-dark.png
+*/}
+
+## After interview completion
+
+When a session completes, Aseed stores it in the project as a record. You can then:
+- Open transcript and review interview content
+- Generate single reports for this record
+- Include the record in project reports
+
+<Tip>
+AI Interviewer works best with specific Research Goals and Interview Guide content. Strong context improves both interview quality and report relevance.
+</Tip>
+
+## Token behavior
+
+- Tokens are reserved when you create links.
+- Reservation size depends on link count and duration.
+- Final charging happens when interviews move to **completed**.
+- Cancelled or expired links do not consume completed-session charges.
+
+## Related topics
+- [Add research context](/projects/context)
+- [Manage projects](/projects/manage)
+- [Upload records](/projects/upload-records)
+- [Manage records](/projects/manage-records)
+- [Generate single reports](/reports/single)
+- [Create project reports](/reports/project)

@@ -29,6 +29,7 @@
             "pages": [
               "projects/create",
               "projects/context",
+              "projects/ai-interviewer",
               "projects/edit",
               "projects/manage",
               "projects/upload-records",

@@ -10,7 +10,7 @@ description: "Understand the complete Aseed workflow from project creation to sh
     Learn how Aseed differs from general AI assistants and what makes it unique for customer development research.
   </Card>
   <Card title="Quick Start" icon="rocket" href="/quickstart">
-    Get your first project report in minutes. Follow the step-by-step guide to create a project, upload interviews, and generate reports.
+    Get your first project report in minutes. Follow the step-by-step guide to create a project, prepare AI interviews, collect responses, and generate reports.
   </Card>
 </CardGroup>
 
@@ -20,7 +20,7 @@ description: "Understand the complete Aseed workflow from project creation to sh
 
 ## The complete workflow
 
-Aseed helps you transform interview recordings into actionable insights through a structured workflow. Follow these steps to go from raw interviews to shareable reports:
+Follow these steps to move from raw interviews to shareable insights:
 
 <Steps>
   <Step title="Create a project">
@@ -33,21 +33,47 @@ Aseed helps you transform interview recordings into actionable insights through 
     </Tip>
   </Step>
 
-  <Step title="Fill research context">
-    Define your research goals and objectives. This helps Aseed understand what you're trying to learn and generates more relevant insights.
-    
-    **Learn more:** [Add research context](/projects/context)
-    
-    <Expandable title="Create with AI">
-      Use the AI Agent to generate a comprehensive Research Context Brief through an interactive Q&A session - [Learn more](/projects/context#generate-research-context-with-ai)
-    </Expandable>
+  <Step title="Fill research context and interview guide">
+    Define your **Research Goals** and **Interview Guide** together. This is the preparation stage for AI interviews.
+
+    Use the **Research Context Builder** in the AI Agent to generate both through guided Q&A, or fill both fields manually in the project.
+
+    **Learn more:** [Add research context](/projects/context) and [Create interview guide](/interviews/guide-builder)
+
+    <Tip>
+      Keep goals and guide specific. Better context produces better interview questions and better reports.
+    </Tip>
+
+    {/* TODO: Add screenshot
+      File: images/workflow-research-context-light.png
+      Description: Project page showing Research Goals and Interview Guide cards with edit actions.
+      Context: Step 2 showing where users prepare context and guide before interviews.
+      Dark variant: images/workflow-research-context-dark.png
+    */}
   </Step>
 
-  <Step title="Upload interview files">
-    Add audio, video, or text files to your project. Files upload in the background, so you can continue working while they process.
-    
+  <Step title="Create AI interview links and send them to respondents">
+    Open **AI Interviewer** in the project, create interview links, and send one link per respondent.
+
+    **Learn more:** [AI Interviewer](/projects/ai-interviewer)
+
+    <Tip>
+      Completed AI interviews are saved as project records automatically.
+    </Tip>
+
+    {/* TODO: Add screenshot
+      File: images/workflow-ai-interviewer-links-light.png
+      Description: AI Interviewer section with Create Links button and generated links list.
+      Context: Step 3 showing link creation and respondent distribution.
+      Dark variant: images/workflow-ai-interviewer-links-dark.png
+    */}
+  </Step>
+
+  <Step title="Upload previously recorded interviews">
+    Add existing audio, video, or text interviews that were recorded outside Aseed.
+
     **Learn more:** [Upload records to project](/projects/upload-records) or [View all records](/interviews/records)
-    
+
     <CardGroup cols={2}>
       <Card title="Supported formats" icon="file">
         **Audio:** MP3, WAV, M4A, OGG  
@@ -59,25 +85,22 @@ Aseed helps you transform interview recordings into actionable insights through 
         **Maximum:** 5GB per file
       </Card>
     </CardGroup>
+
+    {/* TODO: Add screenshot
+      File: images/workflow-upload-records-light.png
+      Description: Project Records area with Upload Records action and list/table region for incoming files.
+      Context: Step 4 showing where users upload previously recorded interviews.
+      Dark variant: images/workflow-upload-records-dark.png
+    */}
   </Step>
 
-  <Step title="Upload text transcripts or transcribe">
-    For text files: Upload pre-written transcripts directly. For audio/video files: Generate transcripts from recordings. Review and edit transcripts to ensure accuracy before generating reports.
-    
+  <Step title="Transcribe and review recordings">
+    Upload pre-written transcripts for text files, or generate transcripts for audio/video files. Review and edit before generating reports.
+
     **Learn more:** [Upload text transcripts](/interviews/text-transcripts), [Transcribe interviews](/interviews/transcribe), and [Edit transcripts](/interviews/edit)
-    
-    <Tip>
-      Accurate transcripts lead to better insights. Take time to review and correct transcripts, especially speaker names and key terminology.
-    </Tip>
-  </Step>
 
-  <Step title="Create interview guide">
-    Prepare your interview structure and questions. A well-structured guide helps ensure consistent data collection across interviews.
-    
-    **Learn more:** [Create interview guide](/interviews/guide-builder)
-    
     <Tip>
-      You can use the AI Agent to generate a structured interview guide based on your research goals, or write it manually. Generated guides can be saved directly to your project.
+      Accurate transcripts lead to better insights. Review speaker names and key terminology before report generation.
     </Tip>
   </Step>
 
@@ -117,7 +140,7 @@ Aseed helps you transform interview recordings into actionable insights through 
 >
   Create, manage, and organize research projects. Projects are containers for interviews, context, and reports.
   
-  **Key topics:** [Create a project](/projects/create), [Edit project](/projects/edit), [Manage projects](/projects/manage), [Upload records](/projects/upload-records), [Manage records](/projects/manage-records), [Batch generation](/projects/batch-generation), and [Add research context](/projects/context).
+  **Key topics:** [Create a project](/projects/create), [Add research context](/projects/context), [AI Interviewer](/projects/ai-interviewer), [Edit project](/projects/edit), [Manage projects](/projects/manage), [Upload records](/projects/upload-records), [Manage records](/projects/manage-records), and [Batch generation](/projects/batch-generation).
 </Card>
 
 <Card
@@ -127,7 +150,7 @@ Aseed helps you transform interview recordings into actionable insights through 
 >
   View, manage, and upload interview records. The records table shows all your interviews with filtering, sorting, and bulk actions.
   
-  **Key topics:** [Records page](/interviews/records), [Create interview guide](/interviews/guide-builder), [Transcribe interviews](/interviews/transcribe), and [Edit transcripts](/interviews/edit).
+  **Key topics:** [Records page](/interviews/records), [Upload text transcripts](/interviews/text-transcripts), [Transcribe interviews](/interviews/transcribe), and [Edit transcripts](/interviews/edit).
 </Card>
 
 <Card
@@ -164,7 +187,7 @@ Aseed helps you transform interview recordings into actionable insights through 
 
 <CardGroup cols={2}>
   <Card title="Quick Start: First Project" icon="rocket" href="/quickstart">
-    Follow the step-by-step guide to create a project, upload interviews, and generate your first report in minutes.
+    Follow the step-by-step guide to create a project, prepare AI interviews, add recordings, and generate your first report.
   </Card>
   <Card title="Create your first project" icon="folder" href="/projects/create">
     Set up a project and describe your research goal. You can add files during creation or upload them later.

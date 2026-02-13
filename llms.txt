@@ -24,7 +24,7 @@
 - [Upload records](/interviews/upload) - Upload audio, video, or text files as new records.
 - [Upload text transcripts](/interviews/text-transcripts) - Import pre-written transcripts with parser selection.
 - [Create interview guide](/interviews/guide-builder) - Generate structured interview guides with AI.
-- [Transcribe records](/interviews/transcribe) - Configure language and speakers for transcription.
+- [Transcribe records](/interviews/transcribe) - Configure language and speakers for transcription, including mixed-language interviews in Auto mode.
 - [Edit transcripts](/interviews/edit) - Review and correct transcripts before report generation.
 
 ## Single Reports

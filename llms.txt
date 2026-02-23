@@ -1,69 +1,71 @@
-# Aseed Insight Documentation
+# Aseed Insight
+
+> Customer development research: prepare and run interviews (including voice AI), then turn them into structured insights and reports.
 
 ## Getting started
 
-- [Overview](/overview) - Navigate the Aseed docs and find the right guide for your task.
-- [What is Aseed?](/what-is-aseed) - Understand how Aseed differs from general AI assistants for customer development research.
-- [Workflow](/workflow) - Follow the full workflow from project setup to report sharing, including AI Interviewer preparation.
-- [Quick Start: First Project](/quickstart) - Create a project, prepare AI interviews, add recordings, and generate a shareable report in minutes.
+- [Overview](/overview): Find the right guide for your task.
+- [What is Aseed?](/what-is-aseed): How Aseed differs from general AI assistants for customer development research.
+- [Workflow](/workflow): Project setup to report sharing, including AI Interviewer.
+- [Quick Start: First Project](/quickstart): Create a project, prepare AI interviews, add recordings, and generate a report in minutes.
+- [Research Assistant](/projects/context): Add research context and interview guides; ask questions about project reports with citations.
 
 ## Projects
 
-- [Create a project](/projects/create) - Set up a project to organize interviews, context, and reports.
-- [Add research context](/projects/context) - Add Research Goals and Interview Guide manually or with AI.
-- [AI Interviewer](/projects/ai-interviewer) - Create interview links, run voice AI interviews, and store completed sessions as project records.
-- [Edit project](/projects/edit) - Update project name, description, and status.
-- [Manage projects](/projects/manage) - Organize projects using filters, search, and status management.
-- [Upload records](/projects/upload-records) - Add interview files to a specific project.
-- [Manage records](/projects/manage-records) - Rename, archive, delete, or remove records from a project.
-- [Batch generation](/projects/batch-generation) - Generate reports for multiple records in one run.
+- [Create a project](/projects/create): Set up a project to organize interviews, context, and reports.
+- [AI Interviewer](/projects/ai-interviewer): Create interview links, run voice AI interviews, and store sessions as records.
+- [Edit project](/projects/edit): Update project name, description, and status.
+- [Manage projects](/projects/manage): Organize projects with filters, search, and status.
+- [Upload records](/projects/upload-records): Add interview files to a project.
+- [Manage records](/projects/manage-records): Rename, archive, delete, or remove records from a project.
+- [Batch generation](/projects/batch-generation): Generate reports for multiple records in one run.
 
 ## Records
 
-- [Records page](/interviews/records) - View and manage all records in one table.
-- [Upload records](/interviews/upload) - Upload audio, video, or text files as new records.
-- [Upload text transcripts](/interviews/text-transcripts) - Import pre-written transcripts with parser selection.
-- [Create interview guide](/interviews/guide-builder) - Generate structured interview guides with AI.
-- [Transcribe records](/interviews/transcribe) - Configure language and speakers for transcription, including mixed-language interviews in Auto mode.
-- [Edit transcripts](/interviews/edit) - Review and correct transcripts before report generation.
+- [Records page](/interviews/records): View and manage all records in one table.
+- [Upload records](/interviews/upload): Upload audio, video, or text files as new records.
+- [Upload text transcripts](/interviews/text-transcripts): Import pre-written transcripts with parser selection.
+- [Create interview guide](/interviews/guide-builder): Generate structured interview guides with AI.
+- [Transcribe records](/interviews/transcribe): Configure language and speakers for transcription.
+- [Edit transcripts](/interviews/edit): Review and correct transcripts before generating reports.
 
 ## Single Reports
 
-- [Generate single reports](/reports/single) - Create per-interview reports (Transcript, Q&A, General, JTBD, Persona, Custom).
-- [Edit and regenerate reports](/reports/edit) - Refine and regenerate report output after review.
+- [Generate single reports](/reports/single): Per-interview reports: Transcript, Q&A, General, JTBD, Persona, Custom.
+- [Edit and regenerate reports](/reports/edit): Refine and regenerate report output after review.
 
 ## Report types
 
-- [Overview](/reports/report-types) - Compare report types, structure, and use cases.
-- [Transcript Report](/reports/report-types/transcript) - Transcript output used as the foundation for further analysis.
-- [Q&A Report](/reports/report-types/qa) - Structured question-answer output with citations.
-- [General Report](/reports/report-types/general) - Broad interview analysis with insights and recommendations.
-- [JTBD Report](/reports/report-types/jtbd) - Jobs-to-be-Done analysis with job stories and opportunity framing.
-- [Persona Report](/reports/report-types/persona) - Persona synthesis with motivations, pain points, and behavior patterns.
-- [Custom Report](/reports/report-types/custom) - Prompt-based report tailored to your research needs.
+- [Overview](/reports/report-types): Report types, structure, and use cases.
+- [Transcript Report](/reports/report-types/transcript): Raw text from audio or video; foundation for other reports.
+- [Q&A Report](/reports/report-types/qa): Structured question-answer pairs by topic with citations.
+- [General Report](/reports/report-types/general): Profile, insights, and recommendations.
+- [JTBD Report](/reports/report-types/jtbd): Jobs-to-be-Done with job stories and recommendations.
+- [Persona Report](/reports/report-types/persona): Persona profile with motivations, pain points, and behavior.
+- [Custom Report](/reports/report-types/custom): Tailored analysis from your prompt.
 
 ## Project Reports
 
-- [Create a project report](/reports/project) - Synthesize insights across multiple interviews.
-- [Use report presets](/reports/presets) - Start from predefined project report structures.
-- [Build a custom report](/reports/custom) - Build custom project report structures and prompts.
+- [Create a project report](/reports/project): Synthesize insights across multiple interviews into one report.
+- [Use report presets](/reports/presets): Start from predefined report structures.
+- [Build a custom report](/reports/custom): Design your own report structure and prompts.
 
 ## Sharing
 
-- [Share reports publicly](/sharing/public) - Create public report links for stakeholders without Aseed accounts.
-- [Export reports](/sharing/export) - Export reports in DOCX or Markdown.
+- [Share reports publicly](/sharing/public): Create public links for stakeholders without Aseed accounts.
+- [Export reports](/sharing/export): Download reports in DOCX or Markdown.
 
 ## Account & Billing
 
-- [Account & Billing](/account/overview) - Manage token balance and billing settings.
-- [Purchase tokens](/account/purchase) - Buy token packages.
-- [Referral program](/account/referral) - Invite users and earn token rewards.
-- [Token usage](/account/usage) - Understand how tokens are consumed and charged.
+- [Account & Billing](/account/overview): Token balance, billing, and how tokens are used.
+- [Purchase tokens](/account/purchase): Buy token packages.
+- [Referral program](/account/referral): Earn tokens by inviting users.
+- [Token usage](/account/usage): How tokens are consumed and charged.
 
 ## API Reference
 
-- [API Reference](/api-reference/introduction) - Public API reference for Aseed Insight.
+- [API Reference](/api-reference/introduction): Public API reference for Aseed Insight.
 
 ## Changelog
 
-- [Product updates](/changelog) - Latest releases and product improvements.
+- [Product updates](/changelog): Releases and product improvements.

@@ -4834,7 +4834,7 @@
                 "type": "null"
               }
             ],
-            "title": "Research Context Content"
+            "title": "Research Assistant Content"
           },
           "is_deleted": {
             "type": "boolean",

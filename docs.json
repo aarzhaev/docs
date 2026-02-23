@@ -20,7 +20,8 @@
               "overview",
               "what-is-aseed",
               "workflow",
-              "quickstart"
+              "quickstart",
+              "projects/context"
             ]
           },
           {
@@ -28,7 +29,6 @@
             "icon": "folder",
             "pages": [
               "projects/create",
-              "projects/context",
               "projects/ai-interviewer",
               "projects/edit",
               "projects/manage",

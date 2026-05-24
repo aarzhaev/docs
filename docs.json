@@ -84,7 +84,8 @@
             "icon": "share",
             "pages": [
               "sharing/public",
-              "sharing/export"
+              "sharing/export",
+              "sharing/mcp"
             ]
           },
           {

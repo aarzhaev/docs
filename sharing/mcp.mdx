@@ -222,7 +222,7 @@ All tools are read-only. Most list tools support `limit`, `offset`, and `respons
 
 Transcript and report tools support character windows:
 
-- `content_limit` controls how many characters are returned. The default is 12,000 and the maximum is 50,000.
+- `content_limit` controls how many characters are returned. The default is 50,000 and the maximum is 100,000.
 - `content_offset` starts reading from a later character position.
 - `contentWindow.hasMore` and `contentWindow.nextOffset` tell you when to request the next window.
 
@@ -231,7 +231,7 @@ Example:
 ```json
 {
   "record_id": "00000000-0000-4000-8000-000000000000",
-  "content_limit": 12000,
+  "content_limit": 50000,
   "content_offset": 0,
   "response_format": "json"
 }

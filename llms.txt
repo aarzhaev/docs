@@ -54,6 +54,7 @@
 
 - [Share reports publicly](/sharing/public): Create public links for stakeholders without Aseed accounts.
 - [Export reports](/sharing/export): Download reports in DOCX or Markdown.
+- [Aseed MCP](/sharing/mcp): Connect an AI client to search and read your workspace, manage projects and records, preview token costs, and generate record or project reports with explicit confirmation.
 
 ## Account & Billing
 

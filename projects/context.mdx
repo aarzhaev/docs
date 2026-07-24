@@ -1,6 +1,6 @@
 ---
 title: "Research Assistant"
-description: "Use the Research Assistant to generate research context, interview guides, ask questions about project reports with citations, and get help on Aseed."
+description: "Use the Research Assistant to generate research context, interview guides, ask questions about project reports with citations, manage projects and records from chat, and get help on Aseed."
 ---
 
 ## Overview
@@ -21,6 +21,9 @@ The **Research Assistant** is the AI-powered section in the sidebar (link **Rese
   </Card>
   <Card title="Documentation" icon="book">
     Ask questions about Aseed features, workflows, and best practices. Answers are based on up-to-date documentation.
+  </Card>
+  <Card title="Workspace management" icon="folder-cog">
+    Create and update projects, rename and organize records, and preview or run report generation — all from chat, referring to items by name.
   </Card>
 </CardGroup>
 
@@ -47,6 +50,29 @@ Ask Project lets you ask questions about your project's reports and get answers 
 - Check claims against the actual project content
 
 Answers are grounded in your project data; citations link back to the source so you can verify and reuse the information.
+
+## Manage your workspace from chat
+
+The Research Assistant can read and change your Aseed workspace directly from the conversation. Refer to projects and records by name — the assistant finds the right item itself and never asks you for internal IDs.
+
+**What you can ask for:**
+
+- **Explore your workspace** — list projects and their records, open transcripts and reports, check AI Interviewer rooms, or see your token balance. For example: "What projects do I have?" or "Show the records in Onboarding Research".
+- **Manage projects** — create a project, or update its name, description, status, research goals, and interview guide. For example: "Rename Onboarding Research to Onboarding Q3".
+- **Manage records** — rename records, move them between projects, archive or restore them, reset failed processing, and update record setup (goals, guide, notes, languages, participants).
+- **Generate reports** — preview the expected token cost, generate or regenerate single-record reports, and create or run project reports.
+
+**How it works:**
+
+1. **Ask in plain language** — Describe what you want, including multi-step requests like "show the records in this project, then rename it". The assistant searches your workspace, resolves the right project or record, and completes each step in order.
+2. **Confirm sensitive actions** — Archiving, resetting processing, and paid report generation show a confirmation card with the expected token cost before anything runs. Nothing is charged or changed until you confirm.
+3. **See the results** — Completed actions appear as cards in the chat, and your project and record lists refresh automatically.
+
+<Note>
+  Report generation from chat uses the same token balance and billing rules as the rest of the app. Preview actions are free.
+</Note>
+
+The assistant answers workspace requests in the language you write in. File upload, deletion, transcript editing, and token purchase are not available from chat.
 
 ## Generate research context with AI
 

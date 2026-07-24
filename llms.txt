@@ -8,7 +8,7 @@
 - [What is Aseed?](/what-is-aseed): How Aseed differs from general AI assistants for customer development research.
 - [Workflow](/workflow): Project setup to report sharing, including AI Interviewer.
 - [Quick Start: First Project](/quickstart): Create a project, prepare AI interviews, add recordings, and generate a report in minutes.
-- [Research Assistant](/projects/context): Add research context and interview guides; ask questions about project reports with citations.
+- [Research Assistant](/projects/context): Add research context and interview guides, ask questions about project reports with citations, and manage projects, records, and report generation from chat.
 
 ## Projects
 

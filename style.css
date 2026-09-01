@@ -198,7 +198,7 @@ html.dark #table-of-contents a:not(.text-primary):not(.dark\:text-primary-light)
 
 #table-of-contents a:not(.text-primary):hover,
 html.dark #table-of-contents a:not(.text-primary):not(.dark\:text-primary-light):hover {
-  color: color-mix(in srgb, var(--aseed-foreground) 60%, transparent) !important;
+  color: var(--aseed-foreground) !important;
 }
 
 @media (min-width: 1024px) {
@@ -468,10 +468,10 @@ a.card,
 
 #navigation-items .sidebar-group a::before {
   display: block;
-  width: 0.875rem;
-  height: 0.875rem;
+  width: 0.75rem;
+  height: 0.75rem;
   margin-top: 0.15rem;
-  flex: 0 0 0.875rem;
+  flex: 0 0 0.75rem;
   content: "";
   background-color: currentColor;
   -webkit-mask-image: var(--aseed-sidebar-item-icon);
@@ -517,7 +517,7 @@ a.card,
 }
 
 #navigation-items .sidebar-group a[href="/projects/ai-interviewer"] {
-  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/mic.svg");
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/radio.svg");
 }
 
 #navigation-items .sidebar-group a[href="/projects/edit"] {
@@ -525,7 +525,7 @@ a.card,
 }
 
 #navigation-items .sidebar-group a[href="/projects/manage"] {
-  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/settings.svg");
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/folder-tree.svg");
 }
 
 #navigation-items .sidebar-group a[href*="upload-records"] {
@@ -553,7 +553,7 @@ a.card,
 }
 
 #navigation-items .sidebar-group a[href="/interviews/transcribe"] {
-  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/mic.svg");
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/file-text.svg");
 }
 
 #navigation-items .sidebar-group a[href="/interviews/edit"] {
@@ -637,6 +637,11 @@ a.card,
 }
 
 #navigation-items .sidebar-group a[href^="/api-reference/"]::before {
+  display: none !important;
+}
+
+#navigation-items .sidebar-group a[href="/sharing/mcp"] > div:first-child,
+#navigation-items .sidebar-group a[href="/sharing/mcp"] > svg {
   display: none !important;
 }
 

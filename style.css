@@ -1,1327 +1,1193 @@
-/**
- * Custom styles for Aseed Insight documentation
- * Customizes background colors for light and dark themes
- * 
- * Mintlify automatically includes CSS files from the root directory
- * This file will be automatically loaded on all documentation pages
- */
-
-/* Define CSS variables for background colors */
 :root {
-  --background-light: #ffffff;
-  --background-dark: #070707;
-  /* Content container and search bar background colors for light theme */
-  --content-container-bg: #ffffff;
-  --search-bar-bg: #ffffff;
-  /* Text colors for light theme */
-  --text-neutral-900: #171717;
-  --text-neutral-700: #404040;
-  --text-neutral-600: #525252;
-  --text-neutral-500: #737373;
-  --text-neutral-400: #a2a2a2;
-  --text-neutral-300: #d4d4d4;
+  --aseed-canvas: oklch(0.95 0 0);
+  --aseed-surface: oklch(1 0 0);
+  --aseed-card: #f0f0f2;
+  --aseed-foreground: oklch(0.145 0 0);
+  --aseed-muted: oklch(0.45 0 0);
+  --aseed-hover: oklch(0.9 0 0);
+  --aseed-accent: #fb4b01;
+  --aseed-orange: #fb4b01;
+  --aseed-radius-control: 0.625rem;
+  --aseed-radius-shell: 0.75rem;
+  --aseed-radius-card: 1rem;
+  --aseed-radius-panel: 1.5rem;
 }
 
-/* Light theme background - #ffffff */
-:root {
-  background-color: var(--background-light) !important;
+html.dark {
+  --aseed-canvas: oklch(0 0 0);
+  --aseed-surface: oklch(0.17 0 0);
+  --aseed-card: oklch(0.205 0 0);
+  --aseed-foreground: oklch(0.985 0 0);
+  --aseed-muted: oklch(0.6 0 0);
+  --aseed-hover: oklch(0.25 0 0);
+  --aseed-accent: #d44509;
+  --aseed-orange: #d44509;
 }
 
-html {
-  background-color: var(--background-light) !important;
+html,
+body {
+  background: var(--aseed-canvas) !important;
 }
 
 body {
-  background-color: var(--background-light) !important;
+  color: var(--aseed-foreground);
+  font-family: Geist, "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Dark theme background - #000000 */
-html.dark {
-  --background: var(--background-dark)!important;
-  background-color: var(--background-dark) !important;
-  /* Content container and search bar background colors for dark theme */
-  --content-container-bg: rgb(15, 15, 15);
-  --search-bar-bg: rgba(255, 255, 255, 0.02);
-  /* Text colors for dark theme */
-  --text-neutral-900: rgb(163, 163, 163);
-  --text-neutral-700: rgb(163, 163, 163);
-  --text-neutral-600: rgb(159, 159, 159);
-  --text-neutral-500: rgb(163, 163, 163);
-  --text-neutral-400: rgb(163, 163, 163);
-  --text-neutral-300: rgb(163, 163, 163);
+#navbar a:has(> img.nav-logo) {
+  display: inline-flex;
+  align-items: center;
+  color: color-mix(in srgb, var(--aseed-foreground) 35%, transparent);
+  transition: color 300ms ease;
 }
 
-html.dark body {
-  background-color: var(--background-dark) !important;
+#navbar a:has(> img.nav-logo):hover {
+  color: var(--aseed-foreground);
 }
 
-/* Apply background to main content areas */
-main,
+html.dark #navbar a:has(> img.nav-logo) {
+  color: color-mix(in srgb, var(--aseed-foreground) 25%, transparent);
+}
+
+html.dark #navbar a:has(> img.nav-logo):hover {
+  color: var(--aseed-foreground);
+}
+
+#navbar a:has(> img.nav-logo) img.nav-logo {
+  display: none !important;
+}
+
+#navbar a:has(> img.nav-logo)::before {
+  content: "";
+  display: block;
+  flex-shrink: 0;
+  height: 2rem;
+  width: calc(2rem * 185 / 32);
+  background-color: currentColor;
+  -webkit-mask-image: url("/logo/light.svg");
+  mask-image: url("/logo/light.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: left center;
+  mask-position: left center;
+  transition: background-color 300ms ease;
+}
+
+html.dark #navbar a:has(> img.nav-logo)::before {
+  -webkit-mask-image: url("/logo/dark.svg");
+  mask-image: url("/logo/dark.svg");
+}
+
+::selection {
+  background: var(--aseed-foreground);
+  color: var(--aseed-canvas);
+}
+
+/* Recompose Almond as the same inset shell used by the owner workspace. */
+@media (min-width: 1024px) {
+  #navbar {
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+    left: 16.75rem !important;
+    width: auto !important;
+    height: 3.5rem;
+    overflow: visible;
+    background: var(--aseed-surface);
+    border-radius: var(--aseed-radius-shell) var(--aseed-radius-shell) 0 0;
+  }
+
+  #navbar > div:last-child,
+  #navbar > div:last-child > div,
+  #navbar > div:last-child > div > div {
+    height: 3.5rem !important;
+  }
+
+  #navbar a[href="/"] {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 40;
+    display: flex;
+    width: 16rem;
+    height: 3.5rem;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+
+  .almond-layout {
+    top: 4rem !important;
+    bottom: 0.5rem !important;
+    height: auto !important;
+    padding: 0 0.5rem !important;
+  }
+
+  .almond-layout > div:has(> #content-container) {
+    height: 100% !important;
+  }
+
+  #sidebar-content {
+    top: 0.5rem !important;
+    bottom: 0.5rem !important;
+    left: 0.5rem !important;
+    width: 16rem !important;
+    height: auto !important;
+    padding-left: 0 !important;
+  }
+
+  #content-container {
+    margin-left: 16.25rem !important;
+  }
+
+  #content-container::before,
+  #content-container::after {
+    position: fixed;
+    right: 0.5rem;
+    left: 16.75rem;
+    z-index: 30;
+    height: 1.25rem;
+    content: "";
+    pointer-events: none;
+  }
+
+  #content-container::before {
+    top: 4rem;
+    background: linear-gradient(to bottom, var(--aseed-surface), transparent);
+  }
+
+  #content-container::after {
+    bottom: 0.5rem;
+    background: linear-gradient(to top, var(--aseed-surface), transparent);
+    border-radius: 0 0 var(--aseed-radius-shell) var(--aseed-radius-shell);
+  }
+}
+
+#content-container {
+  background: var(--aseed-surface) !important;
+  border: 0 !important;
+  border-radius: var(--aseed-radius-shell) !important;
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+}
+
+#content-container > .flex.flex-row-reverse {
+  align-items: flex-start !important;
+}
+
+#content-side-layout {
+  height: auto !important;
+}
+
+#table-of-contents-layout {
+  max-height: none !important;
+}
+
+#table-of-contents {
+  overflow: visible !important;
+}
+
+#table-of-contents a:not(.text-primary) {
+  color: color-mix(in srgb, var(--aseed-foreground) 60%, transparent) !important;
+  transition: color 300ms ease, border-color 300ms ease !important;
+}
+
+html.dark #table-of-contents a:not(.text-primary):not(.dark\:text-primary-light) {
+  color: color-mix(in srgb, var(--aseed-foreground) 60%, transparent) !important;
+}
+
+#table-of-contents a:not(.text-primary):hover,
+html.dark #table-of-contents a:not(.text-primary):not(.dark\:text-primary-light):hover {
+  color: color-mix(in srgb, var(--aseed-foreground) 60%, transparent) !important;
+}
+
+@media (min-width: 1024px) {
+  #content-container {
+    border-radius: 0 0 var(--aseed-radius-shell) var(--aseed-radius-shell) !important;
+    padding-top: 1.5rem !important;
+  }
+}
+
+#content-area,
 [data-mint-main],
-.mint-container,
-#__next,
-[data-mint-docs],
-.mint-page,
-.mint-content {
-  background-color: inherit;
+main {
+  background: transparent !important;
 }
 
-/* Ensure all wrapper elements inherit background */
-html.dark main,
-html.dark [data-mint-main],
-html.dark .mint-container,
-html.dark #__next,
-html.dark [data-mint-docs],
-html.dark .mint-page,
-html.dark .mint-content {
-  background-color: inherit;
+/* Sidebar rhythm mirrors the owner workspace: quiet labels and orange selection. */
+#sidebar-content {
+  background: var(--aseed-surface);
+  overflow: hidden;
+  border-radius: var(--aseed-radius-shell);
+  color: color-mix(in srgb, var(--aseed-foreground) 70%, transparent);
 }
 
-/* Accordion summary text color - monochrome */
-summary.relative {
-  color: rgba(122, 122, 122, 1) !important;
+#sidebar-content > div:first-child {
+  padding: 3.5rem 0 0 !important;
 }
 
-/* Accordion hover background color - gray (monochrome) */
-summary.relative:hover {
-  background-color: rgba(156, 163, 175, 0.1) !important;
+#sidebar-content .almond-nav-bottom-section {
+  padding-inline: 0.5rem !important;
 }
 
-/* AccordionGroup and Accordion - remove all colors, make monochrome */
-/* Remove any primary/orange colors from accordions */
-body [data-mint-component="AccordionGroup"],
-body [data-mint-component="Accordion"],
-body summary.relative,
-body [class*="accordion"],
-body [class*="Accordion"] {
-  color: var(--text-neutral-700) !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
+.almond-nav-bottom-section-divider {
+  background: color-mix(in srgb, var(--aseed-foreground) 4%, transparent) !important;
 }
 
-/* Remove colored borders, backgrounds, and text from accordions */
-body [data-mint-component="AccordionGroup"] *,
-body [data-mint-component="Accordion"] *,
-body summary.relative * {
+#sidebar-content .almond-nav-bottom-section button[aria-label="Toggle dark mode"] {
+  border-color: color-mix(in srgb, var(--aseed-foreground) 4%, transparent) !important;
+}
+
+#sidebar-content .almond-nav-bottom-section button[aria-label="Toggle dark mode"]:hover {
+  border-color: color-mix(in srgb, var(--aseed-foreground) 6%, transparent) !important;
+}
+
+html.dark #sidebar-content .almond-nav-bottom-section button[aria-label="Toggle dark mode"] > div.absolute.rounded-full {
+  background: color-mix(in srgb, var(--aseed-foreground) 14%, var(--aseed-canvas)) !important;
+}
+
+.card-group {
+  gap: 0.5rem !important;
+  row-gap: 0.5rem !important;
+  column-gap: 0.5rem !important;
+}
+
+.card-group > * {
+  margin: 0 !important;
+}
+
+#pagination {
+  gap: 0.5rem !important;
+  row-gap: 0.5rem !important;
+  column-gap: 0.5rem !important;
+}
+
+.card-group .card,
+a.card,
+[data-mint-component="Card"] {
+  margin: 0 !important;
+}
+
+#content > a.card + a.card {
+  margin-top: 0.5rem !important;
+}
+
+#pagination > * {
+  margin: 0 !important;
+}
+
+#pagination a {
+  margin-block: 0 !important;
+  border: 0 !important;
+  background: transparent;
+  transition: color 300ms ease, background-color 300ms ease, transform 300ms ease !important;
+}
+
+@media (min-width: 1024px) {
+  #navigation-items {
+    top: 4rem !important;
+    padding-top: 2.5rem !important;
+  }
+
+  #navigation-items:has(> .size-full:first-child) {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Mintlify's Base UI runtime adds a dedicated scroll viewport. Keep the
+     visible rhythm from the legacy local preview without double padding. */
+  #navigation-items > .size-full:first-child {
+    padding-top: 2.5rem !important;
+    padding-bottom: 1rem !important;
+  }
+}
+
+#navigation-items {
+  padding-bottom: 1rem !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+
+/* Base UI renders the scrollbar as a sibling of the scroll viewport. Keep the
+   thumb above the sidebar fades without lifting the navigation content. */
+#navigation-items > .z-10 {
+  z-index: 30 !important;
+}
+
+/* Keep the sidebar scroll affordances visible with Mint's Base UI viewport. */
+#navigation-items > [data-component-part="scroll-area-scrollbar"] {
+  z-index: 30 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: color-mix(in srgb, var(--aseed-foreground) 5%, transparent) !important;
+  border-radius: 9999px !important;
+}
+
+#navigation-items > [data-component-part="scroll-area-scrollbar"] > [data-component-part="scroll-area-thumb"] {
+  background: color-mix(in srgb, var(--aseed-foreground) 22%, transparent) !important;
+  border-radius: 9999px !important;
+  transition: background-color 300ms ease !important;
+}
+
+#navigation-items > [data-component-part="scroll-area-scrollbar"] > [data-component-part="scroll-area-thumb"]:hover,
+#navigation-items > [data-component-part="scroll-area-scrollbar"] > [data-component-part="scroll-area-thumb"]:active {
+  background: color-mix(in srgb, var(--aseed-foreground) 35%, transparent) !important;
+}
+
+/* The navigation content can also be rendered inside the mobile drawer. Its
+   own box is the scroll content there, so fades must not be attached to it. */
+#navigation-items::before,
+#navigation-items::after {
+  display: none !important;
+}
+
+#sidebar-content > div.flex-1.p-2.relative {
+  position: relative;
+  overflow: hidden;
+  --sidebar-fade-size: 1.25rem;
+  --sidebar-fade-scrollbar-gap: 1rem;
+  scrollbar-color: var(--aseed-canvas) transparent;
+  scrollbar-width: thin;
+}
+
+#sidebar-content > div.flex-1.p-2.relative ::-webkit-scrollbar-thumb,
+#navigation-items ::-webkit-scrollbar-thumb {
+  background-color: var(--aseed-canvas);
+  border-radius: 9999px;
+}
+
+#sidebar-content > div.flex-1.p-2.relative::before,
+#sidebar-content > div.flex-1.p-2.relative::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: var(--sidebar-fade-scrollbar-gap);
+  height: var(--sidebar-fade-size);
+  pointer-events: none;
+  z-index: 20;
+}
+
+#sidebar-content > div.flex-1.p-2.relative::before {
+  top: 5.25rem;
+  background: linear-gradient(to bottom, var(--aseed-surface), transparent);
+}
+
+#sidebar-content > div.flex-1.p-2.relative::after {
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, var(--aseed-surface), transparent);
+  border-radius: 0;
+}
+
+@media (min-width: 1024px) {
+  #sidebar-content > div.flex-1.p-2.relative::before {
+    top: 4rem;
+  }
+}
+
+/* On small screens Mintlify puts the menu in a fixed drawer and scrolls its
+   inner flex panel. Keep both fades on the drawer so they stay at the panel
+   edges while the menu items move underneath them. */
+#mobile-nav {
+  position: relative;
+  --sidebar-fade-size: 1.25rem;
+}
+
+#mobile-nav::before,
+#mobile-nav::after {
+  position: absolute;
+  right: 1rem;
+  left: 0;
+  z-index: 20;
+  height: var(--sidebar-fade-size);
+  content: "";
+  pointer-events: none;
+}
+
+#mobile-nav::before {
+  top: 5rem;
+  background: linear-gradient(to bottom, var(--aseed-surface), transparent);
+}
+
+#mobile-nav::after {
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, var(--aseed-surface), transparent);
+}
+
+#mobile-nav > .overflow-y-auto.h-full {
+  scrollbar-color: var(--aseed-canvas) transparent;
+  scrollbar-width: thin;
+}
+
+#mobile-nav > .overflow-y-auto.h-full::-webkit-scrollbar {
+  width: 6px;
+}
+
+#mobile-nav > .overflow-y-auto.h-full::-webkit-scrollbar-thumb {
+  background-color: var(--aseed-canvas);
+  border-radius: 9999px;
+}
+
+#navigation-items h5,
+.sidebar-group-header,
+.sidebar-group-header h5 {
+  color: color-mix(in srgb, var(--aseed-foreground) 48%, transparent) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+}
+
+.sidebar-group-header .sidebar-group-icon {
+  display: none !important;
+}
+
+.sidebar-group-header {
+  gap: 0 !important;
+}
+
+#navigation-items .sidebar-group {
+  margin-top: 0.4rem;
+}
+
+#navigation-items .sidebar-group a {
+  align-items: flex-start !important;
+  overflow: visible !important;
+  min-height: 2.25rem;
+  padding-block: 0.5rem !important;
+  border-radius: var(--aseed-radius-control) !important;
+  color: color-mix(in srgb, var(--aseed-foreground) 68%, transparent);
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/file.svg");
+  transition: color 300ms ease, background-color 300ms ease !important;
+}
+
+#navigation-items .sidebar-group a > div:first-child {
+  min-width: 0;
+  overflow: visible !important;
+}
+
+#navigation-items .sidebar-group a::before {
+  display: block;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin-top: 0.15rem;
+  flex: 0 0 0.875rem;
+  content: "";
+  background-color: currentColor;
+  -webkit-mask-image: var(--aseed-sidebar-item-icon);
+  mask-image: var(--aseed-sidebar-item-icon);
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+#navigation-items .sidebar-group a > svg {
+  display: none !important;
+}
+
+#navigation-items .sidebar-group a[href^="/api-reference/"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/code.svg");
+}
+
+#navigation-items .sidebar-group a[href="/overview"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/rocket.svg");
+}
+
+#navigation-items .sidebar-group a[href="/what-is-aseed"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/info.svg");
+}
+
+#navigation-items .sidebar-group a[href="/workflow"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/map.svg");
+}
+
+#navigation-items .sidebar-group a[href="/quickstart"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/rocket.svg");
+}
+
+#navigation-items .sidebar-group a[href="/projects/context"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/search.svg");
+}
+
+#navigation-items .sidebar-group a[href="/projects/create"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/folder.svg");
+}
+
+#navigation-items .sidebar-group a[href="/projects/ai-interviewer"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/mic.svg");
+}
+
+#navigation-items .sidebar-group a[href="/projects/edit"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/edit.svg");
+}
+
+#navigation-items .sidebar-group a[href="/projects/manage"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/settings.svg");
+}
+
+#navigation-items .sidebar-group a[href*="upload-records"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/upload.svg");
+}
+
+#navigation-items .sidebar-group a[href="/projects/manage-records"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/list.svg");
+}
+
+#navigation-items .sidebar-group a[href="/projects/batch-generation"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/zap.svg");
+}
+
+#navigation-items .sidebar-group a[href="/interviews/records"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/radio.svg");
+}
+
+#navigation-items .sidebar-group a[href="/interviews/text-transcripts"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/file-text.svg");
+}
+
+#navigation-items .sidebar-group a[href="/interviews/guide-builder"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/map.svg");
+}
+
+#navigation-items .sidebar-group a[href="/interviews/transcribe"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/mic.svg");
+}
+
+#navigation-items .sidebar-group a[href="/interviews/edit"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/edit.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/single"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/bar-chart.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/edit"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/edit.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/report-types"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/clipboard-list.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/report-types/transcript"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/file-text.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/report-types/qa"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/question.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/report-types/general"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/bar-chart.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/report-types/jtbd"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/circle-dot.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/report-types/persona"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/user.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/report-types/custom"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/sparkles.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/project"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/folder-tree.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/presets"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/file-text.svg");
+}
+
+#navigation-items .sidebar-group a[href="/reports/custom"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/sparkles.svg");
+}
+
+#navigation-items .sidebar-group a[href="/sharing/public"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/share.svg");
+}
+
+#navigation-items .sidebar-group a[href="/sharing/export"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/download.svg");
+}
+
+#navigation-items .sidebar-group a[href="/sharing/mcp"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/plug.svg");
+}
+
+#navigation-items .sidebar-group a[href="/account/overview"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/wallet.svg");
+}
+
+#navigation-items .sidebar-group a[href="/account/purchase"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/coins.svg");
+}
+
+#navigation-items .sidebar-group a[href="/account/referral"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/share.svg");
+}
+
+#navigation-items .sidebar-group a[href="/account/usage"] {
+  --aseed-sidebar-item-icon: url("https://d3gk2c5xim1je2.cloudfront.net/v7.1.0/regular/bar-chart.svg");
+}
+
+#navigation-items .sidebar-group a[href^="/api-reference/"]::before {
+  display: none !important;
+}
+
+#navigation-items .sidebar-group a svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+  margin-top: 0.2rem;
+  flex: 0 0 auto;
+  align-self: flex-start;
+  overflow: visible !important;
+  background-color: currentColor !important;
+  -webkit-mask-size: 100% 100% !important;
+  mask-size: 100% 100% !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-position: center center !important;
+  mask-position: center center !important;
+}
+
+#navigation-items .sidebar-group a:hover {
+  background: color-mix(in srgb, var(--aseed-foreground) 7%, transparent) !important;
+  color: var(--aseed-foreground) !important;
+}
+
+#navigation-items .sidebar-group a:hover svg {
+  background-color: currentColor !important;
+}
+
+#navigation-items .sidebar-group a[class*="bg-primary"] {
+  background: color-mix(in srgb, var(--aseed-accent) 15%, transparent) !important;
+  color: var(--aseed-accent) !important;
+  text-shadow: none !important;
+}
+
+#navigation-items .sidebar-group a[class*="bg-primary"] svg {
+  background-color: currentColor !important;
+}
+
+html.dark #navigation-items .sidebar-group a[class*="bg-primary"] {
+  background: color-mix(in srgb, var(--aseed-foreground) 10%, transparent) !important;
+  color: color-mix(in srgb, var(--aseed-foreground) 92%, transparent) !important;
+}
+
+html.dark #navigation-items .sidebar-group a[class*="bg-primary"] svg {
+  background-color: currentColor !important;
+}
+
+#search-bar-entry {
+  position: relative;
+  z-index: 30;
+  width: 100% !important;
+  height: 2.25rem !important;
+  background: var(--aseed-canvas) !important;
+  border: 0 !important;
+  border-radius: var(--aseed-radius-shell) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+  transition: color 300ms ease, background-color 300ms ease !important;
+}
+
+#sidebar-content div:has(> #search-bar-entry) {
+  z-index: 30 !important;
+}
+
+/* Header controls live on the content surface and use quiet product states. */
+@media (min-width: 1024px) {
+  #navbar > div:last-child > div > div.flex.items-center {
+    height: 3.5rem !important;
+    margin-inline: 0 !important;
+    padding-inline: 1rem !important;
+  }
+
+  #navbar > div:last-child > div > div.flex.items-center > div:first-child {
+    padding-inline: 0 !important;
+  }
+
+  #navbar nav ul {
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* Mintlify leaves internal navbar links as plain text; match external .navbar-link chips. */
+#navbar nav ul > li.list-none,
+#navbar .navbar-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 2rem;
+  padding: 0.375rem 0.625rem !important;
+  border: 0 !important;
+  border-radius: var(--aseed-radius-shell) !important;
+  background: transparent !important;
+  color: color-mix(in srgb, var(--aseed-foreground) 70%, transparent) !important;
+  box-shadow: none !important;
+  list-style: none !important;
+  transition: color 300ms ease, background-color 300ms ease !important;
+}
+
+#navbar nav ul > li.list-none > a,
+#navbar .navbar-link > a {
   color: inherit !important;
 }
 
-/* Remove any primary/orange colors from accordion borders and backgrounds */
-body [data-mint-component="AccordionGroup"],
-body [data-mint-component="Accordion"],
-body summary.relative {
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  background-color: transparent !important;
+#navbar nav ul > li.list-none:hover,
+#navbar .navbar-link:hover {
+  background: color-mix(in srgb, var(--aseed-foreground) 7%, transparent) !important;
+  color: var(--aseed-foreground) !important;
+  opacity: 1 !important;
 }
 
-body [data-mint-component="AccordionGroup"]:hover,
-body [data-mint-component="Accordion"]:hover,
-body summary.relative:hover {
-  border-color: rgba(0, 0, 0, 0.15) !important;
-  background-color: rgba(0, 0, 0, 0.02) !important;
+#navbar #topbar-cta-button > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 2rem;
+  padding: 0.375rem 0.625rem !important;
+  border: 0 !important;
+  border-radius: var(--aseed-radius-shell) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: color-mix(in srgb, var(--aseed-foreground) 35%, transparent) !important;
+  opacity: 1 !important;
+  transition: color 300ms ease, background-color 300ms ease !important;
 }
 
-/* Dark theme - monochrome accordions with #080808 background (no blue tint) */
-html.dark body [data-mint-component="AccordionGroup"],
-html.dark body [data-mint-component="Accordion"],
-html.dark body summary.relative,
-html.dark body [class*="accordion"],
-html.dark body [class*="Accordion"],
-html.dark body details summary,
-html.dark body details[open] summary {
-  color: var(--text-neutral-400) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  background-color: #080808 !important;
+html.dark #navbar #topbar-cta-button > a {
+  color: color-mix(in srgb, var(--aseed-foreground) 25%, transparent) !important;
 }
 
-html.dark body [data-mint-component="AccordionGroup"]:hover,
-html.dark body [data-mint-component="Accordion"]:hover,
-html.dark body summary.relative:hover,
-html.dark body details summary:hover,
-html.dark body details[open] summary:hover {
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  background-color: #080808 !important;
+#navbar #topbar-cta-button > a:hover,
+html.dark #navbar #topbar-cta-button > a:hover {
+  background: color-mix(in srgb, var(--aseed-foreground) 7%, transparent) !important;
+  color: var(--aseed-foreground) !important;
+  opacity: 1 !important;
 }
 
-/* Accordion content area - also #080808 */
-html.dark body [data-mint-component="AccordionGroup"] > div,
-html.dark body [data-mint-component="Accordion"] > div,
-html.dark body details[open] > div,
-html.dark body summary.relative + div {
-  background-color: #080808 !important;
+#navbar #topbar-cta-button > a:hover span,
+html.dark #navbar #topbar-cta-button > a:hover span {
+  color: inherit !important;
 }
 
-/* API Reference expandables (Hide child attributes) - no background */
-body details.expandable,
-body details.expandable summary,
-body details.expandable summary:hover,
-body details.expandable .expandable-content,
-html.dark body details.expandable,
-html.dark body details.expandable summary,
-html.dark body details.expandable summary:hover,
-html.dark body details.expandable .expandable-content {
-  background-color: transparent !important;
-  background: none !important;
+#navbar #topbar-cta-button span {
+  color: inherit !important;
+  transition: color 300ms ease !important;
 }
 
-/* Remove all primary/orange/green colors from accordion elements - force monochrome */
-body [data-mint-component="AccordionGroup"][class*="primary"],
-body [data-mint-component="Accordion"][class*="primary"],
-body summary.relative[class*="primary"],
-body [data-mint-component="AccordionGroup"][class*="orange"],
-body [data-mint-component="Accordion"][class*="orange"],
-body summary.relative[class*="orange"],
-body [data-mint-component="AccordionGroup"][class*="green"],
-body [data-mint-component="Accordion"][class*="green"],
-body summary.relative[class*="green"] {
-  color: var(--text-neutral-700) !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  background-color: transparent !important;
-}
-
-html.dark body [data-mint-component="AccordionGroup"][class*="primary"],
-html.dark body [data-mint-component="Accordion"][class*="primary"],
-html.dark body summary.relative[class*="primary"],
-html.dark body [data-mint-component="AccordionGroup"][class*="orange"],
-html.dark body [data-mint-component="Accordion"][class*="orange"],
-html.dark body summary.relative[class*="orange"],
-html.dark body [data-mint-component="AccordionGroup"][class*="green"],
-html.dark body [data-mint-component="Accordion"][class*="green"],
-html.dark body summary.relative[class*="green"] {
-  color: var(--text-neutral-400) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  background-color: #080808 !important;
-}
-
-/* Remove colored icons, borders, and backgrounds from accordion content */
-body [data-mint-component="AccordionGroup"] [class*="primary"],
-body [data-mint-component="Accordion"] [class*="primary"],
-body summary.relative [class*="primary"],
-body [data-mint-component="AccordionGroup"] svg[class*="primary"],
-body [data-mint-component="Accordion"] svg[class*="primary"],
-body summary.relative svg[class*="primary"] {
-  color: var(--text-neutral-700) !important;
-  fill: var(--text-neutral-700) !important;
-  stroke: var(--text-neutral-700) !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  background-color: transparent !important;
-}
-
-html.dark body [data-mint-component="AccordionGroup"] [class*="primary"],
-html.dark body [data-mint-component="Accordion"] [class*="primary"],
-html.dark body summary.relative [class*="primary"],
-html.dark body [data-mint-component="AccordionGroup"] svg[class*="primary"],
-html.dark body [data-mint-component="Accordion"] svg[class*="primary"],
-html.dark body summary.relative svg[class*="primary"] {
-  color: var(--text-neutral-400) !important;
-  fill: var(--text-neutral-400) !important;
-  stroke: var(--text-neutral-400) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  background-color: #080808 !important;
-}
-
-/* Content container background and consistent padding */
-#content-container {
-  background-color: var(--content-container-bg) !important;
-  /* Match bottom padding to right (3rem) so layout is even on all sides */
-  padding-bottom: 3rem !important;
-}
-
-/* Content area: same horizontal and bottom spacing (3rem) */
-body #content-area,
-body .almond-layout div[class*="lg:flex-1"][class*="lg:min-w-0"][class*="overflow-x-clip"] {
-  padding-bottom: 3rem !important;
-}
-
-/* Prose/content wrapper: reduce large bottom margin so total bottom = right (3rem) */
-body #content-container .mdx-content.mb-14,
-body #content-container .prose.mb-14,
-body #content-container .mb-14,
-body #content-area .mdx-content.mb-14,
-body #content-area .prose.mb-14,
-body #content-area .mb-14 {
-  margin-bottom: 3rem !important;
-}
-
-/* Override API Reference panel height: flex rounded-2xl h-[calc(100dvh-8rem)] lg:h-[calc(100dvh-4.5rem)].
-   Force -7rem so height is calc(100dvh - 7rem). [class*="100dv"] matches 100dvh. */
-body .almond-layout div.flex.rounded-2xl[class*="100dv"] {
-  height: calc(100dvh - 7.5rem) !important;
-}
-
-@media (min-width: 1024px) {
-  body .almond-layout div.flex.rounded-2xl[class*="100dv"] {
-    height: calc(100dvh - 4rem) !important;
-  }
-}
-
-/* Content container margin-left override */
-/* Override lg:ml-[16.5rem] (264px) to 256px (16rem) */
-@media (min-width: 1024px) {
-  body #content-container[class*="lg:ml-"] {
-    margin-left: 256px !important;
-  }
-}
-
-/* Sidebar content padding-left override */
-/* Override padding-left from 8px to 0px */
-body #sidebar-content[class*="pl-2"],
-body #sidebar-content {
-  padding-left: 0px !important;
-}
-
-/* Search bar entry background */
-#search-bar-entry {
-  background-color: var(--search-bar-bg) !important;
-}
-
-/* Replace all text-gray-* classes with text-neutral-* using CSS variables */
-/* Using body selector for higher specificity to override Tailwind utilities */
-body .text-gray-900,
-body .text-neutral-900 {
-  color: var(--text-neutral-900) !important;
-}
-
-body .text-gray-700,
-body .text-neutral-700 {
-  color: var(--text-neutral-700) !important;
-}
-
-body .text-gray-600,
-body .text-neutral-600 {
-  color: var(--text-neutral-600) !important;
-}
-
-body .text-gray-500,
-body .text-neutral-500 {
-  color: var(--text-neutral-500) !important;
-}
-
-body .text-gray-400,
-body .text-neutral-400 {
-  color: var(--text-neutral-400) !important;
-}
-
-body .text-gray-300,
-body .text-neutral-300 {
-  color: var(--text-neutral-300) !important;
-}
-
-/* Hover states */
-body .hover\:text-gray-900:hover,
-body [class*="hover:text-gray-900"]:hover {
-  color: var(--text-neutral-900) !important;
-}
-
-body .hover\:text-gray-300:hover,
-body [class*="hover:text-gray-300"]:hover {
-  color: var(--text-neutral-300) !important;
-}
-
-/* Inline content links: show orange underline only on hover */
-body #content-container .prose a,
-body #content-container article a,
-body #content-container .mint-content a,
-body .mint-content .prose a {
+#navbar .nav-tabs-item {
+  color: color-mix(in srgb, var(--aseed-foreground) 35%, transparent) !important;
   text-decoration: none !important;
+  text-shadow: none !important;
   border-bottom: 0 !important;
+  transition: color 300ms ease !important;
+}
+
+html.dark #navbar .nav-tabs-item {
+  color: color-mix(in srgb, var(--aseed-foreground) 25%, transparent) !important;
+}
+
+#navbar .nav-tabs-item:hover,
+html.dark #navbar .nav-tabs-item:hover {
+  color: var(--aseed-foreground) !important;
+}
+
+#navbar .nav-tabs-item[class*="text-shadow"],
+html.dark #navbar .nav-tabs-item[class*="text-shadow"] {
+  color: var(--aseed-foreground) !important;
+  text-shadow: -0.2px 0 0 currentColor, 0.2px 0 0 currentColor !important;
+}
+
+#navbar .nav-tabs-item[class*="text-shadow"]:hover,
+html.dark #navbar .nav-tabs-item[class*="text-shadow"]:hover {
+  color: var(--aseed-foreground) !important;
+}
+
+#navbar .navbar-link:not(:hover),
+#navbar .navbar-link:not(:hover) > a {
+  color: color-mix(in srgb, var(--aseed-foreground) 35%, transparent) !important;
+  transition: color 300ms ease !important;
+}
+
+html.dark #navbar .navbar-link:not(:hover),
+html.dark #navbar .navbar-link:not(:hover) > a {
+  color: color-mix(in srgb, var(--aseed-foreground) 25%, transparent) !important;
+}
+
+#navbar .navbar-link:hover,
+#navbar .navbar-link:hover > a,
+html.dark #navbar .navbar-link:hover,
+html.dark #navbar .navbar-link:hover > a {
+  color: var(--aseed-foreground) !important;
+}
+
+#search-bar-entry:hover {
+  background: color-mix(in srgb, var(--aseed-foreground) 5%, var(--aseed-canvas)) !important;
+  color: var(--aseed-foreground) !important;
+  filter: none !important;
+}
+
+html.dark #headlessui-portal-root [id^="headlessui-dialog-panel"] > div.h-14,
+html.dark #headlessui-portal-root [id^="headlessui-dialog-panel"] > div.h-14 > div.rounded-xl {
+  background: var(--aseed-canvas) !important;
+  border: 0 !important;
+  border-color: transparent !important;
+  border-radius: var(--aseed-radius-shell) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+}
+
+#page-context-menu button {
+  background: var(--aseed-canvas) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  --tw-ring-offset-shadow: 0 0 #0000 !important;
+  transition: color 300ms ease, background-color 300ms ease !important;
+}
+
+#page-context-menu button:hover {
+  background: color-mix(in srgb, var(--aseed-foreground) 5%, var(--aseed-canvas)) !important;
+  color: var(--aseed-foreground) !important;
+}
+
+#changelog-filters-content button.bg-gray-100 {
+  background: var(--aseed-card) !important;
+  color: color-mix(in srgb, var(--aseed-foreground) 70%, transparent) !important;
+  transition: color 300ms ease, background-color 300ms ease !important;
+}
+
+#changelog-filters-content button.bg-gray-100:hover {
+  background: var(--aseed-hover) !important;
+  color: var(--aseed-foreground) !important;
+}
+
+.code-block [data-component-part="code-block-root"],
+.code-block .code-block-background {
+  background: var(--aseed-canvas) !important;
+  --shiki-dark-bg: var(--aseed-canvas) !important;
+}
+
+.code-block [data-fade-overlay="true"] {
+  display: none !important;
+}
+
+/* Mintlify 4.2.8xx moved contextual menus from Radix to Base UI. */
+html.dark [role="menu"] {
+  background: var(--aseed-canvas) !important;
+}
+
+/* Type follows Aseed's compact headings and relaxed reading copy. */
+article,
+.prose,
+.prose-sm,
+.prose-sm span[data-as="p"],
+.prose span[data-as="p"] {
+  color: color-mix(in srgb, var(--aseed-foreground) 60%, transparent) !important;
+  line-height: 1.7;
+}
+
+#page-title,
+article h1,
+article h2,
+article h3,
+article h4 {
+  color: var(--aseed-foreground) !important;
+  letter-spacing: -0.025em;
+}
+
+#page-title {
+  font-weight: 650 !important;
+}
+
+article h2 {
+  margin-top: 2.75rem;
+}
+
+article a:not(.card):not([role="button"]):not([class*="group/link"]),
+#content .prose :where(a):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+#content a.link {
+  text-decoration-line: underline !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 3px !important;
+  text-decoration-color: color-mix(in srgb, currentColor 30%, transparent) !important;
+  border-bottom: 0 !important;
+  font-weight: inherit !important;
+  transition: color 300ms ease, text-decoration-color 300ms ease !important;
+}
+
+article a:not(.card):not([role="button"]):not([class*="group/link"]):hover,
+#content .prose :where(a:hover):not(:where([class~="not-prose"], [class~="not-prose"] *)),
+#content a.link:hover {
+  color: var(--aseed-accent) !important;
+  text-decoration-thickness: 1px !important;
+  text-decoration-color: var(--aseed-accent) !important;
+  border-bottom: 0 !important;
+}
+
+/* Product surfaces are defined by tone and spacing, not visible outlines. */
+.card,
+[data-mint-component="Card"],
+article table,
+article pre,
+article blockquote,
+article img,
+article figure,
+[role="tabpanel"] {
+  border: 0 !important;
+  border-radius: var(--aseed-radius-card) !important;
   box-shadow: none !important;
 }
 
-body #content-container .prose a:hover,
-body #content-container article a:hover,
-body #content-container .mint-content a:hover,
-body .mint-content .prose a:hover {
-  text-decoration: underline !important;
-  text-decoration-color: #fb4b01 !important;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
+[data-component-part="tab-content"] {
+  min-height: 4.5rem;
+  padding: 1rem 1.25rem !important;
 }
 
-html.dark body #content-container .prose a:hover,
-html.dark body #content-container article a:hover,
-html.dark body #content-container .mint-content a:hover,
-html.dark body .mint-content .prose a:hover {
-  text-decoration-color: #D44509 !important;
+.card,
+[data-mint-component="Card"],
+[role="tabpanel"] {
+  background: var(--aseed-card) !important;
+  transition: color 300ms ease, background-color 300ms ease, transform 300ms ease !important;
 }
 
-/* Sidebar navigation items hover - light theme: text should become darker */
-body #sidebar-content a.text-gray-700:hover:not([aria-current]):not(.active),
-body #sidebar-content a[class*="text-gray-700"]:hover:not([aria-current]):not(.active),
-body #navigation-items a.text-gray-700:hover:not([aria-current]):not(.active),
-body #navigation-items a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) {
-  color: var(--text-neutral-900) !important;
+.card:hover,
+[data-mint-component="Card"]:hover {
+  background: var(--aseed-hover) !important;
+  border-color: transparent !important;
 }
 
-/* Sidebar icons should match text color */
-/* Light theme - icons inherit text color */
-body #sidebar-content a svg,
-body #sidebar-content a [class*="icon"],
-body #navigation-items a svg,
-body #navigation-items a [class*="icon"] {
-  color: inherit !important;
+.card:active,
+[data-mint-component="Card"]:active {
+  transform: scale(0.99);
+}
+
+.card [data-component-part="card-icon"],
+[data-mint-component="Card"] [data-component-part="card-icon"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+  overflow: visible !important;
+  flex-shrink: 0;
   fill: currentColor !important;
-  stroke: currentColor !important;
+  color: color-mix(in srgb, var(--aseed-foreground) 68%, transparent) !important;
 }
 
-/* Icons in sidebar links with text-gray-700 should use same color */
-body #sidebar-content a.text-gray-700 svg,
-body #sidebar-content a[class*="text-gray-700"] svg,
-body #navigation-items a.text-gray-700 svg,
-body #navigation-items a[class*="text-gray-700"] svg {
-  color: var(--text-neutral-700) !important;
-  fill: var(--text-neutral-700) !important;
-  stroke: var(--text-neutral-700) !important;
+.card [data-component-part="card-icon"] svg,
+[data-mint-component="Card"] [data-component-part="card-icon"] svg {
+  width: 1.125rem !important;
+  height: 1.125rem !important;
+  overflow: visible !important;
+  background-color: currentColor !important;
+  -webkit-mask-size: 100% 100% !important;
+  mask-size: 100% 100% !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  -webkit-mask-position: center center !important;
+  mask-position: center center !important;
 }
 
-/* Icons on hover should match hover text color */
-body #sidebar-content a.text-gray-700:hover:not([aria-current]):not(.active) svg,
-body #sidebar-content a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) svg,
-body #navigation-items a.text-gray-700:hover:not([aria-current]):not(.active) svg,
-body #navigation-items a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) svg {
-  color: var(--text-neutral-900) !important;
-  fill: var(--text-neutral-900) !important;
-  stroke: var(--text-neutral-900) !important;
+.card:hover [data-component-part="card-icon"],
+[data-mint-component="Card"]:hover [data-component-part="card-icon"] {
+  color: var(--aseed-foreground) !important;
 }
 
-/* Dark theme - icons match text color */
-html.dark body #sidebar-content a svg,
-html.dark body #sidebar-content a [class*="icon"],
-html.dark body #navigation-items a svg,
-html.dark body #navigation-items a [class*="icon"] {
-  color: inherit !important;
-  fill: currentColor !important;
-  stroke: currentColor !important;
-}
-
-/* Dark theme sidebar navigation items hover - text and icons should become almost white */
-html.dark body #sidebar-content a.text-gray-400:hover:not([aria-current]):not(.active),
-html.dark body #sidebar-content a[class*="text-gray-400"]:hover:not([aria-current]):not(.active),
-html.dark body #navigation-items a.text-gray-400:hover:not([aria-current]):not(.active),
-html.dark body #navigation-items a[class*="text-gray-400"]:hover:not([aria-current]):not(.active),
-html.dark body #sidebar-content a.dark\:text-gray-400:hover:not([aria-current]):not(.active),
-html.dark body #sidebar-content a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active),
-html.dark body #navigation-items a.dark\:text-gray-400:hover:not([aria-current]):not(.active),
-html.dark body #navigation-items a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) {
-  color: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* Dark theme - icons on hover should become almost white */
-html.dark body #sidebar-content a.text-gray-400:hover:not([aria-current]):not(.active) svg,
-html.dark body #sidebar-content a[class*="text-gray-400"]:hover:not([aria-current]):not(.active) svg,
-html.dark body #navigation-items a.text-gray-400:hover:not([aria-current]):not(.active) svg,
-html.dark body #navigation-items a[class*="text-gray-400"]:hover:not([aria-current]):not(.active) svg,
-html.dark body #sidebar-content a.dark\:text-gray-400:hover:not([aria-current]):not(.active) svg,
-html.dark body #sidebar-content a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) svg,
-html.dark body #navigation-items a.dark\:text-gray-400:hover:not([aria-current]):not(.active) svg,
-html.dark body #navigation-items a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) svg {
-  color: rgba(255, 255, 255, 0.95) !important;
-  fill: rgba(255, 255, 255, 0.95) !important;
-  stroke: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* Icons using mask-image with background-color should match text color */
-/* Light theme */
-body #sidebar-content a [style*="mask-image"],
-body #sidebar-content a [class*="bg-gray"],
-body #navigation-items a [style*="mask-image"],
-body #navigation-items a [class*="bg-gray"] {
+.card:hover [data-component-part="card-icon"] svg,
+[data-mint-component="Card"]:hover [data-component-part="card-icon"] svg {
   background-color: currentColor !important;
 }
 
-body #sidebar-content a.text-gray-700 [class*="bg-gray"],
-body #sidebar-content a[class*="text-gray-700"] [class*="bg-gray"],
-body #navigation-items a.text-gray-700 [class*="bg-gray"],
-body #navigation-items a[class*="text-gray-700"] [class*="bg-gray"] {
-  background-color: var(--text-neutral-700) !important;
+article table,
+article pre {
+  overflow: hidden;
+  background: var(--aseed-card) !important;
 }
 
-body #sidebar-content a.text-gray-700:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-body #sidebar-content a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-body #navigation-items a.text-gray-700:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-body #navigation-items a[class*="text-gray-700"]:hover:not([aria-current]):not(.active) [class*="bg-gray"] {
-  background-color: var(--text-neutral-900) !important;
+article blockquote {
+  background: color-mix(in srgb, var(--aseed-orange) 9%, transparent) !important;
+  border-left: 3px solid var(--aseed-orange) !important;
 }
 
-/* Dark theme */
-html.dark body #sidebar-content a [style*="mask-image"],
-html.dark body #sidebar-content a [class*="bg-gray"],
-html.dark body #navigation-items a [style*="mask-image"],
-html.dark body #navigation-items a [class*="bg-gray"] {
-  background-color: currentColor !important;
+article .callout {
+  border: 0 !important;
 }
 
-/* Dark theme - icons with mask-image on hover should become almost white */
-html.dark body #sidebar-content a.text-gray-400:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-html.dark body #sidebar-content a[class*="text-gray-400"]:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-html.dark body #navigation-items a.text-gray-400:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-html.dark body #navigation-items a[class*="text-gray-400"]:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-html.dark body #sidebar-content a.dark\:text-gray-400:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-html.dark body #sidebar-content a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-html.dark body #navigation-items a.dark\:text-gray-400:hover:not([aria-current]):not(.active) [class*="bg-gray"],
-html.dark body #navigation-items a[class*="dark:text-gray-400"]:hover:not([aria-current]):not(.active) [class*="bg-gray"] {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+.accordion-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  margin-block: 0.75rem !important;
+  border: 0 !important;
+  border-radius: var(--aseed-radius-card) !important;
+  background: var(--aseed-canvas) !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
 }
 
-/* Active items in sidebar should not change on hover - maximum specificity */
-body #sidebar-content a[aria-current]:hover,
-body #sidebar-content a[aria-current="page"]:hover,
-body #sidebar-content a[aria-current="true"]:hover,
-body #sidebar-content a.active:hover,
-body #sidebar-content a[class*="active"]:hover,
-body #navigation-items a[aria-current]:hover,
-body #navigation-items a[aria-current="page"]:hover,
-body #navigation-items a[aria-current="true"]:hover,
-body #navigation-items a.active:hover,
-body #navigation-items a[class*="active"]:hover,
-html.dark body #sidebar-content a[aria-current]:hover,
-html.dark body #sidebar-content a[aria-current="page"]:hover,
-html.dark body #sidebar-content a[aria-current="true"]:hover,
-html.dark body #sidebar-content a.active:hover,
-html.dark body #sidebar-content a[class*="active"]:hover,
-html.dark body #navigation-items a[aria-current]:hover,
-html.dark body #navigation-items a[aria-current="page"]:hover,
-html.dark body #navigation-items a[aria-current="true"]:hover,
-html.dark body #navigation-items a.active:hover,
-html.dark body #navigation-items a[class*="active"]:hover {
-  color: inherit !important;
+.accordion-group::before,
+.accordion-group::after {
+  content: none !important;
 }
 
-body #sidebar-content a[aria-current]:hover svg,
-body #sidebar-content a[aria-current="page"]:hover svg,
-body #sidebar-content a[aria-current="true"]:hover svg,
-body #sidebar-content a.active:hover svg,
-body #sidebar-content a[class*="active"]:hover svg,
-body #navigation-items a[aria-current]:hover svg,
-body #navigation-items a[aria-current="page"]:hover svg,
-body #navigation-items a[aria-current="true"]:hover svg,
-body #navigation-items a.active:hover svg,
-body #navigation-items a[class*="active"]:hover svg,
-html.dark body #sidebar-content a[aria-current]:hover svg,
-html.dark body #sidebar-content a[aria-current="page"]:hover svg,
-html.dark body #sidebar-content a[aria-current="true"]:hover svg,
-html.dark body #sidebar-content a.active:hover svg,
-html.dark body #sidebar-content a[class*="active"]:hover svg,
-html.dark body #navigation-items a[aria-current]:hover svg,
-html.dark body #navigation-items a[aria-current="page"]:hover svg,
-html.dark body #navigation-items a[aria-current="true"]:hover svg,
-html.dark body #navigation-items a.active:hover svg,
-html.dark body #navigation-items a[class*="active"]:hover svg {
-  color: inherit !important;
-  fill: inherit !important;
-  stroke: inherit !important;
+.accordion-group > details.accordion {
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
 }
 
-body #sidebar-content a[aria-current]:hover [class*="bg-gray"],
-body #sidebar-content a[aria-current="page"]:hover [class*="bg-gray"],
-body #sidebar-content a[aria-current="true"]:hover [class*="bg-gray"],
-body #sidebar-content a.active:hover [class*="bg-gray"],
-body #sidebar-content a[class*="active"]:hover [class*="bg-gray"],
-body #navigation-items a[aria-current]:hover [class*="bg-gray"],
-body #navigation-items a[aria-current="page"]:hover [class*="bg-gray"],
-body #navigation-items a[aria-current="true"]:hover [class*="bg-gray"],
-body #navigation-items a.active:hover [class*="bg-gray"],
-body #navigation-items a[class*="active"]:hover [class*="bg-gray"],
-html.dark body #sidebar-content a[aria-current]:hover [class*="bg-gray"],
-html.dark body #sidebar-content a[aria-current="page"]:hover [class*="bg-gray"],
-html.dark body #sidebar-content a[aria-current="true"]:hover [class*="bg-gray"],
-html.dark body #sidebar-content a.active:hover [class*="bg-gray"],
-html.dark body #sidebar-content a[class*="active"]:hover [class*="bg-gray"],
-html.dark body #navigation-items a[aria-current]:hover [class*="bg-gray"],
-html.dark body #navigation-items a[aria-current="page"]:hover [class*="bg-gray"],
-html.dark body #navigation-items a[aria-current="true"]:hover [class*="bg-gray"],
-html.dark body #navigation-items a.active:hover [class*="bg-gray"],
-html.dark body #navigation-items a[class*="active"]:hover [class*="bg-gray"] {
-  background-color: inherit !important;
+.accordion-group > details.accordion > summary {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 1rem !important;
+  background: transparent !important;
+  transition: color 300ms ease, background-color 300ms ease !important;
 }
 
-/* Table of contents - light theme hover: text should become darker */
-/* Exclude active items (those with text-primary or border-primary) */
-body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]),
-body #table-of-contents [class*="text-gray"]:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) {
-  color: var(--text-neutral-900) !important;
+.accordion-group > details.accordion > summary [data-component-part="accordion-caret-right"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  margin: 0 !important;
+  flex-shrink: 0;
 }
 
-body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) svg,
-body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="icon"] {
-  color: var(--text-neutral-900) !important;
-  fill: var(--text-neutral-900) !important;
-  stroke: var(--text-neutral-900) !important;
+.accordion-group > details.accordion > summary [data-component-part="accordion-title-container"] {
+  margin: 0 !important;
+  min-width: 0;
+  flex: 1 1 auto;
 }
 
-body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="bg-gray"],
-body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [style*="mask-image"] {
-  background-color: var(--text-neutral-900) !important;
+.accordion-group > details.accordion[open] > summary {
+  border-radius: 0 !important;
 }
 
-/* Table of contents - dark theme hover: items should become almost white */
-/* Exclude active items (those with text-primary or border-primary) */
-html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]),
-html.dark body #table-of-contents [class*="text-gray"]:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) {
-  color: rgba(255, 255, 255, 0.95) !important;
+.accordion-group > details.accordion > summary:hover {
+  background: color-mix(in srgb, var(--aseed-foreground) 5%, var(--aseed-canvas)) !important;
 }
 
-html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) svg,
-html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="icon"] {
-  color: rgba(255, 255, 255, 0.95) !important;
-  fill: rgba(255, 255, 255, 0.95) !important;
-  stroke: rgba(255, 255, 255, 0.95) !important;
+.accordion-group [data-component-part="accordion-content"] {
+  margin: 0 1rem 1rem !important;
+  padding-left: calc(0.75rem + 0.5rem) !important;
 }
 
-html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="bg-gray"],
-html.dark body #table-of-contents a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [style*="mask-image"] {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+.accordion-group [data-component-part="accordion-content"] > :first-child {
+  margin-top: 0 !important;
 }
 
-/* Active items in table of contents should not change on hover - maximum specificity */
-/* Include items with text-primary or border-primary as active indicators */
-body #table-of-contents a[aria-current]:hover,
-body #table-of-contents a[aria-current="page"]:hover,
-body #table-of-contents a[aria-current="true"]:hover,
-body #table-of-contents a.active:hover,
-body #table-of-contents a[class*="active"]:hover,
-body #table-of-contents a[class*="text-primary"]:hover,
-body #table-of-contents a[class*="border-primary"]:hover,
-html.dark body #table-of-contents a[aria-current]:hover,
-html.dark body #table-of-contents a[aria-current="page"]:hover,
-html.dark body #table-of-contents a[aria-current="true"]:hover,
-html.dark body #table-of-contents a.active:hover,
-html.dark body #table-of-contents a[class*="active"]:hover,
-html.dark body #table-of-contents a[class*="text-primary"]:hover,
-html.dark body #table-of-contents a[class*="border-primary"]:hover {
-  color: inherit !important;
+#content-container .accordion-group > details.accordion,
+#content-container .accordion-group > details.accordion + details.accordion {
+  position: relative;
+  border-top-width: 0 !important;
+  border-bottom-width: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  border-block: 0 !important;
+  border-block-color: transparent !important;
+  border-color: transparent !important;
 }
 
-body #table-of-contents a[aria-current]:hover svg,
-body #table-of-contents a[aria-current="page"]:hover svg,
-body #table-of-contents a[aria-current="true"]:hover svg,
-body #table-of-contents a.active:hover svg,
-body #table-of-contents a[class*="active"]:hover svg,
-body #table-of-contents a[class*="text-primary"]:hover svg,
-body #table-of-contents a[class*="border-primary"]:hover svg,
-html.dark body #table-of-contents a[aria-current]:hover svg,
-html.dark body #table-of-contents a[aria-current="page"]:hover svg,
-html.dark body #table-of-contents a[aria-current="true"]:hover svg,
-html.dark body #table-of-contents a.active:hover svg,
-html.dark body #table-of-contents a[class*="active"]:hover svg,
-html.dark body #table-of-contents a[class*="text-primary"]:hover svg,
-html.dark body #table-of-contents a[class*="border-primary"]:hover svg {
-  color: inherit !important;
-  fill: inherit !important;
-  stroke: inherit !important;
+/* Cover Mintlify's forced `divide-y!` rule, whose important logical border is
+   emitted after custom CSS in the hosted runtime. */
+#content-container .accordion-group > details.accordion:not(:last-child)::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  z-index: 2;
+  height: 2px;
+  background: var(--aseed-canvas);
+  content: "";
+  pointer-events: none;
 }
 
-body #table-of-contents a[aria-current]:hover [class*="bg-gray"],
-body #table-of-contents a[aria-current="page"]:hover [class*="bg-gray"],
-body #table-of-contents a[aria-current="true"]:hover [class*="bg-gray"],
-body #table-of-contents a.active:hover [class*="bg-gray"],
-body #table-of-contents a[class*="active"]:hover [class*="bg-gray"],
-body #table-of-contents a[class*="text-primary"]:hover [class*="bg-gray"],
-body #table-of-contents a[class*="border-primary"]:hover [class*="bg-gray"],
-html.dark body #table-of-contents a[aria-current]:hover [class*="bg-gray"],
-html.dark body #table-of-contents a[aria-current="page"]:hover [class*="bg-gray"],
-html.dark body #table-of-contents a[aria-current="true"]:hover [class*="bg-gray"],
-html.dark body #table-of-contents a.active:hover [class*="bg-gray"],
-html.dark body #table-of-contents a[class*="active"]:hover [class*="bg-gray"],
-html.dark body #table-of-contents a[class*="text-primary"]:hover [class*="bg-gray"],
-html.dark body #table-of-contents a[class*="border-primary"]:hover [class*="bg-gray"] {
-  background-color: inherit !important;
+article img {
+  background: var(--aseed-card);
 }
 
-/* Dark theme specific overrides with higher specificity */
-html.dark body .text-gray-900,
-html.dark body .text-neutral-900 {
-  color: var(--text-neutral-900) !important;
+article .frame,
+article figure,
+article [data-component-part="frame"] {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
 }
 
-html.dark body .text-gray-700,
-html.dark body .text-neutral-700 {
-  color: var(--text-neutral-700) !important;
+
+#pagination a:hover {
+  background: var(--aseed-hover);
 }
 
-html.dark body .text-gray-600,
-html.dark body .text-neutral-600 {
-  color: var(--text-neutral-600) !important;
+button,
+a {
+  transition-duration: 300ms;
+  transition-property: color, background-color, border-color, opacity, transform, box-shadow, filter;
 }
 
-html.dark body .text-gray-500,
-html.dark body .text-neutral-500,
-html.dark body .dark\:text-gray-500,
-html.dark body [class*="dark:text-gray-500"] {
-  color: var(--text-neutral-500) !important;
+button:active,
+a[role="button"]:active {
+  transform: scale(0.98);
 }
 
-html.dark body .text-gray-400,
-html.dark body .text-neutral-400,
-html.dark body .dark\:text-gray-400,
-html.dark body [class*="dark:text-gray-400"] {
-  color: var(--text-neutral-400) !important;
-}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 
-html.dark body .text-gray-300,
-html.dark body .text-neutral-300,
-html.dark body .dark\:hover\:text-gray-300:hover,
-html.dark body [class*="dark:hover:text-gray-300"]:hover {
-  color: var(--text-neutral-300) !important;
-}
+  #navigation-items,
+  #sidebar-content > div.flex-1.p-2.relative::before,
+  #sidebar-content > div.flex-1.p-2.relative::after {
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
 
-html.dark body .hover\:text-gray-900:hover,
-html.dark body [class*="hover:text-gray-900"]:hover {
-  color: var(--text-neutral-900) !important;
-}
-
-/* Navigation tabs (nav-tabs) - same rules as sidebar and table of contents */
-/* Light theme hover: text should become darker */
-body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]),
-body .nav-tabs [class*="text-gray"]:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) {
-  color: var(--text-neutral-900) !important;
-}
-
-body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) svg,
-body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="icon"] {
-  color: var(--text-neutral-900) !important;
-  fill: var(--text-neutral-900) !important;
-  stroke: var(--text-neutral-900) !important;
-}
-
-body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="bg-gray"],
-body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [style*="mask-image"] {
-  background-color: var(--text-neutral-900) !important;
-}
-
-/* Dark theme hover: items should become almost white */
-html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]),
-html.dark body .nav-tabs [class*="text-gray"]:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) {
-  color: rgba(255, 255, 255, 0.95) !important;
-}
-
-html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) svg,
-html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="icon"] {
-  color: rgba(255, 255, 255, 0.95) !important;
-  fill: rgba(255, 255, 255, 0.95) !important;
-  stroke: rgba(255, 255, 255, 0.95) !important;
-}
-
-html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [class*="bg-gray"],
-html.dark body .nav-tabs a:hover:not([aria-current]):not(.active):not([class*="text-primary"]):not([class*="border-primary"]) [style*="mask-image"] {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* Active items in nav-tabs should not change on hover */
-body .nav-tabs a[aria-current]:hover,
-body .nav-tabs a[aria-current="page"]:hover,
-body .nav-tabs a[aria-current="true"]:hover,
-body .nav-tabs a.active:hover,
-body .nav-tabs a[class*="active"]:hover,
-body .nav-tabs a[class*="text-primary"]:hover,
-body .nav-tabs a[class*="border-primary"]:hover,
-html.dark body .nav-tabs a[aria-current]:hover,
-html.dark body .nav-tabs a[aria-current="page"]:hover,
-html.dark body .nav-tabs a[aria-current="true"]:hover,
-html.dark body .nav-tabs a.active:hover,
-html.dark body .nav-tabs a[class*="active"]:hover,
-html.dark body .nav-tabs a[class*="text-primary"]:hover,
-html.dark body .nav-tabs a[class*="border-primary"]:hover {
-  color: inherit !important;
-}
-
-body .nav-tabs a[aria-current]:hover svg,
-body .nav-tabs a[aria-current="page"]:hover svg,
-body .nav-tabs a[aria-current="true"]:hover svg,
-body .nav-tabs a.active:hover svg,
-body .nav-tabs a[class*="active"]:hover svg,
-body .nav-tabs a[class*="text-primary"]:hover svg,
-body .nav-tabs a[class*="border-primary"]:hover svg,
-html.dark body .nav-tabs a[aria-current]:hover svg,
-html.dark body .nav-tabs a[aria-current="page"]:hover svg,
-html.dark body .nav-tabs a[aria-current="true"]:hover svg,
-html.dark body .nav-tabs a.active:hover svg,
-html.dark body .nav-tabs a[class*="active"]:hover svg,
-html.dark body .nav-tabs a[class*="text-primary"]:hover svg,
-html.dark body .nav-tabs a[class*="border-primary"]:hover svg {
-  color: inherit !important;
-  fill: inherit !important;
-  stroke: inherit !important;
-}
-
-body .nav-tabs a[aria-current]:hover [class*="bg-gray"],
-body .nav-tabs a[aria-current="page"]:hover [class*="bg-gray"],
-body .nav-tabs a[aria-current="true"]:hover [class*="bg-gray"],
-body .nav-tabs a.active:hover [class*="bg-gray"],
-body .nav-tabs a[class*="active"]:hover [class*="bg-gray"],
-body .nav-tabs a[class*="text-primary"]:hover [class*="bg-gray"],
-body .nav-tabs a[class*="border-primary"]:hover [class*="bg-gray"],
-html.dark body .nav-tabs a[aria-current]:hover [class*="bg-gray"],
-html.dark body .nav-tabs a[aria-current="page"]:hover [class*="bg-gray"],
-html.dark body .nav-tabs a[aria-current="true"]:hover [class*="bg-gray"],
-html.dark body .nav-tabs a.active:hover [class*="bg-gray"],
-html.dark body .nav-tabs a[class*="active"]:hover [class*="bg-gray"],
-html.dark body .nav-tabs a[class*="text-primary"]:hover [class*="bg-gray"],
-html.dark body .nav-tabs a[class*="border-primary"]:hover [class*="bg-gray"] {
-  background-color: inherit !important;
-}
-
-/* Icon colors - bg-gray-* classes used for mask-image icons */
-/* Icons use background-color as their fill color via mask-image */
-body .bg-gray-900,
-body .bg-neutral-900 {
-  background-color: var(--text-neutral-900) !important;
-}
-
-body .bg-gray-700,
-body .bg-neutral-700 {
-  background-color: var(--text-neutral-700) !important;
-}
-
-body .bg-gray-600,
-body .bg-neutral-600 {
-  background-color: var(--text-neutral-600) !important;
-}
-
-body .bg-gray-500,
-body .bg-neutral-500 {
-  background-color: var(--text-neutral-500) !important;
-}
-
-body .bg-gray-400,
-body .bg-neutral-400 {
-  background-color: var(--text-neutral-400) !important;
-}
-
-body .bg-gray-300,
-body .bg-neutral-300 {
-  background-color: var(--text-neutral-300) !important;
-}
-
-/* Dark theme icon colors */
-html.dark body .bg-gray-900,
-html.dark body .bg-neutral-900 {
-  background-color: var(--text-neutral-900) !important;
-}
-
-html.dark body .bg-gray-700,
-html.dark body .bg-neutral-700 {
-  background-color: var(--text-neutral-700) !important;
-}
-
-html.dark body .bg-gray-600,
-html.dark body .bg-neutral-600 {
-  background-color: var(--text-neutral-600) !important;
-}
-
-html.dark body .bg-gray-500,
-html.dark body .bg-neutral-500,
-html.dark body .dark\:bg-gray-500,
-html.dark body [class*="dark:bg-gray-500"] {
-  background-color: var(--text-neutral-500) !important;
-}
-
-html.dark body .bg-gray-400,
-html.dark body .bg-neutral-400,
-html.dark body .dark\:bg-gray-400,
-html.dark body [class*="dark:bg-gray-400"] {
-  background-color: var(--text-neutral-400) !important;
-}
-
-html.dark body .bg-gray-300,
-html.dark body .bg-neutral-300 {
-  background-color: var(--text-neutral-300) !important;
-}
-
-/* Pagination border color override - neutral gray, no orange tint */
-/* Light theme pagination borders */
-body a.pagination-prev,
-body a.pagination-next {
-  border-color: rgba(38, 38, 38, 0.2) !important;
-}
-
-body a.pagination-prev:hover,
-body a.pagination-next:hover {
-  border-color: rgba(38, 38, 38, 0.3) !important;
-}
-
-/* Dark theme pagination borders */
-html.dark body a.pagination-prev,
-html.dark body a.pagination-next {
-  border-color: rgba(38, 38, 38, 1) !important;
-}
-
-html.dark body a.pagination-prev:hover,
-html.dark body a.pagination-next:hover {
-  border-color: rgba(38, 38, 38, 0.8) !important;
-}
-
-/* Nav bottom section divider background color override */
-html.dark body .almond-nav-bottom-section-divider {
-  background-color: rgba(28, 28, 28, 0.7) !important;
-}
-
-/* Content container text and border color override */
-html.dark body #content-container {
-  color: rgba(153, 153, 153, 1) !important;
-  border-color: rgba(255, 255, 255, 0.03) !important;
-}
-
-/* Dropdown menu border and background - not transparent */
-/* Radix UI dropdown menu content */
-body [data-radix-menu-content],
-body [role="menu"][data-radix-menu-content] {
-  /* border-color: rgba(255, 255, 255, 0.05) !important; */
-  background-color: var(--background-light) !important;
-}
-
-html.dark body [data-radix-menu-content],
-html.dark body [role="menu"][data-radix-menu-content] {
-  /* border-color: rgba(255, 255, 255, 0.05) !important; */
-  background-color: var(--content-container-bg) !important;
-}
-
-/* Dropdown menu item hover effects */
-/* Light theme menu item hover */
-body [data-radix-menu-content] [role="menuitem"]:hover,
-body [data-radix-menu-content] a:hover,
-body [role="menu"][data-radix-menu-content] [role="menuitem"]:hover,
-body [role="menu"][data-radix-menu-content] a:hover {
-  background-color: var(--background-light) !important;
-}
-
-/* Dark theme menu item hover */
-html.dark body [data-radix-menu-content] [role="menuitem"]:hover,
-html.dark body [data-radix-menu-content] a:hover,
-html.dark body [role="menu"][data-radix-menu-content] [role="menuitem"]:hover,
-html.dark body [role="menu"][data-radix-menu-content] a:hover {
-  background-color: rgba(255, 255, 255, 0.05) !important;
-}
-
-/* Navbar flex container padding override */
-/* Override lg:px-7 (28px) to 16px padding-left and 8px padding-right for navbar flex container */
-@media (min-width: 1024px) {
-  body #navbar div.flex.items-center.h-14.min-w-0.mx-4.lg\:mx-0,
-  body #navbar div.flex.items-center[class*="lg:px-7"],
-  body #navbar .flex.items-center.h-14[class*="lg:px-7"] {
-    padding-left: 16px !important;
-    padding-right: 8px !important;
+  #sidebar-content > div.flex-1.p-2.relative::before,
+  #sidebar-content > div.flex-1.p-2.relative::after {
+    display: none !important;
   }
 }
 
-/* Mobile navigation sidebar styles */
-/* Override padding-left from 28px to 16px */
-body #mobile-nav div.flex.flex-col.flex-1.px-4,
-body #mobile-nav div[class*="px-4"][class*="flex-col"] {
-  padding-left: 16px !important;
+@media (max-width: 1023px) {
+  #content-container {
+    border-radius: var(--aseed-radius-shell) !important;
+  }
 }
 
-/* Make mobile nav sidebar background opaque (not transparent) */
-body #mobile-nav {
-  background-color: var(--background-light) !important;
-}
+@media (max-width: 640px) {
+  #content-container {
+    padding-inline: 1rem !important;
+  }
 
-html.dark body #mobile-nav {
-  background-color: var(--background-dark) !important;
-}
-
-/* Ensure mobile nav dialog/overlay is also opaque */
-body [id^="headlessui-dialog"] #mobile-nav,
-body div[id*="headlessui-dialog"] #mobile-nav {
-  background-color: var(--background-light) !important;
-}
-
-html.dark body [id^="headlessui-dialog"] #mobile-nav,
-html.dark body div[id*="headlessui-dialog"] #mobile-nav {
-  background-color: var(--background-dark) !important;
-}
-
-/* Navbar primary button styling */
-/* Default state: same as active sidebar item - semi-transparent primary background, primary text color */
-/* Light theme: primary = #fb4b01 */
-body #navbar a.bg-primary-dark,
-body #navbar a[class*="bg-primary-dark"],
-body #navbar .group.bg-primary-dark,
-body a.bg-primary-dark,
-body a[class*="bg-primary-dark"],
-body .group.bg-primary-dark {
-  background-color: rgba(251, 75, 1, 0.1) !important;
-  color: #fb4b01 !important;
-  transition: background-color 200ms ease-in-out, color 200ms ease-in-out, transform 75ms ease-in-out !important;
-}
-
-/* Apply color to all child elements (text, spans, etc.) */
-body #navbar a.bg-primary-dark *,
-body #navbar a[class*="bg-primary-dark"] *,
-body #navbar .group.bg-primary-dark *,
-body a.bg-primary-dark *,
-body a[class*="bg-primary-dark"] *,
-body .group.bg-primary-dark * {
-  color: #fb4b01 !important;
-  transition: color 200ms ease-in-out !important;
-}
-
-/* Dark theme: primary-light = #D44509 */
-html.dark body #navbar a.bg-primary-dark,
-html.dark body #navbar a[class*="bg-primary-dark"],
-html.dark body #navbar .group.bg-primary-dark,
-html.dark body a.bg-primary-dark,
-html.dark body a[class*="bg-primary-dark"],
-html.dark body .group.bg-primary-dark {
-  background-color: rgba(212, 69, 9, 0.1) !important;
-  color: #D44509 !important;
-  transition: background-color 200ms ease-in-out, color 200ms ease-in-out, transform 75ms ease-in-out !important;
-}
-
-/* Apply color to all child elements in dark theme */
-html.dark body #navbar a.bg-primary-dark *,
-html.dark body #navbar a[class*="bg-primary-dark"] *,
-html.dark body #navbar .group.bg-primary-dark *,
-html.dark body a.bg-primary-dark *,
-html.dark body a[class*="bg-primary-dark"] *,
-html.dark body .group.bg-primary-dark * {
-  color: #D44509 !important;
-  transition: color 200ms ease-in-out !important;
-}
-
-/* Hover state: solid orange background (#D44509), white text */
-body #navbar a.bg-primary-dark:hover,
-body #navbar a[class*="bg-primary-dark"]:hover,
-body #navbar .group.bg-primary-dark:hover,
-body a.bg-primary-dark:hover,
-body a[class*="bg-primary-dark"]:hover,
-body .group.bg-primary-dark:hover {
-  background-color: #D44509 !important;
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-/* Apply white color to all child elements on hover */
-body #navbar a.bg-primary-dark:hover *,
-body #navbar a[class*="bg-primary-dark"]:hover *,
-body #navbar .group.bg-primary-dark:hover *,
-body a.bg-primary-dark:hover *,
-body a[class*="bg-primary-dark"]:hover *,
-body .group.bg-primary-dark:hover * {
-  color: #ffffff !important;
-}
-
-html.dark body #navbar a.bg-primary-dark:hover,
-html.dark body #navbar a[class*="bg-primary-dark"]:hover,
-html.dark body #navbar .group.bg-primary-dark:hover,
-html.dark body a.bg-primary-dark:hover,
-html.dark body a[class*="bg-primary-dark"]:hover,
-html.dark body .group.bg-primary-dark:hover {
-  background-color: #D44509 !important;
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-/* Apply white color to all child elements on hover in dark theme */
-html.dark body #navbar a.bg-primary-dark:hover *,
-html.dark body #navbar a[class*="bg-primary-dark"]:hover *,
-html.dark body #navbar .group.bg-primary-dark:hover *,
-html.dark body a.bg-primary-dark:hover *,
-html.dark body a[class*="bg-primary-dark"]:hover *,
-html.dark body .group.bg-primary-dark:hover * {
-  color: #ffffff !important;
-}
-
-/* Active state: scale down effect on click (like in button.tsx) */
-body #navbar a.bg-primary-dark:active,
-body #navbar a[class*="bg-primary-dark"]:active,
-body #navbar .group.bg-primary-dark:active,
-body a.bg-primary-dark:active,
-body a[class*="bg-primary-dark"]:active,
-body .group.bg-primary-dark:active,
-html.dark body #navbar a.bg-primary-dark:active,
-html.dark body #navbar a[class*="bg-primary-dark"]:active,
-html.dark body #navbar .group.bg-primary-dark:active,
-html.dark body a.bg-primary-dark:active,
-html.dark body a[class*="bg-primary-dark"]:active,
-html.dark body .group.bg-primary-dark:active {
-  transform: scale(0.98) !important;
-}
-
-/* Frame component styles */
-/* Mintlify Frame component wraps images with captions */
-/* You can customize Frame appearance here */
-
-/* Frame container */
-body [data-mint-component="Frame"],
-body .mint-frame {
-  /* Add custom styles for Frame container if needed */
-}
-
-/* Frame caption styling */
-body [data-mint-component="Frame"] figcaption,
-body .mint-frame figcaption {
-  /* Customize caption text color, size, etc. */
-}
-
-/* Frame image styling */
-body [data-mint-component="Frame"] img,
-body .mint-frame img {
-  /* Ensure images inside Frame respect dark mode classes */
-  max-width: 100%;
-  height: auto;
-}
-
-/* Card component border - ensure border on all sides including bottom */
-/* Target Card components by class name with high specificity, exclude table of contents */
-body #content-container a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body #content-container .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body .mint-content a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body .mint-content .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [class*="card-group"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [class*="card-group"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [data-mint-component="CardGroup"] [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [data-mint-component="CardGroup"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [data-mint-component="CardGroup"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]) {
-  border: 1px solid !important;
-  border-bottom: 1px solid !important;
-}
-
-/* Light theme border color for Cards */
-body #content-container a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body #content-container .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body .mint-content a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body .mint-content .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [class*="card-group"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [class*="card-group"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [data-mint-component="CardGroup"] [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [data-mint-component="CardGroup"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-body [data-mint-component="CardGroup"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]) {
-  border-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Dark theme border color for Cards */
-html.dark body #content-container a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-html.dark body #content-container .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-html.dark body .mint-content a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-html.dark body .mint-content .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-html.dark body [class*="card-group"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-html.dark body [class*="card-group"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-html.dark body [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-html.dark body [data-mint-component="CardGroup"] [data-mint-component="Card"]:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-html.dark body [data-mint-component="CardGroup"] a.card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]),
-html.dark body [data-mint-component="CardGroup"] .card:not(#table-of-contents):not([id*="table-of-contents"]):not([class*="table-of-contents"]) {
-  border: 1px solid !important;
-  border-bottom: 1px solid !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Explicitly remove all borders from table of contents and all its children */
-/* This overrides any Card styles that might affect table of contents */
-body #table-of-contents,
-body #table-of-contents *,
-body [id*="table-of-contents"],
-body [id*="table-of-contents"] *,
-body [class*="table-of-contents"],
-body [class*="table-of-contents"] * {
-  border-bottom: none !important;
-  border-bottom-width: 0 !important;
-  border-bottom-style: none !important;
-  border-bottom-color: transparent !important;
-}
-
-html.dark body #table-of-contents,
-html.dark body #table-of-contents *,
-html.dark body [id*="table-of-contents"],
-html.dark body [id*="table-of-contents"] *,
-html.dark body [class*="table-of-contents"],
-html.dark body [class*="table-of-contents"] * {
-  border-bottom: none !important;
-  border-bottom-width: 0 !important;
-  border-bottom-style: none !important;
-  border-bottom-color: transparent !important;
-}
-
-/* Changelog filter buttons - only INACTIVE tags; active/selected keep original (primary) style */
-
-/* Light theme: light gray for inactive tags */
-body #changelog-filters-content button:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]),
-body #changelog-filters-content a[role="button"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]),
-body #changelog-filters-content [class*="rounded"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]) {
-  background-color: #e5e5e5 !important;
-  color: #404040 !important;
-  border-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-body #changelog-filters-content button:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover,
-body #changelog-filters-content a[role="button"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover,
-body #changelog-filters-content [class*="rounded"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover {
-  background-color: #d4d4d4 !important;
-  color: #171717 !important;
-}
-
-/* Dark theme: dark gray #242424 for inactive tags */
-html.dark body #changelog-filters-content button:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]),
-html.dark body #changelog-filters-content a[role="button"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]),
-html.dark body #changelog-filters-content [class*="rounded"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):not([class*="primary"]) {
-  background-color: #171717 !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-html.dark body #changelog-filters-content button:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover,
-html.dark body #changelog-filters-content a[role="button"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover,
-html.dark body #changelog-filters-content [class*="rounded"]:not([aria-pressed="true"]):not([data-state="on"]):not([class*="bg-primary"]):hover {
-  background-color: #2d2d2d !important;
-  color: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* Navbar links hover effect - text should become brighter */
-/* Light theme: navbar links should become darker (more visible) on hover */
-body #navbar a[href]:not(.bg-primary-dark):hover,
-body #navbar a[href*="/"]:hover:not(.bg-primary-dark),
-body #navbar a[href*="mailto:"]:hover:not(.bg-primary-dark) {
-  color: var(--text-neutral-900) !important;
-  opacity: 1 !important;
-  transition: color 200ms ease-in-out, opacity 200ms ease-in-out !important;
-}
-
-/* Dark theme: navbar links should become brighter (almost white) on hover */
-html.dark body #navbar a[href]:not(.bg-primary-dark):hover,
-html.dark body #navbar a[href*="/"]:hover:not(.bg-primary-dark),
-html.dark body #navbar a[href*="mailto:"]:hover:not(.bg-primary-dark) {
-  color: rgba(255, 255, 255, 0.95) !important;
-  opacity: 1 !important;
-  transition: color 200ms ease-in-out, opacity 200ms ease-in-out !important;
-}
-
-/* Apply hover color to all child elements in navbar links */
-body #navbar a[href]:not(.bg-primary-dark):hover *,
-body #navbar a[href*="/"]:hover:not(.bg-primary-dark) *,
-body #navbar a[href*="mailto:"]:hover:not(.bg-primary-dark) * {
-  color: var(--text-neutral-900) !important;
-}
-
-html.dark body #navbar a[href]:not(.bg-primary-dark):hover *,
-html.dark body #navbar a[href*="/"]:hover:not(.bg-primary-dark) *,
-html.dark body #navbar a[href*="mailto:"]:hover:not(.bg-primary-dark) * {
-  color: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* Navigation group headers - make text and icons brighter */
-/* Light theme: group headers should be darker/more visible */
-body #sidebar-content summary,
-body #sidebar-content [role="button"][aria-expanded],
-body #navigation-items summary,
-body #navigation-items [role="button"][aria-expanded],
-body #sidebar-content [class*="group-header"],
-body #navigation-items [class*="group-header"],
-body #sidebar-content button[aria-expanded],
-body #navigation-items button[aria-expanded],
-body #sidebar-content [class*="group"] button,
-body #navigation-items [class*="group"] button,
-body #sidebar-content [class*="group"] summary,
-body #navigation-items [class*="group"] summary {
-  color: var(--text-neutral-900) !important;
-  font-weight: 600 !important;
-}
-
-/* Group header icons - light theme */
-body #sidebar-content summary svg,
-body #sidebar-content [role="button"][aria-expanded] svg,
-body #sidebar-content summary [class*="icon"],
-body #sidebar-content [role="button"][aria-expanded] [class*="icon"],
-body #navigation-items summary svg,
-body #navigation-items [role="button"][aria-expanded] svg,
-body #navigation-items summary [class*="icon"],
-body #navigation-items [role="button"][aria-expanded] [class*="icon"],
-body #sidebar-content button[aria-expanded] svg,
-body #navigation-items button[aria-expanded] svg,
-body #sidebar-content [class*="group"] button svg,
-body #navigation-items [class*="group"] button svg,
-body #sidebar-content [class*="group"] summary svg,
-body #navigation-items [class*="group"] summary svg {
-  color: var(--text-neutral-900) !important;
-  fill: var(--text-neutral-900) !important;
-  stroke: var(--text-neutral-900) !important;
-  opacity: 1 !important;
-}
-
-/* Group header icons with mask-image/background-color - light theme */
-body #sidebar-content summary [style*="mask-image"],
-body #sidebar-content summary [class*="bg-gray"],
-body #sidebar-content [role="button"][aria-expanded] [style*="mask-image"],
-body #sidebar-content [role="button"][aria-expanded] [class*="bg-gray"],
-body #navigation-items summary [style*="mask-image"],
-body #navigation-items summary [class*="bg-gray"],
-body #navigation-items [role="button"][aria-expanded] [style*="mask-image"],
-body #navigation-items [role="button"][aria-expanded] [class*="bg-gray"],
-body #sidebar-content button[aria-expanded] [style*="mask-image"],
-body #sidebar-content button[aria-expanded] [class*="bg-gray"],
-body #navigation-items button[aria-expanded] [style*="mask-image"],
-body #navigation-items button[aria-expanded] [class*="bg-gray"],
-body #sidebar-content [class*="group"] button [style*="mask-image"],
-body #sidebar-content [class*="group"] button [class*="bg-gray"],
-body #navigation-items [class*="group"] button [style*="mask-image"],
-body #navigation-items [class*="group"] button [class*="bg-gray"],
-body #sidebar-content [class*="group"] summary [style*="mask-image"],
-body #sidebar-content [class*="group"] summary [class*="bg-gray"],
-body #navigation-items [class*="group"] summary [style*="mask-image"],
-body #navigation-items [class*="group"] summary [class*="bg-gray"] {
-  background-color: var(--text-neutral-900) !important;
-  opacity: 1 !important;
-}
-
-/* Dark theme: group headers should be brighter/more visible */
-html.dark body #sidebar-content summary,
-html.dark body #sidebar-content [role="button"][aria-expanded],
-html.dark body #navigation-items summary,
-html.dark body #navigation-items [role="button"][aria-expanded],
-html.dark body #sidebar-content [class*="group-header"],
-html.dark body #navigation-items [class*="group-header"],
-html.dark body #sidebar-content button[aria-expanded],
-html.dark body #navigation-items button[aria-expanded],
-html.dark body #sidebar-content [class*="group"] button,
-html.dark body #navigation-items [class*="group"] button,
-html.dark body #sidebar-content [class*="group"] summary,
-html.dark body #navigation-items [class*="group"] summary {
-  color: rgba(255, 255, 255, 0.95) !important;
-  font-weight: 600 !important;
-}
-
-/* Group header icons - dark theme */
-html.dark body #sidebar-content summary svg,
-html.dark body #sidebar-content [role="button"][aria-expanded] svg,
-html.dark body #sidebar-content summary [class*="icon"],
-html.dark body #sidebar-content [role="button"][aria-expanded] [class*="icon"],
-html.dark body #navigation-items summary svg,
-html.dark body #navigation-items [role="button"][aria-expanded] svg,
-html.dark body #navigation-items summary [class*="icon"],
-html.dark body #navigation-items [role="button"][aria-expanded] [class*="icon"],
-html.dark body #sidebar-content button[aria-expanded] svg,
-html.dark body #navigation-items button[aria-expanded] svg,
-html.dark body #sidebar-content [class*="group"] button svg,
-html.dark body #navigation-items [class*="group"] button svg,
-html.dark body #sidebar-content [class*="group"] summary svg,
-html.dark body #navigation-items [class*="group"] summary svg {
-  color: rgba(255, 255, 255, 0.95) !important;
-  fill: rgba(255, 255, 255, 0.95) !important;
-  stroke: rgba(255, 255, 255, 0.95) !important;
-  opacity: 1 !important;
-}
-
-/* Group header icons with mask-image/background-color - dark theme */
-html.dark body #sidebar-content summary [style*="mask-image"],
-html.dark body #sidebar-content summary [class*="bg-gray"],
-html.dark body #sidebar-content [role="button"][aria-expanded] [style*="mask-image"],
-html.dark body #sidebar-content [role="button"][aria-expanded] [class*="bg-gray"],
-html.dark body #navigation-items summary [style*="mask-image"],
-html.dark body #navigation-items summary [class*="bg-gray"],
-html.dark body #navigation-items [role="button"][aria-expanded] [style*="mask-image"],
-html.dark body #navigation-items [role="button"][aria-expanded] [class*="bg-gray"],
-html.dark body #sidebar-content button[aria-expanded] [style*="mask-image"],
-html.dark body #sidebar-content button[aria-expanded] [class*="bg-gray"],
-html.dark body #navigation-items button[aria-expanded] [style*="mask-image"],
-html.dark body #navigation-items button[aria-expanded] [class*="bg-gray"],
-html.dark body #sidebar-content [class*="group"] button [style*="mask-image"],
-html.dark body #sidebar-content [class*="group"] button [class*="bg-gray"],
-html.dark body #navigation-items [class*="group"] button [style*="mask-image"],
-html.dark body #navigation-items [class*="group"] button [class*="bg-gray"],
-html.dark body #sidebar-content [class*="group"] summary [style*="mask-image"],
-html.dark body #sidebar-content [class*="group"] summary [class*="bg-gray"],
-html.dark body #navigation-items [class*="group"] summary [style*="mask-image"],
-html.dark body #navigation-items [class*="group"] summary [class*="bg-gray"] {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  opacity: 1 !important;
+  #page-title,
+  article h1 {
+    font-size: 2.25rem !important;
+  }
 }
